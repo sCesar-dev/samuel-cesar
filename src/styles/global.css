@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base
+{
+    :root
+    {
+        --bg-color: #EFECE3;
+        --primary: #4A70A9;
+        --secondary: #8FABD4;
+        --text-color: #000000;
+    }
+
+    .dark
+    {
+        --bg-color: #000000;
+        --primary: #739EC9;
+        --secondary: #5682B1;
+        --text-color: #FFE8DB;
+    }
+
+    body
+    {
+        @apply bg-[var(--bg-color)] text-[var(--text-color)] transition-colors duration-300;
+    }
+}
