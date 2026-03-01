@@ -8,22 +8,10 @@
 {
     :root
     {
-        --bg-color: #EFECE3;
-        --primary: #4A70A9;
-        --secondary: #8FABD4;
-        --text-color: #000000;
-    }
-
-    .dark
-    {
-        --bg-color: #000000;
-        --primary: #739EC9;
-        --secondary: #5682B1;
-        --text-color: #FFE8DB;
-    }
-
-    body
-    {
-        @apply bg-[var(--bg-color)] text-[var(--text-color)] transition-colors duration-300;
+        --bg-color: #0B0C10;
+        --primary: #39FF14;
+        --secondary: #1F2833;
+        --text-color: #FFFFFF;
+        --text-secondary: #C5C6C7;
     }
 }

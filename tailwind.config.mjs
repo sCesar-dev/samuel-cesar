@@ -13,6 +13,7 @@ export default
                 primary: 'var(--primary)',
                 secondary: 'var(--secondary)',
                 brandText: 'var(--text-color)',
+                brandTextSecondary: 'var(--text-secondary)',
             },
         },
     },
