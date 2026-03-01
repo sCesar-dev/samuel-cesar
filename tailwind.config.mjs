@@ -1,19 +1,14 @@
-@type {import('tailwindcss').Config}
-export default
-{
+/** @type {import('tailwindcss').Config} */
+export default {
     content: ['./src/**/*.{astro,html,js,jsx,ts,tsx}'],
-    darkMode: 'class',
-    theme:
-    {
-        extend:
-        {
-            colors:
-            {
-                brandBg: 'var(--bg-color)',
-                primary: 'var(--primary)',
-                secondary: 'var(--secondary)',
-                brandText: 'var(--text-color)',
-                brandTextSecondary: 'var(--text-secondary)',
+    theme: {
+        extend: {
+            colors: {
+                'primary-green': '#39ff14',
+                'primary-bg': 'zinc-950',
+                'secondary-bg': '#171e26',
+                'text-light': '#FFFFFF',
+                'border-silver': '#c5c6c7',
             },
         },
     },
