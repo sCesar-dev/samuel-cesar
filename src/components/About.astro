@@ -1,0 +1,72 @@
+---
+import { CircleUserRound, Camera, CircleStar, CodeXml} from 'lucide-react';
+---
+
+<section id="about" class="pt-64 pb-32 flex flex-col gap-8 w-full">
+    <div class="flex items-center gap-4 mb-4">
+        <h1 class="text-4xl font-bold text-white tracking-tight">
+            About Me
+        </h1>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <div class="md:col-span-2 bg-secondary/10 border border-secondary rounded-2xl p-8 flex flex-col justify-center">
+            <div class="flex items-center gap-3 mb-4 text-primary">
+                <CircleUserRound size={28} />
+                <h3 class="text-xl font-semibold text-text-color">Who am I?</h3>
+            </div>
+            <p class="text-text-secondary leading-relaxed text-lg">
+                Sou estudante de Sistemas de Informação na Universidade do Estado da Bahia (UNEB) e um desenvolvedor apaixonado por unir software e hardware. Minha jornada na tecnologia transita entre a criação de aplicações modernas, desde sistemas web e mobile, até a pesquisa avançada em robótica autônoma. 
+                <br><br>
+                Atualmente, integro o grupo de pesquisa ACSO, onde aplico conceitos de arquitetura de software e inteligência artificial para dar vida a robôs em ambientes dinâmicos.
+            </p>
+        </div>
+
+        <div class="bg-secondary/20 border border-secondary rounded-2xl p-4 flex items-center justify-center min-h-[300px] md:min-h-full relative group overflow-hidden">
+            <div class="flex flex-col items-center gap-2 text-text-secondary/50 group-hover:text-primary transition-colors">
+                <Camera size={40} />
+                <span>Espaço para sua foto</span>
+            </div>
+        </div>
+
+        <div class="col-span-1 md:col-span-3 bg-secondary/10 border border-secondary rounded-2xl p-8">
+            <div class="flex items-center gap-3 mb-6 text-primary">
+                <CircleStar size={28} />
+                <h3 class="text-xl font-semibold text-text-color">Destaques e Eventos</h3>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="flex flex-col gap-2">
+                    <span class="text-primary font-mono text-sm">Liderança Técnica</span>
+                    <h4 class="text-text-color font-medium text-lg">RoboCup@Home (ACSO)</h4>
+                    <p class="text-text-secondary text-sm">Líder da equipe de manipulação do robô Bill, resolvendo problemas complexos de hardware e software.</p>
+                </div>
+                <div class="flex flex-col gap-2">
+                    <span class="text-primary font-mono text-sm">Competição</span>
+                    <h4 class="text-text-color font-medium text-lg">CBR 2024 - Goiânia</h4>
+                    <p class="text-text-secondary text-sm">Participação na Competição Brasileira de Robótica aplicando conceitos de sistemas autônomos na prática.</p>
+                </div>
+                <div class="flex flex-col gap-2">
+                    <span class="text-primary font-mono text-sm">Próximos Passos</span>
+                    <h4 class="text-text-color font-medium text-lg">CBR 2025 & RoboCup 25</h4>
+                    <p class="text-text-secondary text-sm">Em preparação para competir em Vitória e na etapa global sediada em Salvador.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-span-1 md:col-span-3 bg-secondary/10 border border-secondary rounded-2xl p-8">
+            <div class="flex items-center gap-3 mb-6 text-primary">
+                <CodeXml size={24} />
+                <h3 class="text-xl font-semibold text-text-color">Tech Stack Principal</h3>
+            </div>
+            
+            <div class="flex flex-wrap gap-3">
+                {['ROS 2', 'Python', 'C++', 'Java / Spring', 'Astro', 'React Native', 'Docker', 'Estrutura de Dados'].map((skill) => (
+                    <span class="px-4 py-2 rounded-lg bg-bg-color border border-secondary text-text-secondary hover:border-primary hover:text-primary transition-colors cursor-default">
+                        {skill}
+                    </span>
+                ))}
+            </div>
+        </div>
+</section>
