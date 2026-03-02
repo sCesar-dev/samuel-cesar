@@ -4,7 +4,7 @@ import '../styles/global.css';
 const { title = "Samuel Cesar Portfolio" } = Astro.props;
 ---
 <!doctype html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth scroll-pt-20">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width" />
@@ -29,8 +29,8 @@ const { title = "Samuel Cesar Portfolio" } = Astro.props;
             </div>
         </header>
 
-        <div class="w-full max-w-360 px-4 md:px-10 pt-30 pb-10">
+        <main class="w-full max-w-360 px-4 md:px-10 pt-30 mt-20 pb-10">
             <slot />
-        </div>
+        </main>
     </body>
 </html>
