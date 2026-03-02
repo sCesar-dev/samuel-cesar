@@ -44,7 +44,7 @@ const projects = [
         </button>
     </div>
 
-    <div class="overflow-hidden rounded-2xl border border-ink-black">
+    <div class="overflow-hidden rounded-2xl border border-forest-green">
         <div id="carousel-track" class="flex transition-transform duration-500 ease-in-out w-full">
                 
             {projects.map((project) => (
@@ -120,11 +120,11 @@ const projects = [
         // Atualiza as cores das bolinhas indicadoras
         indicators.forEach((ind, index) => {
             if (index === currentIndex) {
-                ind.classList.remove('bg-ink-black');
+                ind.classList.remove('bg-forest-green');
                 ind.classList.add('bg-neon-green');
             } else {
                 ind.classList.remove('bg-neon-green');
-                ind.classList.add('bg-ink-black');
+                ind.classList.add('bg-forest-green');
             }
         });
     }
