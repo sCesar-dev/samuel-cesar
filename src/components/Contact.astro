@@ -1,7 +1,52 @@
 ---
-import { Terminal } from 'lucide-react';
+import { Mail, Github, TerminalSquare } from 'lucide-react';
 ---
 
-<section id="contact" class="max-w-200 mx-auto gap-7 flex flex-col mb-32 text-center">
+<section id="contact" class="pt-8 pb-128 w-full">
+    <div class="flex items-center gap-4 mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-white tracking-tight">
+            Get in <span class="text-neon-green">Touch</span>
+        </h2>
+        <div class="h-px flex-1 bg-forest-green/50"></div>
+    </div>
 
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="flex flex-col justify-center gap-6">
+
+            <h3 class="text-1xl text-lg justify-center font-semibold mb-4 text-silver">
+                If you have any questions, project ideas, or if you're a recruiter interested in my skills, feel free to contact me and let's talk!
+            </h3>
+            
+            <div class="flex flex-col gap-4">
+                <a href="mailto:samueljc003@gmail.com" class="flex items-center gap-4 p-4 rounded-xl bg-forest-green/10 border border-forest-green hover:border-neon-green transition-colors group">
+                    <div class="p-3 bg-zinc-950 rounded-lg text-forest-green group-hover:text-neon-green transition-colors">
+                        <Mail size={24} />
+                    </div>
+                    <div>
+                        <p class="text-sm text-silver">Email</p>
+                        <p class="text-white font-semibold">samueljc003@gmail.com</p>
+                    </div>
+                </a>
+
+                <a href="https://github.com/sCesar-dev" target="_blank" class="flex items-center gap-4 p-4 rounded-xl bg-forest-green/10 border border-forest-green hover:neon-green transition-colors group">
+                    <div class="p-3 bg-zinc-950 rounded-lg text-forest-green group-hover:text-neon-green transition-colors">
+                        <Github size={24} />
+                    </div>
+                    <div>
+                        <p class="text-sm text-silver">GitHub</p>
+                        <p class="text-text-color font-semibold">github.com/sCesar-dev</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="bg-forest-green/10 border border-forest-green rounded-2xl p-8 flex flex-col items-center justify-center text-center gap-6 relative overflow-hidden h-full min-h-75">
+            
+            <TerminalSquare size={48} class="text-primary relative z-10" />
+            <h4 class="text-xl font-semibold text-text-color relative z-10">Current Status</h4>
+            <p class="text-text-secondary relative z-10 max-w-sm">
+                Open to new opportunities, collaborations, and exciting challenges in software engineering and robotics.
+            </p>
+        </div>
+    </div>
 </section>
