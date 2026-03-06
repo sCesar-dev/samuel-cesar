@@ -1,0 +1,40 @@
+---
+import { FileText, Download } from 'lucide-react';
+---
+
+<section id="curriculum" class="pt-8 pb-128">
+    <div class="flex items-center gap-4 mb-8">
+        <h2 class="text-3xl md:text-4xl font-bold text-white tracking-tight">
+            My <span class="text-neon-green">Curriculum</span>
+        </h2>
+        <div class="h-px flex-1 bg-zinc-950/50"></div>
+    </div>
+
+    <div class="flex flex-col items-center gap-6">
+        <div class="w-full max-w-5x1 h-150 md:h-200 rounded-2xl border border-forest-green bg-forest-green/10 overflow-hidden shadow-lg relative flex flex-col items-center justify-center">
+            <div class="absolute inset-0 flex flex-col items-center justify-center text-silver -z-10">
+                <FileText size={48} class="text-primary mb-4 opacity-50" />
+                <p>Carregando documento...</p>
+            </div>
+
+            <iframe 
+                src="/public/docs/curriculum.pdf" 
+                title="My Curriculum"
+                class="w-full h-full border-none z-10 bg-white/10"    
+            ></iframe>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-4 mt-4 text-center">
+            <p class="text-forest-green text-sm flex items-center justify-center">
+                The visualizer don't load?
+            </p>
+            <a 
+                href="/public/docs/curriculum.pdf"
+                download="Samuel_Cesar_Curriculum.pdf"
+                class="flex items-center justify-center gap-2 px-6 py-3 bg-zinc-950 border border-y-zinc-950 text-white rounded-xl hover:bg-zinc-950/10 transition-colors font-medium shadow-[0_0_15px_rgba(57,255,20,0.1)] hover:shadow-[0_0_20px_rgba(57,255,20,0.3)]"
+            >
+                <Download size={20} />
+                Download PDF
+            </a>
+        </div>
+    </div>
+</section>
