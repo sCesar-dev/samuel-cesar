@@ -44,11 +44,11 @@ const projects = [
             <CircleChevronLeft size={32} />
         </button>
         
-        <div class="overflow-hidden rounded-2xl border border-forest-green bg-forest-green/10 relative shadow-lg">
+        <div class="overflow-hidden rounded-2xl border border-forest-green bg-forest-green/10 relative shadow-lg hover:-translate-y-2 hover:scale-[1.02] transition-transform duration-300 ease-out">
             <div id="carousel-track" class="flex transition-all duration-500 ease-in-out w-full">
                     
                 {projects.map((project) => (
-                    <div class="min-w-full flex flex-col md:flex-row h-auto md:h-100">
+                    <div class="min-w-full flex flex-col md:flex-row h-auto md:h-100 ">
                         
                         <div class="w-full md:w-1/2 bg-forest-green/10 border-b md:border-b-0 md:border-r border-forest-green flex flex-col items-center justify-center text-forest-green group/img relative overflow-hidden">
                             <ImageIcon size={64} className="group-hover/img:scale-110 transition-transform duration-500" />
