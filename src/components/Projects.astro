@@ -27,8 +27,8 @@ const projects = [
     live: "#"
   }
 ];
----
 
+---
 
 <section id="projects" class="pt-8 pb-128 w-full">
     <div class="flex items-center gap-4 mb-8">
@@ -40,17 +40,17 @@ const projects = [
 
     <div class="relative w-full max-w-5x1 mx-auto group">
 
-         <button id="prev-btn" class="absolute left-0 md:-left-6 top-1/2 -translate-y-1/2 z-10 bg-forest-green/50 border border-white text-white hover:bg-neon-green hover:border-neon-green p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 disabled:opacity-30 disabled:border-forest-green disabled:text-forest-green disabled:cursor-not-allowed shadow-[0_0_15px_rgba(57,255,20,0.2)]">
+         <button id="prev-btn" class="absolute left-0 md:-left-6 top-1/2 -translate-y-1/2 z-10 glass-button text-white hover:border-neon-green/80 hover:text-neon-green p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 disabled:opacity-30 disabled:border-white/10 disabled:text-white/50 disabled:cursor-not-allowed shadow-[0_0_15px_rgba(57,255,20,0.2)]">
             <CircleChevronLeft size={32} />
         </button>
         
-        <div class="overflow-hidden rounded-2xl border border-forest-green bg-forest-green/10 relative shadow-lg hover:-translate-y-2 hover:scale-[1.02] transition-transform duration-300 ease-out">
-            <div id="carousel-track" class="flex transition-all duration-500 ease-in-out w-full">
+        <div class="glass-card overflow-hidden rounded-2xl relative shadow-lg hover:-translate-y-2 hover:scale-[1.02] transition-all duration-300 ease-out group/card">
+            <div id="carousel-track" class="flex transition-transform duration-500 ease-in-out w-full">
                     
                 {projects.map((project) => (
                     <div class="min-w-full flex flex-col md:flex-row h-auto md:h-100 ">
                         
-                        <div class="w-full md:w-1/2 bg-forest-green/10 border-b md:border-b-0 md:border-r border-forest-green flex flex-col items-center justify-center text-forest-green group/img relative overflow-hidden">
+                        <div class="w-full md:w-1/2 bg-white/5 border-b md:border-b-0 md:border-r border-white/5 flex flex-col items-center justify-center text-white/50 group-hover/card:text-neon-green/80 group/img relative overflow-hidden transition-colors duration-500">
                             <ImageIcon size={64} className="group-hover/img:scale-110 transition-transform duration-500" />
                             <span class="mt-4 font-mono text-sm">Imagem do Projeto {project.id}</span>
                         </div>
@@ -64,7 +64,7 @@ const projects = [
                                 
                                 <div class="flex flex-wrap gap-2 mb-8">
                                     {project.techs.map((tech) => (
-                                        <span class="px-3 py-1 rounded-md bg-zinc-950 border border-forest-green text-white text-sm font-medium">
+                                        <span class="px-3 py-1 rounded-md glass-button text-white text-sm font-medium">
                                             {tech}
                                         </span>
                                     ))}
@@ -88,7 +88,7 @@ const projects = [
             </div>
         </div>
 
-        <button id="next-btn" class="absolute right-0 md:-right-6 top-1/2 -translate-y-1/2 z-10 bg-forest-green/50 border border-white text-white hover:bg-neon-green hover:border-neon-green p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 disabled:opacity-30 disabled:border-forest-green disabled:text-forest-green disabled:cursor-not-allowed shadow-[0_0_15px_rgba(57,255,20,0.2)]">
+        <button id="next-btn" class="absolute right-0 md:-right-6 top-1/2 -translate-y-1/2 z-10 glass-button text-white hover:border-neon-green/80 hover:text-neon-green p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 disabled:opacity-30 disabled:border-white/10 disabled:text-white/50 disabled:cursor-not-allowed shadow-[0_0_15px_rgba(57,255,20,0.2)]">
             <CircleChevronRight size={32} />
         </button>
     </div>

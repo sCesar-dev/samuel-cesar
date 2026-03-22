@@ -1,5 +1,5 @@
 ---
-import { FileText, Download } from 'lucide-react';
+import { FileText, Download } from "lucide-react";
 ---
 
 <section id="curriculum" class="pt-8 pb-128">
@@ -11,26 +11,31 @@ import { FileText, Download } from 'lucide-react';
     </div>
 
     <div class="flex flex-col items-center gap-6">
-        <div class="w-full max-w-5x1 h-150 md:h-200 rounded-2xl border border-forest-green bg-forest-green/10 overflow-hidden shadow-lg relative flex flex-col items-center justify-center">
-            <div class="absolute inset-0 flex flex-col items-center justify-center text-silver -z-10">
+        <div
+            class="glass-card w-full max-w-5x1 h-150 md:h-200 rounded-2xl overflow-hidden shadow-lg relative flex flex-col items-center justify-center p-2"
+        >
+            <div
+                class="absolute inset-0 flex flex-col items-center justify-center text-silver -z-10"
+            >
                 <FileText size={48} class="text-primary mb-4 opacity-50" />
                 <p>Carregando documento...</p>
             </div>
 
-            <iframe 
-                src="/public/docs/curriculum.pdf" 
+            <iframe
+                src="/docs/curriculum.pdf"
                 title="My Curriculum"
-                class="w-full h-full border-none z-10 bg-white/10"    
-            ></iframe>
+                class="w-full h-full border-none z-10 bg-white/10"></iframe>
         </div>
         <div class="flex flex-col sm:flex-row gap-4 mt-4 text-center">
-            <p class="text-forest-green text-sm flex items-center justify-center">
+            <p
+                class="text-forest-green text-sm flex items-center justify-center"
+            >
                 The visualizer don't load?
             </p>
-            <a 
-                href="/public/docs/curriculum.pdf"
+            <a
+                href="docs/curriculum.pdf"
                 download="Samuel_Cesar_Curriculum.pdf"
-                class="flex items-center justify-center gap-2 px-6 py-3 bg-zinc-950 border border-y-zinc-950 text-white rounded-xl hover:bg-zinc-950/10 transition-colors font-medium shadow-[0_0_15px_rgba(57,255,20,0.1)] hover:shadow-[0_0_20px_rgba(57,255,20,0.3)]"
+                class="glass-button flex items-center justify-center gap-2 px-8 py-3 text-white rounded-xl font-medium shadow-[0_0_15px_rgba(57,255,20,0.2)] hover:shadow-[0_0_20px_rgba(57,255,20,0.4)]"
             >
                 <Download size={20} />
                 Download PDF

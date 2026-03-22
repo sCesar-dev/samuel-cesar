@@ -10,21 +10,22 @@ const { title = "Samuel Cesar Portfolio" } = Astro.props;
         <meta name="viewport" content="width=device-width" />
         <title>{title}</title>
     </head>
-    <body class="bg-zinc-950 text-white font-sans antialiased min-h-screen flex flex-col items-center ">
+    <body class="bg-zinc-950 text-white font-sans antialiased min-h-screen flex flex-col items-center relative selection:bg-neon-green/30 selection:text-neon-green">
+        <div class="fixed inset-0 z-[-1] h-full w-full bg-zinc-950 bg-[radial-gradient(ellipse_70%_70%_at_50%_-20%,rgba(0,255,100,0.08),rgba(3,3,5,1))]"></div>
         
-        <header class="fixed top-0 left-0 w-full h-20 bg-zinc-950/70 backdrop-blur-md border-b border-secondary z-50 flex items-center justify-center">
+        <header class="fixed top-0 left-0 w-full h-20 bg-zinc-900/50 backdrop-blur-lg border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)] z-50 flex items-center justify-center">
             <div class="w-full max-w-360 px-4 md:px-10 flex items-center justify-between">
                 
                 <button class="flex items-center">
                     <span class="text-neon-green text-xl font-bold tracking-tight">sCesar-dev</span>
                 </button>
                 
-                <nav class="hidden md:flex gap-2">
-                    <a href="#home" class="px-4 py-2 text-white font-medium transition-all duration-300 rounded-lg hover:text-neon-green hover:bg-neon-green/10 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-950 active:scale-95 active:ring-4 active:ring-neon-green/50">Home</a>
-                    <a href="#about" class="px-4 py-2 text-white font-medium transition-all duration-300 rounded-lg  hover:text-neon-green hover:bg-neon-green/10 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-950 active:scale-95 active:ring-4 active:ring-neon-green/50 ">About</a>
-                    <a href="#projects" class="px-4 py-2 text-white font-medium transition-all duration-300 rounded-lg  hover:text-neon-green hover:bg-neon-green/10 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-950 active:scale-95 active:ring-4 active:ring-neon-green/50 ">Projects</a>
-                    <a href="#contact" class="px-4 py-2 text-white font-medium transition-all duration-300 rounded-lg  hover:text-neon-green hover:bg-neon-green/10 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-950 active:scale-95 active:ring-4 active:ring-neon-green/50 ">Contact</a>
-                    <a href="#curriculum" class="px-4 py-2 text-white font-medium transition-all duration-300 rounded-lg  hover:text-neon-green  hover:bg-neon-green/10 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-950 active:scale-95 active:ring-4 active:ring-neon-green/50 ">Curriculum</a>
+                <nav class="hidden md:flex gap-2 p-1 rounded-2xl glass-panel">
+                    <a href="#home" class="px-4 py-1.5 text-white/90 font-medium transition-all duration-300 rounded-xl hover:text-neon-green hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-neon-green/50">Home</a>
+                    <a href="#about" class="px-4 py-1.5 text-white/90 font-medium transition-all duration-300 rounded-xl hover:text-neon-green hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-neon-green/50">About</a>
+                    <a href="#projects" class="px-4 py-1.5 text-white/90 font-medium transition-all duration-300 rounded-xl hover:text-neon-green hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-neon-green/50">Projects</a>
+                    <a href="#contact" class="px-4 py-1.5 text-white/90 font-medium transition-all duration-300 rounded-xl hover:text-neon-green hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-neon-green/50">Contact</a>
+                    <a href="#curriculum" class="px-4 py-1.5 text-white/90 font-medium transition-all duration-300 rounded-xl hover:text-neon-green hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-neon-green/50">Curriculum</a>
                 </nav>
             </div>
         </header>

@@ -2,7 +2,7 @@
 import { CircleUserRound, Camera, CircleStar, CodeXml} from 'lucide-react';
 ---
 
-<section id="about" class="pt-8 pb-128 flex flex-col gap-8 mb-48 w-full">
+<section id="about" class="pt-8 pb-128 flex flex-col gap-8 w-full">
     <div class="flex items-center gap-4 mb-4">
         <h1 class="text-4xl font-bold text-white tracking-tight">
             About Me
@@ -11,7 +11,7 @@ import { CircleUserRound, Camera, CircleStar, CodeXml} from 'lucide-react';
     
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         
-        <div class="md:col-span-2 bg-secondary/10 border border-secondary rounded-2xl p-8 flex flex-col justify-center">
+        <div class="md:col-span-2 glass-card rounded-2xl p-8 flex flex-col justify-center">
             <div class="flex items-center gap-3 mb-4 text-primary">
                 <CircleUserRound size={28} />
                 <h3 class="text-xl font-semibold text-text-color">Who am I?</h3>
@@ -23,14 +23,14 @@ import { CircleUserRound, Camera, CircleStar, CodeXml} from 'lucide-react';
             </p>
         </div>
 
-        <div class="bg-secondary/20 border border-secondary rounded-2xl p-4 flex items-center justify-center min-h-[300px] md:min-h-full relative group overflow-hidden">
+        <div class="glass-card rounded-2xl p-4 flex items-center justify-center min-h-[300px] md:min-h-full relative group overflow-hidden">
             <div class="flex flex-col items-center gap-2 text-text-secondary/50 group-hover:text-primary transition-colors">
                 <Camera size={40} />
                 <span>Espaço para sua foto</span>
             </div>
         </div>
 
-        <div class="col-span-1 md:col-span-3 bg-secondary/10 border border-secondary rounded-2xl p-8">
+        <div class="col-span-1 md:col-span-3 glass-card rounded-2xl p-8">
             <div class="flex items-center gap-3 mb-6 text-primary">
                 <CircleStar size={28} />
                 <h3 class="text-xl font-semibold text-text-color">Destaques e Eventos</h3>
@@ -55,7 +55,7 @@ import { CircleUserRound, Camera, CircleStar, CodeXml} from 'lucide-react';
             </div>
         </div>
 
-        <div class="col-span-1 md:col-span-3 bg-secondary/10 border border-secondary rounded-2xl p-8">
+        <div class="col-span-1 md:col-span-3 glass-card rounded-2xl p-8">
             <div class="flex items-center gap-3 mb-6 text-primary">
                 <CodeXml size={24} />
                 <h3 class="text-xl font-semibold text-text-color">Tech Stack Principal</h3>
@@ -63,10 +63,11 @@ import { CircleUserRound, Camera, CircleStar, CodeXml} from 'lucide-react';
             
             <div class="flex flex-wrap gap-3">
                 {['ROS 2', 'Python', 'C++', 'Java / Spring', 'Astro', 'React Native', 'Docker', 'Estrutura de Dados'].map((skill) => (
-                    <span class="px-4 py-2 rounded-lg bg-bg-color border border-secondary text-text-secondary hover:border-primary hover:text-primary transition-colors cursor-default">
+                    <span class="px-4 py-2 rounded-lg glass-button text-white hover:border-neon-green hover:text-neon-green transition-colors cursor-default shadow-sm">
                         {skill}
                     </span>
                 ))}
             </div>
         </div>
+    </div>
 </section>
