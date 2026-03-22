@@ -1,0 +1,44 @@
+[
+  {
+    "id": "cert-1",
+    "title": "AWS Certified Solutions Architect",
+    "issuer": "Amazon Web Services",
+    "date": "2023",
+    "skills": ["AWS", "Cloud Architecture", "Security", "Networking"]
+  },
+  {
+    "id": "cert-2",
+    "title": "Certified Information Systems Security Professional",
+    "issuer": "ISC2",
+    "date": "2024",
+    "skills": ["Cybersecurity", "Security", "Risk Management"]
+  },
+  {
+    "id": "cert-3",
+    "title": "Google Data Analytics Professional Certificate",
+    "issuer": "Google",
+    "date": "2022",
+    "skills": ["Data Analysis", "SQL", "Python", "Tableau"]
+  },
+  {
+    "id": "cert-4",
+    "title": "Deep Learning Specialization",
+    "issuer": "DeepLearning.AI",
+    "date": "2023",
+    "skills": ["AI", "Python", "TensorFlow", "Machine Learning"]
+  },
+  {
+    "id": "cert-5",
+    "title": "Certified Ethical Hacker (CEH)",
+    "issuer": "EC-Council",
+    "date": "2023",
+    "skills": ["Cybersecurity", "Penetration Testing", "Networking"]
+  },
+  {
+    "id": "cert-6",
+    "title": "Robotics Process Automation (RPA) Developer",
+    "issuer": "UiPath",
+    "date": "2024",
+    "skills": ["Robotics", "Automation", "Python"]
+  }
+]
