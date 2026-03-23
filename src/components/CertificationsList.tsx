@@ -7,6 +7,8 @@ type Certification = {
   issuer: string;
   date: string;
   skills: string[];
+  badgeUrl?: string;
+  certificateUrl?: string;
 };
 
 interface Props {
@@ -67,14 +69,30 @@ export default function CertificationsList({ certifications }: Props) {
                   <h3 className="text-xl font-bold text-gray-100 leading-tight">
                     {cert.title}
                   </h3>
-                  <span className="text-xs font-bold text-indigo-300 bg-indigo-500/20 px-2.5 py-1 rounded-lg shrink-0 border border-indigo-500/20">
+                  <span className="text-xs font-bold text-indigo-300 bg-indigo-500/20 px-2.5 py-1 rounded-lg shrink-0 border border-indigo-500/20 mb-auto">
                     {cert.date}
                   </span>
                 </div>
                 
-                <p className="text-indigo-200/70 font-medium mb-6 text-sm">
-                  {cert.issuer}
-                </p>
+                <div className="flex items-center gap-3 mb-6">
+                  <p className="text-indigo-200/70 font-medium text-sm">
+                    {cert.issuer}
+                  </p>
+
+                  {cert.badgeUrl && (
+                    <a 
+                      href={cert.certificateUrl || '#'} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="inline-flex group/badge"
+                      aria-label={`View ${cert.title} certificate`}
+                    >
+                      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-11 h-11 flex items-center justify-center bg-white/5 rounded-lg backdrop-blur-md border border-white/10 transition-all duration-300 group-hover/badge:scale-105 group-hover/badge:border-indigo-500/50 group-hover/badge:shadow-[0_0_10px_rgba(99,102,241,0.2)]">
+                        <img src={cert.badgeUrl} alt={`${cert.title} Badge`} className="w-6 h-6 object-contain" />
+                      </div>
+                    </a>
+                  )}
+                </div>
               </div>
 
               <div className="relative z-10 mt-auto pt-4 border-t border-white/5">

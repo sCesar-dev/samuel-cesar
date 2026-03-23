@@ -4,14 +4,18 @@
     "title": "AWS Certified Solutions Architect",
     "issuer": "Amazon Web Services",
     "date": "2023",
-    "skills": ["AWS", "Cloud Architecture", "Security", "Networking"]
+    "skills": ["AWS", "Cloud Architecture", "Security", "Networking"],
+    "badgeUrl": "https://images.credly.com/size/340x340/images/0e284c3f-5164-4b21-8660-0d84737941bc/image.png",
+    "certificateUrl": "https://www.credly.com/badges/example"
   },
   {
     "id": "cert-2",
     "title": "Certified Information Systems Security Professional",
     "issuer": "ISC2",
     "date": "2024",
-    "skills": ["Cybersecurity", "Security", "Risk Management"]
+    "skills": ["Cybersecurity", "Security", "Risk Management"],
+    "badgeUrl": "https://images.credly.com/size/340x340/images/d5612ac8-ade3-4f90-8777-6bb4038a8e1b/image.png",
+    "certificateUrl": "https://www.credly.com/badges/example2"
   },
   {
     "id": "cert-3",
