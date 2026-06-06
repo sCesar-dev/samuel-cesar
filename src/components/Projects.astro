@@ -1,39 +1,15 @@
 ---
 import { CircleChevronLeft, CircleChevronRight, ImageIcon, Github, SquareArrowOutUpRight } from 'lucide-react';
 
-const projects = [
-  {
-    id: 1,
-    title: "TaskCapture",
-    description: "App mobile focado na gestão de tarefas via transcrição de áudio, otimizando o fluxo de trabalho de estagiários com inteligência artificial e processamento de linguagem natural.",
-    techs: ["React Native", "Gemini API", "Python"],
-    github: "#",
-    live: "#"
-  },
-  {
-    id: 2,
-    title: "Navegação Autônoma com ROS 2",
-    description: "Simulação de robôs móveis utilizando a stack Nav2 e o simulador Gazebo. O projeto aplica algoritmos de mapeamento e navegação em ambientes dinâmicos e complexos.",
-    techs: ["ROS 2", "C++", "Gazebo", "Robótica"],
-    github: "#",
-    live: "#"
-  },
-  {
-    id: 3,
-    title: "AirFlow - Flight Management",
-    description: "Sistema avançado de gerenciamento de voos desenvolvido com foco em performance estrutural. Implementa o algoritmo de Dijkstra para rotas e Árvores B para organização de dados.",
-    techs: ["Python", "Flask", "Algoritmos", "B-Trees"],
-    github: "#",
-    live: "#"
-  }
-];
+import { getCollection } from 'astro:content';
+const projects = await getCollection('projects');
 
 ---
 
 <section id="projects" class="pt-8 pb-128 w-full scroll-reveal">
     <div class="flex items-center gap-4 mb-8 pt-8">
         <h2 class="text-4xl md:text-4xl font-bold text-white tracking-tight">
-            Projetos em Destaque
+            Featured Projects
         </h2>
         <div class="h-px flex-1 bg-forest-green/50"></div>
     </div>
@@ -51,19 +27,22 @@ const projects = [
                     <div class="min-w-full flex flex-col md:flex-row h-auto md:h-100 ">
                         
                         <div class="w-full md:w-1/2 bg-white/5 border-b md:border-b-0 md:border-r border-white/5 flex flex-col items-center justify-center text-white/50 group-hover/card:text-neon-green/80 group/img relative overflow-hidden transition-colors duration-500">
-                            <ImageIcon size={64} className="group-hover/img:scale-110 transition-transform duration-500" />
-                            <span class="mt-4 font-mono text-sm">Imagem do Projeto {project.id}</span>
+                            {project.data.images && project.data.images.length > 0 ? (
+                                <img src={project.data.images[0]} alt={`Cover for project ${project.data.title}`} class="w-full h-full object-cover opacity-60 group-hover/card:opacity-100 transition-opacity duration-500" />
+                            ) : (
+                                <ImageIcon size={64} className="group-hover/img:scale-110 transition-transform duration-500" />
+                            )}
                         </div>
     
                         <div class="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-between">
                             <div>
-                                <h3 class="text-2xl font-bold text-text-color mb-4">{project.title}</h3>
+                                <h3 class="text-2xl font-bold text-text-color mb-4">{project.data.title}</h3>
                                 <p class="text-silver bg-transparent leading-relaxed mb-8">
-                                    {project.description}
+                                    {project.data.description}
                                 </p>
                                 
                                 <div class="flex flex-wrap gap-2 mb-8">
-                                    {project.techs.map((tech) => (
+                                    {project.data.techs.map((tech) => (
                                         <span class="px-3 py-1 rounded-md glass-button text-white text-sm font-medium">
                                             {tech}
                                         </span>
@@ -72,13 +51,15 @@ const projects = [
                             </div>
     
                             <div class="flex items-center gap-4 mt-auto">
-                                <a href={project.github} target="_blank" class="flex items-center gap-2 text-white hover:text-neon-green transition-colors">
-                                    <Github size={20} />
-                                    <span class="font-medium">Código</span>
-                                </a>
-                                <a href={project.live} target="_blank" class="flex items-center gap-2 text-white hover:text-neon-green transition-colors">
+                                {project.data.github && project.data.github !== "#" && (
+                                    <a href={project.data.github} target="_blank" class="flex items-center gap-2 text-white hover:text-neon-green transition-colors">
+                                        <Github size={20} />
+                                        <span class="font-medium">Code</span>
+                                    </a>
+                                )}
+                                <a href={`/projects/${project.slug}`} class="flex items-center gap-2 text-white hover:text-neon-green transition-colors">
                                     <SquareArrowOutUpRight size={20} />
-                                    <span class="font-medium">Acessar</span>
+                                    <span class="font-medium">View Details</span>
                                 </a>
                             </div>
                         </div>
@@ -117,11 +98,11 @@ const projects = [
                 track.style.transform = `translateX(-${currentIndex * 100}%)`;
             }
 
-            // Update bottom state
+            // Update bottom navigation state
             if (prevBtn) prevBtn.disabled = currentIndex === 0;
             if (nextBtn) nextBtn.disabled = currentIndex === totalSlides - 1;
 
-            // Atualiza as cores das bolinhas indicadoras
+            // Update the indicator dot colors
             indicators.forEach((ind, index) => {
                 if (index === currentIndex) {
                     ind.classList.add('bg-neon-green', 'scale-125');

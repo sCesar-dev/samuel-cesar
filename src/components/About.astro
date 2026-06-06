@@ -1,5 +1,30 @@
 ---
 import { CircleUserRound, Camera, CircleStar, CodeXml} from 'lucide-react';
+
+// Add your profile photo path here (e.g., "/images/profile.jpg")
+const profilePhoto = "/src/images/profile.jpg";
+
+// Add your event photo paths here
+const eventPhotos = [
+  {
+    src: "src/images/robocup-image.jpg",
+    alt: "RoboCup Salvador 2025, Brazil",
+    title: "RoboCup Salvador 2025, Brazil",
+    description: "Working with the ACSO Research Group on development and integration for the Bill robot."
+  },
+  {
+    src: "src/images/personal-image.jpg",
+    alt: "CBR 2024 - Goiânia - Samuel Cesar",
+    title: "CBR 2024 - Goiânia",
+    description: "Participation in the Brazilian Robotics Competition, applying autonomous systems concepts in practice."
+  },
+  {
+    src: "src/images/robocup-image2.jpg",
+    alt: "CBR 2025 & RoboCup 25 - Samuel Cesar",
+    title: "CBR 2025 & RoboCup 25",
+    description: "Intensive preparation for the next Brazilian Robotics Competition and the global stage."
+  }
+];
 ---
 
 <section id="about" class="pt-8 pb-128 flex flex-col gap-8 w-full scroll-reveal">
@@ -17,52 +42,88 @@ import { CircleUserRound, Camera, CircleStar, CodeXml} from 'lucide-react';
                 <h3 class="text-xl font-semibold text-text-color">Who am I?</h3>
             </div>
             <p class="text-text-secondary leading-relaxed text-lg">
-                Sou estudante de Sistemas de Informação na Universidade do Estado da Bahia (UNEB) e um desenvolvedor apaixonado por unir software e hardware. Minha jornada na tecnologia transita entre a criação de aplicações modernas, desde sistemas web e mobile, até a pesquisa avançada em robótica autônoma. 
-                <br><br>
-                Atualmente, integro o grupo de pesquisa ACSO, onde aplico conceitos de arquitetura de software e inteligência artificial para dar vida a robôs em ambientes dinâmicos.
-            </p>
+                I am an Information Systems undergraduate student at Universidade do Estado da Bahia (UNEB) with a strong passion for software engineering, data analysis, and robotics. I have hands-on experience building backend applications, developing data pipelines, and implementing predictive models.<br><br>
+                Currently, I serve as the Integration Team Leader for the ACSO Research Group (RoboCup@Home), where I work on complex real-world automation tasks using ROS 2, C++, and Python. I am dedicated to solving problems through efficient code and data-driven decisions.            </p>
         </div>
 
         <div class="glass-card rounded-2xl p-4 flex items-center justify-center min-h-[300px] md:min-h-full relative group overflow-hidden">
-            <div class="flex flex-col items-center gap-2 text-text-secondary/50 group-hover:text-primary transition-colors">
-                <Camera size={40} />
-                <span>Espaço para sua foto</span>
-            </div>
+            {profilePhoto ? (
+                <img 
+                    src={profilePhoto} 
+                    alt="Profile Photo - Samuel Cesar" 
+                    class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                />
+            ) : (
+                <div class="flex flex-col items-center gap-2 text-text-secondary/50 group-hover:text-primary transition-colors">
+                    <Camera size={40} />
+                    <span class="text-sm font-semibold">Profile Photo</span>
+                </div>
+            )}
         </div>
 
         <div class="col-span-1 md:col-span-3 glass-card rounded-2xl p-8">
             <div class="flex items-center gap-3 mb-6 text-primary">
                 <CircleStar size={28} />
-                <h3 class="text-xl font-semibold text-text-color">Destaques e Eventos</h3>
+                <h3 class="text-xl font-semibold text-text-color">Highlights & Events</h3>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div class="flex flex-col gap-2">
-                    <span class="text-primary font-mono text-sm">Liderança Técnica</span>
+                    <span class="text-primary font-mono text-sm">Technical Leadership</span>
                     <h4 class="text-text-color font-medium text-lg">RoboCup@Home (ACSO)</h4>
-                    <p class="text-text-secondary text-sm">Líder da equipe de manipulação do robô Bill, resolvendo problemas complexos de hardware e software.</p>
+                    <p class="text-text-secondary text-sm">Leader of the manipulation team for the Bill robot, solving complex hardware and software problems.</p>
                 </div>
                 <div class="flex flex-col gap-2">
-                    <span class="text-primary font-mono text-sm">Competição</span>
+                    <span class="text-primary font-mono text-sm">Competition</span>
                     <h4 class="text-text-color font-medium text-lg">CBR 2024 - Goiânia</h4>
-                    <p class="text-text-secondary text-sm">Participação na Competição Brasileira de Robótica aplicando conceitos de sistemas autônomos na prática.</p>
+                    <p class="text-text-secondary text-sm">Participation in the Brazilian Robotics Competition, applying autonomous systems concepts in practice.</p>
                 </div>
                 <div class="flex flex-col gap-2">
-                    <span class="text-primary font-mono text-sm">Próximos Passos</span>
+                    <span class="text-primary font-mono text-sm">Next Steps</span>
                     <h4 class="text-text-color font-medium text-lg">CBR 2025 & RoboCup 25</h4>
-                    <p class="text-text-secondary text-sm">Em preparação para competir em Vitória e na etapa global sediada em Salvador.</p>
+                    <p class="text-text-secondary text-sm">In preparation to compete in Vitória and at the global stage hosted in Salvador.</p>
                 </div>
+            </div>
+        </div>
+
+        <div class="col-span-1 md:col-span-3 glass-card rounded-2xl p-8">
+            <div class="flex items-center gap-3 mb-6 text-primary">
+                <Camera size={28} />
+                <h3 class="text-xl font-semibold text-text-color">Event Photos</h3>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {eventPhotos.map((photo) => (
+                    <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden group/event hover:border-neon-green/50 transition-colors flex flex-col h-64 relative">
+                        {photo.src ? (
+                            <img 
+                                src={photo.src} 
+                                alt={photo.alt} 
+                                class="w-full h-full object-cover group-hover/event:scale-105 transition-transform duration-500" 
+                            />
+                        ) : (
+                            <div class="flex-grow flex flex-col items-center justify-center gap-2 text-text-secondary/50 group-hover/event:text-primary transition-colors p-4">
+                                <Camera size={32} />
+                                <span class="text-sm font-semibold">{photo.title}</span>
+                            </div>
+                        )}
+                        <div class="absolute bottom-0 inset-x-0 bg-zinc-950/80 backdrop-blur-sm p-4 border-t border-white/5 opacity-0 group-hover/event:opacity-100 transition-opacity duration-300">
+                            <h4 class="text-white font-medium text-sm mb-1">{photo.title}</h4>
+                            <p class="text-text-secondary text-xs">{photo.description}</p>
+                        </div>
+                    </div>
+                ))}
             </div>
         </div>
 
         <div class="col-span-1 md:col-span-3 glass-card rounded-2xl p-8">
             <div class="flex items-center gap-3 mb-6 text-primary">
                 <CodeXml size={24} />
-                <h3 class="text-xl font-semibold text-text-color">Tech Stack Principal</h3>
+                <h3 class="text-xl font-semibold text-text-color">Main Tech Stack</h3>
             </div>
             
             <div class="flex flex-wrap gap-3">
-                {['ROS 2', 'Python', 'C++', 'Java / Spring', 'Astro', 'React Native', 'Docker', 'Estrutura de Dados'].map((skill) => (
+                {['ROS 2', 'Python', 'C++', 'Java / Spring', 'Astro', 'React Native', 'Docker', 'Data Structures'].map((skill) => (
                     <span class="px-4 py-2 rounded-lg glass-button text-white hover:border-neon-green hover:text-neon-green transition-colors cursor-default shadow-sm">
                         {skill}
                     </span>

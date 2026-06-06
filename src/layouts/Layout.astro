@@ -2,6 +2,9 @@
 import '../styles/global.css';
 
 const { title = "Samuel Cesar Portfolio" } = Astro.props;
+
+const isHome = Astro.url.pathname === "/";
+const prefix = isHome ? "" : "/";
 ---
 <!doctype html>
 <html lang="en" class="scroll-smooth scroll-pt-20">
@@ -16,17 +19,17 @@ const { title = "Samuel Cesar Portfolio" } = Astro.props;
         <header class="fixed top-0 left-0 w-full h-20 bg-zinc-900/50 backdrop-blur-lg border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)] z-50 flex items-center justify-center">
             <div class="w-full max-w-360 px-4 md:px-10 flex items-center justify-between">
                 
-                <button class="flex items-center">
+                <a href={isHome ? "#home" : "/"} class="flex items-center">
                     <span class="text-neon-green text-xl font-bold tracking-tight">sCesar-dev</span>
-                </button>
+                </a>
                 
                 <nav class="hidden md:flex gap-2 p-1 rounded-2xl glass-panel">
-                    <a href="#home" class="px-4 py-1.5 text-white/90 font-medium transition-all duration-300 rounded-xl hover:text-neon-green hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-neon-green/50">Home</a>
-                    <a href="#about" class="px-4 py-1.5 text-white/90 font-medium transition-all duration-300 rounded-xl hover:text-neon-green hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-neon-green/50">About</a>
-                    <a href="#certifications" class="px-4 py-1.5 text-white/90 font-medium transition-all duration-300 rounded-xl hover:text-neon-green hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-neon-green/50">Skills</a>
-                    <a href="#projects" class="px-4 py-1.5 text-white/90 font-medium transition-all duration-300 rounded-xl hover:text-neon-green hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-neon-green/50">Projects</a>
-                    <a href="#contact" class="px-4 py-1.5 text-white/90 font-medium transition-all duration-300 rounded-xl hover:text-neon-green hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-neon-green/50">Contact</a>
-                    <a href="#curriculum" class="px-4 py-1.5 text-white/90 font-medium transition-all duration-300 rounded-xl hover:text-neon-green hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-neon-green/50">Curriculum</a>
+                    <a href={`${prefix}#home`} class="px-4 py-1.5 text-white/90 font-medium transition-all duration-300 rounded-xl hover:text-neon-green hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-neon-green/50">Home</a>
+                    <a href={`${prefix}#about`} class="px-4 py-1.5 text-white/90 font-medium transition-all duration-300 rounded-xl hover:text-neon-green hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-neon-green/50">About</a>
+                    <a href={`${prefix}#certifications`} class="px-4 py-1.5 text-white/90 font-medium transition-all duration-300 rounded-xl hover:text-neon-green hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-neon-green/50">Skills</a>
+                    <a href={`${prefix}#projects`} class="px-4 py-1.5 text-white/90 font-medium transition-all duration-300 rounded-xl hover:text-neon-green hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-neon-green/50">Projects</a>
+                    <a href={`${prefix}#contact`} class="px-4 py-1.5 text-white/90 font-medium transition-all duration-300 rounded-xl hover:text-neon-green hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-neon-green/50">Contact</a>
+                    <a href={`${prefix}#curriculum`} class="px-4 py-1.5 text-white/90 font-medium transition-all duration-300 rounded-xl hover:text-neon-green hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-neon-green/50">Curriculum</a>
                 </nav>
             </div>
         </header>

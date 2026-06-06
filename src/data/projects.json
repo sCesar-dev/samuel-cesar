@@ -1,8 +1,0 @@
-[
-    {
-        "title": "Portfolio",
-        "description": "Exemple of a portfolio project.",
-        "techs": ["Astro", "React", "Tailwind CSS"],
-        "link": "https://example.com/portfolio"
-    }
-]
