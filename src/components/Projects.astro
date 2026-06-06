@@ -1,70 +1,49 @@
 ---
 import { CircleChevronLeft, CircleChevronRight, ImageIcon, Github, SquareArrowOutUpRight } from 'lucide-react';
 
-const projects = [
-  {
-    id: 1,
-    title: "TaskCapture",
-    description: "App mobile focado na gestão de tarefas via transcrição de áudio, otimizando o fluxo de trabalho de estagiários com inteligência artificial e processamento de linguagem natural.",
-    techs: ["React Native", "Gemini API", "Python"],
-    github: "#",
-    live: "#"
-  },
-  {
-    id: 2,
-    title: "Navegação Autônoma com ROS 2",
-    description: "Simulação de robôs móveis utilizando a stack Nav2 e o simulador Gazebo. O projeto aplica algoritmos de mapeamento e navegação em ambientes dinâmicos e complexos.",
-    techs: ["ROS 2", "C++", "Gazebo", "Robótica"],
-    github: "#",
-    live: "#"
-  },
-  {
-    id: 3,
-    title: "AirFlow - Flight Management",
-    description: "Sistema avançado de gerenciamento de voos desenvolvido com foco em performance estrutural. Implementa o algoritmo de Dijkstra para rotas e Árvores B para organização de dados.",
-    techs: ["Python", "Flask", "Algoritmos", "B-Trees"],
-    github: "#",
-    live: "#"
-  }
-];
+import { getCollection } from 'astro:content';
+const projects = await getCollection('projects');
+
 ---
 
-
-<section id="projects" class="pt-8 pb-128 w-full">
-    <div class="flex items-center gap-4 mb-8">
+<section id="projects" class="pt-8 pb-128 w-full scroll-reveal">
+    <div class="flex items-center gap-4 mb-8 pt-8">
         <h2 class="text-4xl md:text-4xl font-bold text-white tracking-tight">
-            Projetos em Destaque
+            Featured Projects
         </h2>
         <div class="h-px flex-1 bg-forest-green/50"></div>
     </div>
 
     <div class="relative w-full max-w-5x1 mx-auto group">
 
-         <button id="prev-btn" class="absolute left-0 md:-left-6 top-1/2 -translate-y-1/2 z-10 bg-forest-green/50 border border-white text-white hover:bg-neon-green hover:border-neon-green p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 disabled:opacity-30 disabled:border-forest-green disabled:text-forest-green disabled:cursor-not-allowed shadow-[0_0_15px_rgba(57,255,20,0.2)]">
+         <button id="prev-btn" class="absolute left-0 md:-left-6 top-1/2 -translate-y-1/2 z-10 glass-button text-white hover:border-neon-green/80 hover:text-neon-green p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 disabled:opacity-30 disabled:border-white/10 disabled:text-white/50 disabled:cursor-not-allowed shadow-[0_0_15px_rgba(57,255,20,0.2)]">
             <CircleChevronLeft size={32} />
         </button>
         
-        <div class="overflow-hidden rounded-2xl border border-forest-green bg-forest-green/10 relative shadow-lg">
-            <div id="carousel-track" class="flex transition-all duration-500 ease-in-out w-full">
+        <div class="glass-card overflow-hidden rounded-2xl relative shadow-lg hover:-translate-y-2 hover:scale-[1.02] transition-all duration-300 ease-out group/card">
+            <div id="carousel-track" class="flex transition-transform duration-500 ease-in-out w-full">
                     
                 {projects.map((project) => (
-                    <div class="min-w-full flex flex-col md:flex-row h-auto md:h-100">
+                    <div class="min-w-full flex flex-col md:flex-row h-auto md:h-100 ">
                         
-                        <div class="w-full md:w-1/2 bg-forest-green/10 border-b md:border-b-0 md:border-r border-forest-green flex flex-col items-center justify-center text-forest-green group/img relative overflow-hidden">
-                            <ImageIcon size={64} className="group-hover/img:scale-110 transition-transform duration-500" />
-                            <span class="mt-4 font-mono text-sm">Imagem do Projeto {project.id}</span>
+                        <div class="w-full md:w-1/2 bg-white/5 border-b md:border-b-0 md:border-r border-white/5 flex flex-col items-center justify-center text-white/50 group-hover/card:text-neon-green/80 group/img relative overflow-hidden transition-colors duration-500">
+                            {project.data.images && project.data.images.length > 0 ? (
+                                <img src={project.data.images[0]} alt={`Cover for project ${project.data.title}`} class="w-full h-full object-cover opacity-60 group-hover/card:opacity-100 transition-opacity duration-500" />
+                            ) : (
+                                <ImageIcon size={64} className="group-hover/img:scale-110 transition-transform duration-500" />
+                            )}
                         </div>
     
                         <div class="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-between">
                             <div>
-                                <h3 class="text-2xl font-bold text-text-color mb-4">{project.title}</h3>
+                                <h3 class="text-2xl font-bold text-text-color mb-4">{project.data.title}</h3>
                                 <p class="text-silver bg-transparent leading-relaxed mb-8">
-                                    {project.description}
+                                    {project.data.description}
                                 </p>
                                 
                                 <div class="flex flex-wrap gap-2 mb-8">
-                                    {project.techs.map((tech) => (
-                                        <span class="px-3 py-1 rounded-md bg-zinc-950 border border-forest-green text-white text-sm font-medium">
+                                    {project.data.techs.map((tech) => (
+                                        <span class="px-3 py-1 rounded-md glass-button text-white text-sm font-medium">
                                             {tech}
                                         </span>
                                     ))}
@@ -72,13 +51,15 @@ const projects = [
                             </div>
     
                             <div class="flex items-center gap-4 mt-auto">
-                                <a href={project.github} target="_blank" class="flex items-center gap-2 text-white hover:text-neon-green transition-colors">
-                                    <Github size={20} />
-                                    <span class="font-medium">Código</span>
-                                </a>
-                                <a href={project.live} target="_blank" class="flex items-center gap-2 text-white hover:text-neon-green transition-colors">
+                                {project.data.github && project.data.github !== "#" && (
+                                    <a href={project.data.github} target="_blank" class="flex items-center gap-2 text-white hover:text-neon-green transition-colors">
+                                        <Github size={20} />
+                                        <span class="font-medium">Code</span>
+                                    </a>
+                                )}
+                                <a href={`/projects/${project.slug}`} class="flex items-center gap-2 text-white hover:text-neon-green transition-colors">
                                     <SquareArrowOutUpRight size={20} />
-                                    <span class="font-medium">Acessar</span>
+                                    <span class="font-medium">View Details</span>
                                 </a>
                             </div>
                         </div>
@@ -88,7 +69,7 @@ const projects = [
             </div>
         </div>
 
-        <button id="next-btn" class="absolute right-0 md:-right-6 top-1/2 -translate-y-1/2 z-10 bg-forest-green/50 border border-white text-white hover:bg-neon-green hover:border-neon-green p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 disabled:opacity-30 disabled:border-forest-green disabled:text-forest-green disabled:cursor-not-allowed shadow-[0_0_15px_rgba(57,255,20,0.2)]">
+        <button id="next-btn" class="absolute right-0 md:-right-6 top-1/2 -translate-y-1/2 z-10 glass-button text-white hover:border-neon-green/80 hover:text-neon-green p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 disabled:opacity-30 disabled:border-white/10 disabled:text-white/50 disabled:cursor-not-allowed shadow-[0_0_15px_rgba(57,255,20,0.2)]">
             <CircleChevronRight size={32} />
         </button>
     </div>
@@ -117,11 +98,11 @@ const projects = [
                 track.style.transform = `translateX(-${currentIndex * 100}%)`;
             }
 
-            // Update bottom state
+            // Update bottom navigation state
             if (prevBtn) prevBtn.disabled = currentIndex === 0;
             if (nextBtn) nextBtn.disabled = currentIndex === totalSlides - 1;
 
-            // Atualiza as cores das bolinhas indicadoras
+            // Update the indicator dot colors
             indicators.forEach((ind, index) => {
                 if (index === currentIndex) {
                     ind.classList.add('bg-neon-green', 'scale-125');

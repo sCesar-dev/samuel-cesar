@@ -2,6 +2,9 @@
 import '../styles/global.css';
 
 const { title = "Samuel Cesar Portfolio" } = Astro.props;
+
+const isHome = Astro.url.pathname === "/";
+const prefix = isHome ? "" : "/";
 ---
 <!doctype html>
 <html lang="en" class="scroll-smooth scroll-pt-20">
@@ -10,27 +13,94 @@ const { title = "Samuel Cesar Portfolio" } = Astro.props;
         <meta name="viewport" content="width=device-width" />
         <title>{title}</title>
     </head>
-    <body class="bg-zinc-950 text-white font-sans antialiased min-h-screen flex flex-col items-center">
+    <body class="bg-zinc-950 text-white font-sans antialiased min-h-screen flex flex-col items-center relative selection:bg-neon-green/30 selection:text-neon-green">
+        <div class="fixed inset-0 z-[-1] h-full w-full bg-zinc-950 bg-[radial-gradient(ellipse_70%_70%_at_50%_-20%,rgba(0,255,100,0.08),rgba(3,3,5,1))]"></div>
         
-        <header class="fixed top-0 left-0 w-full h-20 bg-zinc-950/95 border-b border-secondary z-50 flex items-center justify-center">
+        <header class="fixed top-0 left-0 w-full h-20 bg-zinc-900/50 backdrop-blur-lg border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)] z-50 flex items-center justify-center">
             <div class="w-full max-w-360 px-4 md:px-10 flex items-center justify-between">
                 
-                <button class="flex items-center">
+                <a href={isHome ? "#home" : "/"} class="flex items-center">
                     <span class="text-neon-green text-xl font-bold tracking-tight">sCesar-dev</span>
-                </button>
+                </a>
                 
-                <nav class="hidden md:flex gap-2">
-                    <a href="#home" class="px-4 py-2 text-white font-semibold rounded-lg hover:bg-zinc-950/10 transition ">Home</a>
-                    <a href="#about" class="px-4 py-2 text-white font-semibold rounded-lg hover:bg-zinc-950/10 transition">About</a>
-                    <a href="#projects" class="px-4 py-2 text-white font-semibold rounded-lg hover:bg-zinc-950/10 transition">Projects</a>
-                    <a href="#contact" class="px-4 py-2 text-white font-semibold rounded-lg hover:bg-zinc-950/10 transition">Contact</a>
-                    <a href="#curriculum" class="px-4 py-2 text-white font-semibold rounded-lg hover:bg-zinc-950/10 transition">Curriculum</a>
+                <nav class="hidden md:flex gap-2 p-1 rounded-2xl glass-panel">
+                    <a href={`${prefix}#home`} class="px-4 py-1.5 text-white/90 font-medium transition-all duration-300 rounded-xl hover:text-neon-green hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-neon-green/50">Home</a>
+                    <a href={`${prefix}#about`} class="px-4 py-1.5 text-white/90 font-medium transition-all duration-300 rounded-xl hover:text-neon-green hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-neon-green/50">About</a>
+                    <a href={`${prefix}#certifications`} class="px-4 py-1.5 text-white/90 font-medium transition-all duration-300 rounded-xl hover:text-neon-green hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-neon-green/50">Skills</a>
+                    <a href={`${prefix}#projects`} class="px-4 py-1.5 text-white/90 font-medium transition-all duration-300 rounded-xl hover:text-neon-green hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-neon-green/50">Projects</a>
+                    <a href={`${prefix}#contact`} class="px-4 py-1.5 text-white/90 font-medium transition-all duration-300 rounded-xl hover:text-neon-green hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-neon-green/50">Contact</a>
+                    <a href={`${prefix}#curriculum`} class="px-4 py-1.5 text-white/90 font-medium transition-all duration-300 rounded-xl hover:text-neon-green hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-neon-green/50">Curriculum</a>
                 </nav>
             </div>
         </header>
 
-        <main class="w-full max-w-360 px-4 md:px-10 pt-30 mt-20 pb-10">
+        <main class="w-full max-w-360 px-4 md:px-10 pt-28 pb-10">
             <slot />
         </main>
+
+        <style is:global>
+            /* Scroll Reveal Classes */
+            .scroll-reveal {
+                opacity: 0;
+                transform: translateY(40px);
+                transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+                will-change: opacity, transform;
+            }
+            .scroll-reveal.is-visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            /* Typing Effect */
+            .typing-effect {
+                overflow: hidden; /* Ensures the content is not revealed until the animation */
+                border-right: .15em solid rgba(0, 255, 100, 0.8); /* The typewriter cursor */
+                white-space: nowrap; /* Keeps the content on a single line */
+                margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+                letter-spacing: normal;
+                animation: 
+                    typing 2s steps(40, end),
+                    blink-caret .75s step-end infinite;
+                display: inline-block;
+                max-width: fit-content;
+            }
+
+            /* The typing effect */
+            @keyframes typing {
+                from { width: 0 }
+                to { width: 100% }
+            }
+
+            /* The typewriter cursor effect */
+            @keyframes blink-caret {
+                from, to { border-color: transparent }
+                50% { border-color: rgba(0, 255, 100, 0.8); }
+            }
+        </style>
+
+        <script>
+            // Add intersection observer on client side
+            document.addEventListener('DOMContentLoaded', () => {
+                const observerOptions = {
+                    root: null,
+                    rootMargin: '0px',
+                    threshold: 0.15
+                };
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            // Optional: Stop observing once revealed if you want it to only happen once
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, observerOptions);
+
+                document.querySelectorAll('.scroll-reveal').forEach((el) => {
+                    observer.observe(el);
+                });
+            });
+        </script>
     </body>
 </html>

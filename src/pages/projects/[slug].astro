@@ -1,0 +1,84 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import { ArrowLeft, Github, SquareArrowOutUpRight } from 'lucide-react';
+
+export async function getStaticPaths() {
+  const projectEntries = await getCollection('projects');
+  return projectEntries.map(entry => ({
+    params: { slug: entry.slug }, props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<Layout title={`${entry.data.title} | Samuel César`} description={entry.data.description}>
+  <main class="min-h-screen bg-bg-color text-text-color font-sans pt-24 pb-12">
+    <div class="max-w-4xl mx-auto px-6 md:px-12">
+      
+      <a href="/#projects" class="inline-flex items-center gap-2 text-silver hover:text-neon-green transition-colors mb-8 group">
+        <ArrowLeft size={20} class="group-hover:-translate-x-1 transition-transform" />
+        <span>Back to Projects</span>
+      </a>
+
+      <header class="mb-12">
+        <h1 class="text-4xl md:text-5xl font-bold text-white tracking-tight mb-4">{entry.data.title}</h1>
+        <p class="text-xl text-silver mb-6">{entry.data.description}</p>
+        
+        <div class="flex flex-wrap gap-2 mb-8">
+          {entry.data.techs.map((tech) => (
+            <span class="px-3 py-1 rounded-md glass-button text-white text-sm font-medium">
+              {tech}
+            </span>
+          ))}
+        </div>
+
+        <div class="flex items-center gap-6">
+          {entry.data.github && entry.data.github !== "#" && (
+            <a href={entry.data.github} target="_blank" class="flex items-center gap-2 text-white hover:text-neon-green transition-colors">
+                <Github size={20} />
+                <span class="font-medium">View Code</span>
+            </a>
+          )}
+          {entry.data.live && entry.data.live !== "#" && (
+            <a href={entry.data.live} target="_blank" class="flex items-center gap-2 text-white hover:text-neon-green transition-colors">
+                <SquareArrowOutUpRight size={20} />
+                <span class="font-medium">Live Demo</span>
+            </a>
+          )}
+        </div>
+      </header>
+
+      {entry.data.images && entry.data.images.length > 0 && (
+        <section class="mb-16">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {entry.data.images.map((img, index) => (
+              <div class={`rounded-xl overflow-hidden glass-card shadow-lg ${index === 0 ? 'md:col-span-2' : ''}`}>
+                <img src={img} alt={`${entry.data.title} image ${index + 1}`} class="w-full h-auto object-cover hover:scale-[1.02] transition-transform duration-500" />
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {entry.data.videos && entry.data.videos.length > 0 && (
+        <section class="mb-16">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {entry.data.videos.map((vid, index) => (
+              <div class={`rounded-xl overflow-hidden glass-card shadow-lg ${index === 0 && (!entry.data.images || entry.data.images.length === 0) ? 'md:col-span-2' : ''}`}>
+                <video src={vid} autoplay loop muted playsinline class="w-full h-auto object-cover hover:scale-[1.02] transition-transform duration-500"></video>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      <article class="prose prose-invert prose-lg max-w-none prose-headings:text-white prose-a:text-neon-green hover:prose-a:text-forest-green prose-strong:text-white prose-img:rounded-xl">
+        <Content />
+      </article>
+      
+    </div>
+  </main>
+</Layout>
