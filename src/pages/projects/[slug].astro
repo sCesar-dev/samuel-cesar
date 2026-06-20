@@ -70,10 +70,58 @@ const { Content } = await entry.render();
         </section>
       )}
 
-      <article class="prose prose-invert prose-lg max-w-none prose-headings:text-white prose-a:text-neon-green hover:prose-a:text-forest-green prose-strong:text-white prose-img:rounded-xl">
+      <article class="project-content">
         <Content />
       </article>
       
     </div>
   </main>
 </Layout>
+
+<script>
+  const setupLayout = () => {
+    const article = document.querySelector('.project-content');
+    if (!article) return;
+
+    const children = Array.from(article.children);
+    let currentSection: HTMLDivElement | null = null;
+    let hasReachedFirstH2 = false;
+    let introSection: HTMLDivElement | null = null;
+
+    children.forEach((child) => {
+      // Hide the redundant first H1 (the title of the page is already in the header)
+      if (child.tagName === 'H1') {
+        child.remove();
+        return;
+      }
+
+      // If we find an H2, we create a new card container
+      if (child.tagName === 'H2') {
+        hasReachedFirstH2 = true;
+        currentSection = document.createElement('div');
+        currentSection.className = 'bg-zinc-900/30 backdrop-blur-lg border border-white/5 p-6 md:p-8 rounded-xl shadow-[0_8px_32px_rgba(0,0,0,0.4)] mb-8 hover:border-white/10 transition-all duration-300';
+        article.appendChild(currentSection);
+      }
+
+      // Move element to its appropriate section
+      if (hasReachedFirstH2) {
+        if (currentSection) {
+          currentSection.appendChild(child);
+        }
+      } else {
+        if (!introSection) {
+          introSection = document.createElement('div');
+          introSection.className = 'mb-10 text-lg leading-relaxed text-silver border-b border-white/5 pb-8';
+          article.appendChild(introSection);
+        }
+        introSection.appendChild(child);
+      }
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupLayout);
+  } else {
+    setupLayout();
+  }
+</script>

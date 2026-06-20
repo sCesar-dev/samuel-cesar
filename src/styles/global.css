@@ -23,3 +23,80 @@
         @apply drop-shadow-[0_0_12px_var(--color-neon-green)];
     }
 }
+
+/* Project Detail Markdown Styling */
+.project-content {
+  color: var(--color-silver);
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.project-content h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: white;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.project-content h2::before {
+  content: "";
+  display: inline-block;
+  width: 4px;
+  height: 1.25rem;
+  background-color: var(--color-neon-green);
+  border-radius: 2px;
+  box-shadow: 0 0 8px rgba(57, 255, 20, 0.5);
+}
+
+.project-content h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: white;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.project-content p {
+  margin-bottom: 1rem;
+}
+
+.project-content p:last-child {
+  margin-bottom: 0;
+}
+
+.project-content strong {
+  color: white;
+  font-weight: 600;
+}
+
+.project-content ul {
+  list-style-type: none;
+  padding-left: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.project-content ul li {
+  position: relative;
+  margin-bottom: 0.4rem;
+}
+
+.project-content ul li::before {
+  content: "→";
+  position: absolute;
+  left: -1.25rem;
+  color: var(--color-neon-green);
+}
+
+.project-content ol {
+  list-style-type: decimal;
+  padding-left: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.project-content ol li {
+  margin-bottom: 0.4rem;
+}
