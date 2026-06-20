@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import { ArrowLeft, Github, SquareArrowOutUpRight } from 'lucide-react';
+import ImageCarousel from '../../components/ImageCarousel';
 
 export async function getStaticPaths() {
   const projectEntries = await getCollection('projects');
@@ -53,13 +54,7 @@ const { Content } = await entry.render();
 
       {entry.data.images && entry.data.images.length > 0 && (
         <section class="mb-16">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {entry.data.images.map((img, index) => (
-              <div class={`rounded-xl overflow-hidden glass-card shadow-lg ${index === 0 ? 'md:col-span-2' : ''}`}>
-                <img src={img} alt={`${entry.data.title} image ${index + 1}`} class="w-full h-auto object-cover hover:scale-[1.02] transition-transform duration-500" />
-              </div>
-            ))}
-          </div>
+          <ImageCarousel client:load images={entry.data.images} altPrefix={entry.data.title} />
         </section>
       )}
 
