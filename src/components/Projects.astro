@@ -28,7 +28,7 @@ const projects = await getCollection('projects');
                         
                         <div class="w-full md:w-1/2 bg-white/5 border-b md:border-b-0 md:border-r border-white/5 flex flex-col items-center justify-center text-white/50 group-hover/card:text-neon-green/80 group/img relative overflow-hidden transition-colors duration-500">
                             {project.data.images && project.data.images.length > 0 ? (
-                                <img src={project.data.images[0]} alt={`Cover for project ${project.data.title}`} class="w-full h-full object-cover opacity-60 group-hover/card:opacity-100 transition-opacity duration-500" />
+                                <img src={project.data.images[0]} alt={`Cover for project ${project.data.title}`} class="w-full h-full object-contain opacity-60 group-hover/card:opacity-100 transition-opacity duration-500" />
                             ) : (
                                 <ImageIcon size={64} className="group-hover/img:scale-110 transition-transform duration-500" />
                             )}
