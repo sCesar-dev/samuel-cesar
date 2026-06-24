@@ -4,6 +4,7 @@ import { CircleChevronLeft, CircleChevronRight, ImageIcon, Github, SquareArrowOu
 import { getCollection } from 'astro:content';
 const projects = await getCollection('projects');
 
+const uniqueStacks = ["All", ...new Set(projects.map(p => p.data.stack))];
 ---
 
 <section id="projects" class="pt-8 pb-128 w-full scroll-reveal">
@@ -12,6 +13,17 @@ const projects = await getCollection('projects');
             Featured Projects
         </h2>
         <div class="h-px flex-1 bg-forest-green/50"></div>
+    </div>
+
+    <div class="flex flex-wrap gap-3 mb-10 justify-center">
+        {uniqueStacks.map((stack, index) => (
+            <button 
+                class={`filter-tab px-5 py-2 rounded-xl glass-button text-sm font-medium transition-all duration-300 ${index === 0 ? 'text-neon-green border-neon-green/80 shadow-[0_0_10px_rgba(57,255,20,0.2)]' : 'text-white/80 hover:text-neon-green hover:border-neon-green/50'}`}
+                data-stack={stack}
+            >
+                {stack}
+            </button>
+        ))}
     </div>
 
     <div class="relative w-full max-w-5x1 mx-auto group">
@@ -24,7 +36,7 @@ const projects = await getCollection('projects');
             <div id="carousel-track" class="flex transition-transform duration-500 ease-in-out w-full">
                     
                 {projects.map((project) => (
-                    <div class="min-w-full flex flex-col md:flex-row h-auto md:h-100 ">
+                    <div class="project-slide min-w-full flex flex-col md:flex-row h-auto md:h-100" data-stack={project.data.stack}>
                         
                         <div class="w-full md:w-1/2 bg-white/5 border-b md:border-b-0 md:border-r border-white/5 flex flex-col items-center justify-center text-white/50 group-hover/card:text-neon-green/80 group/img relative overflow-hidden transition-colors duration-500">
                             {project.data.images && project.data.images.length > 0 ? (
@@ -74,9 +86,9 @@ const projects = await getCollection('projects');
         </button>
     </div>
 
-    <div class="flex justify-center gap-2 mt-6">
+    <div class="flex justify-center gap-2 mt-6" id="indicator-container">
         {projects.map((_, index) => (
-            <div class={`indicator w-2.5 h-2.5 rounded-full transition-all duration-300 ${index === 0 ? 'bg-neon-green scale-125' : 'bg-forest-green'}`} data-index={index}></div>
+            <div class={`indicator w-2.5 h-2.5 rounded-full transition-all duration-300 cursor-pointer ${index === 0 ? 'bg-neon-green scale-125' : 'bg-forest-green'}`} data-index={index}></div>
         ))}
     </div>
 </section>
@@ -86,23 +98,38 @@ const projects = await getCollection('projects');
         const track = document.getElementById('carousel-track');
         const prevBtn = document.getElementById('prev-btn') as HTMLButtonElement;
         const nextBtn = document.getElementById('next-btn') as HTMLButtonElement;
-        const indicators = document.querySelectorAll('.indicator');
+        const indicatorContainer = document.getElementById('indicator-container');
+        const filterTabs = document.querySelectorAll('.filter-tab');
         
-        // Count how many projects there are
-        const totalSlides = indicators.length;
+        let allSlides = Array.from(document.querySelectorAll('.project-slide')) as HTMLElement[];
+        let visibleSlides = [...allSlides];
         let currentIndex = 0;
 
+        function updateIndicatorsDOM() {
+            if (!indicatorContainer) return;
+            indicatorContainer.innerHTML = '';
+            visibleSlides.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.className = `indicator w-2.5 h-2.5 rounded-full transition-all duration-300 cursor-pointer ${index === 0 ? 'bg-neon-green scale-125' : 'bg-forest-green'}`;
+                dot.dataset.index = index.toString();
+                dot.addEventListener('click', () => {
+                    currentIndex = index;
+                    updateCarousel();
+                });
+                indicatorContainer.appendChild(dot);
+            });
+        }
+
         function updateCarousel() {
-            // Move trial multiply the actual index by 100% of the width
             if (track) {
                 track.style.transform = `translateX(-${currentIndex * 100}%)`;
             }
 
-            // Update bottom navigation state
-            if (prevBtn) prevBtn.disabled = currentIndex === 0;
-            if (nextBtn) nextBtn.disabled = currentIndex === totalSlides - 1;
+            const totalSlides = visibleSlides.length;
+            if (prevBtn) prevBtn.disabled = currentIndex === 0 || totalSlides === 0;
+            if (nextBtn) nextBtn.disabled = currentIndex === totalSlides - 1 || totalSlides === 0;
 
-            // Update the indicator dot colors
+            const indicators = indicatorContainer?.querySelectorAll('.indicator') || [];
             indicators.forEach((ind, index) => {
                 if (index === currentIndex) {
                     ind.classList.add('bg-neon-green', 'scale-125');
@@ -114,7 +141,39 @@ const projects = await getCollection('projects');
             });
         }
 
-        // Event Listeners for clicks
+        function filterProjects(stack: string) {
+            filterTabs.forEach(tab => {
+                const htmlTab = tab as HTMLElement;
+                if (htmlTab.dataset.stack === stack) {
+                    htmlTab.classList.add('text-neon-green', 'border-neon-green/80', 'shadow-[0_0_10px_rgba(57,255,20,0.2)]');
+                    htmlTab.classList.remove('text-white/80', 'hover:text-neon-green', 'hover:border-neon-green/50');
+                } else {
+                    htmlTab.classList.remove('text-neon-green', 'border-neon-green/80', 'shadow-[0_0_10px_rgba(57,255,20,0.2)]');
+                    htmlTab.classList.add('text-white/80', 'hover:text-neon-green', 'hover:border-neon-green/50');
+                }
+            });
+
+            visibleSlides = [];
+            allSlides.forEach(slide => {
+                if (stack === 'All' || slide.dataset.stack === stack) {
+                    slide.style.display = '';
+                    visibleSlides.push(slide);
+                } else {
+                    slide.style.display = 'none';
+                }
+            });
+
+            currentIndex = 0;
+            updateIndicatorsDOM();
+            updateCarousel();
+        }
+
+        filterTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                filterProjects((tab as HTMLElement).dataset.stack || 'All');
+            });
+        });
+
         prevBtn?.addEventListener('click', () => {
             if (currentIndex > 0) {
                 currentIndex--;
@@ -123,19 +182,13 @@ const projects = await getCollection('projects');
         });
 
         nextBtn?.addEventListener('click', () => {
-            if (currentIndex < totalSlides - 1) {
+            if (currentIndex < visibleSlides.length - 1) {
                 currentIndex++;
                 updateCarousel();
             }
         });
 
-        indicators.forEach((ind, index) => {
-            ind.addEventListener('click', () => {
-                currentIndex = index;
-                updateCarousel();
-            });
-        });
-
+        updateIndicatorsDOM();
         updateCarousel();
     });
 </script>
