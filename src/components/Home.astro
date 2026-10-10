@@ -1,22 +1,5 @@
-<section id="home" class="scroll-mt-32 max-w-200 mx-auto gap-7 flex flex-col pb-128 pt-64 text-center relative">
+---
+import HeroNetworking from './HeroNetworking';
+---
 
-    <h1 class="text-4xl font-bold tracking-tight mt-32 flex flex-col md:flex-row justify-center items-center md:gap-2 typing-effect mt-2 md:mt-0">
-        <span class="text-white">Hi everyone, I’m </span>
-        <span class="text-neon-green glow-neon ">Samuel Cesar</span>
-    </h1>        
-    <h2 class="text-white text-xl md:text-2xl font-semibold tracking-tight m-0 glow-text">
-        Student, Data developer and Robotics Researcher
-    </h2>
-
-    <p class="text-stone-300 text-lg leading-relaxed opacity-95 m-0 glass-panel p-6 md:p-8 rounded-2xl mt-4">
-        Computer Information Systems student, focusing on Data and Backend.
-        Winner of a hackathon at UFBA (Federal University of Bahia), I develop applied solutions and projects in multiple technologies. 
-        I would like to connect with and follow opportunities and trends in the field, aiming to work on impactful projects!
-    </p>
-    
-    <a href="#projects" class="group block w-max mx-auto mt-24 p-0.5 rounded-xl bg-gradient-to-r from-stone-300/10 to-neon-green/30 hover:shadow-[0_0_25px_rgba(57,255,20,0.3)] active:scale-95 active:ring-2 active:ring-neon-green/50 transition-all duration-300">
-        <div class="flex items-center justify-center px-8 py-3 rounded-xl glass-button border-neon-green/30 text-white font-bold group-hover:border-neon-green/80 group-hover:text-neon-green transition-all duration-300">
-            See my Projects
-        </div>
-    </a>
-</section>
+<HeroNetworking client:load />

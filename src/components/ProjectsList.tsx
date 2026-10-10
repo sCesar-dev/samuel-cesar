@@ -1,8 +1,9 @@
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Github, SquareArrowOutUpRight, ImageIcon } from 'lucide-react';
+import ProjectCardVisual, { type ProjectCardData } from './ProjectCardVisual';
+import { Database, BrainCircuit, Eye, Sparkles } from 'lucide-react';
 
-type Project = {
+type AstroProject = {
   id: string;
   slug: string;
   body: string;
@@ -12,6 +13,15 @@ type Project = {
     description: string;
     techs: string[];
     stack: string;
+    category?: 'robotics-cv' | 'data-engineering' | 'data-science' | 'computer-vision';
+    categoryLabel?: string;
+    oneLinerImpact?: string;
+    hardwareBadges?: string[];
+    technicalHighlights?: string[];
+    architectureDiagram?: string;
+    metrics?: Record<string, string>;
+    featured?: boolean;
+    order?: number;
     images?: string[];
     videos?: string[];
     github?: string;
@@ -20,122 +30,160 @@ type Project = {
 };
 
 interface Props {
-  projects: Project[];
+  projects: AstroProject[];
 }
 
 export default function ProjectsList({ projects }: Props) {
-  const [activeStack, setActiveStack] = useState<string>('All');
+  const [activeTab, setActiveTab] = useState<'all' | 'data-engineering' | 'data-science' | 'computer-vision'>('all');
 
-  const stacks = useMemo(() => {
-    const allStacks = projects.map((p) => p.data.stack);
-    const uniqueStacks = Array.from(new Set(allStacks)).sort();
-    return ['All', ...uniqueStacks];
+  // Transforma e ordena os projetos: destacados primeiro, depois por ordem numérica
+  const mappedProjects = useMemo<ProjectCardData[]>(() => {
+    const list = [...projects].sort((a, b) => {
+      const orderA = a.data.order ?? 99;
+      const orderB = b.data.order ?? 99;
+      return orderA - orderB;
+    });
+
+    return list.map((p) => {
+      let resolvedCategory: 'data-engineering' | 'data-science' | 'computer-vision' = 'data-engineering';
+      
+      if (
+        p.data.category === 'data-science' || 
+        p.data.stack?.toLowerCase().includes('data science') || 
+        p.data.stack?.toLowerCase().includes('machine learning') ||
+        p.data.techs.some(t => ['scikit-learn', 'random forest', 'machine learning', 'xgboost'].includes(t.toLowerCase()))
+      ) {
+        resolvedCategory = 'data-science';
+      } else if (
+        p.data.category === 'computer-vision' || 
+        p.data.category === 'robotics-cv' || 
+        p.data.stack?.toLowerCase().includes('robot') || 
+        p.data.stack?.toLowerCase().includes('vision') ||
+        p.data.techs.some(t => ['ros 2', 'opencv', 'yolov8', 'moveit', 'amazon rekognition'].includes(t.toLowerCase()))
+      ) {
+        resolvedCategory = 'computer-vision';
+      } else {
+        resolvedCategory = 'data-engineering';
+      }
+
+      let resolvedCategoryLabel = p.data.categoryLabel;
+      if (!resolvedCategoryLabel) {
+        if (resolvedCategory === 'data-science') resolvedCategoryLabel = 'Ciência de Dados & ML';
+        else if (resolvedCategory === 'computer-vision') resolvedCategoryLabel = 'Visão Computacional & Robótica';
+        else resolvedCategoryLabel = 'Engenharia de Dados';
+      }
+
+      return {
+        id: p.id,
+        slug: p.slug,
+        title: p.data.title,
+        description: p.data.description,
+        category: resolvedCategory,
+        categoryLabel: resolvedCategoryLabel,
+        oneLinerImpact: p.data.oneLinerImpact,
+        mediaVideoUrl: p.data.videos && p.data.videos.length > 0 ? p.data.videos[0] : undefined,
+        mediaImageUrl: p.data.images && p.data.images.length > 0 ? p.data.images[0] : undefined,
+        architectureDiagramUrl: p.data.architectureDiagram,
+        metrics: p.data.metrics || {},
+        hardwareBadges: p.data.hardwareBadges || [],
+        techs: p.data.techs || [],
+        technicalHighlights: p.data.technicalHighlights || [],
+        githubUrl: p.data.github,
+        liveDemoUrl: p.data.live,
+      };
+    });
   }, [projects]);
 
   const filteredProjects = useMemo(() => {
-    if (activeStack === 'All') return projects;
-    return projects.filter((project) => project.data.stack === activeStack);
-  }, [projects, activeStack]);
+    if (activeTab === 'data-engineering') {
+      return mappedProjects.filter((p) => p.category === 'data-engineering');
+    }
+    if (activeTab === 'data-science') {
+      return mappedProjects.filter((p) => p.category === 'data-science');
+    }
+    if (activeTab === 'computer-vision') {
+      return mappedProjects.filter((p) => p.category === 'computer-vision');
+    }
+    return mappedProjects;
+  }, [mappedProjects, activeTab]);
 
   return (
     <div className="w-full">
-      <div className="flex flex-wrap justify-center gap-3 mb-12">
-        {stacks.map((stack) => (
-          <button
-            key={stack}
-            onClick={() => setActiveStack(stack)}
-            className={`px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 glass-button ${
-              activeStack === stack
-                ? 'text-neon-green border-neon-green/80 shadow-[0_0_10px_rgba(57,255,20,0.2)]'
-                : 'text-white/80 hover:text-neon-green hover:border-neon-green/50'
-            }`}
-          >
-            {stack}
-          </button>
-        ))}
+      {/* Strategic Filter Tabs */}
+      <div className="flex flex-wrap items-center justify-center gap-2.5 mb-10">
+        <button
+          type="button"
+          onClick={() => setActiveTab('all')}
+          className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 cursor-pointer ${
+            activeTab === 'all'
+              ? 'bg-zinc-800 text-white border border-white/25 shadow-[0_0_15px_rgba(255,255,255,0.1)]'
+              : 'bg-zinc-900/60 text-zinc-400 hover:text-white border border-white/10 hover:border-white/20'
+          }`}
+        >
+          <Sparkles size={16} className={activeTab === 'all' ? 'text-cyan-400' : ''} />
+          <span>Todos os Projetos</span>
+          <span className="text-xs font-mono px-2 py-0.5 rounded-full bg-white/10 text-zinc-300">
+            {mappedProjects.length}
+          </span>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => setActiveTab('data-engineering')}
+          className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 cursor-pointer ${
+            activeTab === 'data-engineering'
+              ? 'bg-emerald-950/80 text-emerald-300 border border-emerald-500/50 shadow-[0_0_20px_rgba(16,185,129,0.25)]'
+              : 'bg-zinc-900/60 text-zinc-400 hover:text-emerald-300 border border-white/10 hover:border-emerald-500/30'
+          }`}
+        >
+          <Database size={16} className="text-emerald-400" />
+          <span>Engenharia de Dados</span>
+          <span className="text-xs font-mono px-2 py-0.5 rounded-full bg-emerald-900/40 text-emerald-300">
+            {mappedProjects.filter((p) => p.category === 'data-engineering').length}
+          </span>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => setActiveTab('data-science')}
+          className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 cursor-pointer ${
+            activeTab === 'data-science'
+              ? 'bg-purple-950/80 text-purple-300 border border-purple-500/50 shadow-[0_0_20px_rgba(168,85,247,0.25)]'
+              : 'bg-zinc-900/60 text-zinc-400 hover:text-purple-300 border border-white/10 hover:border-purple-500/30'
+          }`}
+        >
+          <BrainCircuit size={16} className="text-purple-400" />
+          <span>Ciência de Dados</span>
+          <span className="text-xs font-mono px-2 py-0.5 rounded-full bg-purple-900/40 text-purple-300">
+            {mappedProjects.filter((p) => p.category === 'data-science').length}
+          </span>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => setActiveTab('computer-vision')}
+          className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 cursor-pointer ${
+            activeTab === 'computer-vision'
+              ? 'bg-cyan-950/80 text-cyan-300 border border-cyan-500/50 shadow-[0_0_20px_rgba(6,182,212,0.25)]'
+              : 'bg-zinc-900/60 text-zinc-400 hover:text-cyan-300 border border-white/10 hover:border-cyan-500/30'
+          }`}
+        >
+          <Eye size={16} className="text-cyan-400" />
+          <span>Visão Computacional</span>
+          <span className="text-xs font-mono px-2 py-0.5 rounded-full bg-cyan-900/40 text-cyan-300">
+            {mappedProjects.filter((p) => p.category === 'computer-vision').length}
+          </span>
+        </button>
       </div>
 
+      {/* Projects Grid */}
       <motion.div 
         layout 
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
       >
-        <AnimatePresence mode='popLayout'>
+        <AnimatePresence mode="popLayout">
           {filteredProjects.map((project) => (
-            <motion.div
-              layout
-              key={project.id}
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              transition={{ duration: 0.4, type: 'spring', bounce: 0.3 }}
-              className="relative rounded-2xl flex flex-col h-full bg-white/5 border border-white/10 backdrop-blur-xl shadow-xl hover:bg-white/10 transition-colors duration-300 overflow-hidden group"
-            >
-              <div className="absolute -inset-x-0 -inset-y-0 z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-neon-green/10 via-forest-green/5 to-transparent pointer-events-none" />
-
-              {/* Cover Image/Video Area */}
-              <div className="relative h-56 w-full border-b border-white/5 bg-black/20 overflow-hidden flex items-center justify-center">
-                {project.data.images && project.data.images.length > 0 ? (
-                  <img 
-                    src={project.data.images[0]} 
-                    alt={`Cover for ${project.data.title}`} 
-                    className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" 
-                  />
-                ) : project.data.videos && project.data.videos.length > 0 ? (
-                  <video 
-                    src={project.data.videos[0]} 
-                    autoPlay loop muted playsInline 
-                    className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" 
-                  />
-                ) : (
-                  <ImageIcon size={48} className="text-white/30 group-hover:scale-110 transition-transform duration-500" />
-                )}
-              </div>
-
-              {/* Content Area */}
-              <div className="relative z-10 flex-1 p-6 flex flex-col">
-                <h3 className="text-2xl font-bold text-gray-100 leading-tight mb-3">
-                  {project.data.title}
-                </h3>
-                
-                <p className="text-silver text-sm leading-relaxed mb-6 flex-1">
-                  {project.data.description}
-                </p>
-
-                {/* Techs */}
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.data.techs.map((tech) => (
-                    <span 
-                      key={tech} 
-                      className="px-2.5 py-1 rounded-md glass-button text-white text-[11px] uppercase tracking-wider font-semibold"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Footer Links */}
-                <div className="flex items-center gap-4 mt-auto pt-4 border-t border-white/5">
-                  {project.data.github && project.data.github !== "#" && (
-                    <a 
-                      href={project.data.github} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-sm text-white/80 hover:text-neon-green transition-colors"
-                    >
-                      <Github size={16} />
-                      <span className="font-medium">Code</span>
-                    </a>
-                  )}
-                  <a 
-                    href={`/projects/${project.slug}`} 
-                    className="flex items-center gap-2 text-sm text-white/80 hover:text-neon-green transition-colors ml-auto"
-                  >
-                    <SquareArrowOutUpRight size={16} />
-                    <span className="font-medium">View Details</span>
-                  </a>
-                </div>
-              </div>
-            </motion.div>
+            <ProjectCardVisual key={project.id} project={project} />
           ))}
         </AnimatePresence>
       </motion.div>
