@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+@theme {
+    --color-neon-green: #39FF14;
+    --color-cyan-tech: #00F0FF;
+    --color-emerald-data: #10B981;
+    --color-amber-hw: #F59E0B;
+    --color-forest-green: #0D6832;
+    --color-silver: #94A3B8;
+}
+
+@layer utilities {
+    .glass-panel {
+        @apply bg-zinc-900/60 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)];
+    }
+    .glass-card {
+        @apply bg-zinc-900/50 backdrop-blur-xl border border-white/10 hover:border-cyan-500/30 transition-all duration-300 shadow-[0_8px_32px_rgba(0,0,0,0.4)];
+    }
+    .glass-button {
+        @apply bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-200;
+    }
+    .glow-text {
+        @apply text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.6)];
+    }
+    .glow-neon {
+        @apply drop-shadow-[0_0_14px_rgba(0,240,255,0.6)];
+    }
+    .glow-cyan {
+        @apply drop-shadow-[0_0_12px_rgba(0,240,255,0.5)];
+    }
+    .glow-emerald {
+        @apply drop-shadow-[0_0_12px_rgba(16,185,129,0.5)];
+    }
+}
+
+/* Project Detail Markdown Styling */
+.project-content {
+  color: var(--color-silver);
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.project-content h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: white;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.project-content h2::before {
+  content: "";
+  display: inline-block;
+  width: 4px;
+  height: 1.25rem;
+  background-color: var(--color-neon-green);
+  border-radius: 2px;
+  box-shadow: 0 0 8px rgba(57, 255, 20, 0.5);
+}
+
+.project-content h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: white;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.project-content p {
+  margin-bottom: 1rem;
+}
+
+.project-content p:last-child {
+  margin-bottom: 0;
+}
+
+.project-content strong {
+  color: white;
+  font-weight: 600;
+}
+
+.project-content ul {
+  list-style-type: none;
+  padding-left: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.project-content ul li {
+  position: relative;
+  margin-bottom: 0.4rem;
+}
+
+.project-content ul li::before {
+  content: "→";
+  position: absolute;
+  left: -1.25rem;
+  color: var(--color-neon-green);
+}
+
+.project-content ol {
+  list-style-type: decimal;
+  padding-left: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.project-content ol li {
+  margin-bottom: 0.4rem;
+}

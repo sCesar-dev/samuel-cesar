@@ -1,0 +1,25 @@
+---
+import { getCollection } from 'astro:content';
+import ProjectsList from './ProjectsList.tsx';
+
+const projects = await getCollection('projects');
+---
+
+<section id="projects" class="py-16 md:py-24 w-full scroll-mt-20 scroll-reveal">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 border-b border-white/10 pb-6">
+        <div>
+            <div className="flex items-center gap-2 text-cyan-400 font-mono text-xs uppercase tracking-wider mb-1 font-semibold">
+                <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                Portfólio Técnico
+            </div>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-white tracking-tight">
+                Projetos & Sistemas em Destaque
+            </h2>
+            <p class="text-zinc-400 text-sm md:text-base mt-1 max-w-2xl font-light">
+                Pipelines de engenharia de dados, inteligência preditiva em ciência de dados e sistemas de visão computacional aplicados a problemas reais com eficiência e rigor arquitetural.
+            </p>
+        </div>
+    </div>
+
+    <ProjectsList client:load projects={projects} />
+</section>
