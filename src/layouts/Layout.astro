@@ -1,97 +1,117 @@
 ---
 import '../styles/global.css';
 
-const { title = "Samuel Cesar Portfolio" } = Astro.props;
+const { 
+    title = "Samuel Cesar | Engenharia de Dados, Ciência de Dados & Visão Computacional",
+    description = "Portfólio de Samuel Cesar. Graduando em Sistemas de Informação (UNEB) em busca de estágio. Projetos em Engenharia de Dados, Ciência de Dados (Machine Learning), Visão Computacional e Nuvem AWS."
+} = Astro.props;
 
 const isHome = Astro.url.pathname === "/";
 const prefix = isHome ? "" : "/";
 ---
 <!doctype html>
-<html lang="en" class="scroll-smooth scroll-pt-20">
+<html lang="pt-BR" class="scroll-smooth scroll-pt-20">
     <head>
         <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>{title}</title>
-    </head>
-    <body class="bg-zinc-950 text-white font-sans antialiased min-h-screen flex flex-col items-center relative selection:bg-neon-green/30 selection:text-neon-green">
-        <div class="fixed inset-0 z-[-1] h-full w-full bg-zinc-950 bg-[radial-gradient(ellipse_70%_70%_at_50%_-20%,rgba(0,255,100,0.08),rgba(3,3,5,1))]"></div>
+        <meta name="description" content={description} />
         
-        <header class="fixed top-0 left-0 w-full h-20 bg-zinc-900/50 backdrop-blur-lg border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)] z-50 flex items-center justify-center">
-            <div class="w-full max-w-360 px-4 md:px-10 flex items-center justify-between">
+        {/* Open Graph / WhatsApp / LinkedIn */}
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content="/images/robocup-image.jpg" />
+        
+        {/* Favicon */}
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    </head>
+    <body class="bg-zinc-950 text-white font-sans antialiased min-h-screen flex flex-col items-center relative selection:bg-cyan-500/30 selection:text-cyan-300">
+        {/* Subtle Ambient Cyber Radial Background */}
+        <div class="fixed inset-0 z-[-1] h-full w-full bg-zinc-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(0,240,255,0.07),rgba(3,7,18,1))]"></div>
+        
+        {/* Sticky Header */}
+        <header class="fixed top-0 left-0 w-full h-18 bg-zinc-950/75 backdrop-blur-xl border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.3)] z-50 flex items-center justify-center">
+            <div class="w-full max-w-6xl px-4 md:px-8 flex items-center justify-between">
                 
-                <a href={isHome ? "#home" : "/"} class="flex items-center">
-                    <span class="text-neon-green text-xl font-bold tracking-tight">sCesar-dev</span>
+                <a href={isHome ? "#home" : "/"} class="flex items-center gap-2 group">
+                    <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 group-hover:scale-125 transition-transform"></span>
+                    <span class="text-white text-lg font-bold tracking-tight font-mono group-hover:text-cyan-400 transition-colors">
+                        sCesar<span class="text-cyan-400">.dev</span>
+                    </span>
                 </a>
                 
-                <nav class="hidden md:flex gap-2 p-1 rounded-2xl glass-panel">
-                    <a href={`${prefix}#home`} class="px-4 py-1.5 text-white/90 font-medium transition-all duration-300 rounded-xl hover:text-neon-green hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-neon-green/50">Home</a>
-                    <a href={`${prefix}#about`} class="px-4 py-1.5 text-white/90 font-medium transition-all duration-300 rounded-xl hover:text-neon-green hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-neon-green/50">About</a>
-                    <a href={`${prefix}#certifications`} class="px-4 py-1.5 text-white/90 font-medium transition-all duration-300 rounded-xl hover:text-neon-green hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-neon-green/50">Skills</a>
-                    <a href={`${prefix}#projects`} class="px-4 py-1.5 text-white/90 font-medium transition-all duration-300 rounded-xl hover:text-neon-green hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-neon-green/50">Projects</a>
-                    <a href={`${prefix}#contact`} class="px-4 py-1.5 text-white/90 font-medium transition-all duration-300 rounded-xl hover:text-neon-green hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-neon-green/50">Contact</a>
-                    <a href={`${prefix}#curriculum`} class="px-4 py-1.5 text-white/90 font-medium transition-all duration-300 rounded-xl hover:text-neon-green hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-neon-green/50">Curriculum</a>
+                <nav class="hidden md:flex gap-1.5 p-1 rounded-2xl glass-panel">
+                    <a href={`${prefix}#home`} class="px-3.5 py-1.5 text-zinc-300 text-xs font-medium transition-all rounded-xl hover:text-white hover:bg-white/10">Início</a>
+                    <a href={`${prefix}#projects`} class="px-3.5 py-1.5 text-cyan-400 text-xs font-semibold transition-all rounded-xl hover:text-cyan-300 hover:bg-cyan-500/10">Projetos</a>
+                    <a href={`${prefix}#about`} class="px-3.5 py-1.5 text-zinc-300 text-xs font-medium transition-all rounded-xl hover:text-white hover:bg-white/10">Sobre</a>
+                    <a href={`${prefix}#certifications`} class="px-3.5 py-1.5 text-zinc-300 text-xs font-medium transition-all rounded-xl hover:text-white hover:bg-white/10">Skills</a>
+                    <a href={`${prefix}#curriculum`} class="px-3.5 py-1.5 text-zinc-300 text-xs font-medium transition-all rounded-xl hover:text-white hover:bg-white/10">One-Pager</a>
+                    <a href={`${prefix}#contact`} class="px-3.5 py-1.5 text-emerald-400 text-xs font-semibold transition-all rounded-xl hover:text-emerald-300 hover:bg-emerald-500/10">Contato</a>
                 </nav>
+
+                <div class="flex items-center gap-2">
+                    <a 
+                        href="https://www.linkedin.com/in/s-cesar/" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        class="px-3.5 py-1.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/25 border border-cyan-500/40 text-cyan-300 text-xs font-mono font-semibold transition-all"
+                    >
+                        LinkedIn ↗
+                    </a>
+                </div>
             </div>
         </header>
 
-        <main class="w-full max-w-360 px-4 md:px-10 pt-28 pb-10">
+        {/* Main Content Area */}
+        <main class="w-full max-w-6xl px-4 md:px-8 pt-20 pb-16 flex-1">
             <slot />
         </main>
+
+        {/* Global Networking Footer */}
+        <footer class="w-full border-t border-white/10 bg-zinc-950/80 backdrop-blur-lg py-8 text-center text-xs text-zinc-500 font-mono">
+            <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-2 text-zinc-400">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                    <span>Samuel Cesar • Em busca de estágio (Engenharia & Ciência de Dados, Visão Computacional)</span>
+                </div>
+                <div class="flex items-center gap-4 text-zinc-400">
+                    <a href="https://github.com/sCesar-dev" target="_blank" class="hover:text-white transition-colors">GitHub</a>
+                    <span>•</span>
+                    <a href="https://www.linkedin.com/in/s-cesar/" target="_blank" class="hover:text-cyan-400 transition-colors">LinkedIn</a>
+                    <span>•</span>
+                    <a href="mailto:samueljc003@gmail.com" class="hover:text-emerald-400 transition-colors">samueljc003@gmail.com</a>
+                </div>
+            </div>
+        </footer>
 
         <style is:global>
             /* Scroll Reveal Classes */
             .scroll-reveal {
                 opacity: 0;
-                transform: translateY(40px);
-                transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+                transform: translateY(30px);
+                transition: opacity 0.7s ease-out, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
                 will-change: opacity, transform;
             }
             .scroll-reveal.is-visible {
                 opacity: 1;
                 transform: translateY(0);
             }
-
-            /* Typing Effect */
-            .typing-effect {
-                overflow: hidden; /* Ensures the content is not revealed until the animation */
-                border-right: .15em solid rgba(0, 255, 100, 0.8); /* The typewriter cursor */
-                white-space: nowrap; /* Keeps the content on a single line */
-                margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-                letter-spacing: normal;
-                animation: 
-                    typing 2s steps(40, end),
-                    blink-caret .75s step-end infinite;
-                display: inline-block;
-                max-width: fit-content;
-            }
-
-            /* The typing effect */
-            @keyframes typing {
-                from { width: 0 }
-                to { width: 100% }
-            }
-
-            /* The typewriter cursor effect */
-            @keyframes blink-caret {
-                from, to { border-color: transparent }
-                50% { border-color: rgba(0, 255, 100, 0.8); }
-            }
         </style>
 
         <script>
-            // Add intersection observer on client side
+            // Intersection observer on client side for smooth scroll animations
             document.addEventListener('DOMContentLoaded', () => {
                 const observerOptions = {
                     root: null,
                     rootMargin: '0px',
-                    threshold: 0.15
+                    threshold: 0.1
                 };
 
                 const observer = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
                             entry.target.classList.add('is-visible');
-                            // Optional: Stop observing once revealed if you want it to only happen once
                             observer.unobserve(entry.target);
                         }
                     });
