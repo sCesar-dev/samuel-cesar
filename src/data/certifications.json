@@ -4,7 +4,7 @@
     "title": "AWS Certified Solutions Architect",
     "issuer": "Amazon Web Services",
     "date": "2023",
-    "skills": ["AWS", "Cloud Architecture", "Security", "Networking"],
+    "skills": ["AWS", "Cloud Architecture", "Serverless", "Security"],
     "badgeUrl": "https://images.credly.com/size/340x340/images/0e284c3f-5164-4b21-8660-0d84737941bc/image.png",
     "certificateUrl": "https://www.credly.com/badges/example"
   },
@@ -44,5 +44,12 @@
     "issuer": "UiPath",
     "date": "2024",
     "skills": ["Robotics", "Automation", "Python"]
+  },
+  {
+    "id": "cert-7",
+    "title": "Icon Design & UI Visual Assets",
+    "issuer": "Digital Design & Prototyping",
+    "date": "2024",
+    "skills": ["Icon Design", "Design", "Figma", "SVG"]
   }
 ]
