@@ -1,141 +1,25 @@
 ---
-import { CircleChevronLeft, CircleChevronRight, ImageIcon, Github, SquareArrowOutUpRight } from 'lucide-react';
-
 import { getCollection } from 'astro:content';
-const projects = await getCollection('projects');
+import ProjectsList from './ProjectsList.tsx';
 
+const projects = await getCollection('projects');
 ---
 
-<section id="projects" class="pt-8 pb-128 w-full scroll-reveal">
-    <div class="flex items-center gap-4 mb-8 pt-8">
-        <h2 class="text-4xl md:text-4xl font-bold text-white tracking-tight">
-            Featured Projects
-        </h2>
-        <div class="h-px flex-1 bg-forest-green/50"></div>
-    </div>
-
-    <div class="relative w-full max-w-5x1 mx-auto group">
-
-         <button id="prev-btn" class="absolute left-0 md:-left-6 top-1/2 -translate-y-1/2 z-10 glass-button text-white hover:border-neon-green/80 hover:text-neon-green p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 disabled:opacity-30 disabled:border-white/10 disabled:text-white/50 disabled:cursor-not-allowed shadow-[0_0_15px_rgba(57,255,20,0.2)]">
-            <CircleChevronLeft size={32} />
-        </button>
-        
-        <div class="glass-card overflow-hidden rounded-2xl relative shadow-lg hover:-translate-y-2 hover:scale-[1.02] transition-all duration-300 ease-out group/card">
-            <div id="carousel-track" class="flex transition-transform duration-500 ease-in-out w-full">
-                    
-                {projects.map((project) => (
-                    <div class="min-w-full flex flex-col md:flex-row h-auto md:h-100 ">
-                        
-                        <div class="w-full md:w-1/2 bg-white/5 border-b md:border-b-0 md:border-r border-white/5 flex flex-col items-center justify-center text-white/50 group-hover/card:text-neon-green/80 group/img relative overflow-hidden transition-colors duration-500">
-                            {project.data.images && project.data.images.length > 0 ? (
-                                <img src={project.data.images[0]} alt={`Cover for project ${project.data.title}`} class="w-full h-full object-cover opacity-60 group-hover/card:opacity-100 transition-opacity duration-500" />
-                            ) : (
-                                <ImageIcon size={64} className="group-hover/img:scale-110 transition-transform duration-500" />
-                            )}
-                        </div>
-    
-                        <div class="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-between">
-                            <div>
-                                <h3 class="text-2xl font-bold text-text-color mb-4">{project.data.title}</h3>
-                                <p class="text-silver bg-transparent leading-relaxed mb-8">
-                                    {project.data.description}
-                                </p>
-                                
-                                <div class="flex flex-wrap gap-2 mb-8">
-                                    {project.data.techs.map((tech) => (
-                                        <span class="px-3 py-1 rounded-md glass-button text-white text-sm font-medium">
-                                            {tech}
-                                        </span>
-                                    ))}
-                                </div>
-                            </div>
-    
-                            <div class="flex items-center gap-4 mt-auto">
-                                {project.data.github && project.data.github !== "#" && (
-                                    <a href={project.data.github} target="_blank" class="flex items-center gap-2 text-white hover:text-neon-green transition-colors">
-                                        <Github size={20} />
-                                        <span class="font-medium">Code</span>
-                                    </a>
-                                )}
-                                <a href={`/projects/${project.slug}`} class="flex items-center gap-2 text-white hover:text-neon-green transition-colors">
-                                    <SquareArrowOutUpRight size={20} />
-                                    <span class="font-medium">View Details</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                ))}
-                    
+<section id="projects" class="py-16 md:py-24 w-full scroll-mt-20 scroll-reveal">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 border-b border-white/10 pb-6">
+        <div>
+            <div className="flex items-center gap-2 text-cyan-400 font-mono text-xs uppercase tracking-wider mb-1 font-semibold">
+                <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                Portfólio Técnico
             </div>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-white tracking-tight">
+                Projetos & Sistemas em Destaque
+            </h2>
+            <p class="text-zinc-400 text-sm md:text-base mt-1 max-w-2xl font-light">
+                Pipelines de engenharia de dados, inteligência preditiva em ciência de dados e sistemas de visão computacional aplicados a problemas reais com eficiência e rigor arquitetural.
+            </p>
         </div>
-
-        <button id="next-btn" class="absolute right-0 md:-right-6 top-1/2 -translate-y-1/2 z-10 glass-button text-white hover:border-neon-green/80 hover:text-neon-green p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 disabled:opacity-30 disabled:border-white/10 disabled:text-white/50 disabled:cursor-not-allowed shadow-[0_0_15px_rgba(57,255,20,0.2)]">
-            <CircleChevronRight size={32} />
-        </button>
     </div>
 
-    <div class="flex justify-center gap-2 mt-6">
-        {projects.map((_, index) => (
-            <div class={`indicator w-2.5 h-2.5 rounded-full transition-all duration-300 ${index === 0 ? 'bg-neon-green scale-125' : 'bg-forest-green'}`} data-index={index}></div>
-        ))}
-    </div>
+    <ProjectsList client:load projects={projects} />
 </section>
-
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const track = document.getElementById('carousel-track');
-        const prevBtn = document.getElementById('prev-btn') as HTMLButtonElement;
-        const nextBtn = document.getElementById('next-btn') as HTMLButtonElement;
-        const indicators = document.querySelectorAll('.indicator');
-        
-        // Count how many projects there are
-        const totalSlides = indicators.length;
-        let currentIndex = 0;
-
-        function updateCarousel() {
-            // Move trial multiply the actual index by 100% of the width
-            if (track) {
-                track.style.transform = `translateX(-${currentIndex * 100}%)`;
-            }
-
-            // Update bottom navigation state
-            if (prevBtn) prevBtn.disabled = currentIndex === 0;
-            if (nextBtn) nextBtn.disabled = currentIndex === totalSlides - 1;
-
-            // Update the indicator dot colors
-            indicators.forEach((ind, index) => {
-                if (index === currentIndex) {
-                    ind.classList.add('bg-neon-green', 'scale-125');
-                    ind.classList.remove('bg-forest-green', 'scale-100');
-                } else {
-                    ind.classList.add('bg-forest-green', 'scale-100');
-                    ind.classList.remove('bg-neon-green', 'scale-125');
-                }
-            });
-        }
-
-        // Event Listeners for clicks
-        prevBtn?.addEventListener('click', () => {
-            if (currentIndex > 0) {
-                currentIndex--;
-                updateCarousel();
-            }
-        });
-
-        nextBtn?.addEventListener('click', () => {
-            if (currentIndex < totalSlides - 1) {
-                currentIndex++;
-                updateCarousel();
-            }
-        });
-
-        indicators.forEach((ind, index) => {
-            ind.addEventListener('click', () => {
-                currentIndex = index;
-                updateCarousel();
-            });
-        });
-
-        updateCarousel();
-    });
-</script>
