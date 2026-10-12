@@ -56,13 +56,13 @@ export default function HeroNetworking() {
 
           {/* High-Impact Display Typography with ~3x Leap */}
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-[1.15] font-display">
-            Engenharia de Dados &amp; <br className="hidden sm:inline" />
-            <span className="text-cyan-400">Ciência de Dados</span>
+            Samuel Cesar, <br className="hidden sm:inline" />
+            <span className="text-cyan-400">Software Developer</span>
           </h1>
 
           {/* Refined Copy: <= 20 words and <= 4 lines */}
           <p className="text-base sm:text-lg text-zinc-300 leading-relaxed font-light max-w-xl">
-            Graduando em Sistemas de Informação (<strong className="text-white font-medium">UNEB</strong>) e pesquisador ACSO/BahiaRT. 1º lugar no Hackathon UFBA com Python e AWS.
+            Graduando em Sistemas de Informação (<strong className="text-white font-medium">UNEB</strong>) e bolsista IC ACSO/DEFENSE. 1º lugar no Hackathon UFBA com Python e AWS.
           </p>
 
           {/* Direct Tactical Actions */}
