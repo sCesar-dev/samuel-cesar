@@ -1,11 +1,11 @@
 ---
-title: "EcoVision — Triagem Serverless de Resíduos com Classificação de Incerteza"
-description: "Pipeline serverless orientado a eventos na AWS para triagem de recicláveis com Amazon Rekognition e motor heurístico de classificação explícita de incerteza de materiais."
+title: "EcoVision - Triagem Serverless de Resíduos com Classificação de Incerteza"
+description: "Pipeline serverless na AWS para triagem de recicláveis com Amazon Rekognition e motor de classificação explícita de incerteza de materiais."
 techs: ["AWS Lambda", "Amazon S3", "Amazon Rekognition", "AWS SAM", "Python 3.11", "Pillow", "pytest", "Moto", "CloudWatch"]
 stack: "Cloud Serverless & Computer Vision"
 category: "computer-vision"
 categoryLabel: "Visão Computacional & Nuvem AWS"
-oneLinerImpact: "Pipeline serverless escalando a zero com custo zero no Free Tier, modelagem explícita de incerteza contra contaminação cruzada e 85% de cobertura com Moto."
+oneLinerImpact: "Arquitetura serverless orientada a eventos no AWS Free Tier, com modelagem de incerteza de materiais e 85% de cobertura de testes."
 hardwareBadges: ["AWS Lambda 256MB", "Amazon S3", "Amazon Rekognition", "AWS SAM (IaC)"]
 technicalHighlights:
   - "Arquitetura orientada a eventos S3 -> Lambda -> Rekognition com tempo de execução enxuto (~800ms/imagem) e custo zero no AWS Free Tier."
@@ -29,7 +29,7 @@ images:
   - "/images/ecovision/architecture.png"
 ---
 
-# EcoVision — Triagem de Resíduos em Nuvem
+# EcoVision - Triagem de Resíduos em Nuvem
 
 Pipeline serverless orientado a eventos na AWS para triagem de materiais recicláveis com classificação ética de incerteza de materiais, operando com escala até zero e custo nulo no AWS Free Tier.
 

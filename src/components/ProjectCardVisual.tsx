@@ -31,49 +31,58 @@ export interface ProjectCardData {
   description: string;
 }
 
-export default function ProjectCardVisual({ project }: { project: ProjectCardData }) {
+interface ProjectCardProps {
+  project: ProjectCardData;
+  className?: string;
+}
+
+export default function ProjectCardVisual({ project, className = '' }: ProjectCardProps) {
   const [viewMode, setViewMode] = useState<'preview' | 'architecture'>('preview');
+  const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
 
   const isDataScience = project.category === 'data-science';
   const isVision = project.category === 'computer-vision' || project.category === 'robotics-cv';
   const isDataEngineering = project.category === 'data-engineering' || (!isDataScience && !isVision);
 
+  const resolveUrl = (url: string | undefined) => {
+    if (!url) return undefined;
+    if (url.startsWith('http://') || url.startsWith('https://')) return url;
+    return url.startsWith('/') ? `${baseUrl}${url}` : `${baseUrl}/${url}`;
+  };
+
   const getThemeColorClass = () => {
-    if (isDataScience) return 'bg-purple-500/20 text-purple-300 font-bold border border-purple-500/40 shadow-sm';
-    if (isVision) return 'bg-cyan-500/20 text-cyan-300 font-bold border border-cyan-500/40 shadow-sm';
-    return 'bg-emerald-500/20 text-emerald-300 font-bold border border-emerald-500/40 shadow-sm';
+    if (isDataScience) return 'bg-emerald-500/20 text-emerald-300 font-semibold border border-emerald-500/40';
+    return 'bg-cyan-500/20 text-cyan-300 font-semibold border border-cyan-500/40';
   };
 
   const getCategoryBadgeClass = () => {
-    if (isDataScience) return 'bg-purple-950/90 text-purple-300 border-purple-500/50 shadow-[0_0_10px_rgba(168,85,247,0.25)]';
-    if (isVision) return 'bg-cyan-950/90 text-cyan-300 border-cyan-500/50 shadow-[0_0_10px_rgba(6,182,212,0.2)]';
-    return 'bg-emerald-950/90 text-emerald-300 border-emerald-500/50 shadow-[0_0_10px_rgba(16,185,129,0.2)]';
+    if (isDataScience) return 'bg-emerald-950/80 text-emerald-300 border-emerald-500/40';
+    return 'bg-cyan-950/80 text-cyan-300 border-cyan-500/40';
   };
 
   const getIconColorClass = () => {
-    if (isDataScience) return 'text-purple-400';
-    if (isVision) return 'text-cyan-400';
-    return 'text-emerald-400';
+    if (isDataScience) return 'text-emerald-400';
+    return 'text-cyan-400';
   };
 
   return (
     <motion.article 
       layout
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, scale: 0.95 }}
+      exit={{ opacity: 0, scale: 0.98 }}
       transition={{ duration: 0.3 }}
-      className="group rounded-2xl bg-zinc-900/60 border border-white/10 hover:border-white/25 backdrop-blur-xl overflow-hidden flex flex-col h-full transition-all duration-300 shadow-xl hover:shadow-2xl"
+      className={`group rounded-xl bg-[#121216]/80 border border-white/10 hover:border-cyan-400/40 backdrop-blur-xl overflow-hidden flex flex-col h-full transition-all duration-300 ${className}`}
     >
       {/* Media & Interactive Toggle Header */}
       <div className="relative h-60 w-full bg-zinc-950 overflow-hidden border-b border-white/10">
         
         {/* Toggle between Live Preview and Architecture */}
-        <div className="absolute top-3 right-3 z-20 flex bg-zinc-950/85 backdrop-blur-md rounded-lg p-0.5 border border-white/15 text-xs font-mono">
+        <div className="absolute top-3 right-3 z-20 flex bg-[#09090b]/90 backdrop-blur-md rounded-lg p-0.5 border border-white/15 text-xs font-mono">
           <button
             type="button"
             onClick={() => setViewMode('preview')}
-            className={`px-2.5 py-1 rounded-md transition-colors flex items-center gap-1.5 cursor-pointer ${
+            className={`px-2.5 py-1 rounded-md transition-colors flex items-center gap-1.5 cursor-pointer focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400 ${
               viewMode === 'preview' 
                 ? getThemeColorClass()
                 : 'text-zinc-400 hover:text-white'
@@ -85,7 +94,7 @@ export default function ProjectCardVisual({ project }: { project: ProjectCardDat
           <button
             type="button"
             onClick={() => setViewMode('architecture')}
-            className={`px-2.5 py-1 rounded-md transition-colors flex items-center gap-1.5 cursor-pointer ${
+            className={`px-2.5 py-1 rounded-md transition-colors flex items-center gap-1.5 cursor-pointer focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400 ${
               viewMode === 'architecture' 
                 ? getThemeColorClass()
                 : 'text-zinc-400 hover:text-white'
@@ -98,7 +107,7 @@ export default function ProjectCardVisual({ project }: { project: ProjectCardDat
 
         {/* Category Pill */}
         <div className="absolute top-3 left-3 z-20">
-          <span className={`px-2.5 py-1 rounded-md text-[11px] font-mono uppercase font-bold tracking-wider backdrop-blur-md border ${getCategoryBadgeClass()}`}>
+          <span className={`px-2.5 py-1 rounded-md text-[10px] font-mono uppercase font-semibold tracking-wider backdrop-blur-md border ${getCategoryBadgeClass()}`}>
             {project.categoryLabel || (isDataScience ? 'Ciência de Dados' : isVision ? 'Visão Computacional' : 'Engenharia de Dados')}
           </span>
         </div>
@@ -107,35 +116,35 @@ export default function ProjectCardVisual({ project }: { project: ProjectCardDat
         {viewMode === 'preview' ? (
           project.mediaVideoUrl ? (
             <video
-              src={project.mediaVideoUrl}
+              src={resolveUrl(project.mediaVideoUrl)}
               autoPlay
               loop
               muted
               playsInline
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
             />
           ) : (
             <img
-              src={project.mediaImageUrl || '/images/personal-image.jpg'}
+              src={resolveUrl(project.mediaImageUrl) || `${baseUrl}/images/personal-image.jpg`}
               alt={project.title}
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
+              className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500 opacity-90 group-hover:opacity-100"
             />
           )
         ) : (
-          <div className="w-full h-full bg-zinc-950/95 p-5 flex flex-col items-center justify-center text-center">
+          <div className="w-full h-full bg-[#09090b]/95 p-5 flex flex-col items-center justify-center text-center">
             {project.architectureDiagramUrl ? (
               <img 
-                src={project.architectureDiagramUrl} 
+                src={resolveUrl(project.architectureDiagramUrl)} 
                 alt={`Arquitetura de ${project.title}`} 
                 className="max-h-full max-w-full object-contain"
               />
             ) : (
               <div className="space-y-2 text-zinc-400">
-                <Layers size={36} className={`mx-auto ${getIconColorClass()}`} />
-                <p className="text-xs font-mono font-semibold text-zinc-200">Topologia de Pipeline & Nós</p>
-                <div className="text-[11px] text-zinc-400 max-w-xs font-mono leading-relaxed bg-zinc-900/80 p-2.5 rounded-lg border border-white/5">
+                <Layers size={32} className={`mx-auto ${getIconColorClass()}`} />
+                <p className="text-xs font-mono font-semibold text-zinc-200">Topologia de Pipeline &amp; Nós</p>
+                <div className="text-[11px] text-zinc-400 max-w-xs font-mono leading-relaxed bg-white/[0.03] p-2.5 rounded-lg border border-white/5">
                   {isDataScience ? (
-                    'EDA & Tratamento ➔ ColumnTransformer ➔ Random Forest ➔ Inferência Contrafactual ➔ Bonificação'
+                    'EDA &amp; Tratamento ➔ ColumnTransformer ➔ Random Forest ➔ Inferência Contrafactual'
                   ) : isVision ? (
                     'Câmera RGB-D ➔ YOLOv8 ➔ Fusão 3D ➔ MoveIt 2 (OMPL) ➔ Atuadores'
                   ) : (
@@ -149,12 +158,12 @@ export default function ProjectCardVisual({ project }: { project: ProjectCardDat
 
         {/* Live Metrics Overlay at the Bottom of Media */}
         {project.metrics && Object.keys(project.metrics).length > 0 && (
-          <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-zinc-950 via-zinc-950/85 to-transparent p-3 pt-6 flex flex-wrap gap-4 text-xs font-mono">
+          <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/85 to-transparent p-3 pt-6 flex flex-wrap gap-4 text-xs font-mono">
             {Object.entries(project.metrics).map(([key, value]) => (
               <div key={key} className="flex items-center gap-1.5 text-zinc-300">
                 <Activity size={12} className={getIconColorClass()} />
                 <span className="text-zinc-400">{key}:</span>
-                <strong className="text-white font-bold">{value}</strong>
+                <strong className="text-white font-bold tabular-nums">{value}</strong>
               </div>
             ))}
           </div>
@@ -164,25 +173,25 @@ export default function ProjectCardVisual({ project }: { project: ProjectCardDat
       {/* Card Body */}
       <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between space-y-4">
         <div>
-          <h3 className="text-xl font-bold text-white group-hover:text-cyan-300 transition-colors leading-snug">
+          <h3 className="text-xl font-extrabold text-white group-hover:text-cyan-300 transition-colors leading-snug font-display">
             {project.title}
           </h3>
 
           {/* One-Liner de Impacto */}
-          <p className="text-sm text-zinc-300 mt-2.5 leading-relaxed font-light">
+          <p className="text-sm text-zinc-300 mt-2 leading-relaxed font-light">
             {project.oneLinerImpact || project.description}
           </p>
 
           {/* Hardware & Infrastructure Badges */}
           {project.hardwareBadges && project.hardwareBadges.length > 0 && (
-            <div className="flex flex-wrap items-center gap-1.5 mt-3.5 pt-2">
+            <div className="flex flex-wrap items-center gap-1.5 mt-3 pt-2">
               <span className="text-[10px] font-mono text-zinc-500 uppercase flex items-center gap-1">
                 <Cpu size={11} /> HW/Infra:
               </span>
               {project.hardwareBadges.map((hw) => (
                 <span 
                   key={hw}
-                  className="px-2 py-0.5 rounded text-[11px] font-mono bg-amber-500/10 text-amber-300 border border-amber-500/25"
+                  className="px-2 py-0.5 rounded text-[11px] font-mono bg-white/[0.04] text-zinc-300 border border-white/10"
                 >
                   {hw}
                 </span>
@@ -192,7 +201,7 @@ export default function ProjectCardVisual({ project }: { project: ProjectCardDat
 
           {/* Highlights Técnicos de Engenharia */}
           {project.technicalHighlights && project.technicalHighlights.length > 0 && (
-            <div className="mt-4 space-y-1.5 border-t border-white/5 pt-3">
+            <div className="mt-3.5 space-y-1.5 border-t border-white/5 pt-3">
               <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-400 font-semibold block mb-1">
                 Highlights de Engenharia:
               </span>
@@ -206,13 +215,13 @@ export default function ProjectCardVisual({ project }: { project: ProjectCardDat
           )}
         </div>
 
-        {/* Stack Chips & Action Buttons */}
-        <div className="space-y-4 pt-3 border-t border-white/10">
+        {/* Stack Chips & Action Buttons - Always Pinned to Bottom */}
+        <div className="space-y-4 pt-4 border-t border-white/10 mt-auto">
           <div className="flex flex-wrap gap-1.5">
             {project.techs.map((tech) => (
               <span 
                 key={tech} 
-                className="px-2 py-0.5 rounded text-[11px] font-medium bg-white/5 text-zinc-300 border border-white/10"
+                className="px-2 py-0.5 rounded text-[11px] font-mono bg-white/[0.03] text-zinc-300 border border-white/10"
               >
                 {tech}
               </span>
@@ -225,9 +234,9 @@ export default function ProjectCardVisual({ project }: { project: ProjectCardDat
                 href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 text-xs text-zinc-300 hover:text-white transition-colors"
+                className="flex items-center gap-1.5 text-xs font-mono text-zinc-300 hover:text-white transition-colors whitespace-nowrap focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400"
               >
-                <Github size={15} />
+                <Github size={14} />
                 <span>Código</span>
               </a>
             )}
@@ -237,16 +246,16 @@ export default function ProjectCardVisual({ project }: { project: ProjectCardDat
                 href={project.liveDemoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 text-xs text-cyan-400 hover:text-cyan-300 transition-colors"
+                className="flex items-center gap-1.5 text-xs font-mono text-cyan-400 hover:text-cyan-300 transition-colors whitespace-nowrap focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400"
               >
-                <ExternalLink size={14} />
+                <ExternalLink size={13} />
                 <span>Demo</span>
               </a>
             )}
 
             <a
-              href={`/projects/${project.slug}`}
-              className="ml-auto text-xs font-semibold text-white/90 hover:text-cyan-400 flex items-center gap-1.5 group/link transition-colors"
+              href={`${baseUrl}/projects/${project.slug}`}
+              className="ml-auto text-xs font-semibold text-white/90 hover:text-cyan-400 flex items-center gap-1.5 group/link transition-colors whitespace-nowrap focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400"
             >
               <span>Detalhes</span>
               <ArrowRight size={14} className="group-hover/link:translate-x-1 transition-transform" />

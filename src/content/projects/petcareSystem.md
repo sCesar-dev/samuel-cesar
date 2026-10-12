@@ -1,6 +1,6 @@
 ---
 title: "PetCare System"
-description: "Desktop solution to automate and manage the operational workflow of veterinary clinics. The system centralizes everything from pet owner and patient registration to detailed clinical control, including vaccine management and automated billing."
+description: "Aplicação desktop em Java e Swing para gestão de clínicas veterinárias, prontuários clínicos e controle de vacinas."
 techs: ["Java", "Swing", "OOP"]
 stack: "Desktop Application"
 github: "#"
