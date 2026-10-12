@@ -6,16 +6,5 @@ const projects = await getCollection('projects');
 ---
 
 <section id="projects" class="py-16 md:py-24 w-full scroll-mt-20 scroll-reveal">
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 border-b border-white/10 pb-6">
-        <div>
-            <h2 class="text-3xl md:text-5xl font-extrabold text-white tracking-tight font-display">
-                Projetos em Destaque
-            </h2>
-            <p class="text-zinc-400 text-sm md:text-base mt-2 max-w-2xl font-light">
-                Pipelines de dados, modelos preditivos e visão computacional desenvolvidos com foco em performance e arquitetura limpa.
-            </p>
-        </div>
-    </div>
-
-    <ProjectsList client:visible projects={projects} />
+    <ProjectsList client:load projects={projects} />
 </section>
