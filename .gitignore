@@ -22,3 +22,10 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Agent instructions, skills and design system notes (kept local only)
+.agents/
+DESIGN.md
+DESGIN.md
+MASTER.md
+design-system/
