@@ -1,0 +1,10 @@
+---
+import Layout from '../layouts/Layout.astro';
+import NotFoundContent from '../components/NotFoundContent';
+
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<Layout title="404 - Página Não Encontrada | Samuel Cesar" description="A página solicitada não foi encontrada.">
+  <NotFoundContent client:load baseUrl={baseUrl} />
+</Layout>

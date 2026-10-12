@@ -11,6 +11,7 @@ import {
   Layers,
   ArrowRight
 } from 'lucide-react';
+import { useI18n } from '../i18n/useI18n';
 
 export interface ProjectCardData {
   id: string;
@@ -38,11 +39,11 @@ interface ProjectCardProps {
 
 export default function ProjectCardVisual({ project, className = '' }: ProjectCardProps) {
   const [viewMode, setViewMode] = useState<'preview' | 'architecture'>('preview');
+  const { t } = useI18n();
   const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
 
   const isDataScience = project.category === 'data-science';
   const isVision = project.category === 'computer-vision' || project.category === 'robotics-cv';
-  const isDataEngineering = project.category === 'data-engineering' || (!isDataScience && !isVision);
 
   const resolveUrl = (url: string | undefined) => {
     if (!url) return undefined;
@@ -51,19 +52,25 @@ export default function ProjectCardVisual({ project, className = '' }: ProjectCa
   };
 
   const getThemeColorClass = () => {
-    if (isDataScience) return 'bg-emerald-500/20 text-emerald-300 font-semibold border border-emerald-500/40';
-    return 'bg-cyan-500/20 text-cyan-300 font-semibold border border-cyan-500/40';
+    if (isDataScience) return 'bg-emerald-500/25 text-emerald-200 font-semibold border border-emerald-400/50';
+    return 'bg-cyan-500/25 text-cyan-200 font-semibold border border-cyan-400/50';
   };
 
   const getCategoryBadgeClass = () => {
-    if (isDataScience) return 'bg-emerald-950/80 text-emerald-300 border-emerald-500/40';
-    return 'bg-cyan-950/80 text-cyan-300 border-cyan-500/40';
+    if (isDataScience) return 'bg-zinc-950/90 text-emerald-300 border-emerald-500/40';
+    return 'bg-zinc-950/90 text-cyan-300 border-cyan-500/40';
   };
 
   const getIconColorClass = () => {
     if (isDataScience) return 'text-emerald-400';
     return 'text-cyan-400';
   };
+
+  const categoryFallback = isDataScience 
+    ? t.projects.catDataScience 
+    : isVision 
+    ? t.projects.catVision 
+    : t.projects.catDataEng;
 
   return (
     <motion.article 
@@ -75,40 +82,42 @@ export default function ProjectCardVisual({ project, className = '' }: ProjectCa
       className={`group rounded-xl bg-[#121216]/80 border border-white/10 hover:border-cyan-400/40 backdrop-blur-xl overflow-hidden flex flex-col h-full transition-all duration-300 ${className}`}
     >
       {/* Media & Interactive Toggle Header */}
-      <div className="relative h-60 w-full bg-zinc-950 overflow-hidden border-b border-white/10">
+      <div className="media-header relative h-60 w-full bg-zinc-950 overflow-hidden border-b border-white/10">
         
         {/* Toggle between Live Preview and Architecture */}
-        <div className="absolute top-3 right-3 z-20 flex bg-[#09090b]/90 backdrop-blur-md rounded-lg p-0.5 border border-white/15 text-xs font-mono">
+        <div className="absolute top-3 right-3 z-20 flex bg-zinc-950/90 backdrop-blur-md rounded-lg p-0.5 border border-zinc-700/60 text-xs font-mono">
           <button
             type="button"
             onClick={() => setViewMode('preview')}
-            className={`px-2.5 py-1 rounded-md transition-colors flex items-center gap-1.5 cursor-pointer focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400 ${
+            aria-pressed={viewMode === 'preview'}
+            className={`px-2.5 py-1 rounded-md transition-colors flex items-center gap-1.5 cursor-pointer focus:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400 min-h-[26px] ${
               viewMode === 'preview' 
                 ? getThemeColorClass()
-                : 'text-zinc-400 hover:text-white'
+                : 'text-zinc-300 hover:text-white'
             }`}
           >
-            <Play size={12} />
-            <span>Mídia</span>
+            <Play size={12} aria-hidden="true" />
+            <span>{t.projects.viewMedia}</span>
           </button>
           <button
             type="button"
             onClick={() => setViewMode('architecture')}
-            className={`px-2.5 py-1 rounded-md transition-colors flex items-center gap-1.5 cursor-pointer focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400 ${
+            aria-pressed={viewMode === 'architecture'}
+            className={`px-2.5 py-1 rounded-md transition-colors flex items-center gap-1.5 cursor-pointer focus:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400 min-h-[26px] ${
               viewMode === 'architecture' 
                 ? getThemeColorClass()
-                : 'text-zinc-400 hover:text-white'
+                : 'text-zinc-300 hover:text-white'
             }`}
           >
-            <Network size={12} />
-            <span>Arquitetura</span>
+            <Network size={12} aria-hidden="true" />
+            <span>{t.projects.viewArchitecture}</span>
           </button>
         </div>
 
         {/* Category Pill */}
         <div className="absolute top-3 left-3 z-20">
-          <span className={`px-2.5 py-1 rounded-md text-[10px] font-mono uppercase font-semibold tracking-wider backdrop-blur-md border ${getCategoryBadgeClass()}`}>
-            {project.categoryLabel || (isDataScience ? 'Ciência de Dados' : isVision ? 'Visão Computacional' : 'Engenharia de Dados')}
+          <span className={`px-2.5 py-1 rounded-md text-xs font-mono uppercase font-semibold tracking-wider backdrop-blur-md border ${getCategoryBadgeClass()}`}>
+            {project.categoryLabel || categoryFallback}
           </span>
         </div>
 
@@ -127,6 +136,8 @@ export default function ProjectCardVisual({ project, className = '' }: ProjectCa
             <img
               src={resolveUrl(project.mediaImageUrl) || `${baseUrl}/images/personal-image.jpg`}
               alt={project.title}
+              loading="lazy"
+              decoding="async"
               className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500 opacity-90 group-hover:opacity-100"
             />
           )
@@ -135,20 +146,22 @@ export default function ProjectCardVisual({ project, className = '' }: ProjectCa
             {project.architectureDiagramUrl ? (
               <img 
                 src={resolveUrl(project.architectureDiagramUrl)} 
-                alt={`Arquitetura de ${project.title}`} 
+                alt={`${t.projects.viewArchitecture} - ${project.title}`} 
+                loading="lazy"
+                decoding="async"
                 className="max-h-full max-w-full object-contain"
               />
             ) : (
               <div className="space-y-2 text-zinc-400">
                 <Layers size={32} className={`mx-auto ${getIconColorClass()}`} />
-                <p className="text-xs font-mono font-semibold text-zinc-200">Topologia de Pipeline &amp; Nós</p>
-                <div className="text-[11px] text-zinc-400 max-w-xs font-mono leading-relaxed bg-white/[0.03] p-2.5 rounded-lg border border-white/5">
+                <p className="text-xs font-mono font-semibold text-zinc-200">{t.projects.architectureTopology}</p>
+                <div className="text-[11px] text-zinc-400 max-w-xs font-mono leading-relaxed border-t border-white/10 pt-2.5 mt-2">
                   {isDataScience ? (
-                    'EDA &amp; Tratamento ➔ ColumnTransformer ➔ Random Forest ➔ Inferência Contrafactual'
+                    t.projects.architectureDataScienceFlow
                   ) : isVision ? (
-                    'Câmera RGB-D ➔ YOLOv8 ➔ Fusão 3D ➔ MoveIt 2 (OMPL) ➔ Atuadores'
+                    t.projects.architectureVisionFlow
                   ) : (
-                    'Ingestão Dados ➔ Grafo Ponderado ➔ Indexador B-Tree O(log n) ➔ Dijkstra Min-Cost'
+                    t.projects.architectureDataEngFlow
                   )}
                 </div>
               </div>
@@ -158,7 +171,7 @@ export default function ProjectCardVisual({ project, className = '' }: ProjectCa
 
         {/* Live Metrics Overlay at the Bottom of Media */}
         {project.metrics && Object.keys(project.metrics).length > 0 && (
-          <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/85 to-transparent p-3 pt-6 flex flex-wrap gap-4 text-xs font-mono">
+          <div className="media-overlay absolute bottom-0 inset-x-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/85 to-transparent p-3 pt-6 flex flex-wrap gap-4 text-xs font-mono">
             {Object.entries(project.metrics).map(([key, value]) => (
               <div key={key} className="flex items-center gap-1.5 text-zinc-300">
                 <Activity size={12} className={getIconColorClass()} />
@@ -185,13 +198,13 @@ export default function ProjectCardVisual({ project, className = '' }: ProjectCa
           {/* Hardware & Infrastructure Badges */}
           {project.hardwareBadges && project.hardwareBadges.length > 0 && (
             <div className="flex flex-wrap items-center gap-1.5 mt-3 pt-2">
-              <span className="text-[10px] font-mono text-zinc-500 uppercase flex items-center gap-1">
-                <Cpu size={11} /> HW/Infra:
+              <span className="text-xs font-mono text-zinc-400 uppercase flex items-center gap-1">
+                <Cpu size={12} /> {t.projects.hardwareLabel}
               </span>
               {project.hardwareBadges.map((hw) => (
                 <span 
-                  key={hw}
-                  className="px-2 py-0.5 rounded text-[11px] font-mono bg-white/[0.04] text-zinc-300 border border-white/10"
+                  key={hw} 
+                  className="px-2 py-0.5 rounded text-xs font-mono bg-white/[0.04] text-zinc-300 border border-white/10"
                 >
                   {hw}
                 </span>
@@ -202,8 +215,8 @@ export default function ProjectCardVisual({ project, className = '' }: ProjectCa
           {/* Highlights Técnicos de Engenharia */}
           {project.technicalHighlights && project.technicalHighlights.length > 0 && (
             <div className="mt-3.5 space-y-1.5 border-t border-white/5 pt-3">
-              <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-400 font-semibold block mb-1">
-                Highlights de Engenharia:
+              <span className="text-xs font-mono uppercase tracking-wider text-zinc-400 font-semibold block mb-1">
+                {t.projects.highlightsLabel}
               </span>
               {project.technicalHighlights.map((hl, i) => (
                 <div key={i} className="flex items-start gap-2 text-xs text-zinc-300">
@@ -221,7 +234,7 @@ export default function ProjectCardVisual({ project, className = '' }: ProjectCa
             {project.techs.map((tech) => (
               <span 
                 key={tech} 
-                className="px-2 py-0.5 rounded text-[11px] font-mono bg-white/[0.03] text-zinc-300 border border-white/10"
+                className="px-2 py-0.5 rounded text-xs font-mono bg-white/[0.03] text-zinc-300 border border-white/10"
               >
                 {tech}
               </span>
@@ -234,10 +247,10 @@ export default function ProjectCardVisual({ project, className = '' }: ProjectCa
                 href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 text-xs font-mono text-zinc-300 hover:text-white transition-colors whitespace-nowrap focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400"
+                className="flex items-center gap-1.5 text-xs font-mono text-zinc-300 hover:text-white transition-colors whitespace-nowrap focus:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400"
               >
                 <Github size={14} />
-                <span>Código</span>
+                <span>{t.projects.btnCode}</span>
               </a>
             )}
 
@@ -246,18 +259,18 @@ export default function ProjectCardVisual({ project, className = '' }: ProjectCa
                 href={project.liveDemoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 text-xs font-mono text-cyan-400 hover:text-cyan-300 transition-colors whitespace-nowrap focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400"
+                className="flex items-center gap-1.5 text-xs font-mono text-cyan-400 hover:text-cyan-300 transition-colors whitespace-nowrap focus:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400"
               >
                 <ExternalLink size={13} />
-                <span>Demo</span>
+                <span>{t.projects.btnDemo}</span>
               </a>
             )}
 
             <a
               href={`${baseUrl}/projects/${project.slug}`}
-              className="ml-auto text-xs font-semibold text-white/90 hover:text-cyan-400 flex items-center gap-1.5 group/link transition-colors whitespace-nowrap focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400"
+              className="ml-auto text-xs font-semibold text-white/90 hover:text-cyan-400 flex items-center gap-1.5 group/link transition-colors whitespace-nowrap focus:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400"
             >
-              <span>Detalhes</span>
+              <span>{t.projects.btnDetails}</span>
               <ArrowRight size={14} className="group-hover/link:translate-x-1 transition-transform" />
             </a>
           </div>

@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css';
+import HeaderNav from '../components/HeaderNav';
+import Footer from '../components/Footer';
 
 const { 
     title = "Samuel Cesar, Software Developer",
@@ -9,15 +11,65 @@ const {
 const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
 const currentPath = Astro.url.pathname.replace(/\/$/, '');
 const isHome = currentPath === baseUrl || currentPath === '' || currentPath === '/';
-const prefix = isHome ? '' : `${baseUrl}/`;
 ---
 <!doctype html>
-<html lang="pt-BR" class="scroll-smooth scroll-pt-20">
+<html lang="pt-BR" data-theme="dark" class="scroll-smooth scroll-pt-20">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>{title}</title>
         <meta name="description" content={description} />
+        <meta name="theme-color" content="#09090b" id="meta-theme-color" />
+
+        {/* Zero-Flash Theme & Locale Initialization Script (Runs synchronously before first paint) */}
+        <script is:inline>
+            (function() {
+                try {
+                    // 1. Theme resolution
+                    var storedTheme = localStorage.getItem('scesar_theme');
+                    var theme = 'dark';
+                    if (storedTheme === 'light' || storedTheme === 'dark') {
+                        theme = storedTheme;
+                    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+                        theme = 'light';
+                    }
+                    document.documentElement.setAttribute('data-theme', theme);
+                    document.documentElement.style.colorScheme = theme;
+
+                    var metaTheme = document.getElementById('meta-theme-color');
+                    if (metaTheme) {
+                        metaTheme.setAttribute('content', theme === 'light' ? '#f8fafc' : '#09090b');
+                    }
+
+                    // 2. Locale resolution
+                    var storedLocale = localStorage.getItem('scesar_locale');
+                    var locale = 'pt-BR';
+                    if (storedLocale === 'pt-BR' || storedLocale === 'en-US') {
+                        locale = storedLocale;
+                    } else {
+                        var params = new URLSearchParams(window.location.search);
+                        var urlLang = params.get('lang');
+                        if (urlLang === 'pt' || urlLang === 'pt-BR') {
+                            locale = 'pt-BR';
+                        } else if (urlLang === 'en' || urlLang === 'en-US') {
+                            locale = 'en-US';
+                        } else {
+                            var langs = navigator.languages || [navigator.language || ''];
+                            for (var i = 0; i < langs.length; i++) {
+                                var l = (langs[i] || '').toLowerCase();
+                                if (l.startsWith('pt')) { locale = 'pt-BR'; break; }
+                                if (l.startsWith('en')) { locale = 'en-US'; break; }
+                            }
+                        }
+                    }
+                    document.documentElement.setAttribute('lang', locale);
+                    document.documentElement.setAttribute('data-locale', locale);
+                } catch (e) {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                    document.documentElement.setAttribute('lang', 'pt-BR');
+                }
+            })();
+        </script>
         
         {/* Google Fonts: Syne, IBM Plex Sans, JetBrains Mono */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -33,9 +85,10 @@ const prefix = isHome ? '' : `${baseUrl}/`;
         {/* Favicon */}
         <link rel="icon" type="image/svg+xml" href={`${baseUrl}/favicon.svg`} />
     </head>
-    <body class="bg-[#09090b] text-white font-sans antialiased min-h-screen flex flex-col items-center relative selection:bg-cyan-400/25 selection:text-cyan-200">
+    <body class="font-sans antialiased min-h-screen flex flex-col items-center relative selection:bg-cyan-400/25 selection:text-cyan-200">
         {/* Accessibility Skip Link */}
         <a 
+            id="skip-link"
             href="#main-content" 
             class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 z-[100] px-4 py-2.5 rounded-lg bg-cyan-400 text-zinc-950 font-mono text-xs font-bold shadow-xl border border-white/20 transition-transform"
         >
@@ -43,43 +96,13 @@ const prefix = isHome ? '' : `${baseUrl}/`;
         </a>
 
         {/* Subtle Ambient Radial Lighting */}
-        <div class="fixed inset-0 z-[-2] h-full w-full bg-[#09090b] bg-[radial-gradient(ellipse_80%_50%_at_50%_-15%,rgba(0,240,255,0.06),transparent)] pointer-events-none"></div>
+        <div class="ambient-lighting fixed inset-0 z-[-2] h-full w-full bg-[#09090b] bg-[radial-gradient(ellipse_80%_50%_at_50%_-15%,rgba(0,240,255,0.06),transparent)] pointer-events-none transition-colors"></div>
         
         {/* Subtle Micro-texture Dot Pattern Overlay */}
-        <div class="fixed inset-0 z-[-1] h-full w-full pointer-events-none opacity-[0.03] bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:24px_24px]"></div>
+        <div class="dot-texture-overlay fixed inset-0 z-[-1] h-full w-full pointer-events-none opacity-[0.03] bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:24px_24px] transition-colors"></div>
 
-        {/* Sticky Header */}
-        <header class="fixed top-0 left-0 w-full h-16 md:h-18 bg-[#09090b]/85 backdrop-blur-xl border-b border-white/10 z-50 flex items-center justify-center">
-            <div class="w-full max-w-6xl px-4 md:px-8 flex items-center justify-between">
-                
-                <a href={isHome ? "#home" : `${baseUrl}/`} aria-label="Samuel Cesar - Início" class="flex items-center gap-2 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 rounded-lg p-1">
-                    <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 group-hover:scale-125 transition-transform duration-300" aria-hidden="true"></span>
-                    <span class="text-white text-base md:text-lg font-extrabold tracking-tight font-display group-hover:text-cyan-400 transition-colors">
-                        sCesar<span class="text-cyan-400 font-mono text-sm">.dev</span>
-                    </span>
-                </a>
-                
-                <nav class="hidden md:flex gap-1 p-1 rounded-xl glass-panel" aria-label="Navegação principal">
-                    <a href={`${prefix}#home`} class="px-3.5 py-1.5 text-zinc-300 text-xs font-medium transition-all rounded-lg hover:text-white hover:bg-white/10 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400">Início</a>
-                    <a href={`${prefix}#projects`} class="px-3.5 py-1.5 text-zinc-300 text-xs font-medium transition-all rounded-lg hover:text-cyan-400 hover:bg-cyan-400/10 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400">Projetos</a>
-                    <a href={`${prefix}#about`} class="px-3.5 py-1.5 text-zinc-300 text-xs font-medium transition-all rounded-lg hover:text-white hover:bg-white/10 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400">Sobre</a>
-                    <a href={`${prefix}#curriculum`} class="px-3.5 py-1.5 text-zinc-300 text-xs font-medium transition-all rounded-lg hover:text-white hover:bg-white/10 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400">Currículo</a>
-                    <a href={`${prefix}#contact`} class="px-3.5 py-1.5 text-emerald-400 text-xs font-semibold transition-all rounded-lg hover:text-emerald-300 hover:bg-emerald-400/10 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-emerald-400">Contato</a>
-                </nav>
-
-                <div class="flex items-center gap-2">
-                    <a 
-                        href="https://www.linkedin.com/in/s-cesar/" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        aria-label="Abrir perfil de Samuel Cesar no LinkedIn"
-                        class="px-3.5 py-1.5 rounded-lg bg-cyan-400/10 hover:bg-cyan-400/20 border border-cyan-400/30 text-cyan-300 text-xs font-mono font-semibold transition-all active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
-                    >
-                        LinkedIn ↗
-                    </a>
-                </div>
-            </div>
-        </header>
+        {/* Responsive Interactive Header */}
+        <HeaderNav client:load baseUrl={baseUrl} isHome={isHome} />
 
         {/* Main Content Area */}
         <main id="main-content" tabindex="-1" class="w-full max-w-6xl px-4 md:px-8 pt-20 pb-16 flex-1 focus:outline-none">
@@ -87,20 +110,7 @@ const prefix = isHome ? '' : `${baseUrl}/`;
         </main>
 
         {/* Global Networking Footer */}
-        <footer class="w-full border-t border-white/10 bg-[#09090b]/90 backdrop-blur-lg py-8 text-center text-xs text-zinc-500 font-mono">
-            <div class="max-w-6xl mx-auto px-4 md:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-                <div class="flex items-center gap-2 text-zinc-400 text-left">
-                    <span>Samuel Cesar • UNEB (Sistemas de Informação) • Salvador, BA</span>
-                </div>
-                <div class="flex items-center gap-4 text-zinc-400">
-                    <a href="https://github.com/sCesar-dev" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">GitHub</a>
-                    <span class="text-zinc-600">•</span>
-                    <a href="https://www.linkedin.com/in/s-cesar/" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-400 transition-colors">LinkedIn</a>
-                    <span class="text-zinc-600">•</span>
-                    <a href="mailto:samueljc003@gmail.com" class="hover:text-emerald-400 transition-colors">samueljc003@gmail.com</a>
-                </div>
-            </div>
-        </footer>
+        <Footer client:load />
 
         <style is:global>
             /* Scroll Reveal Classes */
@@ -108,7 +118,6 @@ const prefix = isHome ? '' : `${baseUrl}/`;
                 opacity: 0;
                 transform: translateY(24px);
                 transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-                will-change: opacity, transform;
             }
             .scroll-reveal.is-visible {
                 opacity: 1;
@@ -125,8 +134,31 @@ const prefix = isHome ? '' : `${baseUrl}/`;
         </style>
 
         <script>
+            import { listenToSystemThemeChanges } from '../lib/preferences';
+
             // Intersection observer on client side for smooth scroll animations
             document.addEventListener('DOMContentLoaded', () => {
+                listenToSystemThemeChanges();
+
+                // Update skip link text based on active locale
+                const updateSkipLink = (locale) => {
+                    const skipLink = document.getElementById('skip-link');
+                    if (skipLink) {
+                        skipLink.textContent = locale === 'en-US' 
+                            ? 'Skip to main content' 
+                            : 'Pular para o conteúdo principal';
+                    }
+                };
+
+                const initialLocale = document.documentElement.getAttribute('data-locale') || 'pt-BR';
+                updateSkipLink(initialLocale);
+
+                window.addEventListener('scesar-locale-change', (e) => {
+                    if (e.detail && e.detail.locale) {
+                        updateSkipLink(e.detail.locale);
+                    }
+                });
+
                 const observerOptions = {
                     root: null,
                     rootMargin: '0px',

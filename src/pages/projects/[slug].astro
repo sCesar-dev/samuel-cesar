@@ -1,8 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
-import { ArrowLeft, Github, SquareArrowOutUpRight } from 'lucide-react';
 import ImageCarousel from '../../components/ImageCarousel';
+import ProjectDetailHeader from '../../components/ProjectDetailHeader';
 
 export async function getStaticPaths() {
   const projectEntries = await getCollection('projects');
@@ -19,52 +19,16 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
 <Layout title={`${entry.data.title} | Samuel Cesar`} description={entry.data.description}>
   <div class="w-full max-w-4xl mx-auto px-4 md:px-8 pt-8 pb-16">
     
-    <a href={`${baseUrl}/#projects`} class="inline-flex items-center gap-2 text-zinc-400 hover:text-cyan-400 font-mono text-xs uppercase tracking-wider transition-colors mb-8 group focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400">
-      <ArrowLeft size={16} class="group-hover:-translate-x-1 transition-transform" />
-      <span>Voltar aos Projetos</span>
-    </a>
-
-    <header class="mb-12 border-b border-white/10 pb-8">
-      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4 font-display">
-        {entry.data.title}
-      </h1>
-      <p class="text-base sm:text-lg text-zinc-300 mb-6 font-light max-w-3xl leading-relaxed">
-        {entry.data.description}
-      </p>
-      
-      <div class="flex flex-wrap gap-1.5 mb-6">
-        {entry.data.techs.map((tech) => (
-          <span class="px-2.5 py-1 rounded text-xs font-mono bg-white/[0.04] text-zinc-300 border border-white/10">
-            {tech}
-          </span>
-        ))}
-      </div>
-
-      <div class="flex items-center gap-5">
-        {entry.data.github && entry.data.github !== "#" && (
-          <a 
-            href={entry.data.github} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 text-zinc-300 hover:text-cyan-400 font-mono text-xs transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400"
-          >
-              <Github size={16} />
-              <span>Ver Código-Fonte</span>
-          </a>
-        )}
-        {entry.data.live && entry.data.live !== "#" && (
-          <a 
-            href={entry.data.live} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-mono text-xs transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400"
-          >
-              <SquareArrowOutUpRight size={15} />
-              <span>Demonstração Online</span>
-          </a>
-        )}
-      </div>
-    </header>
+    <ProjectDetailHeader 
+      client:load
+      slug={entry.slug}
+      initialTitle={entry.data.title}
+      initialDescription={entry.data.description}
+      techs={entry.data.techs}
+      github={entry.data.github}
+      live={entry.data.live}
+      baseUrl={baseUrl}
+    />
 
     {entry.data.images && entry.data.images.length > 0 && (
       <section class="mb-14">
@@ -95,7 +59,7 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
 </Layout>
 
 <script>
-  const setupLayout = () => {
+  const resolveMediaUrls = () => {
     const article = document.querySelector('.project-content');
     if (!article) return;
 
@@ -113,46 +77,11 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
         }
       }
     });
-
-    const children = Array.from(article.children);
-    let currentSection: HTMLDivElement | null = null;
-    let hasReachedFirstH2 = false;
-    let introSection: HTMLDivElement | null = null;
-
-    children.forEach((child) => {
-      // Hide the redundant first H1 (the title of the page is already in the header)
-      if (child.tagName === 'H1') {
-        child.remove();
-        return;
-      }
-
-      // If we find an H2, we create a new card container
-      if (child.tagName === 'H2') {
-        hasReachedFirstH2 = true;
-        currentSection = document.createElement('div');
-        currentSection.className = 'bg-[#121216]/60 backdrop-blur-lg border border-white/10 p-6 md:p-8 rounded-xl mb-8 hover:border-cyan-400/30 transition-all duration-300';
-        article.appendChild(currentSection);
-      }
-
-      // Move element to its appropriate section
-      if (hasReachedFirstH2) {
-        if (currentSection) {
-          currentSection.appendChild(child);
-        }
-      } else {
-        if (!introSection) {
-          introSection = document.createElement('div');
-          introSection.className = 'mb-10 text-base md:text-lg leading-relaxed text-zinc-300 border-b border-white/10 pb-8';
-          article.appendChild(introSection);
-        }
-        introSection.appendChild(child);
-      }
-    });
   };
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', setupLayout);
+    document.addEventListener('DOMContentLoaded', resolveMediaUrls);
   } else {
-    setupLayout();
+    resolveMediaUrls();
   }
 </script>
