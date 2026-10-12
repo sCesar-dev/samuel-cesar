@@ -11,12 +11,12 @@ export default function NotFoundContent({ baseUrl }: NotFoundContentProps) {
 
   return (
     <div className="min-h-[60vh] flex flex-col items-center justify-center text-center px-4 py-16">
-      <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight mb-4 font-display">
+      <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-4 font-display">
         <span className="text-cyan-400 font-mono block text-3xl sm:text-4xl mb-2 font-bold tracking-normal">{t.notFound.statusCode}</span>
         {t.notFound.title}
       </h1>
 
-      <p className="text-base sm:text-lg text-zinc-300 max-w-md mx-auto mb-8 font-light leading-relaxed">
+      <p className="text-base sm:text-lg text-zinc-300 max-w-md mx-auto mb-8 leading-relaxed">
         {t.notFound.description}
       </p>
 

@@ -1,0 +1,14 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "space grotesk",
+        "createdAt": "2026-10-12T22:35:02.705Z",
+        "reason": "Design system display font designated in DESIGN.md"
+      }
+    ]
+  }
+}

@@ -48,10 +48,10 @@ export default function AboutContent({ baseUrl }: AboutContentProps) {
     <div className="flex flex-col gap-10 w-full">
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-white/10 pb-6">
         <div>
-          <h2 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight font-display">
+          <h2 className="text-3xl md:text-5xl font-extrabold text-white font-display">
             {t.about.sectionTitle}
           </h2>
-          <p className="text-zinc-400 text-sm md:text-base mt-2 max-w-xl font-light">
+          <p className="text-zinc-400 text-sm md:text-base mt-2 max-w-xl">
             {t.about.sectionSubtitle}
           </p>
         </div>
@@ -65,7 +65,7 @@ export default function AboutContent({ baseUrl }: AboutContentProps) {
             <CircleUserRound size={22} aria-hidden="true" />
             <h3 className="text-lg font-bold text-white font-display">{t.about.objectiveTitle}</h3>
           </div>
-          <div className="text-zinc-300 leading-relaxed text-sm md:text-base font-light space-y-4 max-w-[58ch]">
+          <div className="text-zinc-300 leading-relaxed text-sm md:text-base space-y-4 max-w-[58ch]">
             <p>
               {locale === 'en-US' ? (
                 <>
@@ -133,7 +133,7 @@ export default function AboutContent({ baseUrl }: AboutContentProps) {
                   <span className="px-2 py-0.5 rounded text-[11px] font-mono bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">{t.about.award1Winner}</span>
                 </div>
                 <h4 className="text-white font-extrabold text-base font-display">{t.about.award1Title}</h4>
-                <p className="text-zinc-400 text-xs leading-relaxed mt-1.5 font-light">
+                <p className="text-zinc-400 text-xs leading-relaxed mt-1.5">
                   {t.about.award1Desc}
                 </p>
               </div>
@@ -144,7 +144,7 @@ export default function AboutContent({ baseUrl }: AboutContentProps) {
               <div>
                 <span className="text-cyan-400 font-mono text-[11px] uppercase font-semibold block mb-2">{t.about.award2Badge}</span>
                 <h4 className="text-white font-bold text-sm font-display">{t.about.award2Title}</h4>
-                <p className="text-zinc-400 text-xs leading-relaxed mt-1.5 font-light">
+                <p className="text-zinc-400 text-xs leading-relaxed mt-1.5">
                   {t.about.award2Desc}
                 </p>
               </div>
@@ -155,7 +155,7 @@ export default function AboutContent({ baseUrl }: AboutContentProps) {
               <div>
                 <span className="text-zinc-400 font-mono text-[11px] uppercase font-semibold block mb-2">{t.about.award3Badge}</span>
                 <h4 className="text-white font-bold text-sm font-display">{t.about.award3Title}</h4>
-                <p className="text-zinc-400 text-xs leading-relaxed mt-1.5 font-light">
+                <p className="text-zinc-400 text-xs leading-relaxed mt-1.5">
                   {t.about.award3Desc}
                 </p>
               </div>
@@ -182,7 +182,7 @@ export default function AboutContent({ baseUrl }: AboutContentProps) {
                 />
                 <div className="media-overlay absolute bottom-0 inset-x-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/85 to-transparent p-4 border-t border-white/5">
                   <h4 className="text-white font-semibold text-sm mb-1">{photo.title}</h4>
-                  <p className="text-zinc-400 text-xs font-light">{photo.description}</p>
+                  <p className="text-zinc-400 text-xs">{photo.description}</p>
                 </div>
               </div>
             ))}

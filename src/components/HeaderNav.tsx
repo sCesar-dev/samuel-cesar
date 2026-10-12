@@ -49,7 +49,7 @@ export default function HeaderNav({ baseUrl, isHome }: HeaderNavProps) {
           className="flex items-center gap-2 group focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 rounded-lg p-1"
         >
           <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 group-hover:scale-125 transition-transform duration-300" aria-hidden="true"></span>
-          <span className="text-white text-base md:text-lg font-extrabold tracking-tight font-display group-hover:text-cyan-400 transition-colors">
+          <span className="text-white text-base md:text-lg font-extrabold font-display group-hover:text-cyan-400 transition-colors">
             sCesar<span className="text-cyan-400 font-mono text-sm">.dev</span>
           </span>
         </a>

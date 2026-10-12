@@ -40,10 +40,10 @@ export default function ProjectDetailHeader({
       </a>
 
       <header className="mb-12 border-b border-white/10 pb-8 transition-colors">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4 font-display">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-4 font-display">
           {title}
         </h1>
-        <p className="text-base sm:text-lg text-zinc-300 mb-6 font-light max-w-3xl leading-relaxed">
+        <p className="text-base sm:text-lg text-zinc-300 mb-6 max-w-3xl leading-relaxed">
           {description}
         </p>
         
