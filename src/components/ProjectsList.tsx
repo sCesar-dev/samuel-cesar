@@ -110,19 +110,19 @@ export default function ProjectsList({ projects }: Props) {
   return (
     <div className="w-full">
       {/* Strategic Filter Tabs */}
-      <div className="flex flex-wrap items-center justify-center gap-2.5 mb-10">
+      <div className="flex flex-wrap items-center justify-center gap-2 mb-10">
         <button
           type="button"
           onClick={() => setActiveTab('all')}
-          className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 cursor-pointer ${
+          className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-mono font-medium transition-all duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400 ${
             activeTab === 'all'
-              ? 'bg-zinc-800 text-white border border-white/25 shadow-[0_0_15px_rgba(255,255,255,0.1)]'
-              : 'bg-zinc-900/60 text-zinc-400 hover:text-white border border-white/10 hover:border-white/20'
+              ? 'bg-cyan-400/15 text-cyan-300 border border-cyan-400/40 shadow-sm'
+              : 'bg-[#121216]/80 text-zinc-400 hover:text-white border border-white/10 hover:border-white/20'
           }`}
         >
-          <Sparkles size={16} className={activeTab === 'all' ? 'text-cyan-400' : ''} />
-          <span>Todos os Projetos</span>
-          <span className="text-xs font-mono px-2 py-0.5 rounded-full bg-white/10 text-zinc-300">
+          <Sparkles size={14} className={activeTab === 'all' ? 'text-cyan-400' : ''} />
+          <span>Todos</span>
+          <span className="text-[11px] font-mono px-1.5 py-0.2 rounded bg-white/10 text-zinc-300 tabular-nums">
             {mappedProjects.length}
           </span>
         </button>
@@ -130,15 +130,15 @@ export default function ProjectsList({ projects }: Props) {
         <button
           type="button"
           onClick={() => setActiveTab('data-engineering')}
-          className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 cursor-pointer ${
+          className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-mono font-medium transition-all duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400 ${
             activeTab === 'data-engineering'
-              ? 'bg-emerald-950/80 text-emerald-300 border border-emerald-500/50 shadow-[0_0_20px_rgba(16,185,129,0.25)]'
-              : 'bg-zinc-900/60 text-zinc-400 hover:text-emerald-300 border border-white/10 hover:border-emerald-500/30'
+              ? 'bg-cyan-400/15 text-cyan-300 border border-cyan-400/40 shadow-sm'
+              : 'bg-[#121216]/80 text-zinc-400 hover:text-cyan-300 border border-white/10 hover:border-cyan-400/30'
           }`}
         >
-          <Database size={16} className="text-emerald-400" />
+          <Database size={14} className="text-cyan-400" />
           <span>Engenharia de Dados</span>
-          <span className="text-xs font-mono px-2 py-0.5 rounded-full bg-emerald-900/40 text-emerald-300">
+          <span className="text-[11px] font-mono px-1.5 py-0.2 rounded bg-cyan-950/60 text-cyan-300 tabular-nums">
             {mappedProjects.filter((p) => p.category === 'data-engineering').length}
           </span>
         </button>
@@ -146,15 +146,15 @@ export default function ProjectsList({ projects }: Props) {
         <button
           type="button"
           onClick={() => setActiveTab('data-science')}
-          className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 cursor-pointer ${
+          className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-mono font-medium transition-all duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-emerald-400 ${
             activeTab === 'data-science'
-              ? 'bg-purple-950/80 text-purple-300 border border-purple-500/50 shadow-[0_0_20px_rgba(168,85,247,0.25)]'
-              : 'bg-zinc-900/60 text-zinc-400 hover:text-purple-300 border border-white/10 hover:border-purple-500/30'
+              ? 'bg-emerald-500/15 text-emerald-300 border border-emerald-500/40 shadow-sm'
+              : 'bg-[#121216]/80 text-zinc-400 hover:text-emerald-300 border border-white/10 hover:border-emerald-500/30'
           }`}
         >
-          <BrainCircuit size={16} className="text-purple-400" />
-          <span>Ciência de Dados</span>
-          <span className="text-xs font-mono px-2 py-0.5 rounded-full bg-purple-900/40 text-purple-300">
+          <BrainCircuit size={14} className="text-emerald-400" />
+          <span>Ciência de Dados &amp; ML</span>
+          <span className="text-[11px] font-mono px-1.5 py-0.2 rounded bg-emerald-950/60 text-emerald-300 tabular-nums">
             {mappedProjects.filter((p) => p.category === 'data-science').length}
           </span>
         </button>
@@ -162,29 +162,46 @@ export default function ProjectsList({ projects }: Props) {
         <button
           type="button"
           onClick={() => setActiveTab('computer-vision')}
-          className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 cursor-pointer ${
+          className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-mono font-medium transition-all duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400 ${
             activeTab === 'computer-vision'
-              ? 'bg-cyan-950/80 text-cyan-300 border border-cyan-500/50 shadow-[0_0_20px_rgba(6,182,212,0.25)]'
-              : 'bg-zinc-900/60 text-zinc-400 hover:text-cyan-300 border border-white/10 hover:border-cyan-500/30'
+              ? 'bg-cyan-400/15 text-cyan-300 border border-cyan-400/40 shadow-sm'
+              : 'bg-[#121216]/80 text-zinc-400 hover:text-cyan-300 border border-white/10 hover:border-cyan-400/30'
           }`}
         >
-          <Eye size={16} className="text-cyan-400" />
+          <Eye size={14} className="text-cyan-400" />
           <span>Visão Computacional</span>
-          <span className="text-xs font-mono px-2 py-0.5 rounded-full bg-cyan-900/40 text-cyan-300">
+          <span className="text-[11px] font-mono px-1.5 py-0.2 rounded bg-cyan-950/60 text-cyan-300 tabular-nums">
             {mappedProjects.filter((p) => p.category === 'computer-vision').length}
           </span>
         </button>
       </div>
 
-      {/* Projects Grid */}
+      {/* Asymmetric Bento Grid */}
       <motion.div 
         layout 
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6"
       >
         <AnimatePresence mode="popLayout">
-          {filteredProjects.map((project) => (
-            <ProjectCardVisual key={project.id} project={project} />
-          ))}
+          {filteredProjects.map((project, index) => {
+            const spanClass = 
+              filteredProjects.length === 1 
+                ? 'lg:col-span-12'
+                : index === 0 
+                ? 'lg:col-span-7'
+                : index === 1 
+                ? 'lg:col-span-5'
+                : index === 2 
+                ? 'lg:col-span-5'
+                : index === 3 
+                ? 'lg:col-span-7'
+                : 'lg:col-span-6';
+
+            return (
+              <div key={project.id} className={spanClass}>
+                <ProjectCardVisual project={project} />
+              </div>
+            );
+          })}
         </AnimatePresence>
       </motion.div>
     </div>

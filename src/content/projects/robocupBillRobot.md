@@ -1,11 +1,11 @@
 ---
-title: "RoboCup@Home — Percepção Autônoma e Manipulação (Robô Bill)"
-description: "Pipeline de visão computacional 3D e controle autônomo para o Robô Bill na competição RoboCup@Home e CBR, integrando ROS 2, C++, Python e YOLOv8."
+title: "RoboCup@Home - Percepção Autônoma e Manipulação (Robô Bill)"
+description: "Pipeline de visão 3D e manipulação autônoma para o Robô Bill na RoboCup@Home e CBR, integrando ROS 2, C++ e YOLOv8."
 techs: ["ROS 2", "Python", "C++", "YOLOv8", "OpenCV", "MoveIt 2", "LiDAR", "Linux"]
 stack: "Robotics & Computer Vision"
 category: "computer-vision"
 categoryLabel: "Robótica & Visão Computacional"
-oneLinerImpact: "Pipeline de percepção 3D e manipulação robótica autônoma operando com inferência em tempo real (<25ms) e 94% de acurácia em ambientes dinâmicos não mapeados."
+oneLinerImpact: "Percepção 3D e manipulação robótica com inferência em tempo real (<25ms) e 94% de acurácia em ambientes não estruturados."
 hardwareBadges: ["NVIDIA Jetson", "ROS 2 Humble", "Câmera RGB-D Intel RealSense", "LiDAR 2D/3D"]
 technicalHighlights:
   - "Otimização de inferência YOLOv8 via quantização e aceleração de nós ROS 2 para processamento contínuo em 30+ FPS."
@@ -24,7 +24,7 @@ images:
   - "/images/robocup-image2.jpg"
 ---
 
-# Robô Bill — Percepção Autônoma & Manipulação (RoboCup@Home)
+# Robô Bill - Percepção Autônoma & Manipulação (RoboCup@Home)
 
 Projeto de pesquisa acadêmica, extensão e iniciação científica para o **Robô Bill**, robô de serviço de grande porte competindo na categoria universitária **RoboCup@Home** e na **Competição Brasileira de Robótica (CBR)** pelo laboratório **ACSO / BahiaRT (UNEB)**.
 
