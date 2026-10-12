@@ -1,11 +1,11 @@
 ---
-title: "AirFlow — Motor de Otimização Logística & Indexação de Rotas"
-description: "Sistema avançado de roteamento e indexação de malha aérea. Implementa algoritmo de Dijkstra em grafos e Árvores-B customizadas para consultas com complexidade O(log n)."
+title: "AirFlow - Motor de Otimização Logística & Indexação de Rotas"
+description: "Sistema de roteamento e indexação de malha aérea com algoritmo de Dijkstra em grafos e Árvore-B para consultas O(log n)."
 techs: ["Python", "Flask", "Graph Algorithms", "B-Trees", "Folium", "Geopy"]
 stack: "Data Engineering & Algorithms"
 category: "data-engineering"
 categoryLabel: "Engenharia de Dados & Algoritmos"
-oneLinerImpact: "Motor de otimização logística e indexação de dados com consultas O(log n) via B-Tree em memória e roteamento ótimo de menor custo em malha aérea via grafos."
+oneLinerImpact: "Roteamento de menor custo com algoritmo de Dijkstra em grafos e busca cadastral O(log n) via Árvore-B em memória."
 hardwareBadges: ["In-Memory B-Trees", "Graph Engine", "Flask REST", "Geospatial Folium"]
 technicalHighlights:
   - "Indexador customizado de Árvores-B eliminando overhead de varreduras lineares (O(n) -> O(log n)) em bases cadastrais."
@@ -34,12 +34,6 @@ Developers: [sCesar-dev](https://github.com/sCesar-dev), [zabeldsc](https://gith
 **AirFlow System** is a web-based solution developed in Python and Flask to automate and manage the operational workflow of commercial airlines. The system centralizes flight registrations, passenger data management, and ticketing, featuring route calculation and interactive geospatial visualization.
 
 The goal of this project is to demonstrate the application of Data Structures, Software Engineering, and Object-Oriented Programming (OOP) concepts to solve real-world logistical problems.
-
----
-
-<video src="/images/airflow/vid1.webm" autoplay loop muted playsinline class="w-full rounded-xl my-4 shadow-lg"></video>
-
----
 
 ### Key Features
 

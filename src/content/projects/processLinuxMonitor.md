@@ -1,11 +1,11 @@
 ---
-title: "Process Linux Monitor — Telemetria de Baixo Nível"
-description: "Monitor de telemetria e processos do sistema operacional interagindo diretamente com chamadas de sistema (syscalls) e interface /proc do kernel Linux."
+title: "Process Linux Monitor - Telemetria de Baixo Nível"
+description: "Monitor de processos e telemetria interagindo diretamente com chamadas de sistema (syscalls) e interface /proc do kernel Linux."
 techs: ["C", "Linux", "POSIX APIs", "Operating Systems", "Low-Level"]
 stack: "System Telemetry & C"
 category: "data-engineering"
 categoryLabel: "Sistemas & Telemetria"
-oneLinerImpact: "Monitor de processos e telemetria de alta performance interagindo com chamadas de sistema do kernel Linux via interface /proc com overhead mínimo de CPU."
+oneLinerImpact: "Coleta de telemetria e controle de processos via interface /proc do kernel Linux com overhead mínimo de CPU."
 hardwareBadges: ["Linux Kernel", "Syscalls POSIX", "C Nativo", "Process Control"]
 technicalHighlights:
   - "Extração e parse direto de métricas de telemetria do subsistema virtual /proc com overhead < 0.1%."

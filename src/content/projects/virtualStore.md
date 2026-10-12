@@ -1,6 +1,6 @@
 ---
 title: "Virtual Music Store"
-description: "Complete e-commerce system for selling music CDs, integrating a Spring Boot REST API with an Angular Frontend."
+description: "Sistema e-commerce full stack integrando API REST em Spring Boot com frontend Angular."
 techs: ["Java", "Spring Boot", "Angular", "TypeScript"]
 stack: "Backend & Frontend"
 github: "#"
@@ -9,6 +9,8 @@ featured: false
 order: 10
 images: 
   - "/images/a_onda/a_onda_img1.png"
+videos:
+  - "/images/a_onda/website-video.webm"
 ---
 
 ## Virtual Music Store - Full Stack Project [(Click Here to acess)](https://github.com/sCesar-dev/LojaVirtual)
@@ -18,12 +20,6 @@ Developers: [sCesar-dev](https://github.com/sCesar-dev), [AnaPaulaSPin](https://
 Complete e-commerce system for selling music CDs, integrating a **Spring Boot REST API** with an **Angular Frontend**.
 
 Developed as the final project for the **Programming Language III** course (**Information Systems - UNEB**).
-
----
-
-<video src="/images/a_onda/website-video.webm" autoplay loop muted playsinline class="w-full rounded-xl my-4 shadow-lg"></video>
-
----
 
 ### Technologies and Architecture
 

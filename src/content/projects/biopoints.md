@@ -1,11 +1,11 @@
 ---
-title: "BioPoints — Inteligência Preditiva de CO₂ & Fidelidade Sustentável"
-description: "Plataforma premiada com 1º Lugar no Hackathon LIAO/UFBA 2026 que converte emissões evitadas de CO₂ no abastecimento com biodiesel em pontos de fidelidade para motoristas via Random Forest e integração em tempo real."
+title: "BioPoints - Inteligência Preditiva de CO₂ & Fidelidade Sustentável"
+description: "Plataforma premiada com 1º Lugar no Hackathon UFBA que calcula emissões evitadas de CO₂ via Random Forest e converte em pontos de fidelidade em tempo real."
 techs: ["Python 3.12", "Scikit-Learn", "Random Forest", "NestJS", "Prisma ORM", "PostgreSQL", "Pandas", "Seaborn"]
 stack: "Data Science & Machine Learning"
 category: "data-science"
 categoryLabel: "Ciência de Dados & Machine Learning"
-oneLinerImpact: "Modelo contrafactual de Machine Learning (R² = 0.9964, MAE = 1.90 g/km) integrado via IPC síncrono a uma API NestJS para cálculo em tempo real de emissões evitadas de CO₂ e bonificação sustentável."
+oneLinerImpact: "Modelo preditivo de Machine Learning (R² = 0.9964, MAE = 1.90 g/km) integrado a API NestJS para cálculo em tempo real de emissões evitadas de CO₂."
 hardwareBadges: ["Random Forest (100 Trees)", "ColumnTransformer", "NestJS IPC Stream", "PostgreSQL 14+"]
 technicalHighlights:
   - "Construção de modelo preditivo contrafactual de emissão fóssil de referência com R² de 0.9964 e MAE de 1.9035 g/km sobre 7.385 amostras."
@@ -39,11 +39,11 @@ images:
   - "/images/biopoints/slides/10.jpg"
 ---
 
-# BioPoints — Plataforma de Fidelidade & Crédito de Carbono no Abastecimento
+# BioPoints - Plataforma de Fidelidade & Crédito de Carbono no Abastecimento
 
 > Converte emissões evitadas de CO₂ no abastecimento com biodiesel em pontos de fidelidade para motoristas via Machine Learning contrafactual e integração em tempo real.
 
-**Status:** MVP Concluído (🏆 **1º Lugar — Hackathon LIAO/UFBA 2026**)  
+**Status:** MVP Concluído (🏆 **1º Lugar: Hackathon LIAO/UFBA 2026**)  
 **Período:** 20 a 22 de maio de 2026 (Maratona de 48 horas)  
 **Papel:** Cientista de Dados & Engenheiro de Machine Learning (Equipe Hexagon, com Samuel Cesar e Marcelo Araújo Silva)  
 **Repositório Oficial:** [github.com/sCesar-dev/hackathon_baIA_2026](https://github.com/sCesar-dev/hackathon_baIA_2026)  
@@ -127,7 +127,7 @@ A validação foi conduzida sobre **7.385 amostras veiculares** com split hold-o
 |---|---|---|
 | **R² Score** | **0.9964** (99,64% de variância explicada) | **0.9304** (93,04% de variância explicada) |
 | **MAE (Mean Absolute Error)** | **1.9035 g/km** | **11.0617 g/km** |
-| **Correlação Pearson (Consumo x CO₂)** | **0.9181** | — |
+| **Correlação Pearson (Consumo x CO₂)** | **0.9181** | N/A |
 | **Distribuição de Resíduos** | Média zero, simétrica, homocedástica | Dispersão controlada em extremos |
 
 ### Gráficos de Avaliação do Modelo
@@ -200,5 +200,5 @@ Os slides oficiais da apresentação da equipe Hexagon perante a banca examinado
 
 Para total transparência metodológica, os experimentos e métricas foram compilados em relatórios técnicos formais:
 
-- 📄 **[Download: Relatório de Treino e Predição — BioPoints (Português, PDF)](/docs/Relatorio_Treino_Predicao_BioPoints_PT.pdf)**
-- 📄 **[Download: Training and Prediction Report — BioPoints (English, PDF)](/docs/Training_Prediction_Report_BioPoints_EN.pdf)**
+- 📄 **[Download: Relatório de Treino e Predição: BioPoints (Português, PDF)](/docs/Relatorio_Treino_Predicao_BioPoints_PT.pdf)**
+- 📄 **[Download: Training and Prediction Report: BioPoints (English, PDF)](/docs/Training_Prediction_Report_BioPoints_EN.pdf)**
