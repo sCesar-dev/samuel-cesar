@@ -1,15 +1,19 @@
 @import "tailwindcss";
 
-:root {
+:root,
+html[data-theme="dark"] {
+  color-scheme: dark;
   --font-display: 'Syne', sans-serif;
   --font-body: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
   --color-dominant: #00f0ff;
+  --color-dominant-text: #00f0ff;
   --color-dominant-muted: rgba(0, 240, 255, 0.12);
   --color-dominant-border: rgba(0, 240, 255, 0.35);
 
   --color-accent: #10b981;
+  --color-accent-text: #34d399;
   --color-accent-muted: rgba(16, 185, 129, 0.12);
   --color-accent-border: rgba(16, 185, 129, 0.35);
 
@@ -18,6 +22,90 @@
   --color-surface-subtle: #18181f;
   --color-border-hairline: rgba(255, 255, 255, 0.08);
   --color-border-subtle: rgba(255, 255, 255, 0.15);
+  --color-border-card: rgba(255, 255, 255, 0.10);
+
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #cbd5e1;
+  --color-text-tertiary: #94a3b8;
+  --color-text-muted: #64748b;
+
+  --glass-panel-bg: rgba(18, 18, 22, 0.75);
+  --glass-panel-border: rgba(255, 255, 255, 0.08);
+  --glass-card-bg: rgba(18, 18, 22, 0.65);
+  --glass-card-border: rgba(255, 255, 255, 0.08);
+  --glass-card-hover: rgba(24, 24, 31, 0.80);
+  --glass-button-bg: rgba(255, 255, 255, 0.04);
+  --glass-button-hover: rgba(255, 255, 255, 0.08);
+  --glass-button-border: rgba(255, 255, 255, 0.08);
+
+  --header-bg: rgba(9, 9, 11, 0.85);
+  --header-border: rgba(255, 255, 255, 0.10);
+  --footer-bg: rgba(9, 9, 11, 0.90);
+  --footer-border: rgba(255, 255, 255, 0.10);
+  --modal-bg: #121216;
+  --modal-border: rgba(255, 255, 255, 0.15);
+
+  --badge-bg: rgba(255, 255, 255, 0.04);
+  --badge-border: rgba(255, 255, 255, 0.10);
+  --badge-text: #cbd5e1;
+
+  --ambient-gradient: radial-gradient(ellipse 80% 50% at 50% -15%, rgba(0, 240, 255, 0.06), transparent);
+  --dot-overlay-opacity: 0.03;
+  --dot-color: #ffffff;
+}
+
+html[data-theme="light"] {
+  color-scheme: light;
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* WCAG 2.2 AA compliant dominant and accent tokens for light backgrounds */
+  --color-dominant: #0369a1;
+  --color-dominant-text: #0369a1;
+  --color-dominant-muted: rgba(3, 105, 161, 0.10);
+  --color-dominant-border: rgba(3, 105, 161, 0.35);
+
+  --color-accent: #047857;
+  --color-accent-text: #047857;
+  --color-accent-muted: rgba(4, 120, 87, 0.10);
+  --color-accent-border: rgba(4, 120, 87, 0.35);
+
+  --color-bg-base: #f8fafc;
+  --color-surface-panel: #ffffff;
+  --color-surface-subtle: #f1f5f9;
+  --color-border-hairline: rgba(15, 23, 42, 0.08);
+  --color-border-subtle: rgba(15, 23, 42, 0.14);
+  --color-border-card: rgba(15, 23, 42, 0.12);
+
+  --color-text-primary: #09090b;
+  --color-text-secondary: #334155;
+  --color-text-tertiary: #475569;
+  --color-text-muted: #475569;
+
+  --glass-panel-bg: rgba(255, 255, 255, 0.85);
+  --glass-panel-border: rgba(15, 23, 42, 0.10);
+  --glass-card-bg: rgba(255, 255, 255, 0.90);
+  --glass-card-border: rgba(15, 23, 42, 0.12);
+  --glass-card-hover: rgba(241, 245, 249, 0.95);
+  --glass-button-bg: rgba(15, 23, 42, 0.04);
+  --glass-button-hover: rgba(15, 23, 42, 0.08);
+  --glass-button-border: rgba(15, 23, 42, 0.12);
+
+  --header-bg: rgba(248, 250, 252, 0.88);
+  --header-border: rgba(15, 23, 42, 0.10);
+  --footer-bg: rgba(248, 250, 252, 0.95);
+  --footer-border: rgba(15, 23, 42, 0.10);
+  --modal-bg: #ffffff;
+  --modal-border: rgba(15, 23, 42, 0.18);
+
+  --badge-bg: rgba(15, 23, 42, 0.04);
+  --badge-border: rgba(15, 23, 42, 0.10);
+  --badge-text: #334155;
+
+  --ambient-gradient: radial-gradient(ellipse 80% 50% at 50% -15%, rgba(2, 132, 199, 0.08), transparent);
+  --dot-overlay-opacity: 0.03;
+  --dot-color: #0f172a;
 }
 
 @theme {
@@ -25,13 +113,13 @@
   --font-body: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
-  --color-dominant: #00f0ff;
-  --color-accent: #10b981;
-  --color-bg-base: #09090b;
-  --color-surface-panel: #121216;
-  --color-surface-subtle: #18181f;
-  --color-border-hairline: rgba(255, 255, 255, 0.08);
-  --color-border-subtle: rgba(255, 255, 255, 0.15);
+  --color-dominant: var(--color-dominant);
+  --color-accent: var(--color-accent);
+  --color-bg-base: var(--color-bg-base);
+  --color-surface-panel: var(--color-surface-panel);
+  --color-surface-subtle: var(--color-surface-subtle);
+  --color-border-hairline: var(--color-border-hairline);
+  --color-border-subtle: var(--color-border-subtle);
 
   --color-silver: #94a3b8;
 }
@@ -39,7 +127,8 @@
 body {
   font-family: var(--font-body);
   background-color: var(--color-bg-base);
-  color: #f4f4f5;
+  color: var(--color-text-primary);
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 h1, h2, h3, .font-display {
@@ -50,45 +139,244 @@ code, pre, .font-mono {
   font-family: var(--font-mono);
 }
 
+/* Glass and Surface Tokens */
 @layer utilities {
   .glass-panel {
-    background-color: rgba(18, 18, 22, 0.75);
+    background-color: var(--glass-panel-bg);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--glass-panel-border);
   }
   .glass-card {
-    background-color: rgba(18, 18, 22, 0.65);
+    background-color: var(--glass-card-bg);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--glass-card-border);
     transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .glass-card:hover {
-    border-color: rgba(0, 240, 255, 0.3);
-    background-color: rgba(24, 24, 31, 0.8);
+    border-color: var(--color-dominant-border);
+    background-color: var(--glass-card-hover);
   }
   .glass-button {
-    background-color: rgba(255, 255, 255, 0.04);
+    background-color: var(--glass-button-bg);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--glass-button-border);
     transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .glass-button:hover {
-    background-color: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.18);
+    background-color: var(--glass-button-hover);
+    border-color: var(--color-border-subtle);
   }
   .glass-button:active {
     transform: scale(0.98);
   }
 }
 
+/* Light Theme Surface, Text & Border Overrides */
+html[data-theme="light"] body {
+  background-color: var(--color-bg-base);
+  color: var(--color-text-primary);
+}
+
+html[data-theme="light"] :not(.media-header, .media-header *, .media-overlay, .media-overlay *).theme-bg-base,
+html[data-theme="light"] :not(.media-header, .media-header *, .media-overlay, .media-overlay *)[class*="bg-[#09090b]"] {
+  background-color: var(--color-bg-base) !important;
+}
+
+html[data-theme="light"] :not(.media-header, .media-header *, .media-overlay, .media-overlay *).theme-surface,
+html[data-theme="light"] :not(.media-header, .media-header *, .media-overlay, .media-overlay *)[class*="bg-[#121216]"] {
+  background-color: var(--color-surface-panel) !important;
+}
+
+html[data-theme="light"] [class*="border-white/10"],
+html[data-theme="light"] [class*="border-white/5"],
+html[data-theme="light"] [class*="border-white/15"],
+html[data-theme="light"] [class*="border-white/20"] {
+  border-color: var(--color-border-subtle) !important;
+}
+
+html[data-theme="light"] :not(.media-header, .media-header *, .media-overlay, .media-overlay *)[class*="text-white"] {
+  color: var(--color-text-primary) !important;
+}
+
+html[data-theme="light"] :not(.media-header, .media-header *, .media-overlay, .media-overlay *)[class*="text-zinc-100"],
+html[data-theme="light"] :not(.media-header, .media-header *, .media-overlay, .media-overlay *)[class*="text-zinc-200"] {
+  color: var(--color-text-secondary) !important;
+}
+
+html[data-theme="light"] :not(.media-header, .media-header *, .media-overlay, .media-overlay *)[class*="text-zinc-300"] {
+  color: var(--color-text-secondary) !important;
+}
+
+html[data-theme="light"] :not(.media-header, .media-header *, .media-overlay, .media-overlay *)[class*="text-zinc-400"] {
+  color: var(--color-text-tertiary) !important;
+}
+
+html[data-theme="light"] :not(.media-header, .media-header *, .media-overlay, .media-overlay *)[class*="text-zinc-500"] {
+  color: var(--color-text-muted) !important;
+}
+
+/* Media Overlays & Headers preserve dark-surface styling and high contrast regardless of active theme */
+.media-overlay,
+.media-header {
+  color-scheme: dark;
+}
+
+.media-overlay {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.98) 0%, rgba(0, 0, 0, 0.88) 60%, rgba(0, 0, 0, 0.40) 100%) !important;
+}
+
+html[data-theme="light"] .media-overlay [class*="text-white"],
+html[data-theme="light"] .media-overlay strong,
+html[data-theme="light"] .media-overlay h4 {
+  color: #ffffff !important;
+}
+
+html[data-theme="light"] .media-overlay [class*="text-zinc-200"],
+html[data-theme="light"] .media-overlay [class*="text-zinc-300"] {
+  color: #e4e4e7 !important;
+}
+
+html[data-theme="light"] .media-overlay [class*="text-zinc-400"],
+html[data-theme="light"] .media-overlay p {
+  color: #cbd5e1 !important;
+}
+
+html[data-theme="light"] .media-overlay [class*="text-zinc-500"] {
+  color: #94a3b8 !important;
+}
+
+html[data-theme="light"] [class*="bg-white/[0.02]"],
+html[data-theme="light"] [class*="bg-white/[0.03]"],
+html[data-theme="light"] [class*="bg-white/[0.04]"] {
+  background-color: var(--color-surface-subtle) !important;
+}
+
+html[data-theme="light"] [class*="bg-white/5"] {
+  background-color: rgba(15, 23, 42, 0.05) !important;
+}
+
+html[data-theme="light"] [class*="bg-white/10"] {
+  background-color: rgba(15, 23, 42, 0.08) !important;
+}
+
+html[data-theme="light"] [class*="hover:text-white"]:hover {
+  color: var(--color-text-primary) !important;
+}
+
+html[data-theme="light"] [class*="hover:bg-white/10"]:hover {
+  background-color: rgba(15, 23, 42, 0.08) !important;
+}
+
+html[data-theme="light"] :not(.media-header, .media-header *, .media-overlay, .media-overlay *)[class*="text-cyan-400"],
+html[data-theme="light"] :not(.media-header, .media-header *, .media-overlay, .media-overlay *)[class*="text-cyan-300"] {
+  color: var(--color-dominant-text) !important;
+}
+
+html[data-theme="light"] :not(.media-header, .media-header *, .media-overlay, .media-overlay *)[class*="text-emerald-400"],
+html[data-theme="light"] :not(.media-header, .media-header *, .media-overlay, .media-overlay *)[class*="text-emerald-300"] {
+  color: var(--color-accent-text) !important;
+}
+
+html[data-theme="light"] :not(.media-header, .media-header *, .media-overlay, .media-overlay *)[class*="bg-cyan-950"] {
+  background-color: var(--color-dominant-muted) !important;
+  color: var(--color-dominant-text) !important;
+}
+
+html[data-theme="light"] :not(.media-header, .media-header *, .media-overlay, .media-overlay *)[class*="bg-emerald-950"] {
+  background-color: var(--color-accent-muted) !important;
+  color: var(--color-accent-text) !important;
+}
+
+html[data-theme="light"] [class*="bg-cyan-400/10"],
+html[data-theme="light"] [class*="bg-cyan-400/15"] {
+  background-color: var(--color-dominant-muted) !important;
+}
+
+html[data-theme="light"] [class*="bg-emerald-500/10"],
+html[data-theme="light"] [class*="bg-emerald-500/15"],
+html[data-theme="light"] [class*="bg-emerald-500/[0.04]"] {
+  background-color: var(--color-accent-muted) !important;
+}
+
+html[data-theme="light"] [class*="border-cyan-400/30"],
+html[data-theme="light"] [class*="border-cyan-400/40"] {
+  border-color: var(--color-dominant-border) !important;
+}
+
+html[data-theme="light"] [class*="border-emerald-500/30"],
+html[data-theme="light"] [class*="border-emerald-500/40"] {
+  border-color: var(--color-accent-border) !important;
+}
+
+html[data-theme="light"] a.bg-cyan-400,
+html[data-theme="light"] button.bg-cyan-400 {
+  background-color: var(--color-dominant) !important;
+  color: #ffffff !important;
+}
+
+html[data-theme="light"] a.bg-emerald-500,
+html[data-theme="light"] button.bg-emerald-500 {
+  background-color: var(--color-accent) !important;
+  color: #ffffff !important;
+}
+
+html[data-theme="light"] [class*="hover:bg-cyan-300"]:hover {
+  background-color: #0369a1 !important;
+}
+
+html[data-theme="light"] [class*="hover:bg-emerald-400"]:hover {
+  background-color: #047857 !important;
+}
+
+html[data-theme="light"] .ambient-lighting {
+  background: var(--ambient-gradient) !important;
+}
+
+html[data-theme="light"] .dot-texture-overlay {
+  background-image: radial-gradient(rgba(15, 23, 42, 0.08) 1px, transparent 1px) !important;
+}
+
+/* Reduced Motion Compliance: Preserve intentional feedback while removing large motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-delay: -1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    background-attachment: initial !important;
+    scroll-behavior: auto !important;
+    transition-delay: 0s !important;
+    transition-duration: 0.1s !important;
+  }
+}
+
+/* Focus Ring Utility */
+.focus-ring {
+  outline: none;
+}
+.focus-ring:focus-visible {
+  outline: 2px solid var(--color-dominant);
+  outline-offset: 2px;
+}
+
 /* Project Detail Markdown Styling */
 .project-content {
-  color: #94a3b8;
+  color: var(--color-text-secondary);
   font-size: 1.05rem;
   line-height: 1.8;
+}
+
+.project-content p,
+.project-content ul,
+.project-content ol {
+  max-width: 60ch;
+  margin-bottom: 1.25rem;
+}
+
+.project-content h1:first-child {
+  display: none;
 }
 
 .project-content h2 {
@@ -96,12 +384,20 @@ code, pre, .font-mono {
   font-size: 1.6rem;
   font-weight: 800;
   letter-spacing: -0.02em;
-  color: #ffffff;
-  margin-top: 0;
+  color: var(--color-text-primary);
+  margin-top: 2.5rem;
   margin-bottom: 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-border-subtle);
   display: flex;
   align-items: center;
   gap: 0.6rem;
+}
+
+.project-content h2:first-of-type {
+  margin-top: 1rem;
+  border-top: none;
+  padding-top: 0;
 }
 
 .project-content h2::before {
@@ -118,22 +414,13 @@ code, pre, .font-mono {
   font-size: 1.25rem;
   font-weight: 700;
   letter-spacing: -0.01em;
-  color: #ffffff;
+  color: var(--color-text-primary);
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
 }
 
-.project-content p {
-  margin-bottom: 1rem;
-  max-width: 70ch;
-}
-
-.project-content p:last-child {
-  margin-bottom: 0;
-}
-
 .project-content strong {
-  color: #ffffff;
+  color: var(--color-text-primary);
   font-weight: 600;
 }
 
