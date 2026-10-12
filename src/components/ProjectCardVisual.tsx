@@ -191,7 +191,7 @@ export default function ProjectCardVisual({ project, className = '' }: ProjectCa
           </h3>
 
           {/* One-Liner de Impacto */}
-          <p className="text-sm text-zinc-300 mt-2 leading-relaxed font-light">
+          <p className="text-sm text-zinc-300 mt-2 leading-relaxed">
             {project.oneLinerImpact || project.description}
           </p>
 

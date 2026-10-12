@@ -57,13 +57,13 @@ export default function HeroNetworking() {
           </div>
 
           {/* High-Impact Display Typography with ~3x Leap */}
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-[1.15] font-display">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-[1.2] font-display">
             {t.hero.greeting} <br className="hidden sm:inline" />
             <span className="text-cyan-400">{t.hero.role}</span>
           </h1>
 
           {/* Refined Copy */}
-          <p className="text-base sm:text-lg text-zinc-300 leading-relaxed font-light max-w-lg">
+          <p className="text-base sm:text-lg text-zinc-300 leading-relaxed max-w-lg">
             {t.hero.pitch}
           </p>
 

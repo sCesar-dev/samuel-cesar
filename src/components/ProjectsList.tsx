@@ -118,10 +118,10 @@ export default function ProjectsList({ projects }: Props) {
       {/* Section Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 border-b border-white/10 pb-6">
         <div>
-          <h2 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight font-display">
+          <h2 className="text-3xl md:text-5xl font-extrabold text-white font-display">
             {t.projects.sectionTitle}
           </h2>
-          <p className="text-zinc-400 text-sm md:text-base mt-2 max-w-2xl font-light">
+          <p className="text-zinc-400 text-sm md:text-base mt-2 max-w-2xl">
             {t.projects.sectionSubtitle}
           </p>
         </div>

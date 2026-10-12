@@ -17,10 +17,10 @@ export default function ContactContent({ baseUrl }: ContactContentProps) {
     <div className="w-full">
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 border-b border-white/10 pb-6">
         <div>
-          <h2 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight font-display">
+          <h2 className="text-3xl md:text-5xl font-extrabold text-white font-display">
             {t.contact.sectionTitle}
           </h2>
-          <p className="text-zinc-400 text-sm md:text-base mt-2 max-w-xl font-light">
+          <p className="text-zinc-400 text-sm md:text-base mt-2 max-w-xl">
             {t.contact.sectionSubtitle}
           </p>
         </div>
@@ -91,7 +91,7 @@ export default function ContactContent({ baseUrl }: ContactContentProps) {
               <QrCode size={18} className="text-cyan-400" aria-hidden="true" />
               <span>{t.contact.instantAccessTitle}</span>
             </h3>
-            <p className="text-zinc-400 text-xs md:text-sm mt-1 max-w-xs font-light">
+            <p className="text-zinc-400 text-xs md:text-sm mt-1 max-w-xs">
               {t.contact.instantAccessDesc}
             </p>
           </div>

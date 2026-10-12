@@ -14,10 +14,10 @@ export default function CurriculumContent({ baseUrl }: CurriculumContentProps) {
     <div className="w-full">
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 border-b border-white/10 pb-6">
         <div>
-          <h2 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight font-display">
+          <h2 className="text-3xl md:text-5xl font-extrabold text-white font-display">
             {t.curriculum.sectionTitle}
           </h2>
-          <p className="text-zinc-400 text-sm md:text-base mt-2 max-w-xl font-light">
+          <p className="text-zinc-400 text-sm md:text-base mt-2 max-w-xl">
             {t.curriculum.sectionSubtitle}
           </p>
         </div>
@@ -48,13 +48,13 @@ export default function CurriculumContent({ baseUrl }: CurriculumContentProps) {
               <div className="pt-2 first:pt-0">
                 <span className="text-xs font-mono text-cyan-400 block mb-0.5">{t.curriculum.degreeStatus}</span>
                 <strong className="text-white block text-sm">{t.curriculum.degreeName}</strong>
-                <span className="text-xs text-zinc-400 font-light">{t.curriculum.degreeSchool}</span>
+                <span className="text-xs text-zinc-400">{t.curriculum.degreeSchool}</span>
               </div>
 
               <div className="pt-3">
                 <span className="text-xs font-mono text-emerald-400 block mb-0.5">{t.curriculum.researchStatus}</span>
                 <strong className="text-white block text-sm">{t.curriculum.researchLab}</strong>
-                <span className="text-xs text-zinc-400 font-light">{t.curriculum.researchFocus}</span>
+                <span className="text-xs text-zinc-400">{t.curriculum.researchFocus}</span>
               </div>
             </div>
           </div>
@@ -83,7 +83,7 @@ export default function CurriculumContent({ baseUrl }: CurriculumContentProps) {
                   <span className="text-xs font-mono text-cyan-400 uppercase font-semibold block mb-0.5">
                     {t.curriculum.compDataEngTitle}
                   </span>
-                  <p className="text-xs text-zinc-300 font-light">
+                  <p className="text-xs text-zinc-300">
                     {t.curriculum.compDataEngDesc}
                   </p>
                 </div>
@@ -92,7 +92,7 @@ export default function CurriculumContent({ baseUrl }: CurriculumContentProps) {
                   <span className="text-xs font-mono text-emerald-400 uppercase font-semibold block mb-0.5">
                     {t.curriculum.compDataScienceTitle}
                   </span>
-                  <p className="text-xs text-zinc-300 font-light">
+                  <p className="text-xs text-zinc-300">
                     {t.curriculum.compDataScienceDesc}
                   </p>
                 </div>
@@ -101,7 +101,7 @@ export default function CurriculumContent({ baseUrl }: CurriculumContentProps) {
                   <span className="text-xs font-mono text-cyan-400 uppercase font-semibold block mb-0.5">
                     {t.curriculum.compVisionTitle}
                   </span>
-                  <p className="text-xs text-zinc-300 font-light">
+                  <p className="text-xs text-zinc-300">
                     {t.curriculum.compVisionDesc}
                   </p>
                 </div>
@@ -110,7 +110,7 @@ export default function CurriculumContent({ baseUrl }: CurriculumContentProps) {
                   <span className="text-xs font-mono text-emerald-400 uppercase font-semibold block mb-0.5">
                     {t.curriculum.compCloudTitle}
                   </span>
-                  <p className="text-xs text-zinc-300 font-light">
+                  <p className="text-xs text-zinc-300">
                     {t.curriculum.compCloudDesc}
                   </p>
                 </div>
@@ -126,7 +126,7 @@ export default function CurriculumContent({ baseUrl }: CurriculumContentProps) {
                     <Award size={16} className="text-emerald-400 shrink-0 mt-0.5" aria-hidden="true" />
                     <div>
                       <strong className="text-xs text-white block">{t.curriculum.awardHackathonTitle}</strong>
-                      <span className="text-xs text-zinc-400 font-light">{t.curriculum.awardHackathonDesc}</span>
+                      <span className="text-xs text-zinc-400">{t.curriculum.awardHackathonDesc}</span>
                     </div>
                   </div>
 
@@ -134,7 +134,7 @@ export default function CurriculumContent({ baseUrl }: CurriculumContentProps) {
                     <Award size={16} className="text-cyan-400 shrink-0 mt-0.5" aria-hidden="true" />
                     <div>
                       <strong className="text-xs text-white block">{t.curriculum.awardCbrTitle}</strong>
-                      <span className="text-xs text-zinc-400 font-light">{t.curriculum.awardCbrDesc}</span>
+                      <span className="text-xs text-zinc-400">{t.curriculum.awardCbrDesc}</span>
                     </div>
                   </div>
                 </div>
