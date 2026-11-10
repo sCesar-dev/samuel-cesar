@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Linkedin, 
@@ -19,6 +19,10 @@ import { useI18n } from '../i18n/useI18n';
 export default function HeroNetworking() {
   const [showQrModal, setShowQrModal] = useState(false);
   const { t } = useI18n();
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const modalActionRef = useRef<HTMLAnchorElement>(null);
+  const wasOpenRef = useRef(false);
 
   const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
   const linkedInUrl = "https://www.linkedin.com/in/s-cesar/";
@@ -26,15 +30,39 @@ export default function HeroNetworking() {
   const qrCodeUrl = `${baseUrl}/qrcode.svg`;
 
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        setShowQrModal(false);
-      }
-    };
     if (showQrModal) {
+      wasOpenRef.current = true;
+      closeButtonRef.current?.focus();
+
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') {
+          setShowQrModal(false);
+          return;
+        }
+        if (e.key === 'Tab') {
+          const focusables = [closeButtonRef.current, modalActionRef.current].filter(
+            (el): el is HTMLButtonElement | HTMLAnchorElement => Boolean(el)
+          );
+          if (focusables.length === 0) return;
+          const first = focusables[0];
+          const last = focusables[focusables.length - 1];
+
+          if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
+      };
+
       window.addEventListener('keydown', handleKeyDown);
+      return () => window.removeEventListener('keydown', handleKeyDown);
+    } else if (wasOpenRef.current) {
+      wasOpenRef.current = false;
+      triggerRef.current?.focus();
     }
-    return () => window.removeEventListener('keydown', handleKeyDown);
   }, [showQrModal]);
 
   return (
@@ -45,144 +73,142 @@ export default function HeroNetworking() {
         {/* Left Column: Editorial Headline & Pitch (7 cols) */}
         <div className="lg:col-span-7 flex flex-col items-start text-left space-y-6">
           
-          {/* Status Badge - Rectangular & Crisp */}
-          <div className="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-md bg-emerald-500/10 border border-emerald-500/30 text-xs font-mono text-emerald-400">
-            <span className="relative flex h-2 w-2" aria-hidden="true">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-            </span>
-            <span className="uppercase tracking-wider font-semibold text-[11px]">
-              {t.hero.badge}
-            </span>
+          {/* Availability Status Indicator */}
+          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-accent-soft border border-accent-edge text-[13px] font-medium text-accent-ink">
+            <span className="inline-flex rounded-full h-2 w-2 bg-accent shrink-0" aria-hidden="true"></span>
+            <span>{t.hero.badge}</span>
           </div>
 
-          {/* High-Impact Display Typography with ~3x Leap */}
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-[1.2] font-display">
-            {t.hero.greeting} <br className="hidden sm:inline" />
-            <span className="text-cyan-400">{t.hero.role}</span>
+          {/* High-Impact Display Typography */}
+          <h1 className="text-[2.125rem] sm:text-5xl lg:text-[3.75rem] font-extrabold text-ink leading-[1.08] tracking-[-0.02em] font-display">
+            {t.hero.greeting} <br />
+            <span className="text-dominant-ink">{t.hero.role}</span>
           </h1>
 
           {/* Refined Copy */}
-          <p className="text-base sm:text-lg text-zinc-300 leading-relaxed max-w-lg">
+          <p className="text-base sm:text-lg text-ink-secondary leading-relaxed max-w-[56ch]">
             {t.hero.pitch}
           </p>
 
-          {/* Direct Tactical Actions */}
+          {/* Direct Tactical Actions with Clear Visual Hierarchy */}
           <div className="flex flex-wrap items-center gap-3 pt-2">
             <a
               href="#projects"
-              className="flex items-center gap-2 px-5 py-3 rounded-lg bg-cyan-400 hover:bg-cyan-300 text-zinc-950 font-bold text-xs font-mono uppercase tracking-wider transition-all duration-200 active:scale-[0.98] whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 cursor-pointer"
+              className="inline-flex items-center gap-2 px-5 py-3 min-h-[44px] rounded-lg bg-dominant hover:bg-dominant-hover text-on-dominant font-display font-bold text-sm transition-colors transition-transform duration-200 active:scale-[0.98] whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-dominant cursor-pointer"
             >
               <span>{t.hero.exploreProjects}</span>
-              <ChevronDown size={15} aria-hidden="true" />
+              <ChevronDown size={16} aria-hidden="true" />
             </a>
 
             <a
               href={resumeUrl}
               download="Samuel_Cesar_Curriculum.pdf"
-              className="flex items-center gap-2 px-4 py-3 rounded-lg bg-white/5 hover:bg-white/10 text-zinc-200 border border-white/10 text-xs font-mono transition-all duration-200 active:scale-[0.98] whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 cursor-pointer"
+              className="inline-flex items-center gap-2 px-4 py-3 min-h-[44px] rounded-lg bg-control hover:bg-control-hover text-ink border border-edge-strong text-sm font-medium transition-colors transition-transform duration-200 active:scale-[0.98] whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-dominant cursor-pointer"
             >
-              <FileDown size={16} className="text-cyan-400" aria-hidden="true" />
+              <FileDown size={16} className="text-dominant-ink shrink-0" aria-hidden="true" />
               <span>{t.hero.curriculumPdf}</span>
             </a>
 
-            <button
-              type="button"
-              onClick={() => setShowQrModal(true)}
-              className="flex items-center gap-2 px-4 py-3 rounded-lg bg-white/5 hover:bg-white/10 text-white border border-white/10 text-xs font-mono transition-all duration-200 active:scale-[0.98] cursor-pointer whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400"
-            >
-              <QrCode size={16} className="text-emerald-400" aria-hidden="true" />
-              <span>{t.hero.mobileQr}</span>
-            </button>
+            <div className="flex items-center gap-1.5">
+              <button
+                ref={triggerRef}
+                type="button"
+                onClick={() => setShowQrModal(true)}
+                className="inline-flex items-center gap-1.5 px-3.5 py-2.5 min-h-[44px] rounded-lg text-ink-secondary hover:text-ink hover:bg-control text-sm font-medium transition-colors cursor-pointer whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              >
+                <QrCode size={16} className="text-accent-ink shrink-0" aria-hidden="true" />
+                <span>{t.hero.mobileQr}</span>
+              </button>
 
-            <a
-              href={linkedInUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={t.nav.linkedInAria}
-              className="inline-flex items-center gap-1.5 px-3 py-3 text-xs font-mono text-zinc-400 hover:text-cyan-400 transition-colors whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 rounded-lg"
-            >
-              <Linkedin size={15} aria-hidden="true" />
-              <span>{t.hero.linkedIn}</span>
-            </a>
+              <a
+                href={linkedInUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={t.nav.linkedInAria}
+                className="inline-flex items-center gap-1.5 px-3 py-2.5 min-h-[44px] text-sm font-medium text-ink-tertiary hover:text-dominant-ink transition-colors whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-dominant rounded-lg"
+              >
+                <Linkedin size={16} aria-hidden="true" />
+                <span>{t.hero.linkedIn}</span>
+              </a>
+            </div>
           </div>
         </div>
 
         {/* Right Column: Telemetry & Core Domains Console (5 cols) */}
         <div className="lg:col-span-5 w-full">
-          <div className="rounded-xl border border-white/10 bg-[#121216]/80 backdrop-blur-xl p-5 sm:p-6 shadow-xl relative overflow-hidden transition-colors">
+          <div className="rounded-xl border border-edge bg-surface p-5 sm:p-6 relative overflow-hidden transition-colors">
             
             {/* Header Telemetry Bar */}
-            <div className="flex items-center justify-between pb-3.5 mb-4 border-b border-white/10 text-xs font-mono">
-              <div className="flex items-center gap-2 text-zinc-400">
-                <Terminal size={14} className="text-cyan-400" />
-                <span className="font-semibold text-zinc-300 uppercase tracking-wider text-xs">{t.hero.telemetryTitle}</span>
+            <div className="flex items-center justify-between pb-3.5 mb-4 text-xs">
+              <div className="flex items-center gap-2 text-ink-tertiary">
+                <Terminal size={14} className="text-dominant-ink" aria-hidden="true" />
+                <span className="font-semibold text-ink-secondary tracking-wide text-[13px]">{t.hero.telemetryTitle}</span>
               </div>
-              <div className="flex items-center gap-1.5 text-emerald-400 text-xs">
-                <Activity size={12} />
+              <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-accent-soft text-accent-ink text-xs font-mono font-medium">
+                <Activity size={12} aria-hidden="true" />
                 <span>{t.hero.telemetryStatus}</span>
               </div>
             </div>
 
-            {/* Core Domain Telemetry Blocks - Flattened into clean divided list */}
-            <div className="divide-y divide-white/5">
+            {/* Core Domain Telemetry Blocks - Separated via tonal surface steps */}
+            <div className="space-y-2.5">
               {/* Domain 1: Data Engineering */}
-              <div className="py-3 first:pt-0">
-                <div className="flex items-center justify-between mb-1">
-                  <div className="flex items-center gap-2 text-cyan-400 text-xs font-mono font-semibold">
-                    <Database size={15} />
+              <div className="rounded-lg bg-surface-alt px-3.5 py-3">
+                <div className="flex items-center justify-between gap-2 mb-1">
+                  <div className="flex items-center gap-2 text-dominant-ink text-[13px] font-semibold">
+                    <Database size={15} aria-hidden="true" />
                     <span>{t.hero.dataEngTitle}</span>
                   </div>
-                  <span className="text-xs font-mono text-zinc-400">{t.hero.dataEngPipeline}</span>
+                  <span className="text-xs font-mono text-ink-tertiary tabular-nums">{t.hero.dataEngPipeline}</span>
                 </div>
-                <div className="text-sm font-semibold text-white">{t.hero.dataEngStack}</div>
-                <div className="text-xs text-zinc-400 font-mono mt-0.5">{t.hero.dataEngSub}</div>
+                <div className="text-[15px] font-semibold text-ink">{t.hero.dataEngStack}</div>
+                <div className="text-[13px] text-ink-tertiary mt-0.5">{t.hero.dataEngSub}</div>
               </div>
 
               {/* Domain 2: Data Science & ML */}
-              <div className="py-3">
-                <div className="flex items-center justify-between mb-1">
-                  <div className="flex items-center gap-2 text-emerald-400 text-xs font-mono font-semibold">
-                    <BrainCircuit size={15} />
+              <div className="rounded-lg bg-surface-alt px-3.5 py-3">
+                <div className="flex items-center justify-between gap-2 mb-1">
+                  <div className="flex items-center gap-2 text-accent-ink text-[13px] font-semibold">
+                    <BrainCircuit size={15} aria-hidden="true" />
                     <span>{t.hero.dataScienceTitle}</span>
                   </div>
-                  <span className="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded border border-emerald-500/20">{t.hero.dataScienceBadge}</span>
+                  <span className="text-xs font-medium text-accent-ink bg-accent-soft px-2 py-0.5 rounded border border-accent-edge">{t.hero.dataScienceBadge}</span>
                 </div>
-                <div className="text-sm font-semibold text-white">{t.hero.dataScienceStack}</div>
-                <div className="text-xs text-zinc-400 font-mono mt-0.5">{t.hero.dataScienceSub}</div>
+                <div className="text-[15px] font-semibold text-ink">{t.hero.dataScienceStack}</div>
+                <div className="text-[13px] text-ink-tertiary mt-0.5">{t.hero.dataScienceSub}</div>
               </div>
 
               {/* Domain 3: Computer Vision & Robotics */}
-              <div className="py-3">
-                <div className="flex items-center justify-between mb-1">
-                  <div className="flex items-center gap-2 text-cyan-400 text-xs font-mono font-semibold">
-                    <Eye size={15} />
+              <div className="rounded-lg bg-surface-alt px-3.5 py-3">
+                <div className="flex items-center justify-between gap-2 mb-1">
+                  <div className="flex items-center gap-2 text-dominant-ink text-[13px] font-semibold">
+                    <Eye size={15} aria-hidden="true" />
                     <span>{t.hero.visionTitle}</span>
                   </div>
-                  <span className="text-xs font-mono text-zinc-400">{t.hero.visionBadge}</span>
+                  <span className="text-xs font-mono text-ink-tertiary">{t.hero.visionBadge}</span>
                 </div>
-                <div className="text-sm font-semibold text-white">{t.hero.visionStack}</div>
-                <div className="text-xs text-zinc-400 font-mono mt-0.5">{t.hero.visionSub}</div>
+                <div className="text-[15px] font-semibold text-ink">{t.hero.visionStack}</div>
+                <div className="text-[13px] text-ink-tertiary mt-0.5">{t.hero.visionSub}</div>
               </div>
 
               {/* Domain 4: Cloud Infrastructure */}
-              <div className="py-3 last:pb-0">
-                <div className="flex items-center justify-between mb-1">
-                  <div className="flex items-center gap-2 text-emerald-400 text-xs font-mono font-semibold">
-                    <Cloud size={15} />
+              <div className="rounded-lg bg-surface-alt px-3.5 py-3">
+                <div className="flex items-center justify-between gap-2 mb-1">
+                  <div className="flex items-center gap-2 text-accent-ink text-[13px] font-semibold">
+                    <Cloud size={15} aria-hidden="true" />
                     <span>{t.hero.cloudTitle}</span>
                   </div>
-                  <span className="text-xs font-mono text-zinc-400">{t.hero.cloudBadge}</span>
+                  <span className="text-xs font-mono text-ink-tertiary">{t.hero.cloudBadge}</span>
                 </div>
-                <div className="text-sm font-semibold text-white">{t.hero.cloudStack}</div>
-                <div className="text-xs text-zinc-400 font-mono mt-0.5">{t.hero.cloudSub}</div>
+                <div className="text-[15px] font-semibold text-ink">{t.hero.cloudStack}</div>
+                <div className="text-[13px] text-ink-tertiary mt-0.5">{t.hero.cloudSub}</div>
               </div>
             </div>
 
             {/* Bottom Bar Telemetry Info */}
-            <div className="mt-4 pt-3 border-t border-white/5 flex items-center justify-between text-xs font-mono text-zinc-400">
+            <div className="mt-4 pt-3 flex items-center justify-between text-xs font-mono text-ink-tertiary">
               <span>{t.hero.bottomStack}</span>
-              <span className="text-emerald-400 font-medium">{t.hero.bottomStatus}</span>
+              <span className="text-accent-ink font-semibold">{t.hero.bottomStatus}</span>
             </div>
           </div>
         </div>
@@ -204,36 +230,38 @@ export default function HeroNetworking() {
               onClick={(e) => e.stopPropagation()}
               role="dialog"
               aria-modal="true"
-              aria-label={t.hero.qrModalTitle}
-              className="relative w-full max-w-sm bg-[#121216] border border-white/15 p-6 rounded-xl shadow-2xl flex flex-col items-center text-center"
+              aria-labelledby="qr-modal-title"
+              className="relative w-full max-w-sm bg-modal-bg border border-modal-edge p-6 rounded-xl shadow-2xl flex flex-col items-center text-center"
             >
               <button
+                ref={closeButtonRef}
                 type="button"
                 onClick={() => setShowQrModal(false)}
-                className="absolute top-4 right-4 text-zinc-400 hover:text-white p-1 rounded-lg transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400 cursor-pointer min-h-[28px] min-w-[28px] flex items-center justify-center"
+                className="absolute top-3.5 right-3.5 text-ink-tertiary hover:text-ink p-1.5 rounded-lg transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-dominant cursor-pointer min-h-[36px] min-w-[36px] flex items-center justify-center"
                 aria-label={t.hero.qrModalClose}
               >
-                <X size={20} />
+                <X size={20} aria-hidden="true" />
               </button>
 
-              <h3 className="text-lg font-bold text-white mb-1 font-display">{t.hero.qrModalTitle}</h3>
-              <p className="text-xs text-zinc-400 mb-5 max-w-[260px]">
+              <h3 id="qr-modal-title" className="text-lg font-bold text-ink mb-1 font-display">{t.hero.qrModalTitle}</h3>
+              <p className="text-[13px] text-ink-tertiary mb-5 max-w-[260px]">
                 {t.hero.qrModalDesc}
               </p>
 
-              <div className="p-3 bg-white rounded-xl shadow-inner mb-4">
+              <div className="p-3 bg-white rounded-xl border border-edge mb-4">
                 <img src={qrCodeUrl} alt={t.hero.qrModalAlt} className="w-48 h-48 object-contain" />
               </div>
 
               <div className="w-full flex gap-2">
                 <a
+                  ref={modalActionRef}
                   href={linkedInUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 py-2.5 rounded-lg bg-cyan-400 hover:bg-cyan-300 text-zinc-950 text-xs font-mono font-bold flex items-center justify-center gap-1.5 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+                  className="flex-1 py-2.5 min-h-[42px] rounded-lg bg-dominant hover:bg-dominant-hover text-on-dominant text-sm font-semibold flex items-center justify-center gap-1.5 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-dominant"
                 >
                   <span>{t.hero.qrModalAction}</span>
-                  <ExternalLink size={13} />
+                  <ExternalLink size={14} aria-hidden="true" />
                 </a>
               </div>
             </motion.div>
