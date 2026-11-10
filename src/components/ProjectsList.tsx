@@ -94,6 +94,7 @@ export default function ProjectsList({ projects }: Props) {
         hardwareBadges: p.data.hardwareBadges || [],
         techs: p.data.techs || [],
         technicalHighlights: localized?.technicalHighlights || p.data.technicalHighlights || [],
+        featured: p.data.featured,
         githubUrl: p.data.github,
         liveDemoUrl: p.data.live,
       };
@@ -116,32 +117,32 @@ export default function ProjectsList({ projects }: Props) {
   return (
     <div className="w-full">
       {/* Section Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 border-b border-white/10 pb-6">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 pb-2">
         <div>
-          <h2 className="text-3xl md:text-5xl font-extrabold text-white font-display">
+          <h2 className="text-3xl md:text-5xl font-extrabold text-ink font-display">
             {t.projects.sectionTitle}
           </h2>
-          <p className="text-zinc-400 text-sm md:text-base mt-2 max-w-2xl">
+          <p className="text-ink-tertiary text-sm md:text-base mt-2.5 max-w-2xl">
             {t.projects.sectionSubtitle}
           </p>
         </div>
       </div>
 
       {/* Strategic Filter Tabs */}
-      <div className="flex flex-wrap items-center justify-center gap-2 mb-10">
+      <div className="flex flex-wrap items-center justify-start md:justify-center gap-2 mb-10">
         <button
           type="button"
           onClick={() => setActiveTab('all')}
           aria-pressed={activeTab === 'all'}
-          className={`flex items-center gap-2 px-4 py-2.5 md:py-2 rounded-lg text-xs font-mono font-medium transition-all duration-200 cursor-pointer min-h-[42px] md:min-h-[36px] focus:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400 ${
+          className={`flex items-center gap-2 px-4 py-2 rounded-lg text-[13px] font-sans font-medium transition-colors duration-200 cursor-pointer min-h-[40px] focus:outline-none focus-visible:ring-2 focus-visible:ring-dominant ${
             activeTab === 'all'
-              ? 'bg-cyan-400/15 text-cyan-300 border border-cyan-400/40 shadow-sm'
-              : 'bg-[#121216]/80 text-zinc-400 hover:text-white border border-white/10 hover:border-white/20'
+              ? 'bg-dominant-soft text-dominant-ink border border-dominant-edge'
+              : 'bg-surface text-ink-tertiary hover:text-ink border border-edge hover:border-edge-strong'
           }`}
         >
-          <Sparkles size={14} className={activeTab === 'all' ? 'text-cyan-400' : ''} aria-hidden="true" />
+          <Sparkles size={14} className={activeTab === 'all' ? 'text-dominant-ink' : ''} aria-hidden="true" />
           <span>{t.projects.tabAll}</span>
-          <span className="text-xs font-mono px-1.5 py-0.5 rounded bg-white/10 text-zinc-300 tabular-nums">
+          <span className="text-xs font-mono px-1.5 py-0.5 rounded bg-control text-ink-secondary tabular-nums">
             {mappedProjects.length}
           </span>
         </button>
@@ -150,15 +151,15 @@ export default function ProjectsList({ projects }: Props) {
           type="button"
           onClick={() => setActiveTab('data-engineering')}
           aria-pressed={activeTab === 'data-engineering'}
-          className={`flex items-center gap-2 px-4 py-2.5 md:py-2 rounded-lg text-xs font-mono font-medium transition-all duration-200 cursor-pointer min-h-[42px] md:min-h-[36px] focus:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400 ${
+          className={`flex items-center gap-2 px-4 py-2 rounded-lg text-[13px] font-sans font-medium transition-colors duration-200 cursor-pointer min-h-[40px] focus:outline-none focus-visible:ring-2 focus-visible:ring-dominant ${
             activeTab === 'data-engineering'
-              ? 'bg-cyan-400/15 text-cyan-300 border border-cyan-400/40 shadow-sm'
-              : 'bg-[#121216]/80 text-zinc-400 hover:text-cyan-300 border border-white/10 hover:border-cyan-400/30'
+              ? 'bg-dominant-soft text-dominant-ink border border-dominant-edge'
+              : 'bg-surface text-ink-tertiary hover:text-dominant-ink border border-edge hover:border-dominant-edge'
           }`}
         >
-          <Database size={14} className="text-cyan-400" aria-hidden="true" />
+          <Database size={14} className="text-dominant-ink" aria-hidden="true" />
           <span>{t.projects.tabDataEng}</span>
-          <span className="text-xs font-mono px-1.5 py-0.5 rounded bg-cyan-400/10 text-cyan-300 tabular-nums border border-cyan-400/20">
+          <span className="text-xs font-mono px-1.5 py-0.5 rounded bg-dominant-soft text-dominant-ink tabular-nums border border-dominant-edge">
             {mappedProjects.filter((p) => p.category === 'data-engineering').length}
           </span>
         </button>
@@ -167,15 +168,15 @@ export default function ProjectsList({ projects }: Props) {
           type="button"
           onClick={() => setActiveTab('data-science')}
           aria-pressed={activeTab === 'data-science'}
-          className={`flex items-center gap-2 px-4 py-2.5 md:py-2 rounded-lg text-xs font-mono font-medium transition-all duration-200 cursor-pointer min-h-[42px] md:min-h-[36px] focus:outline-none focus-visible:ring-1 focus-visible:ring-emerald-400 ${
+          className={`flex items-center gap-2 px-4 py-2 rounded-lg text-[13px] font-sans font-medium transition-colors duration-200 cursor-pointer min-h-[40px] focus:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
             activeTab === 'data-science'
-              ? 'bg-emerald-500/15 text-emerald-300 border border-emerald-500/40 shadow-sm'
-              : 'bg-[#121216]/80 text-zinc-400 hover:text-emerald-300 border border-white/10 hover:border-emerald-500/30'
+              ? 'bg-accent-soft text-accent-ink border border-accent-edge'
+              : 'bg-surface text-ink-tertiary hover:text-accent-ink border border-edge hover:border-accent-edge'
           }`}
         >
-          <BrainCircuit size={14} className="text-emerald-400" aria-hidden="true" />
+          <BrainCircuit size={14} className="text-accent-ink" aria-hidden="true" />
           <span>{t.projects.tabDataScience}</span>
-          <span className="text-xs font-mono px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-300 tabular-nums border border-emerald-500/20">
+          <span className="text-xs font-mono px-1.5 py-0.5 rounded bg-accent-soft text-accent-ink tabular-nums border border-accent-edge">
             {mappedProjects.filter((p) => p.category === 'data-science').length}
           </span>
         </button>
@@ -184,15 +185,15 @@ export default function ProjectsList({ projects }: Props) {
           type="button"
           onClick={() => setActiveTab('computer-vision')}
           aria-pressed={activeTab === 'computer-vision'}
-          className={`flex items-center gap-2 px-4 py-2.5 md:py-2 rounded-lg text-xs font-mono font-medium transition-all duration-200 cursor-pointer min-h-[42px] md:min-h-[36px] focus:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400 ${
+          className={`flex items-center gap-2 px-4 py-2 rounded-lg text-[13px] font-sans font-medium transition-colors duration-200 cursor-pointer min-h-[40px] focus:outline-none focus-visible:ring-2 focus-visible:ring-dominant ${
             activeTab === 'computer-vision'
-              ? 'bg-cyan-400/15 text-cyan-300 border border-cyan-400/40 shadow-sm'
-              : 'bg-[#121216]/80 text-zinc-400 hover:text-cyan-300 border border-white/10 hover:border-cyan-400/30'
+              ? 'bg-dominant-soft text-dominant-ink border border-dominant-edge'
+              : 'bg-surface text-ink-tertiary hover:text-dominant-ink border border-edge hover:border-dominant-edge'
           }`}
         >
-          <Eye size={14} className="text-cyan-400" aria-hidden="true" />
+          <Eye size={14} className="text-dominant-ink" aria-hidden="true" />
           <span>{t.projects.tabVision}</span>
-          <span className="text-xs font-mono px-1.5 py-0.5 rounded bg-cyan-400/10 text-cyan-300 tabular-nums border border-cyan-400/20">
+          <span className="text-xs font-mono px-1.5 py-0.5 rounded bg-dominant-soft text-dominant-ink tabular-nums border border-dominant-edge">
             {mappedProjects.filter((p) => p.category === 'computer-vision').length}
           </span>
         </button>

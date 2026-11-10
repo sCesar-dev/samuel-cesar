@@ -8,8 +8,8 @@ live: "#"
 featured: false
 order: 9
 images: 
-  - "/images/veterinary_clinic/veterinary_clinic_img1.png"
   - "/images/veterinary_clinic/veterinary_clinic_img2.png"
+  - "/images/veterinary_clinic/veterinary_clinic_img1.png"
   - "/images/veterinary_clinic/veterinary_clinic_img3.png"
 ---
 

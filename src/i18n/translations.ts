@@ -14,6 +14,7 @@ export interface TranslationSchema {
     menuAria: string;
   };
   theme: {
+    label: string;
     toggleLight: string;
     toggleDark: string;
     currentDark: string;
@@ -78,6 +79,8 @@ export interface TranslationSchema {
     architectureDataEngFlow: string;
     hardwareLabel: string;
     highlightsLabel: string;
+    showMoreHighlights: string;
+    showLessHighlights: string;
     btnCode: string;
     btnDemo: string;
     btnDetails: string;
@@ -253,6 +256,7 @@ export const ptBR: TranslationSchema = {
     menuAria: "Menu móvel principal",
   },
   theme: {
+    label: "Tema",
     toggleLight: "Alternar para tema claro",
     toggleDark: "Alternar para tema escuro",
     currentDark: "Tema escuro ativo",
@@ -312,11 +316,13 @@ export const ptBR: TranslationSchema = {
     viewMedia: "Mídia",
     viewArchitecture: "Arquitetura",
     architectureTopology: "Topologia de Pipeline & Nós",
-    architectureDataScienceFlow: "EDA & Tratamento ➔ ColumnTransformer ➔ Random Forest ➔ Inferência Contrafactual",
-    architectureVisionFlow: "Câmera RGB-D ➔ YOLOv8 ➔ Fusão 3D ➔ MoveIt 2 (OMPL) ➔ Atuadores",
-    architectureDataEngFlow: "Ingestão Dados ➔ Grafo Ponderado ➔ Indexador B-Tree O(log n) ➔ Dijkstra Min-Cost",
+    architectureDataScienceFlow: "EDA & Tratamento → ColumnTransformer → Random Forest → Inferência Contrafactual",
+    architectureVisionFlow: "Câmera RGB-D → YOLOv8 → Fusão 3D → MoveIt 2 (OMPL) → Atuadores",
+    architectureDataEngFlow: "Ingestão Dados → Grafo Ponderado → Indexador B-Tree O(log n) → Dijkstra Min-Cost",
     hardwareLabel: "HW/Infra:",
-    highlightsLabel: "Highlights de Engenharia:",
+    highlightsLabel: "Highlights de Engenharia",
+    showMoreHighlights: "Ver mais ({count})",
+    showLessHighlights: "Mostrar menos",
     btnCode: "Código",
     btnDemo: "Demo",
     btnDetails: "Detalhes",
@@ -381,7 +387,7 @@ export const ptBR: TranslationSchema = {
     compVisionDesc: "YOLOv8, Amazon Rekognition, ROS 2, C++ moderno e fusão sensorial de dados 3D.",
     compCloudTitle: "Nuvem AWS & DevOps",
     compCloudDesc: "Lambda serverless, S3, SAM CLI (IaC), CloudWatch, Docker e ambientes Linux.",
-    awardsHeader: "Premiações & Reconhecimento:",
+    awardsHeader: "Premiações & Reconhecimento",
     awardHackathonTitle: "1º Lugar: Hackathon UFBA 2026",
     awardHackathonDesc: "BioPoints: Modelagem Preditiva de Fidelidade",
     awardCbrTitle: "Competidor: CBR 2024 / 2025",
@@ -521,6 +527,7 @@ export const enUS: TranslationSchema = {
     menuAria: "Main mobile navigation",
   },
   theme: {
+    label: "Theme",
     toggleLight: "Switch to light theme",
     toggleDark: "Switch to dark theme",
     currentDark: "Dark theme active",
@@ -580,11 +587,13 @@ export const enUS: TranslationSchema = {
     viewMedia: "Media",
     viewArchitecture: "Architecture",
     architectureTopology: "Pipeline & Node Topology",
-    architectureDataScienceFlow: "EDA & Preprocessing ➔ ColumnTransformer ➔ Random Forest ➔ Counterfactual Inference",
-    architectureVisionFlow: "RGB-D Camera ➔ YOLOv8 ➔ 3D Fusion ➔ MoveIt 2 (OMPL) ➔ Actuators",
-    architectureDataEngFlow: "Data Ingestion ➔ Weighted Graph ➔ B-Tree Indexer O(log n) ➔ Dijkstra Min-Cost",
+    architectureDataScienceFlow: "EDA & Preprocessing → ColumnTransformer → Random Forest → Counterfactual Inference",
+    architectureVisionFlow: "RGB-D Camera → YOLOv8 → 3D Fusion → MoveIt 2 (OMPL) → Actuators",
+    architectureDataEngFlow: "Data Ingestion → Weighted Graph → B-Tree Indexer O(log n) → Dijkstra Min-Cost",
     hardwareLabel: "HW/Infra:",
-    highlightsLabel: "Engineering Highlights:",
+    highlightsLabel: "Engineering Highlights",
+    showMoreHighlights: "Show more ({count})",
+    showLessHighlights: "Show less",
     btnCode: "Code",
     btnDemo: "Demo",
     btnDetails: "Details",
@@ -649,7 +658,7 @@ export const enUS: TranslationSchema = {
     compVisionDesc: "YOLOv8, Amazon Rekognition, ROS 2, modern C++, and 3D sensory data fusion.",
     compCloudTitle: "AWS Cloud & DevOps",
     compCloudDesc: "Serverless Lambda, S3, SAM CLI (IaC), CloudWatch, Docker, and Linux environments.",
-    awardsHeader: "Awards & Recognition:",
+    awardsHeader: "Awards & Recognition",
     awardHackathonTitle: "1st Place: UFBA Hackathon 2026",
     awardHackathonDesc: "BioPoints: Predictive Loyalty & Carbon Modeling",
     awardCbrTitle: "Competitor: CBR 2024 / 2025",
@@ -756,7 +765,7 @@ export const enUS: TranslationSchema = {
       technicalHighlights: [
         "Comprehensive medical record history for diagnoses, treatments, and patient clinical evolution.",
         "Smart vaccine card module tracking immunization schedules and automated return dates.",
-        "Fluid interface built with Java Swing and CardLayout manager for seamless single-window navigation."
+        "Single-window desktop interface built with Java Swing and CardLayout manager."
       ]
     },
     virtualstore: {

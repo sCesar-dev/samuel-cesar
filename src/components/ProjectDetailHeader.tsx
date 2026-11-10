@@ -33,23 +33,23 @@ export default function ProjectDetailHeader({
     <>
       <a 
         href={`${baseUrl}/#projects`} 
-        className="inline-flex items-center gap-2 text-zinc-400 hover:text-cyan-400 font-mono text-xs uppercase tracking-wider transition-colors mb-8 group focus:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400"
+        className="inline-flex items-center gap-2 text-ink-tertiary hover:text-dominant-ink text-sm font-medium transition-colors mb-8 group min-h-[36px] focus:outline-none focus-visible:ring-2 focus-visible:ring-dominant rounded"
       >
         <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" aria-hidden="true" />
         <span>{t.projectDetail.backToProjects}</span>
       </a>
 
-      <header className="mb-12 border-b border-white/10 pb-8 transition-colors">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-4 font-display">
+      <header className="mb-12 border-b border-edge pb-8 transition-colors">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-ink mb-4 font-display">
           {title}
         </h1>
-        <p className="text-base sm:text-lg text-zinc-300 mb-6 max-w-3xl leading-relaxed">
+        <p className="text-base sm:text-lg text-ink-secondary mb-6 max-w-3xl leading-relaxed">
           {description}
         </p>
         
         <div className="flex flex-wrap gap-1.5 mb-6">
           {techs.map((tech) => (
-            <span key={tech} className="px-2.5 py-1 rounded text-xs font-mono bg-white/[0.04] text-zinc-300 border border-white/10">
+            <span key={tech} className="px-2.5 py-1 rounded text-[13px] font-mono bg-surface-alt text-ink-secondary border border-edge-subtle">
               {tech}
             </span>
           ))}
@@ -61,7 +61,7 @@ export default function ProjectDetailHeader({
               href={github} 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-zinc-300 hover:text-cyan-400 font-mono text-xs transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400"
+              className="inline-flex items-center gap-2 min-h-[36px] text-ink-secondary hover:text-dominant-ink text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-dominant rounded"
             >
               <Github size={16} aria-hidden="true" />
               <span>{t.projectDetail.viewSource}</span>
@@ -72,7 +72,7 @@ export default function ProjectDetailHeader({
               href={live} 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-mono text-xs transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400"
+              className="inline-flex items-center gap-2 min-h-[36px] text-dominant-ink hover:text-dominant text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-dominant rounded"
             >
               <SquareArrowOutUpRight size={15} aria-hidden="true" />
               <span>{t.projectDetail.liveDemo}</span>
