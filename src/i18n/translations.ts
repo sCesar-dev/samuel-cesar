@@ -14,6 +14,7 @@ export interface TranslationSchema {
     menuAria: string;
   };
   theme: {
+    label: string;
     toggleLight: string;
     toggleDark: string;
     currentDark: string;
@@ -255,6 +256,7 @@ export const ptBR: TranslationSchema = {
     menuAria: "Menu móvel principal",
   },
   theme: {
+    label: "Tema",
     toggleLight: "Alternar para tema claro",
     toggleDark: "Alternar para tema escuro",
     currentDark: "Tema escuro ativo",
@@ -385,7 +387,7 @@ export const ptBR: TranslationSchema = {
     compVisionDesc: "YOLOv8, Amazon Rekognition, ROS 2, C++ moderno e fusão sensorial de dados 3D.",
     compCloudTitle: "Nuvem AWS & DevOps",
     compCloudDesc: "Lambda serverless, S3, SAM CLI (IaC), CloudWatch, Docker e ambientes Linux.",
-    awardsHeader: "Premiações & Reconhecimento:",
+    awardsHeader: "Premiações & Reconhecimento",
     awardHackathonTitle: "1º Lugar: Hackathon UFBA 2026",
     awardHackathonDesc: "BioPoints: Modelagem Preditiva de Fidelidade",
     awardCbrTitle: "Competidor: CBR 2024 / 2025",
@@ -525,6 +527,7 @@ export const enUS: TranslationSchema = {
     menuAria: "Main mobile navigation",
   },
   theme: {
+    label: "Theme",
     toggleLight: "Switch to light theme",
     toggleDark: "Switch to dark theme",
     currentDark: "Dark theme active",
@@ -655,7 +658,7 @@ export const enUS: TranslationSchema = {
     compVisionDesc: "YOLOv8, Amazon Rekognition, ROS 2, modern C++, and 3D sensory data fusion.",
     compCloudTitle: "AWS Cloud & DevOps",
     compCloudDesc: "Serverless Lambda, S3, SAM CLI (IaC), CloudWatch, Docker, and Linux environments.",
-    awardsHeader: "Awards & Recognition:",
+    awardsHeader: "Awards & Recognition",
     awardHackathonTitle: "1st Place: UFBA Hackathon 2026",
     awardHackathonDesc: "BioPoints: Predictive Loyalty & Carbon Modeling",
     awardCbrTitle: "Competitor: CBR 2024 / 2025",
@@ -762,7 +765,7 @@ export const enUS: TranslationSchema = {
       technicalHighlights: [
         "Comprehensive medical record history for diagnoses, treatments, and patient clinical evolution.",
         "Smart vaccine card module tracking immunization schedules and automated return dates.",
-        "Fluid interface built with Java Swing and CardLayout manager for seamless single-window navigation."
+        "Single-window desktop interface built with Java Swing and CardLayout manager."
       ]
     },
     virtualstore: {
