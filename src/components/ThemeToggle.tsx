@@ -24,15 +24,15 @@ export default function ThemeToggle({ className = '', showLabel = false }: Theme
       aria-label={label}
       aria-pressed={isDark}
       title={label}
-      className={`min-w-[36px] min-h-[36px] p-2 rounded-lg inline-flex items-center justify-center gap-2 cursor-pointer transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 active:scale-95 text-zinc-300 hover:text-white bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 ${className}`}
+      className={`min-w-[36px] min-h-[36px] p-2 rounded-lg inline-flex items-center justify-center gap-2 cursor-pointer transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-dominant active:scale-95 text-ink-secondary hover:text-ink bg-control hover:bg-control-hover border border-edge ${className}`}
     >
       {isDark ? (
         <Sun size={17} className="text-amber-400 shrink-0" aria-hidden="true" />
       ) : (
-        <Moon size={17} className="text-cyan-600 shrink-0" aria-hidden="true" />
+        <Moon size={17} className="text-dominant-ink shrink-0" aria-hidden="true" />
       )}
       {showLabel && (
-        <span className="text-xs font-mono font-medium">
+        <span className="text-[13px] font-sans font-medium">
           {isDark ? t.theme.darkLabel : t.theme.lightLabel}
         </span>
       )}
