@@ -89,41 +89,42 @@ export default function ProjectCardVisual({ project, className = '' }: ProjectCa
       {/* Media & Interactive Toggle Header (dark-locked surface for image contrast) */}
       <div className="media-header relative h-60 w-full bg-zinc-950 overflow-hidden border-b border-white/10">
         
-        {/* Toggle between Live Preview and Architecture */}
-        <div className="absolute top-3 right-3 z-20 flex bg-zinc-950/90 backdrop-blur-md rounded-lg p-0.5 border border-zinc-700/60 text-xs font-sans">
-          <button
-            type="button"
-            onClick={() => setViewMode('preview')}
-            aria-pressed={viewMode === 'preview'}
-            className={`px-3 py-1.5 rounded-md transition-colors flex items-center gap-1.5 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 min-h-[36px] ${
-              viewMode === 'preview' 
-                ? getThemeColorClass()
-                : 'text-zinc-300 hover:text-white'
-            }`}
-          >
-            <Play size={13} aria-hidden="true" />
-            <span>{t.projects.viewMedia}</span>
-          </button>
-          <button
-            type="button"
-            onClick={() => setViewMode('architecture')}
-            aria-pressed={viewMode === 'architecture'}
-            className={`px-3 py-1.5 rounded-md transition-colors flex items-center gap-1.5 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 min-h-[36px] ${
-              viewMode === 'architecture' 
-                ? getThemeColorClass()
-                : 'text-zinc-300 hover:text-white'
-            }`}
-          >
-            <Network size={13} aria-hidden="true" />
-            <span>{t.projects.viewArchitecture}</span>
-          </button>
-        </div>
-
-        {/* Category Pill */}
-        <div className="absolute top-3 left-3 z-20">
-          <span className={`px-2.5 py-1 rounded-md text-xs font-sans font-semibold backdrop-blur-md border ${getCategoryBadgeClass()}`}>
+        {/* Top Overlay Controls Bar (flex-wrap prevents pill collision on narrow 390px cards) */}
+        <div className="absolute top-2.5 inset-x-2.5 z-20 flex flex-wrap items-center justify-between gap-1.5 pointer-events-none">
+          {/* Category Pill */}
+          <span className={`pointer-events-auto max-w-full truncate px-2.5 py-1 rounded-md text-xs font-sans font-semibold backdrop-blur-md border ${getCategoryBadgeClass()}`}>
             {project.categoryLabel || categoryFallback}
           </span>
+
+          {/* Toggle between Live Preview and Architecture */}
+          <div className="pointer-events-auto ml-auto flex bg-zinc-950/90 backdrop-blur-md rounded-lg p-0.5 border border-zinc-700/60 text-xs font-sans">
+            <button
+              type="button"
+              onClick={() => setViewMode('preview')}
+              aria-pressed={viewMode === 'preview'}
+              className={`px-2 sm:px-2.5 py-1 rounded-md transition-colors flex items-center gap-1.5 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 min-h-[36px] ${
+                viewMode === 'preview' 
+                  ? getThemeColorClass()
+                  : 'text-zinc-300 hover:text-white'
+              }`}
+            >
+              <Play size={13} aria-hidden="true" />
+              <span>{t.projects.viewMedia}</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setViewMode('architecture')}
+              aria-pressed={viewMode === 'architecture'}
+              className={`px-2 sm:px-2.5 py-1 rounded-md transition-colors flex items-center gap-1.5 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 min-h-[36px] ${
+                viewMode === 'architecture' 
+                  ? getThemeColorClass()
+                  : 'text-zinc-300 hover:text-white'
+              }`}
+            >
+              <Network size={13} aria-hidden="true" />
+              <span>{t.projects.viewArchitecture}</span>
+            </button>
+          </div>
         </div>
 
         {/* Media Content */}
@@ -177,7 +178,7 @@ export default function ProjectCardVisual({ project, className = '' }: ProjectCa
 
         {/* Live Metrics Overlay at the Bottom of Media */}
         {project.metrics && Object.keys(project.metrics).length > 0 && (
-          <div className="media-overlay absolute bottom-0 inset-x-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/85 to-transparent p-3 pt-6 flex flex-wrap gap-4 text-xs font-mono">
+          <div className="media-overlay absolute bottom-0 inset-x-0 p-3 pt-6 flex flex-wrap gap-4 text-xs font-mono">
             {Object.entries(project.metrics).map(([key, value]) => (
               <div key={key} className="flex items-center gap-1.5 text-zinc-300">
                 <Activity size={12} className={getIconColorClass()} aria-hidden="true" />

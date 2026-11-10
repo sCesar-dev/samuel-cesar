@@ -80,7 +80,8 @@ export default function HeaderNav({ baseUrl, isHome }: HeaderNavProps) {
   }, [mobileMenuOpen]);
 
   return (
-    <header className="fixed top-0 left-0 w-full h-16 bg-header-bg backdrop-blur-md border-b border-header-edge z-50 flex items-center justify-center transition-colors">
+    <>
+      <header className="fixed top-0 left-0 w-full h-16 bg-header-bg backdrop-blur-md border-b border-header-edge z-50 flex items-center justify-center transition-colors">
       <div className="w-full max-w-6xl px-4 md:px-8 flex items-center justify-between gap-2">
         
         {/* Brand Logo */}
@@ -147,8 +148,9 @@ export default function HeaderNav({ baseUrl, isHome }: HeaderNavProps) {
         </div>
 
       </div>
+    </header>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Drawer rendered outside backdrop-blur header so fixed inset-0 covers full viewport */}
       {mobileMenuOpen && (
         <div 
           ref={drawerRef}
@@ -156,9 +158,9 @@ export default function HeaderNav({ baseUrl, isHome }: HeaderNavProps) {
           role="dialog"
           aria-modal="true"
           aria-label={t.nav.menuAria}
-          className="fixed inset-0 top-16 z-40 bg-canvas md:hidden flex flex-col p-6 overflow-y-auto border-b border-edge"
+          className="fixed inset-0 top-16 z-40 bg-canvas md:hidden flex flex-col px-6 pt-4 pb-8 overflow-y-auto"
         >
-          <nav className="flex flex-col gap-1.5 pt-2 pb-6 border-b border-edge text-base font-medium">
+          <nav className="flex flex-col gap-1.5 pb-6 border-b border-edge text-base font-medium">
             <a 
               href={`${prefix}#home`} 
               onClick={() => closeDrawer(false)}
@@ -228,6 +230,6 @@ export default function HeaderNav({ baseUrl, isHome }: HeaderNavProps) {
           </div>
         </div>
       )}
-    </header>
+    </>
   );
 }
