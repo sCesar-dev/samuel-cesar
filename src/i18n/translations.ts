@@ -78,6 +78,8 @@ export interface TranslationSchema {
     architectureDataEngFlow: string;
     hardwareLabel: string;
     highlightsLabel: string;
+    showMoreHighlights: string;
+    showLessHighlights: string;
     btnCode: string;
     btnDemo: string;
     btnDetails: string;
@@ -312,11 +314,13 @@ export const ptBR: TranslationSchema = {
     viewMedia: "Mídia",
     viewArchitecture: "Arquitetura",
     architectureTopology: "Topologia de Pipeline & Nós",
-    architectureDataScienceFlow: "EDA & Tratamento ➔ ColumnTransformer ➔ Random Forest ➔ Inferência Contrafactual",
-    architectureVisionFlow: "Câmera RGB-D ➔ YOLOv8 ➔ Fusão 3D ➔ MoveIt 2 (OMPL) ➔ Atuadores",
-    architectureDataEngFlow: "Ingestão Dados ➔ Grafo Ponderado ➔ Indexador B-Tree O(log n) ➔ Dijkstra Min-Cost",
+    architectureDataScienceFlow: "EDA & Tratamento → ColumnTransformer → Random Forest → Inferência Contrafactual",
+    architectureVisionFlow: "Câmera RGB-D → YOLOv8 → Fusão 3D → MoveIt 2 (OMPL) → Atuadores",
+    architectureDataEngFlow: "Ingestão Dados → Grafo Ponderado → Indexador B-Tree O(log n) → Dijkstra Min-Cost",
     hardwareLabel: "HW/Infra:",
-    highlightsLabel: "Highlights de Engenharia:",
+    highlightsLabel: "Highlights de Engenharia",
+    showMoreHighlights: "Ver mais ({count})",
+    showLessHighlights: "Mostrar menos",
     btnCode: "Código",
     btnDemo: "Demo",
     btnDetails: "Detalhes",
@@ -580,11 +584,13 @@ export const enUS: TranslationSchema = {
     viewMedia: "Media",
     viewArchitecture: "Architecture",
     architectureTopology: "Pipeline & Node Topology",
-    architectureDataScienceFlow: "EDA & Preprocessing ➔ ColumnTransformer ➔ Random Forest ➔ Counterfactual Inference",
-    architectureVisionFlow: "RGB-D Camera ➔ YOLOv8 ➔ 3D Fusion ➔ MoveIt 2 (OMPL) ➔ Actuators",
-    architectureDataEngFlow: "Data Ingestion ➔ Weighted Graph ➔ B-Tree Indexer O(log n) ➔ Dijkstra Min-Cost",
+    architectureDataScienceFlow: "EDA & Preprocessing → ColumnTransformer → Random Forest → Counterfactual Inference",
+    architectureVisionFlow: "RGB-D Camera → YOLOv8 → 3D Fusion → MoveIt 2 (OMPL) → Actuators",
+    architectureDataEngFlow: "Data Ingestion → Weighted Graph → B-Tree Indexer O(log n) → Dijkstra Min-Cost",
     hardwareLabel: "HW/Infra:",
-    highlightsLabel: "Engineering Highlights:",
+    highlightsLabel: "Engineering Highlights",
+    showMoreHighlights: "Show more ({count})",
+    showLessHighlights: "Show less",
     btnCode: "Code",
     btnDemo: "Demo",
     btnDetails: "Details",
