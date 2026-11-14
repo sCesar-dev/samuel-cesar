@@ -1,0 +1,13 @@
+---
+import CertificationsContent from './CertificationsContent';
+import { loadCertifications, loadBadges } from '../lib/portfolioData';
+
+const [certifications, badges] = await Promise.all([
+  loadCertifications(),
+  loadBadges(),
+]);
+---
+
+<section id="certifications" class="py-16 md:py-24 w-full scroll-mt-20 scroll-reveal">
+    <CertificationsContent client:load certifications={certifications} badges={badges} />
+</section>

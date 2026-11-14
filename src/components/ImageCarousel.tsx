@@ -48,7 +48,7 @@ export default function ImageCarousel({ images, altPrefix }: ImageCarouselProps)
 
   return (
     <div 
-      className="relative w-full rounded-xl overflow-hidden border border-edge bg-surface aspect-video flex items-center justify-center group transition-colors touch-pan-y"
+      className="relative w-full overflow-hidden border border-edge bg-surface aspect-video flex items-center justify-center group transition-colors touch-pan-y"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
@@ -70,7 +70,7 @@ export default function ImageCarousel({ images, altPrefix }: ImageCarouselProps)
           <button
             type="button"
             onClick={prevImage}
-            className="absolute left-3 md:left-4 p-2 rounded-lg bg-black/60 text-white hover:bg-cyan-400 hover:text-black transition-opacity transition-colors opacity-90 md:opacity-0 md:group-hover:opacity-100 focus-visible:opacity-100 focus-visible:ring-2 focus-visible:ring-cyan-400 focus:outline-none backdrop-blur-md cursor-pointer border border-white/10 min-h-[44px] min-w-[44px] flex items-center justify-center z-20"
+            className="absolute left-3 md:left-4 p-2 rounded-sm bg-black/60 text-white hover:bg-dominant hover:text-on-dominant transition-opacity transition-colors opacity-90 md:opacity-0 md:group-hover:opacity-100 focus-visible:opacity-100 focus-visible:ring-2 focus-visible:ring-dominant focus:outline-none backdrop-blur-md cursor-pointer border border-white/10 min-h-[44px] min-w-[44px] flex items-center justify-center z-20"
             aria-label={t.projectDetail.prevImage}
           >
             <ChevronLeft size={20} aria-hidden="true" />
@@ -79,7 +79,7 @@ export default function ImageCarousel({ images, altPrefix }: ImageCarouselProps)
           <button
             type="button"
             onClick={nextImage}
-            className="absolute right-3 md:right-4 p-2 rounded-lg bg-black/60 text-white hover:bg-cyan-400 hover:text-black transition-opacity transition-colors opacity-90 md:opacity-0 md:group-hover:opacity-100 focus-visible:opacity-100 focus-visible:ring-2 focus-visible:ring-cyan-400 focus:outline-none backdrop-blur-md cursor-pointer border border-white/10 min-h-[44px] min-w-[44px] flex items-center justify-center z-20"
+            className="absolute right-3 md:right-4 p-2 rounded-sm bg-black/60 text-white hover:bg-dominant hover:text-on-dominant transition-opacity transition-colors opacity-90 md:opacity-0 md:group-hover:opacity-100 focus-visible:opacity-100 focus-visible:ring-2 focus-visible:ring-dominant focus:outline-none backdrop-blur-md cursor-pointer border border-white/10 min-h-[44px] min-w-[44px] flex items-center justify-center z-20"
             aria-label={t.projectDetail.nextImage}
           >
             <ChevronRight size={20} aria-hidden="true" />
@@ -91,11 +91,11 @@ export default function ImageCarousel({ images, altPrefix }: ImageCarouselProps)
                 type="button"
                 key={idx}
                 onClick={() => setCurrentIndex(idx)}
-                className={`min-h-[36px] min-w-[36px] flex items-center justify-center cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400`}
+                className={`min-h-[36px] min-w-[36px] flex items-center justify-center cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-dominant`}
                 aria-label={formatString(t.projectDetail.goToImage, { index: idx + 1 })}
               >
-                <span className={`block rounded-full transition-colors transition-transform ${
-                  idx === currentIndex ? 'bg-cyan-400 w-5 h-2' : 'bg-white/40 hover:bg-white w-2 h-2'
+                <span className={`block transition-colors transition-transform ${
+                  idx === currentIndex ? 'bg-dominant ring-1 ring-white/35 w-5 h-1.5' : 'bg-white/40 hover:bg-white w-2 h-1.5'
                 }`} />
               </button>
             ))}

@@ -1,0 +1,12 @@
+# TODO: adicionar certificações verificadas quando disponíveis.
+# Estrutura esperada para cada item (validada por data/schemas/portfolio.ts):
+# - id: aws-cloud-practitioner
+#   title:
+#     pt: AWS Certified Cloud Practitioner
+#     en: AWS Certified Cloud Practitioner
+#   issuer: Amazon Web Services
+#   issueDate: "2026-05"
+#   credentialId: "ABC-123"
+#   credentialUrl: https://...
+#   tags: [AWS, Cloud]
+[]

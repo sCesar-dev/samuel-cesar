@@ -1,9 +1,25 @@
 ---
 import AboutContent from './AboutContent';
+import { loadAchievements, loadProfile } from '../lib/portfolioData';
 
 const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+const [profile, achievements] = await Promise.all([
+  loadProfile(),
+  loadAchievements(),
+]);
+const awards = achievements.filter((a) => a.kind === 'award');
+const gallery = achievements.filter((a) => a.kind === 'gallery');
 ---
 
 <section id="about" class="py-16 md:py-24 flex flex-col gap-10 w-full scroll-mt-20 scroll-reveal">
-    <AboutContent client:load baseUrl={baseUrl} />
+    <AboutContent
+      client:load
+      baseUrl={baseUrl}
+      ownerName={profile.name}
+      profilePhotoPath={profile.assets.profilePhoto}
+      objectiveTitle={profile.bio.objectiveTitle}
+      bioParagraphs={profile.bio.paragraphs}
+      awards={awards}
+      gallery={gallery}
+    />
 </section>

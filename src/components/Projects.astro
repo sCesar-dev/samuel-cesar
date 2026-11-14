@@ -1,8 +1,8 @@
 ---
-import { getCollection } from 'astro:content';
 import ProjectsList from './ProjectsList.tsx';
+import { loadProjects } from '../lib/portfolioData';
 
-const projects = await getCollection('projects');
+const projects = await loadProjects();
 ---
 
 <section id="projects" class="py-16 md:py-24 w-full scroll-mt-20 scroll-reveal">

@@ -1,0 +1,39 @@
+# Operational Badges & Continuous Platform Achievements (SSOT)
+# Top-level YAML array required by Astro file() loader & scripts/validate-data.ts.
+# Separate from formal certifications (data/certifications.yaml).
+#
+# Autonomous Agent Upsert Protocol (Hermes):
+# - Deduplicate and upsert strictly by `externalId` (e.g. "leetcode:samuel-cesar:100-days").
+# - Keep `pt` and `en` localized parity on `categoryLabel`, `title`, `rankOrMetric`, and `description`.
+# - Never invent unverified ranks, scores, or URLs.
+#
+# Example entry schema (data/schemas/portfolio.ts -> BadgeItemSchema):
+# - id: "leetcode-algorithm-streak"
+#   externalId: "leetcode:scesar-dev:streak"
+#   platform: "LeetCode"
+#   category: "competitive-coding" # bug-bounty | soc-blue-team | pentest-ctf | cryptography | competitive-coding
+#   categoryLabel:
+#     pt: "Algoritmos & LeetCode"
+#     en: "Algorithms & LeetCode"
+#   title:
+#     pt: "..."
+#     en: "..."
+#   rankOrMetric:
+#     pt: "..."
+#     en: "..."
+#   description:
+#     pt: "..."
+#     en: "..."
+#   tone: "accent" # dominant | accent
+#   badgeIcon: "terminal"
+#   badgeImageUrl: null
+#   verifyUrl: "https://..."
+#   issuedAt: "YYYY-MM-DD"
+#   featured: true
+#   order: 1
+#   syncMeta:
+#     sourceAgent: "hermes" # manual | hermes
+#     lastSyncedAt: "2026-11-14T00:00:00Z"
+#     autoUpdate: true
+
+[]

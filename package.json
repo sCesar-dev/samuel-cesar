@@ -2,26 +2,32 @@
   "name": "portifolio_code",
   "type": "module",
   "version": "0.0.1",
+  "engines": {
+    "node": ">=22.0.0",
+    "npm": ">=9.6.5"
+  },
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
+    "validate:data": "node --experimental-strip-types scripts/validate-data.ts",
+    "typecheck": "astro sync && tsc --noEmit",
     "test": "node --test --experimental-strip-types tests/**/*.test.ts"
   },
   "dependencies": {
-    "@astrojs/react": "^4.4.2",
-    "@tailwindcss/vite": "^4.1.18",
-    "@types/react": "^19.2.13",
-    "@types/react-dom": "^19.2.3",
-    "astro": "^5.17.1",
-    "framer-motion": "^12.33.0",
-    "lucide-react": "^0.563.0",
-    "react": "^19.2.4",
-    "react-dom": "^19.2.4",
-    "tailwindcss": "^4.1.18"
+    "@astrojs/react": "4.4.2",
+    "@tailwindcss/vite": "4.1.18",
+    "@types/react": "19.2.13",
+    "@types/react-dom": "19.2.3",
+    "astro": "5.17.1",
+    "framer-motion": "12.33.0",
+    "lucide-react": "0.563.0",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "tailwindcss": "4.1.18"
   },
   "devDependencies": {
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "1.0.7"
   }
 }

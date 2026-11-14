@@ -1,33 +1,127 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Linkedin, 
   FileDown, 
-  Database, 
-  BrainCircuit,
-  Eye,
   QrCode, 
   X, 
   ExternalLink,
   ChevronDown,
-  Cloud,
-  Terminal,
+  Database,
+  BrainCircuit,
+  Eye,
+  Shield,
+  ArrowRight,
   Activity
 } from 'lucide-react';
 import { useI18n } from '../i18n/useI18n';
+import { pickLocalized } from '../i18n/localize';
+import { formatString } from '../i18n/translations';
+import type { LocalizedString, ProjectItem, BadgeItem } from '../../data/schemas/portfolio';
+import type { ProjectTabFilter } from './ProjectsList';
 
-export default function HeroNetworking() {
+type BenchDomain = 'data-engineering' | 'data-science' | 'robotics-cv' | 'cybersecurity';
+
+interface HeroNetworkingProps {
+  name: string;
+  role: LocalizedString;
+  availabilityBadge: LocalizedString;
+  headline: LocalizedString;
+  linkedInUrl: string;
+  resumePath: string;
+  resumeFilename: string;
+  qrCodePath: string;
+  projects: ProjectItem[];
+  badges: BadgeItem[];
+}
+
+export default function HeroNetworking({
+  name,
+  role,
+  availabilityBadge,
+  headline,
+  linkedInUrl,
+  resumePath,
+  resumeFilename,
+  qrCodePath,
+  projects,
+  badges,
+}: HeroNetworkingProps) {
   const [showQrModal, setShowQrModal] = useState(false);
-  const { t } = useI18n();
+  const [activeDomain, setActiveDomain] = useState<BenchDomain>('data-engineering');
+  const { t, locale } = useI18n();
   const triggerRef = useRef<HTMLButtonElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const modalActionRef = useRef<HTMLAnchorElement>(null);
   const wasOpenRef = useRef(false);
 
   const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
-  const linkedInUrl = "https://www.linkedin.com/in/s-cesar/";
-  const resumeUrl = `${baseUrl}/docs/Samuel_Cesar_Curriculum.pdf`;
-  const qrCodeUrl = `${baseUrl}/qrcode.svg`;
+  const resumeUrl = `${baseUrl}${resumePath}`;
+  const qrCodeUrl = `${baseUrl}${qrCodePath}`;
+  const linkedInAria = formatString(t.nav.linkedInAria, { name });
+
+  const domainLeads = useMemo(() => {
+    const byPriority = [...projects].sort((a, b) => {
+      if (a.featured !== b.featured) return a.featured ? -1 : 1;
+      return a.order - b.order;
+    });
+
+    const pickFor = (categories: ProjectItem['category'][]) =>
+      byPriority.find((p) => categories.includes(p.category)) ?? null;
+
+    return {
+      'data-engineering': pickFor(['data-engineering']),
+      'data-science': pickFor(['data-science']),
+      'robotics-cv': pickFor(['robotics-cv', 'computer-vision']),
+      cybersecurity: pickFor(['cybersecurity']),
+    } satisfies Record<BenchDomain, ProjectItem | null>;
+  }, [projects]);
+
+  const activeProject = domainLeads[activeDomain];
+  const hermesBadges = useMemo(
+    () => badges.filter((b) => b.syncMeta.sourceAgent === 'hermes'),
+    [badges]
+  );
+
+  const jumpToProjectsTab = (tab: ProjectTabFilter) => {
+    window.dispatchEvent(new CustomEvent('portfolio:select-project-tab', { detail: { tab } }));
+    document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const domainConfig: Record<
+    BenchDomain,
+    {
+      label: string;
+      tabFilter: ProjectTabFilter;
+      tone: 'dominant' | 'accent';
+      icon: React.ReactNode;
+    }
+  > = {
+    'data-engineering': {
+      label: t.hero.domainDataEng,
+      tabFilter: 'data-engineering',
+      tone: 'dominant',
+      icon: <Database size={15} aria-hidden="true" />,
+    },
+    'data-science': {
+      label: t.hero.domainDataScience,
+      tabFilter: 'data-science',
+      tone: 'accent',
+      icon: <BrainCircuit size={15} aria-hidden="true" />,
+    },
+    'robotics-cv': {
+      label: t.hero.domainVision,
+      tabFilter: 'computer-vision',
+      tone: 'dominant',
+      icon: <Eye size={15} aria-hidden="true" />,
+    },
+    cybersecurity: {
+      label: t.hero.domainCyberSec,
+      tabFilter: 'cybersecurity',
+      tone: 'accent',
+      icon: <Shield size={15} aria-hidden="true" />,
+    },
+  };
 
   useEffect(() => {
     if (showQrModal) {
@@ -66,35 +160,29 @@ export default function HeroNetworking() {
   }, [showQrModal]);
 
   return (
-    <section id="home" className="relative pt-8 pb-16 md:pt-16 md:pb-24 w-full scroll-mt-24">
-      {/* Asymmetric Command-Center Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-        
-        {/* Left Column: Editorial Headline & Pitch (7 cols) */}
-        <div className="lg:col-span-7 flex flex-col items-start text-left space-y-6">
-          
-          {/* Availability Status Indicator */}
-          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-accent-soft border border-accent-edge text-[13px] font-medium text-accent-ink">
-            <span className="inline-flex rounded-full h-2 w-2 bg-accent shrink-0" aria-hidden="true"></span>
-            <span>{t.hero.badge}</span>
-          </div>
-
-          {/* High-Impact Display Typography */}
-          <h1 className="text-[2.125rem] sm:text-5xl lg:text-[3.75rem] font-extrabold text-ink leading-[1.08] tracking-[-0.02em] font-display">
-            {t.hero.greeting} <br />
-            <span className="text-dominant-ink">{t.hero.role}</span>
+    <section id="home" className="relative pt-6 pb-14 md:pt-12 md:pb-20 w-full scroll-mt-24">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+        {/* Left Column (7/12): High-Contrast Asymmetric Editorial Hero */}
+        <div className="lg:col-span-7 flex flex-col items-start text-left space-y-6 pt-1">
+          <h1 className="text-[2.25rem] sm:text-5xl lg:text-[3.75rem] xl:text-[4.25rem] font-extrabold text-ink leading-[1.04] tracking-[-0.025em] font-display">
+            {name}, <br />
+            <span className="text-dominant-ink">{pickLocalized(role, locale)}</span>
           </h1>
 
-          {/* Refined Copy */}
-          <p className="text-base sm:text-lg text-ink-secondary leading-relaxed max-w-[56ch]">
-            {t.hero.pitch}
+          <p className="text-base sm:text-lg text-ink-secondary leading-relaxed max-w-[54ch]">
+            {pickLocalized(headline, locale)}
           </p>
 
-          {/* Direct Tactical Actions with Clear Visual Hierarchy */}
+          <p className="inline-flex items-center gap-2.5 text-sm font-medium text-ink-secondary">
+            <span className="inline-flex h-2 w-2 bg-dominant shrink-0" aria-hidden="true"></span>
+            <span>{pickLocalized(availabilityBadge, locale)}</span>
+          </p>
+
+          {/* Direct Tactical Actions */}
           <div className="flex flex-wrap items-center gap-3 pt-2">
             <a
               href="#projects"
-              className="inline-flex items-center gap-2 px-5 py-3 min-h-[44px] rounded-lg bg-dominant hover:bg-dominant-hover text-on-dominant font-display font-bold text-sm transition-colors transition-transform duration-200 active:scale-[0.98] whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-dominant cursor-pointer"
+              className="inline-flex items-center gap-2 px-5 py-3 min-h-[44px] rounded-sm bg-dominant hover:bg-dominant-hover text-on-dominant font-display font-bold text-sm transition-colors transition-transform duration-200 active:scale-[0.98] whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-dominant cursor-pointer"
             >
               <span>{t.hero.exploreProjects}</span>
               <ChevronDown size={16} aria-hidden="true" />
@@ -102,8 +190,8 @@ export default function HeroNetworking() {
 
             <a
               href={resumeUrl}
-              download="Samuel_Cesar_Curriculum.pdf"
-              className="inline-flex items-center gap-2 px-4 py-3 min-h-[44px] rounded-lg bg-control hover:bg-control-hover text-ink border border-edge-strong text-sm font-medium transition-colors transition-transform duration-200 active:scale-[0.98] whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-dominant cursor-pointer"
+              download={resumeFilename}
+              className="inline-flex items-center gap-2 px-4 py-3 min-h-[44px] rounded-sm bg-control hover:bg-control-hover text-ink border border-edge-strong text-sm font-medium transition-colors transition-transform duration-200 active:scale-[0.98] whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-dominant cursor-pointer"
             >
               <FileDown size={16} className="text-dominant-ink shrink-0" aria-hidden="true" />
               <span>{t.hero.curriculumPdf}</span>
@@ -114,7 +202,7 @@ export default function HeroNetworking() {
                 ref={triggerRef}
                 type="button"
                 onClick={() => setShowQrModal(true)}
-                className="inline-flex items-center gap-1.5 px-3.5 py-2.5 min-h-[44px] rounded-lg text-ink-secondary hover:text-ink hover:bg-control text-sm font-medium transition-colors cursor-pointer whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                className="inline-flex items-center gap-1.5 px-3.5 py-2.5 min-h-[44px] rounded-sm text-ink-secondary hover:text-ink hover:bg-control text-sm font-medium transition-colors cursor-pointer whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
               >
                 <QrCode size={16} className="text-accent-ink shrink-0" aria-hidden="true" />
                 <span>{t.hero.mobileQr}</span>
@@ -124,8 +212,8 @@ export default function HeroNetworking() {
                 href={linkedInUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={t.nav.linkedInAria}
-                className="inline-flex items-center gap-1.5 px-3 py-2.5 min-h-[44px] text-sm font-medium text-ink-tertiary hover:text-dominant-ink transition-colors whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-dominant rounded-lg"
+                aria-label={linkedInAria}
+                className="inline-flex items-center gap-1.5 px-3 py-2.5 min-h-[44px] text-sm font-medium text-ink-tertiary hover:text-dominant-ink transition-colors whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-dominant rounded-sm"
               >
                 <Linkedin size={16} aria-hidden="true" />
                 <span>{t.hero.linkedIn}</span>
@@ -134,85 +222,192 @@ export default function HeroNetworking() {
           </div>
         </div>
 
-        {/* Right Column: Telemetry & Core Domains Console (5 cols) */}
-        <div className="lg:col-span-5 w-full">
-          <div className="rounded-xl border border-edge bg-surface p-5 sm:p-6 relative overflow-hidden transition-colors">
-            
-            {/* Header Telemetry Bar */}
-            <div className="flex items-center justify-between pb-3.5 mb-4 text-xs">
-              <div className="flex items-center gap-2 text-ink-tertiary">
-                <Terminal size={14} className="text-dominant-ink" aria-hidden="true" />
-                <span className="font-semibold text-ink-secondary tracking-wide text-[13px]">{t.hero.telemetryTitle}</span>
-              </div>
-              <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-accent-soft text-accent-ink text-xs font-mono font-medium">
-                <Activity size={12} aria-hidden="true" />
-                <span>{t.hero.telemetryStatus}</span>
-              </div>
-            </div>
-
-            {/* Core Domain Telemetry Blocks - Separated via tonal surface steps */}
-            <div className="space-y-2.5">
-              {/* Domain 1: Data Engineering */}
-              <div className="rounded-lg bg-surface-alt px-3.5 py-3">
-                <div className="flex items-center justify-between gap-2 mb-1">
-                  <div className="flex items-center gap-2 text-dominant-ink text-[13px] font-semibold">
-                    <Database size={15} aria-hidden="true" />
-                    <span>{t.hero.dataEngTitle}</span>
-                  </div>
-                  <span className="text-xs font-mono text-ink-tertiary tabular-nums">{t.hero.dataEngPipeline}</span>
-                </div>
-                <div className="text-[15px] font-semibold text-ink">{t.hero.dataEngStack}</div>
-                <div className="text-[13px] text-ink-tertiary mt-0.5">{t.hero.dataEngSub}</div>
-              </div>
-
-              {/* Domain 2: Data Science & ML */}
-              <div className="rounded-lg bg-surface-alt px-3.5 py-3">
-                <div className="flex items-center justify-between gap-2 mb-1">
-                  <div className="flex items-center gap-2 text-accent-ink text-[13px] font-semibold">
-                    <BrainCircuit size={15} aria-hidden="true" />
-                    <span>{t.hero.dataScienceTitle}</span>
-                  </div>
-                  <span className="text-xs font-medium text-accent-ink bg-accent-soft px-2 py-0.5 rounded border border-accent-edge">{t.hero.dataScienceBadge}</span>
-                </div>
-                <div className="text-[15px] font-semibold text-ink">{t.hero.dataScienceStack}</div>
-                <div className="text-[13px] text-ink-tertiary mt-0.5">{t.hero.dataScienceSub}</div>
-              </div>
-
-              {/* Domain 3: Computer Vision & Robotics */}
-              <div className="rounded-lg bg-surface-alt px-3.5 py-3">
-                <div className="flex items-center justify-between gap-2 mb-1">
-                  <div className="flex items-center gap-2 text-dominant-ink text-[13px] font-semibold">
-                    <Eye size={15} aria-hidden="true" />
-                    <span>{t.hero.visionTitle}</span>
-                  </div>
-                  <span className="text-xs font-mono text-ink-tertiary">{t.hero.visionBadge}</span>
-                </div>
-                <div className="text-[15px] font-semibold text-ink">{t.hero.visionStack}</div>
-                <div className="text-[13px] text-ink-tertiary mt-0.5">{t.hero.visionSub}</div>
-              </div>
-
-              {/* Domain 4: Cloud Infrastructure */}
-              <div className="rounded-lg bg-surface-alt px-3.5 py-3">
-                <div className="flex items-center justify-between gap-2 mb-1">
-                  <div className="flex items-center gap-2 text-accent-ink text-[13px] font-semibold">
-                    <Cloud size={15} aria-hidden="true" />
-                    <span>{t.hero.cloudTitle}</span>
-                  </div>
-                  <span className="text-xs font-mono text-ink-tertiary">{t.hero.cloudBadge}</span>
-                </div>
-                <div className="text-[15px] font-semibold text-ink">{t.hero.cloudStack}</div>
-                <div className="text-[13px] text-ink-tertiary mt-0.5">{t.hero.cloudSub}</div>
-              </div>
-            </div>
-
-            {/* Bottom Bar Telemetry Info */}
-            <div className="mt-4 pt-3 flex items-center justify-between text-xs font-mono text-ink-tertiary">
-              <span>{t.hero.bottomStack}</span>
-              <span className="text-accent-ink font-semibold">{t.hero.bottomStatus}</span>
-            </div>
+        {/* Right Column (5/12): 4-Domain Operational Telemetry Bench ("One Live Thing") */}
+        <aside
+          aria-label={t.hero.benchTitle}
+          className="lg:col-span-5 w-full bg-surface border border-edge"
+        >
+          <div className="flex items-center justify-between px-4 py-3 bg-surface-alt">
+            <span className="text-sm font-display font-bold text-ink">
+              {t.hero.benchTitle}
+            </span>
+            <Activity size={16} className="text-dominant-ink shrink-0" aria-hidden="true" />
           </div>
-        </div>
 
+          <div
+            role="group"
+            aria-label={t.hero.benchDomainSelectorAria}
+            className="grid grid-cols-2 gap-px bg-edge"
+          >
+            {(Object.keys(domainConfig) as BenchDomain[]).map((domainKey) => {
+              const cfg = domainConfig[domainKey];
+              const isSelected = activeDomain === domainKey;
+              const activeTextClass = cfg.tone === 'accent' ? 'text-accent-ink' : 'text-dominant-ink';
+              const ringClass = cfg.tone === 'accent' ? 'focus-visible:ring-accent' : 'focus-visible:ring-dominant';
+
+              return (
+                <button
+                  key={domainKey}
+                  type="button"
+                  onClick={() => setActiveDomain(domainKey)}
+                  aria-pressed={isSelected}
+                  className={`flex items-center gap-2 px-3.5 py-3 min-h-[44px] text-left text-[13px] font-medium transition-colors cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-inset ${ringClass} ${
+                    isSelected
+                      ? `bg-surface-alt ${activeTextClass} font-semibold`
+                      : 'bg-surface text-ink-secondary hover:text-ink hover:bg-surface-alt/50'
+                  }`}
+                >
+                  <span className={isSelected ? activeTextClass : 'text-ink-tertiary'}>
+                    {cfg.icon}
+                  </span>
+                  <span className="truncate">{cfg.label}</span>
+                </button>
+              );
+            })}
+          </div>
+
+          <div className="p-5 space-y-4">
+            {activeProject ? (
+              <>
+                {activeProject.images.length > 0 && (
+                  <a
+                    href={`${baseUrl}/projects/${activeProject.id}`}
+                    className="block aspect-[16/9] w-full overflow-hidden bg-surface-alt border border-edge-subtle group focus:outline-none focus-visible:ring-2 focus-visible:ring-dominant"
+                  >
+                    <img
+                      src={`${baseUrl}${activeProject.images[0]}`}
+                      alt={pickLocalized(activeProject.title, locale)}
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                      loading="eager"
+                    />
+                  </a>
+                )}
+
+                <div className="space-y-1.5">
+                  <div className="flex items-start justify-between gap-3">
+                    <h2 className="text-lg font-bold text-ink font-display leading-snug">
+                      {pickLocalized(activeProject.title, locale)}
+                    </h2>
+                    <span className="text-[13px] font-medium text-ink-tertiary shrink-0">
+                      {pickLocalized(activeProject.categoryLabel, locale)}
+                    </span>
+                  </div>
+                  <p className="text-sm text-ink-secondary leading-relaxed">
+                    {activeProject.oneLinerImpact
+                      ? pickLocalized(activeProject.oneLinerImpact, locale)
+                      : pickLocalized(activeProject.description, locale)}
+                  </p>
+                </div>
+
+                {activeProject.metrics.length > 0 && (
+                  <div className="grid grid-cols-2 gap-px bg-edge border border-edge">
+                    {activeProject.metrics.slice(0, 2).map((metric, metricIdx) => (
+                      <div key={metricIdx} className="bg-surface-alt px-3.5 py-2.5">
+                        <div className="text-base font-extrabold text-ink font-display tabular-nums">
+                          {pickLocalized(metric.value, locale)}
+                        </div>
+                        <div className="text-[13px] text-ink-tertiary truncate">
+                          {pickLocalized(metric.label, locale)}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {activeProject.techs.length > 0 && (
+                  <div className="flex flex-wrap gap-1.5" aria-label={t.hero.benchStackLabel}>
+                    {activeProject.techs.slice(0, 4).map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-2.5 py-1 text-[13px] font-medium bg-surface-alt text-ink-secondary border border-edge-subtle"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
+                <div className="flex flex-wrap items-center justify-between gap-3 pt-2">
+                  <a
+                    href={`${baseUrl}/projects/${activeProject.id}`}
+                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-dominant-ink hover:underline min-h-[36px] focus:outline-none focus-visible:ring-2 focus-visible:ring-dominant rounded-sm"
+                  >
+                    <span>{t.hero.benchOpenProject}</span>
+                    <ArrowRight size={15} aria-hidden="true" />
+                  </a>
+
+                  <button
+                    type="button"
+                    onClick={() => jumpToProjectsTab(domainConfig[activeDomain].tabFilter)}
+                    className="inline-flex items-center gap-1.5 text-sm font-medium text-ink-secondary hover:text-ink cursor-pointer min-h-[36px] focus:outline-none focus-visible:ring-2 focus-visible:ring-dominant rounded-sm"
+                  >
+                    <span>{t.hero.benchFilterDomain}</span>
+                  </button>
+                </div>
+              </>
+            ) : (
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <div className="p-2.5 bg-accent-soft text-accent-ink border border-accent-edge shrink-0">
+                    <Shield size={18} aria-hidden="true" />
+                  </div>
+                  <div className="space-y-1">
+                    <h2 className="text-lg font-bold text-ink font-display leading-snug">
+                      {t.hero.benchCyberScopeTitle}
+                    </h2>
+                    <p className="text-sm text-ink-secondary leading-relaxed">
+                      {t.hero.benchCyberScopeDesc}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="bg-surface-alt border border-edge p-3.5 space-y-2">
+                  <div className="flex items-center justify-between gap-2 text-sm">
+                    <span className="font-semibold text-ink">{t.hero.benchHermesStatus}</span>
+                    <span className="text-[13px] font-medium text-accent-ink tabular-nums">
+                      {hermesBadges.length > 0
+                        ? formatString(t.hero.benchHermesSynced, { count: hermesBadges.length })
+                        : t.hero.benchHermesStandby}
+                    </span>
+                  </div>
+
+                  {badges.length > 0 && (
+                    <ul className="space-y-1.5 pt-2">
+                      {badges.slice(0, 2).map((badge) => (
+                        <li key={badge.id} className="flex items-center justify-between gap-2 text-sm">
+                          <span className="text-ink-secondary truncate">
+                            {badge.platform} · {pickLocalized(badge.title, locale)}
+                          </span>
+                          <span className="font-semibold text-ink tabular-nums shrink-0">
+                            {pickLocalized(badge.rankOrMetric, locale)}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+
+                <div className="flex flex-wrap items-center justify-between gap-3 pt-2">
+                  <a
+                    href="#certifications"
+                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent-ink hover:underline min-h-[36px] focus:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm"
+                  >
+                    <span>{t.hero.benchOpenVault}</span>
+                    <ArrowRight size={15} aria-hidden="true" />
+                  </a>
+
+                  <button
+                    type="button"
+                    onClick={() => jumpToProjectsTab('cybersecurity')}
+                    className="inline-flex items-center gap-1.5 text-sm font-medium text-ink-secondary hover:text-ink cursor-pointer min-h-[36px] focus:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm"
+                  >
+                    <span>{t.hero.benchFilterDomain}</span>
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+        </aside>
       </div>
 
       {/* QR Code Modal */}
@@ -231,13 +426,13 @@ export default function HeroNetworking() {
               role="dialog"
               aria-modal="true"
               aria-labelledby="qr-modal-title"
-              className="relative w-full max-w-sm bg-modal-bg border border-modal-edge p-6 rounded-xl shadow-2xl flex flex-col items-center text-center"
+              className="relative w-full max-w-sm bg-modal-bg border border-modal-edge p-6 rounded-sm shadow-2xl flex flex-col items-center text-center"
             >
               <button
                 ref={closeButtonRef}
                 type="button"
                 onClick={() => setShowQrModal(false)}
-                className="absolute top-3.5 right-3.5 text-ink-tertiary hover:text-ink p-1.5 rounded-lg transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-dominant cursor-pointer min-h-[36px] min-w-[36px] flex items-center justify-center"
+                className="absolute top-3.5 right-3.5 text-ink-tertiary hover:text-ink p-1.5 rounded-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-dominant cursor-pointer min-h-[36px] min-w-[36px] flex items-center justify-center"
                 aria-label={t.hero.qrModalClose}
               >
                 <X size={20} aria-hidden="true" />
@@ -245,11 +440,11 @@ export default function HeroNetworking() {
 
               <h3 id="qr-modal-title" className="text-lg font-bold text-ink mb-1 font-display">{t.hero.qrModalTitle}</h3>
               <p className="text-[13px] text-ink-tertiary mb-5 max-w-[260px]">
-                {t.hero.qrModalDesc}
+                {formatString(t.hero.qrModalDesc, { name })}
               </p>
 
-              <div className="p-3 bg-white rounded-xl border border-edge mb-4">
-                <img src={qrCodeUrl} alt={t.hero.qrModalAlt} className="w-48 h-48 object-contain" />
+              <div className="p-3 bg-white border border-edge mb-4">
+                <img src={qrCodeUrl} alt={formatString(t.hero.qrModalAlt, { name })} className="w-48 h-48 object-contain" />
               </div>
 
               <div className="w-full flex gap-2">
@@ -258,7 +453,7 @@ export default function HeroNetworking() {
                   href={linkedInUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 py-2.5 min-h-[42px] rounded-lg bg-dominant hover:bg-dominant-hover text-on-dominant text-sm font-semibold flex items-center justify-center gap-1.5 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-dominant"
+                  className="flex-1 py-2.5 min-h-[42px] rounded-sm bg-dominant hover:bg-dominant-hover text-on-dominant text-sm font-semibold flex items-center justify-center gap-1.5 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-dominant"
                 >
                   <span>{t.hero.qrModalAction}</span>
                   <ExternalLink size={14} aria-hidden="true" />

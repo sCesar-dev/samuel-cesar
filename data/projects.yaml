@@ -1,0 +1,464 @@
+- id: biopoints
+  title:
+    pt: "BioPoints - Inteligência Preditiva de CO₂ & Fidelidade Sustentável"
+    en: "BioPoints - Predictive CO₂ Intelligence & Sustainable Loyalty"
+  description:
+    pt: "Plataforma premiada com 1º Lugar no Hackathon UFBA que calcula emissões evitadas de CO₂ via Random Forest e converte em pontos de fidelidade em tempo real."
+    en: "Platform awarded 1st Place at the UFBA Hackathon calculating avoided CO₂ emissions via Random Forest and converting to real-time loyalty points."
+  oneLinerImpact:
+    pt: "Modelo preditivo de Machine Learning (R² = 0.9964, MAE = 1.90 g/km) integrado a API NestJS para cálculo em tempo real de emissões evitadas de CO₂."
+    en: "Predictive Machine Learning model (R² = 0.9964, MAE = 1.90 g/km) integrated with a NestJS API for real-time avoided CO₂ calculations."
+  category: data-science
+  categoryLabel:
+    pt: "Ciência de Dados & Machine Learning"
+    en: "Data Science & Machine Learning"
+  stack: Data Science & Machine Learning
+  techs:
+    - Python 3.12
+    - Scikit-Learn
+    - Random Forest
+    - NestJS
+    - Prisma ORM
+    - PostgreSQL
+    - Pandas
+    - Seaborn
+  hardwareBadges:
+    - "Random Forest (100 Trees)"
+    - ColumnTransformer
+    - NestJS IPC Stream
+    - PostgreSQL 14+
+  technicalHighlights:
+    pt:
+      - "Construção de modelo preditivo contrafactual de emissão fóssil de referência com R² de 0.9964 e MAE de 1.9035 g/km sobre 7.385 amostras."
+      - "Isolamento estrito de pré-processamento via Pipeline e ColumnTransformer, blindando contra Data Leakage e tolerando categorias desconhecidas."
+      - "Integração de inferência em tempo real entre NestJS e runtime Python via child_process.spawn por streaming stdin/stdout (~150ms)."
+      - "1º Lugar na Trilha de IA, Cidades Inteligentes e Mudanças Climáticas no Hackathon da Liga de IA da UFBA (LIAO)."
+    en:
+      - "Constructed a counterfactual baseline fossil emission predictive model with R² of 0.9964 and MAE of 1.9035 g/km across 7,385 samples."
+      - "Strict preprocessing isolation using Pipeline and ColumnTransformer, preventing Data Leakage and handling unseen categories."
+      - "Real-time inference integration between NestJS and Python runtime via child_process.spawn through stdin/stdout streaming (~150ms)."
+      - "1st Place in the AI, Smart Cities, and Climate Change track at UFBA's AI League (LIAO) Hackathon."
+  architectureDiagram: /images/biopoints/Project_Architeture_Design_Optmized.png
+  metrics:
+    - label:
+        pt: R² Score
+        en: R² Score
+      value:
+        pt: "0.9964"
+        en: "0.9964"
+    - label:
+        pt: MAE
+        en: MAE
+      value:
+        pt: "1.90 g/km"
+        en: "1.90 g/km"
+    - label:
+        pt: Premiação
+        en: Award
+      value:
+        pt: 1º Lugar UFBA
+        en: 1st Place UFBA
+    - label:
+        pt: Dataset
+        en: Dataset
+      value:
+        pt: 7.385 Amostras
+        en: 7,385 Samples
+  featured: true
+  order: 1
+  startDate: "2026"
+  endDate: "2026"
+  github: https://github.com/sCesar-dev/hackathon_baIA_2026
+  live: null # TODO: adicionar URL de demonstração se publicada
+  images:
+    - /images/biopoints/Project_Architeture_Design_Optmized.png
+    - /images/biopoints/precition_confirmation.png
+    - /images/biopoints/density_distribuition.png
+    - /images/biopoints/residual_analisys.png
+    - /images/biopoints/slides/1.jpg
+    - /images/biopoints/slides/2.jpg
+    - /images/biopoints/slides/3.jpg
+    - /images/biopoints/slides/4.jpg
+    - /images/biopoints/slides/5.jpg
+    - /images/biopoints/slides/6.jpg
+    - /images/biopoints/slides/7.jpg
+    - /images/biopoints/slides/8.jpg
+    - /images/biopoints/slides/9.jpg
+    - /images/biopoints/slides/10.jpg
+  videos: []
+  reports:
+    pt: /docs/Relatorio_Treino_Predicao_BioPoints_PT.pdf
+    en: /docs/Training_Prediction_Report_BioPoints_EN.pdf
+  bodyFile: src/content/projects/biopoints.md
+
+- id: robocupbillrobot
+  title:
+    pt: "RoboCup@Home - Percepção Autônoma e Manipulação (Robô Bill)"
+    en: "RoboCup@Home - Autonomous Perception and Manipulation (Bill Robot)"
+  description:
+    pt: "Pipeline de visão 3D e manipulação autônoma para o Robô Bill na RoboCup@Home e CBR, integrando ROS 2, C++ e YOLOv8."
+    en: "3D vision and autonomous manipulation pipeline for Bill Robot at RoboCup@Home and CBR, integrating ROS 2, C++, and YOLOv8."
+  oneLinerImpact:
+    pt: "Percepção 3D e manipulação robótica com inferência em tempo real (<25ms) e 94% de acurácia em ambientes não estruturados."
+    en: "3D perception and robotic manipulation with real-time inference (<25ms) and 94% accuracy in unstructured domestic environments."
+  category: computer-vision
+  categoryLabel:
+    pt: "Robótica & Visão Computacional"
+    en: "Robotics & Computer Vision"
+  stack: Robotics & Computer Vision
+  techs:
+    - ROS 2
+    - Python
+    - C++
+    - YOLOv8
+    - OpenCV
+    - MoveIt 2
+    - LiDAR
+    - Linux
+  hardwareBadges:
+    - NVIDIA Jetson
+    - ROS 2 Humble
+    - Câmera RGB-D Intel RealSense
+    - LiDAR 2D/3D
+  technicalHighlights:
+    pt:
+      - "Otimização de inferência YOLOv8 via quantização e aceleração de nós ROS 2 para processamento contínuo em 30+ FPS."
+      - "Integração de nuvem de pontos 3D (Point Cloud) com cinemática inversa no MoveIt 2 para grasp de objetos do cotidiano."
+      - "Pesquisa acadêmica e integração técnica na equipe de manipulação do laboratório ACSO / BahiaRT (RoboCup@Home)."
+    en:
+      - "YOLOv8 inference optimization via quantization and ROS 2 node acceleration for continuous 30+ FPS processing."
+      - "3D Point Cloud integration with inverse kinematics in MoveIt 2 for everyday object grasping."
+      - "Academic research and technical integration within the manipulation team at ACSO / BahiaRT (RoboCup@Home)."
+  architectureDiagram: null
+  metrics:
+    - label:
+        pt: Latência
+        en: Latency
+      value:
+        pt: "<25ms"
+        en: "<25ms"
+    - label:
+        pt: Taxa FPS
+        en: Frame Rate
+      value:
+        pt: 30+ FPS
+        en: 30+ FPS
+    - label:
+        pt: Acurácia
+        en: Accuracy
+      value:
+        pt: "94.2%"
+        en: "94.2%"
+  featured: true
+  order: 1
+  startDate: null # TODO: preencher data de início ISO (ex. "2024")
+  endDate: null # TODO: preencher data de término ISO (ex. "2025")
+  github: https://github.com/sCesar-dev
+  live: null
+  images:
+    - /images/robocup-image.jpg
+    - /images/robocup-image2.jpg
+  videos: []
+  bodyFile: src/content/projects/robocupBillRobot.md
+
+- id: ecovision
+  title:
+    pt: "EcoVision - Triagem Serverless de Resíduos com Classificação de Incerteza"
+    en: "EcoVision - Serverless Waste Sorting with Explicit Uncertainty Classification"
+  description:
+    pt: "Pipeline serverless na AWS para triagem de recicláveis com Amazon Rekognition e motor de classificação explícita de incerteza de materiais."
+    en: "Serverless AWS pipeline for recyclable sorting with Amazon Rekognition and an explicit material uncertainty classification engine."
+  oneLinerImpact:
+    pt: "Arquitetura serverless orientada a eventos no AWS Free Tier, com modelagem de incerteza de materiais e 85% de cobertura de testes."
+    en: "Event-driven serverless architecture on AWS Free Tier, with material uncertainty modeling and 85% test coverage."
+  category: computer-vision
+  categoryLabel:
+    pt: "Visão Computacional & Nuvem AWS"
+    en: "Computer Vision & AWS Cloud"
+  stack: Cloud Serverless & Computer Vision
+  techs:
+    - AWS Lambda
+    - Amazon S3
+    - Amazon Rekognition
+    - AWS SAM
+    - Python 3.11
+    - Pillow
+    - pytest
+    - Moto
+    - CloudWatch
+  hardwareBadges:
+    - AWS Lambda 256MB
+    - Amazon S3
+    - Amazon Rekognition
+    - AWS SAM (IaC)
+  technicalHighlights:
+    pt:
+      - "Arquitetura orientada a eventos S3 -> Lambda -> Rekognition com tempo de execução enxuto (~800ms/imagem) e custo zero no AWS Free Tier."
+      - "Motor desacoplado de regras determinísticas modelando incerteza em 3 estados (inferred, ambiguous, unverified) para evitar contaminação em triagem."
+      - "Defesa em profundidade contra loops recursivos de eventos S3 e 85% de cobertura de testes in-memory com Moto sem custos de nuvem."
+    en:
+      - "Event-driven S3 -> Lambda -> Rekognition architecture with lean execution time (~800ms/image) and zero cost on AWS Free Tier."
+      - "Decoupled deterministic rules engine modeling uncertainty in 3 states (inferred, ambiguous, unverified) to prevent sorting contamination."
+      - "Defense-in-depth against recursive S3 event loops and 85% in-memory test coverage with Moto without cloud costs."
+  architectureDiagram: /images/ecovision/architecture.png
+  metrics:
+    - label:
+        pt: Latência
+        en: Latency
+      value:
+        pt: "~800ms / img"
+        en: "~800ms / img"
+    - label:
+        pt: Cobertura
+        en: Coverage
+      value:
+        pt: 85% pytest
+        en: 85% pytest
+    - label:
+        pt: Custo Base
+        en: Base Cost
+      value:
+        pt: "$0.00 Free Tier"
+        en: "$0.00 Free Tier"
+    - label:
+        pt: Retenção
+        en: Retention
+      value:
+        pt: 30 dias S3
+        en: 30 days S3
+  featured: true
+  order: 2
+  startDate: null # TODO: preencher data de início ISO
+  endDate: null # TODO: preencher data de término ISO
+  github: https://github.com/sCesar-dev/ecoVision
+  live: https://github.com/sCesar-dev/ecoVision
+  images:
+    - /images/ecovision/logo.png
+    - /images/ecovision/test02-terminal.png
+    - /images/ecovision/water_bottle_annotated.jpeg
+    - /images/ecovision/test02-aws.png
+    - /images/ecovision/architecture.png
+  videos: []
+  bodyFile: src/content/projects/ecovision.md
+
+- id: airflow
+  title:
+    pt: "AirFlow - Motor de Otimização Logística & Indexação de Rotas"
+    en: "AirFlow - Logistics Optimization & Route Indexing Engine"
+  description:
+    pt: "Sistema de roteamento e indexação de malha aérea com algoritmo de Dijkstra em grafos e Árvore-B para consultas O(log n)."
+    en: "Flight network routing and indexing system using Dijkstra's graph algorithm and B-Trees for O(log n) lookups."
+  oneLinerImpact:
+    pt: "Roteamento de menor custo com algoritmo de Dijkstra em grafos e busca cadastral O(log n) via Árvore-B em memória."
+    en: "Min-cost routing with Dijkstra's algorithm on graphs and O(log n) customer lookup via in-memory B-Trees."
+  category: data-engineering
+  categoryLabel:
+    pt: "Engenharia de Dados & Algoritmos"
+    en: "Data Engineering & Algorithms"
+  stack: Data Engineering & Algorithms
+  techs:
+    - Python
+    - Flask
+    - Graph Algorithms
+    - B-Trees
+    - Folium
+    - Geopy
+  hardwareBadges:
+    - In-Memory B-Trees
+    - Graph Engine
+    - Flask REST
+    - Geospatial Folium
+  technicalHighlights:
+    pt:
+      - "Indexador customizado de Árvores-B eliminando overhead de varreduras lineares (O(n) -> O(log n)) em bases cadastrais."
+      - "Modelagem da malha aérea em grafos direcionados ponderados com Dijkstra para cálculo ótimo de conexões e milhas."
+      - "Pipeline de geocodificação e projeção dinâmica de trajetórias no navegador com Folium e Geopy."
+    en:
+      - "Custom B-Tree indexer eliminating linear scan overhead (O(n) -> O(log n)) on customer records."
+      - "Flight network modeling in weighted directed graphs with Dijkstra for optimal connection and miles calculation."
+      - "Geocoding and dynamic trajectory browser projection pipeline with Folium and Geopy."
+  architectureDiagram: null
+  metrics:
+    - label:
+        pt: Busca
+        en: Search
+      value:
+        pt: O(log n)
+        en: O(log n)
+    - label:
+        pt: Algoritmo
+        en: Algorithm
+      value:
+        pt: Dijkstra Grafos
+        en: Dijkstra Graphs
+    - label:
+        pt: Storage
+        en: Storage
+      value:
+        pt: Index B-Tree
+        en: B-Tree Index
+  featured: true
+  order: 3
+  startDate: null # TODO: preencher data de início ISO
+  endDate: null # TODO: preencher data de término ISO
+  github: https://github.com/sCesar-dev/AirFlow
+  live: null
+  images:
+    - /images/airflow/img1.png
+  videos:
+    - /images/airflow/vid1.webm
+  bodyFile: src/content/projects/airflow.md
+
+- id: processlinuxmonitor
+  title:
+    pt: "Process Linux Monitor - Telemetria de Baixo Nível"
+    en: "Process Linux Monitor - Low-Level Telemetry"
+  description:
+    pt: "Monitor de processos e telemetria interagindo diretamente com chamadas de sistema (syscalls) e interface /proc do kernel Linux."
+    en: "Process monitor and telemetry engine interacting directly with Linux system calls (syscalls) and the /proc kernel interface."
+  oneLinerImpact:
+    pt: "Coleta de telemetria e controle de processos via interface /proc do kernel Linux com overhead mínimo de CPU."
+    en: "Low-overhead telemetry collection and process control via the Linux kernel /proc interface with minimal CPU overhead."
+  category: data-engineering
+  categoryLabel:
+    pt: "Sistemas & Telemetria"
+    en: "Systems & Telemetry"
+  stack: System Telemetry & C
+  techs:
+    - C
+    - Linux
+    - POSIX APIs
+    - Operating Systems
+    - Low-Level
+  hardwareBadges:
+    - Linux Kernel
+    - Syscalls POSIX
+    - C Nativo
+    - Process Control
+  technicalHighlights:
+    pt:
+      - "Extração e parse direto de métricas de telemetria do subsistema virtual /proc com overhead < 0.1%."
+      - "Manipulação segura de ponteiros, alocação dinâmica e sinais de controle de processo (POSIX signals)."
+      - "Monitoramento em tempo real de estados de execução, PID, threads, tempo de CPU e pegada de memória RAM."
+    en:
+      - "Direct extraction and parsing of telemetry metrics from the virtual /proc subsystem with <0.1% CPU overhead."
+      - "Safe pointer manipulation, dynamic memory allocation, and POSIX process control signals (SIGTERM, SIGSTOP, SIGCONT)."
+      - "Real-time monitoring of execution states, PID, threads, CPU time, and RAM memory footprint."
+  architectureDiagram: null
+  metrics:
+    - label:
+        pt: Interface
+        en: Interface
+      value:
+        pt: Kernel /proc
+        en: Kernel /proc
+    - label:
+        pt: Overhead
+        en: Overhead
+      value:
+        pt: "<0.1% CPU"
+        en: "<0.1% CPU"
+    - label:
+        pt: Linguagem
+        en: Language
+      value:
+        pt: C Nativo
+        en: Native C
+  featured: true
+  order: 4
+  startDate: null # TODO: preencher data de início ISO
+  endDate: null # TODO: preencher data de término ISO
+  github: https://github.com/sCesar-dev/linux_process_monitor
+  live: null
+  images:
+    - /images/processLinuxMonitor/linux_monitor_img1.png
+  videos: []
+  bodyFile: src/content/projects/processLinuxMonitor.md
+
+- id: petcaresystem
+  title:
+    pt: PetCare System
+    en: PetCare System
+  description:
+    pt: "Aplicação desktop em Java e Swing para gestão de clínicas veterinárias, prontuários clínicos e controle de vacinas."
+    en: "Desktop application in Java and Swing for veterinary clinic management, clinical records, and vaccination tracking."
+  oneLinerImpact:
+    pt: "Sistema desktop em Java Swing com arquitetura orientada a objetos (POO), prontuário veterinário e cobrança automática."
+    en: "Java Swing desktop system with object-oriented architecture (OOP), veterinary medical records, and automated billing."
+  category: data-engineering
+  categoryLabel:
+    pt: "Aplicações Desktop & Java"
+    en: "Desktop Applications & Java"
+  stack: Desktop Application
+  techs:
+    - Java
+    - Swing
+    - OOP
+  hardwareBadges: []
+  technicalHighlights:
+    pt:
+      - "Gerenciamento estruturado de prontuários médicos com histórico completo de diagnósticos e tratamentos."
+      - "Cartão de vacina inteligente com monitoramento de doses e cálculo automatizado de retornos."
+      - "Interface fluida com Java Swing e gerenciador CardLayout em janela única."
+    en:
+      - "Comprehensive medical record history for diagnoses, treatments, and patient clinical evolution."
+      - "Smart vaccine card module tracking immunization schedules and automated return dates."
+      - "Single-window desktop interface built with Java Swing and CardLayout manager."
+  architectureDiagram: null
+  metrics: []
+  featured: false
+  order: 9
+  startDate: null # TODO: preencher data de início ISO
+  endDate: null # TODO: preencher data de término ISO
+  github: null # TODO: confirmar se deseja expor https://github.com/sCesar-dev/Veterinary-clinic (estava "#" no frontmatter)
+  live: null
+  images:
+    - /images/veterinary_clinic/veterinary_clinic_img2.png
+    - /images/veterinary_clinic/veterinary_clinic_img1.png
+    - /images/veterinary_clinic/veterinary_clinic_img3.png
+  videos: []
+  bodyFile: src/content/projects/petcareSystem.md
+
+- id: virtualstore
+  title:
+    pt: Virtual Music Store
+    en: Virtual Music Store
+  description:
+    pt: "Sistema e-commerce full stack integrando API REST em Spring Boot com frontend Angular."
+    en: "Full-stack e-commerce system integrating a Spring Boot REST API with an Angular frontend."
+  oneLinerImpact:
+    pt: "E-commerce full stack completo integrando Spring Boot 3, banco em memória H2 e interface SPA em Angular."
+    en: "Complete full-stack e-commerce integrating Spring Boot 3, in-memory H2 database, and Angular SPA frontend."
+  category: data-engineering
+  categoryLabel:
+    pt: "Full Stack & Web"
+    en: "Full Stack & Web"
+  stack: Backend & Frontend
+  techs:
+    - Java
+    - Spring Boot
+    - Angular
+    - TypeScript
+  hardwareBadges: []
+  technicalHighlights:
+    pt:
+      - "Catálogo musical completo com filtros dinâmicos por gênero e busca em tempo real."
+      - "Carrinho de compras inteligente com persistência e totalização instantânea por usuário."
+      - "Painel administrativo com controle CRUD abrangente e regras de integridade relacional."
+    en:
+      - "Comprehensive music catalog with genre filtering and real-time product search."
+      - "Smart shopping cart with per-user data persistence and automated total calculation."
+      - "Administrative dashboard with full CRUD control and relational integrity validation."
+  architectureDiagram: null
+  metrics: []
+  featured: false
+  order: 10
+  startDate: null # TODO: preencher data de início ISO
+  endDate: null # TODO: preencher data de término ISO
+  github: null # TODO: confirmar se deseja expor https://github.com/sCesar-dev/LojaVirtual (estava "#" no frontmatter)
+  live: null
+  images:
+    - /images/a_onda/a_onda_img1.png
+  videos:
+    - /images/a_onda/website-video.webm
+  bodyFile: src/content/projects/virtualStore.md

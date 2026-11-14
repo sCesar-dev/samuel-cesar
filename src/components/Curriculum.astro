@@ -1,9 +1,41 @@
 ---
 import CurriculumContent from './CurriculumContent';
+import {
+  loadAchievements,
+  loadEducation,
+  loadExperience,
+  loadProfile,
+  loadSkills,
+} from '../lib/portfolioData';
 
 const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+const [profile, education, experience, skills, achievements] = await Promise.all([
+  loadProfile(),
+  loadEducation(),
+  loadExperience(),
+  loadSkills(),
+  loadAchievements(),
+]);
+const researchHighlights = experience.filter((item) => item.showInCurriculumSummary);
+const competencies = skills.filter((item) => item.showInCurriculumMatrix);
+const curriculumAwards = achievements.filter(
+  (item): item is Extract<typeof item, { kind: 'award' }> =>
+    item.kind === 'award' && item.showInCurriculum
+);
 ---
 
 <section id="curriculum" class="py-16 md:py-24 scroll-mt-20 scroll-reveal">
-    <CurriculumContent client:load baseUrl={baseUrl} />
+    <CurriculumContent
+      client:load
+      baseUrl={baseUrl}
+      resumePath={profile.assets.resumePdf}
+      resumeFilename={profile.assets.resumeFilename}
+      resumeUpdatedNote={profile.assets.resumeUpdatedNote}
+      locationLabel={profile.location.label}
+      availabilityStatus={profile.availabilityStatus}
+      education={education}
+      experiences={researchHighlights.length > 0 ? researchHighlights : experience.slice(0, 1)}
+      competencies={competencies}
+      awards={curriculumAwards}
+    />
 </section>

@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-14T14:42:00.000Z",
+  "title": "Design System: Samuel Cesar Portfolio (sCesar.dev)",
+  "extensions": {
+    "colorMeta": {
+      "canvas": {
+        "role": "neutral",
+        "displayName": "Obsidian Canvas",
+        "canonical": "#09090b",
+        "tonalRamp": ["#09090b", "#121216", "#18181f", "#27272a", "#3f3f46", "#71717a", "#e4e4e7", "#f8fafc"]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Instrument Surface",
+        "canonical": "#121216",
+        "tonalRamp": ["#09090b", "#121216", "#18181f", "#27272a", "#52525b", "#94a3b8", "#f1f5f9", "#ffffff"]
+      },
+      "dominant": {
+        "role": "primary",
+        "displayName": "Telemetry Cyan",
+        "canonical": "#00f0ff",
+        "tonalRamp": ["#083344", "#0c4a6e", "#075985", "#0369a1", "#06b6d4", "#22d3ee", "#00f0ff", "#cffafe"]
+      },
+      "accent": {
+        "role": "secondary",
+        "displayName": "Electric Indigo",
+        "canonical": "#818cf8",
+        "tonalRamp": ["#1e1b4b", "#312e81", "#3730a3", "#4338ca", "#6366f1", "#818cf8", "#a5b4fc", "#e0e7ff"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display (Cabinet Grotesk 800)", "purpose": "Hero H1 and primary identity anchor (60px desktop / 34px mobile)." },
+      "headline": { "displayName": "Headline (Cabinet Grotesk 800)", "purpose": "Section H2 headings and case study titles (48px desktop)." },
+      "title": { "displayName": "Title (Cabinet Grotesk 700-800)", "purpose": "Project card H3 titles and subsection headers (20px-24px)." },
+      "body": { "displayName": "Body (Satoshi 400-500)", "purpose": "Editorial prose, project descriptions, and navigation (15px-16px, 60ch max)." },
+      "label": { "displayName": "Telemetry & Code (Fragment Mono)", "purpose": "Quantitative metrics, stack tokens, and hardware badges (12px-13px)." }
+    },
+    "shadows": [
+      { "name": "elev-flat", "value": "none", "purpose": "Default resting state for all cards, panels, and buttons." },
+      { "name": "elev-modal", "value": "0 20px 25px -5px rgba(0, 0, 0, 0.35), 0 8px 10px -6px rgba(0, 0, 0, 0.25)", "purpose": "Floating QR dialog and skip-link overlay only." }
+    ],
+    "motion": [
+      { "name": "ease-standard", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Expo-out curve for scroll-reveal and modal transitions." },
+      { "name": "duration-fast", "value": "150ms", "purpose": "Micro-interaction color and border transitions." },
+      { "name": "duration-base", "value": "200ms", "purpose": "Button active scale and filter tab transitions." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Telemetry Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Primary CTA button with 2px micro-radius, 44px minimum touch target, and Cyan fill.",
+      "html": "<a href=\"#projects\" class=\"ds-btn-primary\"><span>Explorar Projetos</span><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m6 9 6 6 6-6\"/></svg></a>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; min-height: 44px; border-radius: 2px; background: var(--color-dominant, #00f0ff); color: var(--theme-on-dominant, #09090b); font-family: var(--font-display, 'Cabinet Grotesk', sans-serif); font-weight: 700; font-size: 14px; text-decoration: none; cursor: pointer; transition: background-color 200ms ease, transform 200ms ease; } .ds-btn-primary:hover { background: var(--theme-dominant-hover, #67e8f9); } .ds-btn-primary:active { transform: scale(0.98); } .ds-btn-primary:focus-visible { outline: 2px solid var(--color-dominant, #00f0ff); outline-offset: 2px; }"
+    },
+    {
+      "name": "Accent Indigo Button",
+      "kind": "button",
+      "refersTo": "button-accent",
+      "description": "Secondary high-emphasis button in Electric Indigo for Curriculum PDF download.",
+      "html": "<a href=\"#curriculum\" class=\"ds-btn-accent\"><span>Baixar Currículo (PDF)</span></a>",
+      "css": ".ds-btn-accent { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; min-height: 44px; border-radius: 2px; background: var(--color-accent, #818cf8); color: var(--theme-on-accent, #09090b); font-family: var(--font-body, 'Satoshi', sans-serif); font-weight: 600; font-size: 14px; text-decoration: none; cursor: pointer; transition: background-color 200ms ease, transform 200ms ease; } .ds-btn-accent:hover { background: var(--theme-accent-hover, #a5b4fc); } .ds-btn-accent:active { transform: scale(0.98); } .ds-btn-accent:focus-visible { outline: 2px solid var(--color-accent, #818cf8); outline-offset: 2px; }"
+    },
+    {
+      "name": "Technical Stack Chip",
+      "kind": "chip",
+      "refersTo": "card-surface",
+      "description": "Monospace stack/hardware token badge with subtle border and recessed surface.",
+      "html": "<span class=\"ds-chip\">ROS 2 · Jetson Nano</span>",
+      "css": ".ds-chip { display: inline-block; padding: 2px 8px; font-size: 12px; font-family: var(--font-mono, 'Fragment Mono', monospace); background: var(--color-surface-subtle, #18181f); color: var(--color-text-secondary, #cbd5e1); border: 1px solid var(--color-border-hairline, rgba(255,255,255,0.08)); }"
+    },
+    {
+      "name": "Instrument Surface Panel",
+      "kind": "card",
+      "refersTo": "card-surface",
+      "description": "Flat tonal container with 1px structural border and Cyan hover edge.",
+      "html": "<article class=\"ds-card\"><h3 class=\"ds-card-title\">Lakehouse Open Banking Pipeline</h3><p class=\"ds-card-body\">Arquitetura Medallion distribuída com Apache Spark, Airflow e MinIO.</p></article>",
+      "css": ".ds-card { background: var(--color-surface-panel, #121216); color: var(--color-text-primary, #ffffff); border: 1px solid var(--color-border-card, rgba(255,255,255,0.10)); padding: 24px; transition: border-color 200ms ease; } .ds-card:hover { border-color: var(--color-dominant-border, rgba(0,240,255,0.35)); } .ds-card-title { font-family: var(--font-display, 'Cabinet Grotesk', sans-serif); font-size: 20px; font-weight: 800; margin: 0 0 8px 0; } .ds-card-body { font-family: var(--font-body, 'Satoshi', sans-serif); font-size: 15px; color: var(--color-text-secondary, #cbd5e1); margin: 0; line-height: 1.6; }"
+    },
+    {
+      "name": "Architectural Header Strip",
+      "kind": "nav",
+      "refersTo": "card-surface",
+      "description": "Sticky top navigation with square Telemetry Cyan brand marker and unboxed links.",
+      "html": "<header class=\"ds-nav\"><a href=\"#home\" class=\"ds-brand\"><span class=\"ds-dot\"></span>sCesar<span class=\"ds-tld\">.dev</span></a><nav class=\"ds-links\"><a href=\"#projects\">Projetos</a><a href=\"#about\">Sobre</a><a href=\"#curriculum\">Currículo</a></nav></header>",
+      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; height: 64px; padding: 0 24px; background: var(--header-bg, rgba(9,9,11,0.86)); border-bottom: 1px solid var(--header-border, rgba(255,255,255,0.10)); } .ds-brand { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-display, 'Cabinet Grotesk', sans-serif); font-weight: 800; font-size: 18px; color: var(--color-text-primary, #ffffff); text-decoration: none; } .ds-dot { width: 10px; height: 10px; background: var(--color-dominant, #00f0ff); } .ds-tld { font-family: var(--font-mono, 'Fragment Mono', monospace); font-size: 14px; color: var(--color-dominant, #00f0ff); } .ds-links { display: flex; gap: 16px; } .ds-links a { font-family: var(--font-body, 'Satoshi', sans-serif); font-size: 13px; font-weight: 500; color: var(--color-text-secondary, #cbd5e1); text-decoration: none; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Operational Telemetry Bench",
+    "overview": "sCesar.dev presents the engineering work of Samuel Cesar—spanning Cloud Lakehouse Data Engineering, Predictive Machine Learning, and Autonomous Robotics (ROS 2 / YOLOv8)—as a live operational instrument rather than a decorative marketing brochure.",
+    "keyCharacteristics": [
+      "Archetype: Precision Dark UI + Soft Structuralism (design_variance: 7, motion_intensity: 5, visual_density: 6).",
+      "Dual-Adaptive Polarity: Native Dark (#09090b) and WCAG 2.2 AA Light (#f8fafc) powered 100% by semantic @theme inline tokens.",
+      "Quad-Domain Semantic Encoding (Cyan + Indigo): Telemetry Cyan (#00f0ff / #0369a1) for Data Engineering & Robotics/Vision; Electric Indigo (#818cf8 / #4338ca) for Data Science/ML, Cybersecurity (Cryptography & SOC Monitoring), and Academic Distinctions.",
+      "Operational Badges vs. Certifications Architecture: Gamified and operational achievements (Bug Bounty, SOC/Pentest labs, LeetCode) render as Instrument Badges (data/badges.yaml, Hermes-ready), distinct from formal certifications.",
+      "Uniqueness Lock (U-Score >= 85/100): High-scoring custom components are frozen against structural regression."
+    ],
+    "rules": [
+      {
+        "name": "The Domain-Color Encoding Rule",
+        "body": "Never assign Cyan or Indigo arbitrarily for decoration: Cyan (--color-dominant) denotes Data Engineering, Robotics/Vision, and primary navigation/CTA focus; Indigo (--color-accent) denotes Data Science/ML and academic honors.",
+        "section": "colors"
+      },
+      {
+        "name": "The Zero-Override Light Mode Rule",
+        "body": "Never write [data-theme=\"light\"] [class*=\"...\"] !important selectors. All theme adaptation happens exclusively through CSS custom properties mapped in @theme inline.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two-Line Headline Rule",
+        "body": "Every h1–h3 must fit in two lines or fewer at every viewport (1440px, 768px, 390px) with text-wrap: balance.",
+        "section": "typography"
+      },
+      {
+        "name": "The Monospace Discipline Rule",
+        "body": "Reserve Fragment Mono strictly for literal technical tokens, stack badges, complexity formulas, and quantitative metrics.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat-At-Rest Rule",
+        "body": "Never apply resting drop shadows or colored neon glows to cards, buttons, or text. Depth is communicated by surface luminance steps.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do preserve all Tier S (U-Score >= 85/100) components (ProjectCardVisual.tsx, ProjectsList.tsx, HeaderNav.tsx, ImageCarousel.tsx, src/styles/global.css token engine, and /data/*.yaml SSOT endpoints) without altering their interactive mechanics.",
+      "Do use semantic Tailwind v4 classes (bg-canvas, bg-surface, bg-surface-alt, text-ink, text-dominant-ink, text-accent-ink, border-edge) for every new or refactored UI element.",
+      "Do use explicit transition properties (transition-colors, transition-transform, transition-opacity) and respect @media (prefers-reduced-motion: reduce).",
+      "Do ensure every <video> carries a valid poster attribute and every interactive control meets >= 36px (44px primary) touch target height."
+    ],
+    "donts": [
+      "Don't hardcode domain data in .tsx/.astro components or src/i18n/translations.ts—all domain truth lives in /data/*.yaml.",
+      "Don't render empty placeholder sections on the live page when a collection is empty (such as certifications.yaml when items: []); fold or conditionally suppress empty sections.",
+      "Don't use transition-all, decorative 01 / 02 / 03 (CH // 01) index numbering on non-ordered items, tiny uppercase tracked monospace eyebrows (micro-label), or 100vh (h-screen, use min-h-dvh).",
+      "Don't use banned generic fonts (Inter, Roboto, Arial, Space Grotesk) or introduce a third competing brand color beyond Cyan and Indigo."
+    ]
+  }
+}

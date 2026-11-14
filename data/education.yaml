@@ -1,0 +1,15 @@
+- id: uneb-sistemas-de-informacao
+  institution:
+    pt: Universidade do Estado da Bahia (UNEB)
+    en: Bahia State University (UNEB)
+  shortInstitution: UNEB
+  degree:
+    pt: Sistemas de Informação
+    en: Information Systems
+  status:
+    pt: Graduação em Andamento
+    en: Degree in Progress
+  location: Salvador, BA
+  startDate: null # TODO: preencher data de início ISO (ex. "2023-03")
+  endDate: null # TODO: preencher previsão de conclusão ISO (ex. "2027-12")
+  current: true

@@ -124,20 +124,11 @@ test('formatNumber and formatDate format values according to Intl rules', () => 
   assert.ok(dateEn.length > 0);
 });
 
-test('Proper nouns and core technologies are preserved in translations', () => {
-  // Brand name
-  assert.strictEqual(ptBR.hero.role, 'Software Developer');
-  assert.strictEqual(enUS.hero.role, 'Software Developer');
-
-  // Author name
-  assert.ok(ptBR.hero.greeting.includes('Samuel Cesar'));
-  assert.ok(enUS.hero.greeting.includes('Samuel Cesar'));
-
-  // University name
-  assert.ok(ptBR.about.bioP1.includes('UNEB'));
-  assert.ok(enUS.about.bioP1.includes('UNEB'));
-
-  // Tech stack
-  assert.ok(ptBR.hero.bottomStack.includes('Python • SQL • AWS'));
-  assert.ok(enUS.hero.bottomStack.includes('Python • SQL • AWS'));
+test('UI dictionaries keep core action and fallback labels in both locales', () => {
+  assert.strictEqual(ptBR.nav.projects, 'Projetos');
+  assert.strictEqual(enUS.nav.projects, 'Projects');
+  assert.strictEqual(ptBR.notFound.statusCode, '404');
+  assert.strictEqual(enUS.notFound.statusCode, '404');
+  assert.ok(ptBR.nav.logoAria.includes('{name}'));
+  assert.ok(enUS.nav.logoAria.includes('{name}'));
 });

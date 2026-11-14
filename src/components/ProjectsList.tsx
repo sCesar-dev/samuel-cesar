@@ -1,105 +1,71 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ProjectCardVisual, { type ProjectCardData } from './ProjectCardVisual';
-import { Database, BrainCircuit, Eye, Sparkles } from 'lucide-react';
+import { Database, BrainCircuit, Eye, Sparkles, Shield } from 'lucide-react';
 import { useI18n } from '../i18n/useI18n';
-
-type AstroProject = {
-  id: string;
-  slug: string;
-  body: string;
-  collection: string;
-  data: {
-    title: string;
-    description: string;
-    techs: string[];
-    stack: string;
-    category?: 'robotics-cv' | 'data-engineering' | 'data-science' | 'computer-vision';
-    categoryLabel?: string;
-    oneLinerImpact?: string;
-    hardwareBadges?: string[];
-    technicalHighlights?: string[];
-    architectureDiagram?: string;
-    metrics?: Record<string, string>;
-    featured?: boolean;
-    order?: number;
-    images?: string[];
-    videos?: string[];
-    github?: string;
-    live?: string;
-  };
-};
+import { pickLocalized, pickLocalizedList } from '../i18n/localize';
+import type { ProjectItem } from '../../data/schemas/portfolio';
 
 interface Props {
-  projects: AstroProject[];
+  projects: ProjectItem[];
 }
 
-export default function ProjectsList({ projects }: Props) {
-  const [activeTab, setActiveTab] = useState<'all' | 'data-engineering' | 'data-science' | 'computer-vision'>('all');
-  const { t } = useI18n();
+export type ProjectTabFilter = 'all' | 'data-engineering' | 'data-science' | 'computer-vision' | 'cybersecurity';
 
-  // Transforma e ordena os projetos: destacados primeiro, depois por ordem numérica
+export default function ProjectsList({ projects }: Props) {
+  const [activeTab, setActiveTab] = useState<ProjectTabFilter>('all');
+  const { t, locale } = useI18n();
+
+  useEffect(() => {
+    const handleSelectTab = (event: Event) => {
+      const detail = (event as CustomEvent<{ tab?: ProjectTabFilter }>).detail;
+      if (detail?.tab) {
+        setActiveTab(detail.tab);
+      }
+    };
+    window.addEventListener('portfolio:select-project-tab', handleSelectTab);
+    return () => window.removeEventListener('portfolio:select-project-tab', handleSelectTab);
+  }, []);
+
   const mappedProjects = useMemo<ProjectCardData[]>(() => {
-    const list = [...projects].sort((a, b) => {
-      const orderA = a.data.order ?? 99;
-      const orderB = b.data.order ?? 99;
-      return orderA - orderB;
-    });
+    const list = [...projects].sort((a, b) => a.order - b.order);
 
     return list.map((p) => {
-      let resolvedCategory: 'data-engineering' | 'data-science' | 'computer-vision' = 'data-engineering';
-      
-      if (
-        p.data.category === 'data-science' || 
-        p.data.stack?.toLowerCase().includes('data science') || 
-        p.data.stack?.toLowerCase().includes('machine learning') ||
-        p.data.techs.some(tech => ['scikit-learn', 'random forest', 'machine learning', 'xgboost'].includes(tech.toLowerCase()))
-      ) {
+      let resolvedCategory: 'data-engineering' | 'data-science' | 'computer-vision' | 'cybersecurity' = 'data-engineering';
+
+      if (p.category === 'data-science') {
         resolvedCategory = 'data-science';
-      } else if (
-        p.data.category === 'computer-vision' || 
-        p.data.category === 'robotics-cv' || 
-        p.data.stack?.toLowerCase().includes('robot') || 
-        p.data.stack?.toLowerCase().includes('vision') ||
-        p.data.techs.some(tech => ['ros 2', 'opencv', 'yolov8', 'moveit', 'amazon rekognition'].includes(tech.toLowerCase()))
-      ) {
+      } else if (p.category === 'computer-vision' || p.category === 'robotics-cv') {
         resolvedCategory = 'computer-vision';
-      } else {
-        resolvedCategory = 'data-engineering';
+      } else if (p.category === 'cybersecurity') {
+        resolvedCategory = 'cybersecurity';
       }
 
-      // Check for localized project items
-      const slugKey = p.slug.toLowerCase().replace(/[^a-z0-9]/g, '') as keyof typeof t.projectItems;
-      const localized = t.projectItems[slugKey];
-
-      let resolvedCategoryLabel = localized?.categoryLabel || p.data.categoryLabel;
-      if (!resolvedCategoryLabel) {
-        if (resolvedCategory === 'data-science') resolvedCategoryLabel = t.projects.catDataScience;
-        else if (resolvedCategory === 'computer-vision') resolvedCategoryLabel = t.projects.catVision;
-        else resolvedCategoryLabel = t.projects.catDataEng;
+      const localizedMetrics: Record<string, string> = {};
+      for (const metric of p.metrics) {
+        localizedMetrics[pickLocalized(metric.label, locale)] = pickLocalized(metric.value, locale);
       }
 
       return {
         id: p.id,
-        slug: p.slug,
-        title: localized?.title || p.data.title,
-        description: localized?.description || p.data.description,
+        title: pickLocalized(p.title, locale),
+        description: pickLocalized(p.description, locale),
         category: resolvedCategory,
-        categoryLabel: resolvedCategoryLabel,
-        oneLinerImpact: localized?.oneLinerImpact || p.data.oneLinerImpact,
-        mediaVideoUrl: p.data.videos && p.data.videos.length > 0 ? p.data.videos[0] : undefined,
-        mediaImageUrl: p.data.images && p.data.images.length > 0 ? p.data.images[0] : undefined,
-        architectureDiagramUrl: p.data.architectureDiagram,
-        metrics: p.data.metrics || {},
-        hardwareBadges: p.data.hardwareBadges || [],
-        techs: p.data.techs || [],
-        technicalHighlights: localized?.technicalHighlights || p.data.technicalHighlights || [],
-        featured: p.data.featured,
-        githubUrl: p.data.github,
-        liveDemoUrl: p.data.live,
+        categoryLabel: pickLocalized(p.categoryLabel, locale),
+        oneLinerImpact: p.oneLinerImpact ? pickLocalized(p.oneLinerImpact, locale) : undefined,
+        mediaVideoUrl: p.videos.length > 0 ? p.videos[0] : undefined,
+        mediaImageUrl: p.images.length > 0 ? p.images[0] : undefined,
+        architectureDiagramUrl: p.architectureDiagram ?? undefined,
+        metrics: localizedMetrics,
+        hardwareBadges: p.hardwareBadges,
+        techs: p.techs,
+        technicalHighlights: p.technicalHighlights ? pickLocalizedList(p.technicalHighlights, locale) : [],
+        featured: p.featured,
+        githubUrl: p.github ?? undefined,
+        liveDemoUrl: p.live ?? undefined,
       };
     });
-  }, [projects, t]);
+  }, [projects, locale]);
 
   const filteredProjects = useMemo(() => {
     if (activeTab === 'data-engineering') {
@@ -111,13 +77,16 @@ export default function ProjectsList({ projects }: Props) {
     if (activeTab === 'computer-vision') {
       return mappedProjects.filter((p) => p.category === 'computer-vision');
     }
+    if (activeTab === 'cybersecurity') {
+      return mappedProjects.filter((p) => p.category === 'cybersecurity');
+    }
     return mappedProjects;
   }, [mappedProjects, activeTab]);
 
   return (
     <div className="w-full">
-      {/* Section Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 pb-2">
+      {/* Section Header + Coupled Instrument Filter Bar */}
+      <div className="flex flex-col xl:flex-row xl:items-end justify-between gap-6 mb-10 pb-6 border-b border-edge">
         <div>
           <h2 className="text-3xl md:text-5xl font-extrabold text-ink font-display">
             {t.projects.sectionTitle}
@@ -126,105 +95,151 @@ export default function ProjectsList({ projects }: Props) {
             {t.projects.sectionSubtitle}
           </p>
         </div>
+
+        {/* Coupled Technical Selector Bar (1px hairline matrix via gap-px bg-edge) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:inline-flex bg-edge gap-px border border-edge w-full xl:w-auto shrink-0 sm:[&>*:last-child]:col-span-2 xl:[&>*:last-child]:col-span-1">
+          <button
+            type="button"
+            onClick={() => setActiveTab('all')}
+            aria-pressed={activeTab === 'all'}
+            className={`flex items-center justify-between xl:justify-start gap-2.5 px-4 py-2.5 text-[13px] font-sans font-medium transition-colors duration-200 cursor-pointer min-h-[42px] focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-dominant ${
+              activeTab === 'all'
+                ? 'bg-surface-alt text-dominant-ink font-semibold'
+                : 'bg-surface text-ink-tertiary hover:text-ink hover:bg-surface-alt/50'
+            }`}
+          >
+            <span className="inline-flex items-center gap-2">
+              <Sparkles size={14} className={activeTab === 'all' ? 'text-dominant-ink' : ''} aria-hidden="true" />
+              <span>{t.projects.tabAll}</span>
+            </span>
+            <span className="text-xs font-mono px-1.5 py-0.5 bg-control text-ink-secondary tabular-nums border border-edge-subtle">
+              {mappedProjects.length}
+            </span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setActiveTab('data-engineering')}
+            aria-pressed={activeTab === 'data-engineering'}
+            className={`flex items-center justify-between xl:justify-start gap-2.5 px-4 py-2.5 text-[13px] font-sans font-medium transition-colors duration-200 cursor-pointer min-h-[42px] focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-dominant ${
+              activeTab === 'data-engineering'
+                ? 'bg-surface-alt text-dominant-ink font-semibold'
+                : 'bg-surface text-ink-tertiary hover:text-dominant-ink hover:bg-surface-alt/50'
+            }`}
+          >
+            <span className="inline-flex items-center gap-2">
+              <Database size={14} className="text-dominant-ink" aria-hidden="true" />
+              <span>{t.projects.tabDataEng}</span>
+            </span>
+            <span className="text-xs font-mono px-1.5 py-0.5 bg-dominant-soft text-dominant-ink tabular-nums border border-dominant-edge">
+              {mappedProjects.filter((p) => p.category === 'data-engineering').length}
+            </span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setActiveTab('data-science')}
+            aria-pressed={activeTab === 'data-science'}
+            className={`flex items-center justify-between xl:justify-start gap-2.5 px-4 py-2.5 text-[13px] font-sans font-medium transition-colors duration-200 cursor-pointer min-h-[42px] focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent ${
+              activeTab === 'data-science'
+                ? 'bg-surface-alt text-accent-ink font-semibold'
+                : 'bg-surface text-ink-tertiary hover:text-accent-ink hover:bg-surface-alt/50'
+            }`}
+          >
+            <span className="inline-flex items-center gap-2">
+              <BrainCircuit size={14} className="text-accent-ink" aria-hidden="true" />
+              <span>{t.projects.tabDataScience}</span>
+            </span>
+            <span className="text-xs font-mono px-1.5 py-0.5 bg-accent-soft text-accent-ink tabular-nums border border-accent-edge">
+              {mappedProjects.filter((p) => p.category === 'data-science').length}
+            </span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setActiveTab('computer-vision')}
+            aria-pressed={activeTab === 'computer-vision'}
+            className={`flex items-center justify-between xl:justify-start gap-2.5 px-4 py-2.5 text-[13px] font-sans font-medium transition-colors duration-200 cursor-pointer min-h-[42px] focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-dominant ${
+              activeTab === 'computer-vision'
+                ? 'bg-surface-alt text-dominant-ink font-semibold'
+                : 'bg-surface text-ink-tertiary hover:text-dominant-ink hover:bg-surface-alt/50'
+            }`}
+          >
+            <span className="inline-flex items-center gap-2">
+              <Eye size={14} className="text-dominant-ink" aria-hidden="true" />
+              <span>{t.projects.tabVision}</span>
+            </span>
+            <span className="text-xs font-mono px-1.5 py-0.5 bg-dominant-soft text-dominant-ink tabular-nums border border-dominant-edge">
+              {mappedProjects.filter((p) => p.category === 'computer-vision').length}
+            </span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setActiveTab('cybersecurity')}
+            aria-pressed={activeTab === 'cybersecurity'}
+            className={`flex items-center justify-between xl:justify-start gap-2.5 px-4 py-2.5 text-[13px] font-sans font-medium transition-colors duration-200 cursor-pointer min-h-[42px] focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent ${
+              activeTab === 'cybersecurity'
+                ? 'bg-surface-alt text-accent-ink font-semibold'
+                : 'bg-surface text-ink-tertiary hover:text-accent-ink hover:bg-surface-alt/50'
+            }`}
+          >
+            <span className="inline-flex items-center gap-2">
+              <Shield size={14} className="text-accent-ink" aria-hidden="true" />
+              <span>{t.projects.tabCyberSec}</span>
+            </span>
+            <span className="text-xs font-mono px-1.5 py-0.5 bg-accent-soft text-accent-ink tabular-nums border border-accent-edge">
+              {mappedProjects.filter((p) => p.category === 'cybersecurity').length}
+            </span>
+          </button>
+        </div>
       </div>
 
-      {/* Strategic Filter Tabs */}
-      <div className="flex flex-wrap items-center justify-start md:justify-center gap-2 mb-10">
-        <button
-          type="button"
-          onClick={() => setActiveTab('all')}
-          aria-pressed={activeTab === 'all'}
-          className={`flex items-center gap-2 px-4 py-2 rounded-lg text-[13px] font-sans font-medium transition-colors duration-200 cursor-pointer min-h-[40px] focus:outline-none focus-visible:ring-2 focus-visible:ring-dominant ${
-            activeTab === 'all'
-              ? 'bg-dominant-soft text-dominant-ink border border-dominant-edge'
-              : 'bg-surface text-ink-tertiary hover:text-ink border border-edge hover:border-edge-strong'
-          }`}
-        >
-          <Sparkles size={14} className={activeTab === 'all' ? 'text-dominant-ink' : ''} aria-hidden="true" />
-          <span>{t.projects.tabAll}</span>
-          <span className="text-xs font-mono px-1.5 py-0.5 rounded bg-control text-ink-secondary tabular-nums">
-            {mappedProjects.length}
-          </span>
-        </button>
-
-        <button
-          type="button"
-          onClick={() => setActiveTab('data-engineering')}
-          aria-pressed={activeTab === 'data-engineering'}
-          className={`flex items-center gap-2 px-4 py-2 rounded-lg text-[13px] font-sans font-medium transition-colors duration-200 cursor-pointer min-h-[40px] focus:outline-none focus-visible:ring-2 focus-visible:ring-dominant ${
-            activeTab === 'data-engineering'
-              ? 'bg-dominant-soft text-dominant-ink border border-dominant-edge'
-              : 'bg-surface text-ink-tertiary hover:text-dominant-ink border border-edge hover:border-dominant-edge'
-          }`}
-        >
-          <Database size={14} className="text-dominant-ink" aria-hidden="true" />
-          <span>{t.projects.tabDataEng}</span>
-          <span className="text-xs font-mono px-1.5 py-0.5 rounded bg-dominant-soft text-dominant-ink tabular-nums border border-dominant-edge">
-            {mappedProjects.filter((p) => p.category === 'data-engineering').length}
-          </span>
-        </button>
-
-        <button
-          type="button"
-          onClick={() => setActiveTab('data-science')}
-          aria-pressed={activeTab === 'data-science'}
-          className={`flex items-center gap-2 px-4 py-2 rounded-lg text-[13px] font-sans font-medium transition-colors duration-200 cursor-pointer min-h-[40px] focus:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
-            activeTab === 'data-science'
-              ? 'bg-accent-soft text-accent-ink border border-accent-edge'
-              : 'bg-surface text-ink-tertiary hover:text-accent-ink border border-edge hover:border-accent-edge'
-          }`}
-        >
-          <BrainCircuit size={14} className="text-accent-ink" aria-hidden="true" />
-          <span>{t.projects.tabDataScience}</span>
-          <span className="text-xs font-mono px-1.5 py-0.5 rounded bg-accent-soft text-accent-ink tabular-nums border border-accent-edge">
-            {mappedProjects.filter((p) => p.category === 'data-science').length}
-          </span>
-        </button>
-
-        <button
-          type="button"
-          onClick={() => setActiveTab('computer-vision')}
-          aria-pressed={activeTab === 'computer-vision'}
-          className={`flex items-center gap-2 px-4 py-2 rounded-lg text-[13px] font-sans font-medium transition-colors duration-200 cursor-pointer min-h-[40px] focus:outline-none focus-visible:ring-2 focus-visible:ring-dominant ${
-            activeTab === 'computer-vision'
-              ? 'bg-dominant-soft text-dominant-ink border border-dominant-edge'
-              : 'bg-surface text-ink-tertiary hover:text-dominant-ink border border-edge hover:border-dominant-edge'
-          }`}
-        >
-          <Eye size={14} className="text-dominant-ink" aria-hidden="true" />
-          <span>{t.projects.tabVision}</span>
-          <span className="text-xs font-mono px-1.5 py-0.5 rounded bg-dominant-soft text-dominant-ink tabular-nums border border-dominant-edge">
-            {mappedProjects.filter((p) => p.category === 'computer-vision').length}
-          </span>
-        </button>
-      </div>
-
-      {/* Asymmetric Bento Grid */}
+      {/* Differentiated Project Architecture: Full-Width Split Showcases + Technical Index Grid */}
       <motion.div 
         layout 
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6"
       >
         <AnimatePresence mode="popLayout">
-          {filteredProjects.map((project, index) => {
-            const spanClass = 
-              filteredProjects.length === 1 
-                ? 'lg:col-span-12'
-                : index === 0 
-                ? 'lg:col-span-7'
-                : index === 1 
-                ? 'lg:col-span-5'
-                : index === 2 
-                ? 'lg:col-span-5'
-                : index === 3 
-                ? 'lg:col-span-7'
-                : 'lg:col-span-6';
+          {filteredProjects.length > 0 ? (
+            filteredProjects.map((project, index) => {
+              const isShowcase =
+                filteredProjects.length === 1 ||
+                (activeTab === 'all' && index < 2);
 
-            return (
-              <div key={project.id} className={spanClass}>
-                <ProjectCardVisual project={project} />
+              const spanClass = isShowcase
+                ? 'md:col-span-2 lg:col-span-12'
+                : 'md:col-span-1 lg:col-span-6';
+
+              return (
+                <div key={project.id} className={spanClass}>
+                  <ProjectCardVisual
+                    project={project}
+                    variant={isShowcase ? 'showcase' : 'index'}
+                    indexNumber={index + 1}
+                  />
+                </div>
+              );
+            })
+          ) : (
+            <div className="md:col-span-2 lg:col-span-12 bg-surface border border-edge p-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div className="space-y-1.5">
+                <h3 className="text-lg font-bold text-ink font-display">
+                  {t.projects.emptyTrackTitle}
+                </h3>
+                <p className="text-sm text-ink-tertiary max-w-2xl">
+                  {t.projects.emptyTrackDesc}
+                </p>
               </div>
-            );
-          })}
+              <a
+                href="#certifications"
+                className="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-medium bg-accent-soft text-accent-ink border border-accent-edge hover:bg-surface-alt transition-colors min-h-[42px] shrink-0"
+              >
+                <Shield size={15} aria-hidden="true" />
+                <span>{t.hero.benchOpenVault}</span>
+              </a>
+            </div>
+          )}
         </AnimatePresence>
       </motion.div>
     </div>

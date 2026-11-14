@@ -1,0 +1,70 @@
+main:
+  id: samuel-cesar
+  name: Samuel Cesar
+  brand: sCesar.dev
+
+  role:
+    pt: Software Developer
+    en: Software Developer
+
+  availabilityBadge:
+    pt: "Disponível para Estágio • Engenharia & Ciência de Dados"
+    en: "Available for Internship • Data Engineering & Data Science"
+
+  availabilityStatus:
+    pt: Disponível para Estágio
+    en: Available for Internship
+
+  headline:
+    pt: "Graduando em Sistemas de Informação (UNEB) e bolsista IC ACSO/DEFENSE. 1º lugar no Hackathon UFBA com Python e AWS."
+    en: "Information Systems undergraduate (UNEB) and ACSO/DEFENSE undergraduate research fellow. 1st Place at UFBA Hackathon with Python and AWS."
+
+  meta:
+    title:
+      pt: "Samuel Cesar, Software Developer"
+      en: "Samuel Cesar, Software Developer"
+    description:
+      pt: "Portfólio de Samuel Cesar. Graduando em Sistemas de Informação (UNEB) em busca de estágio. Projetos em Engenharia de Dados, Ciência de Dados (Machine Learning), Visão Computacional e Nuvem AWS."
+      en: "Portfolio of Samuel Cesar. Information Systems undergraduate (UNEB) seeking an internship. Projects in Data Engineering, Data Science (Machine Learning), Computer Vision, and AWS Cloud."
+    ogImage: /images/robocup-image.jpg
+
+  location:
+    city: Salvador
+    state: BA
+    country: BR
+    label:
+      pt: "Salvador, BA (Presencial / Remoto)"
+      en: "Salvador, BA (On-site / Remote)"
+    footerNotice:
+      pt: "Samuel Cesar • UNEB (Sistemas de Informação) • Salvador, BA"
+      en: "Samuel Cesar • UNEB (Information Systems) • Salvador, BA"
+
+  contacts:
+    email: samueljc003@gmail.com
+    phone: null # TODO: preencher telefone caso deseje expor nos dados do perfil
+    website: https://scesar-dev.github.io/samuel-cesar
+    github: https://github.com/sCesar-dev
+    githubHandle: github.com/sCesar-dev
+    linkedin: https://www.linkedin.com/in/s-cesar/
+    linkedinHandle: s-cesar
+
+  assets:
+    profilePhoto: /images/profile.jpg
+    qrCode: /qrcode.svg
+    resumePdf: /docs/Samuel_Cesar_Curriculum.pdf
+    resumeFilename: Samuel_Cesar_Curriculum.pdf
+    resumeUpdatedNote:
+      pt: Documento oficial atualizado em 2026
+      en: Official document updated in 2026
+
+  bio:
+    objectiveTitle:
+      pt: "Objetivo: Oportunidade de Estágio"
+      en: "Objective: Internship Opportunity"
+    paragraphs:
+      - pt: "Graduando em Sistemas de Informação pela Universidade do Estado da Bahia (UNEB), busco oportunidade de estágio em Engenharia de Dados, Ciência de Dados ou Visão Computacional."
+        en: "Information Systems undergraduate at Bahia State University (UNEB), seeking an internship opportunity in Data Engineering, Data Science, or Computer Vision."
+      - pt: "Construo pipelines de dados, modelos preditivos em Python (Scikit-Learn, Random Forest, Pandas), arquiteturas serverless na nuvem com AWS (Lambda, S3, SAM CLI) e estruturas de indexação de alto desempenho (B-Trees e Grafos)."
+        en: "I engineer data pipelines, predictive models in Python (Scikit-Learn, Random Forest, Pandas), serverless cloud architectures with AWS (Lambda, S3, SAM CLI), and high-performance indexing data structures (B-Trees and Graphs)."
+      - pt: "Conquistei o 1º Lugar no Hackathon LIAO / UFBA 2026 desenvolvendo a inteligência de previsão e fidelidade do projeto BioPoints. Como bolsista de iniciação científica no ACSO (UNEB), atuei durante 2 anos com robótica para robôs de serviço com ROS 2, YOLOv8 e Python e atualmente integro o ACSO DEFENSE, atuando em soluções para busca e reconhecimento utilizando drones autônomos."
+        en: "Awarded 1st Place at the LIAO / UFBA 2026 Hackathon developing the predictive emission and loyalty engine for BioPoints. As an undergraduate scientific researcher at ACSO (UNEB), I worked for 2 years on service robotics with ROS 2, YOLOv8, and Python, and currently participate in ACSO DEFENSE, developing search and reconnaissance solutions with autonomous drones."

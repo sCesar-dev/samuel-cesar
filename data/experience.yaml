@@ -1,0 +1,50 @@
+- id: acso-bahiart
+  role:
+    pt: Bolsista de Iniciação Científica
+    en: Undergraduate Scientific Researcher
+  organization: ACSO / BahiaRT (UNEB)
+  type: research
+  status:
+    pt: Iniciação Científica
+    en: Scientific Research Fellow
+  focus:
+    pt: "Robótica Autônoma de Serviço (RoboCup@Home & CBR)"
+    en: "Autonomous Service Robotics (RoboCup@Home & CBR)"
+  description:
+    pt: "Atuação durante 2 anos com robótica para robôs de serviço (Robô Bill), desenvolvendo visão computacional e manipulação com ROS 2, YOLOv8 e Python para a RoboCup@Home e CBR."
+    en: "Worked for 2 years on service robotics (Bill Robot), developing computer vision and manipulation pipelines with ROS 2, YOLOv8, and Python for RoboCup@Home and CBR."
+  stack:
+    - ROS 2
+    - YOLOv8
+    - Python
+    - C++
+    - MoveIt 2
+    - OpenCV
+  startDate: null # TODO: preencher data de início ISO
+  endDate: null # TODO: preencher data de término ISO
+  current: false
+  showInCurriculumSummary: true
+
+- id: acso-defense
+  role:
+    pt: Bolsista de Iniciação Científica
+    en: Undergraduate Scientific Researcher
+  organization: ACSO DEFENSE (UNEB)
+  type: research
+  status:
+    pt: Iniciação Científica Atual
+    en: Current Scientific Research Fellow
+  focus:
+    pt: Drones Autônomos para Busca e Reconhecimento
+    en: Autonomous Drones for Search and Reconnaissance
+  description:
+    pt: Atuação em soluções para busca e reconhecimento utilizando drones autônomos.
+    en: Developing search and reconnaissance solutions using autonomous drones.
+  stack:
+    - Python
+    - Computer Vision
+    - Autonomous Drones
+  startDate: null # TODO: preencher data de início ISO
+  endDate: null
+  current: true
+  showInCurriculumSummary: false

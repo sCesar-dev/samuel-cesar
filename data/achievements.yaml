@@ -1,0 +1,129 @@
+- id: hackathon-liao-ufba-2026
+  kind: award
+  order: 1
+  badge:
+    pt: "1º Lugar: Premiação Hackathon"
+    en: "1st Place: Hackathon Award"
+  winnerLabel:
+    pt: Vencedor
+    en: Winner
+  title:
+    pt: Hackathon LIAO / UFBA 2026
+    en: Hackathon LIAO / UFBA 2026
+  description:
+    pt: "Desenvolvimento da inteligência preditiva do BioPoints na trilha de Inteligência Artificial, Cidades Inteligentes & Mudanças Climáticas, utilizando Random Forest e simulação contrafactual."
+    en: "Development of the predictive machine learning engine for BioPoints in the AI, Smart Cities & Climate Change track, utilizing Random Forest and counterfactual simulation."
+  shortTitle:
+    pt: "1º Lugar: Hackathon UFBA 2026"
+    en: "1st Place: UFBA Hackathon 2026"
+  shortDescription:
+    pt: "BioPoints: Modelagem Preditiva de Fidelidade"
+    en: "BioPoints: Predictive Loyalty & Carbon Modeling"
+  organization: LIAO / UFBA
+  date: "2026"
+  tone: accent
+  featured: true
+  showInCurriculum: true
+
+- id: acso-bahiart-research
+  kind: award
+  order: 2
+  badge:
+    pt: Iniciação Científica
+    en: Scientific Research
+  winnerLabel: null
+  title:
+    pt: ACSO & BahiaRT (UNEB)
+    en: ACSO & BahiaRT (UNEB)
+  description:
+    pt: "Pesquisa acadêmica e desenvolvimento de visão e manipulação para o Robô Bill na competição universitária RoboCup@Home."
+    en: "Academic research and vision/manipulation system integration for Bill Robot in the collegiate RoboCup@Home competition."
+  shortTitle: null
+  shortDescription: null
+  organization: UNEB
+  date: null # TODO: preencher ano/período ISO
+  tone: dominant
+  featured: true
+  showInCurriculum: false
+
+- id: cbr-2024-goiania
+  kind: award
+  order: 3
+  badge:
+    pt: Competição Nacional
+    en: National Competition
+  winnerLabel: null
+  title:
+    pt: CBR 2024 - Goiânia
+    en: CBR 2024 - Goiânia
+  description:
+    pt: "Atuação na Competição Brasileira de Robótica universitária com validação experimental de sistemas autônomos."
+    en: "Collegiate Brazilian Robotics Competition participation with experimental validation of autonomous systems."
+  shortTitle:
+    pt: "Competidor: CBR 2024 / 2025"
+    en: "Competitor: CBR 2024 / 2025"
+  shortDescription:
+    pt: "Equipe BahiaRT / ACSO (RoboCup@Home)"
+    en: "BahiaRT / ACSO Team (RoboCup@Home)"
+  organization: CBR / RoboCup Brasil
+  date: "2024"
+  tone: neutral
+  featured: true
+  showInCurriculum: true
+
+- id: gallery-robocup-2025-salvador
+  kind: gallery
+  order: 1
+  title:
+    pt: RoboCup 2025 - Salvador
+    en: RoboCup 2025 - Salvador
+  description:
+    pt: "Pesquisa e integração de visão computacional e controle para o Robô Bill no ACSO / BahiaRT (UNEB)."
+    en: "Computer vision and control integration research for Bill Robot at ACSO / BahiaRT (UNEB)."
+  alt:
+    pt: "RoboCup Salvador 2025, Brasil"
+    en: "RoboCup Salvador 2025, Brazil"
+  image: /images/robocup-image.jpg
+  width: 2560
+  height: 1415
+  aspectClass: aspect-[2560/1415]
+  orientation: landscape
+  date: "2025"
+
+- id: gallery-cbr-2024-goiania
+  kind: gallery
+  order: 2
+  title:
+    pt: CBR 2024 - Goiânia
+    en: CBR 2024 - Goiânia
+  description:
+    pt: "Validação experimental de sistemas autônomos na Competição Brasileira de Robótica."
+    en: "Experimental validation of autonomous service robotics systems at the Brazilian Robotics Competition."
+  alt:
+    pt: "CBR 2024 - Goiânia - Samuel Cesar"
+    en: "CBR 2024 - Goiânia - Samuel Cesar"
+  image: /images/personal-image.jpg
+  width: 1080
+  height: 720
+  aspectClass: aspect-[3/2]
+  orientation: landscape
+  date: "2024"
+
+- id: gallery-preparacao-competitiva
+  kind: gallery
+  order: 3
+  title:
+    pt: Preparação Competitiva
+    en: Competitive Preparation
+  description:
+    pt: "Calibração de sensores e testes de nós de controle no laboratório universitário."
+    en: "Sensor calibration and control node testing in the university laboratory."
+  alt:
+    pt: "CBR 2025 & RoboCup 25 - Samuel Cesar"
+    en: "CBR 2025 & RoboCup 25 - Samuel Cesar"
+  image: /images/robocup-image2.jpg
+  width: 960
+  height: 1280
+  aspectClass: aspect-[3/4]
+  orientation: portrait
+  date: "2025"
