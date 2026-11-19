@@ -151,8 +151,8 @@
         en: "94.2%"
   featured: true
   order: 1
-  startDate: null # TODO: preencher data de início ISO (ex. "2024")
-  endDate: null # TODO: preencher data de término ISO (ex. "2025")
+  startDate: "2024-04"
+  endDate: "2025-11"
   github: https://github.com/sCesar-dev
   live: null
   images:

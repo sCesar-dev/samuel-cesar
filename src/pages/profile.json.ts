@@ -27,6 +27,7 @@ export const GET: APIRoute = async () => {
     certifications: graph.certifications,
     badges: graph.badges,
     achievements: graph.achievements,
+    publications: graph.publications,
   };
 
   return new Response(JSON.stringify(payload, null, 2), {

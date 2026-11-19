@@ -23,4 +23,5 @@ test('All /data/*.yaml files pass Zod schema, unique ID, PT/EN parity, and asset
   assert.strictEqual(result.data.skills.length, 4);
   assert.strictEqual(Array.isArray(result.data.badges), true);
   assert.strictEqual(result.data.achievements.length, 6);
+  assert.strictEqual(result.data.publications.length >= 3, true);
 });

@@ -12,6 +12,7 @@ import {
   CertificationItemSchema,
   BadgeItemSchema,
   AchievementItemSchema,
+  PublicationItemSchema,
   type ProfileData,
   type EducationItem,
   type ExperienceItem,
@@ -20,6 +21,7 @@ import {
   type CertificationItem,
   type BadgeItem,
   type AchievementItem,
+  type PublicationItem,
 } from '../data/schemas/portfolio.ts';
 
 export interface ValidationIssue {
@@ -37,6 +39,7 @@ export interface ValidatedPortfolioData {
   certifications: CertificationItem[];
   badges: BadgeItem[];
   achievements: AchievementItem[];
+  publications: PublicationItem[];
 }
 
 function readYamlFile(filePath: string): unknown {
@@ -108,6 +111,7 @@ export function validatePortfolioData(rootDir: string): {
     'certifications.yaml',
     'badges.yaml',
     'achievements.yaml',
+    'publications.yaml',
   ];
 
   for (const relFile of requiredFiles) {
@@ -184,6 +188,13 @@ export function validatePortfolioData(rootDir: string): {
     issues.push(...formatZodIssues('data/achievements.yaml', achievementsResult.error));
   }
 
+  const publicationsResult = z
+    .array(PublicationItemSchema)
+    .safeParse(readYamlFile(path.join(dataDir, 'publications.yaml')));
+  if (!publicationsResult.success) {
+    issues.push(...formatZodIssues('data/publications.yaml', publicationsResult.error));
+  }
+
   if (
     !profileWrapperResult.success ||
     !educationResult.success ||
@@ -192,7 +203,8 @@ export function validatePortfolioData(rootDir: string): {
     !skillsResult.success ||
     !certificationsResult.success ||
     !badgesResult.success ||
-    !achievementsResult.success
+    !achievementsResult.success ||
+    !publicationsResult.success
   ) {
     return { valid: false, issues };
   }
@@ -205,6 +217,7 @@ export function validatePortfolioData(rootDir: string): {
   const certifications = certificationsResult.data;
   const badges = badgesResult.data;
   const achievements = achievementsResult.data;
+  const publications = publicationsResult.data;
 
   // 3. Unique IDs across every collection
   assertUniqueIds('data/education.yaml', education, issues);
@@ -214,6 +227,7 @@ export function validatePortfolioData(rootDir: string): {
   assertUniqueIds('data/certifications.yaml', certifications, issues);
   assertUniqueIds('data/badges.yaml', badges, issues);
   assertUniqueIds('data/achievements.yaml', achievements, issues);
+  assertUniqueIds('data/publications.yaml', publications, issues);
 
   const seenExternalIds = new Set<string>();
   badges.forEach((badge, idx) => {
@@ -280,8 +294,30 @@ export function validatePortfolioData(rootDir: string): {
     }
   });
 
+  experience.forEach((exp, idx) => {
+    if (exp.highlights && exp.highlights.pt.length !== exp.highlights.en.length) {
+      issues.push({
+        file: 'data/experience.yaml',
+        path: `[${idx}].highlights`,
+        message: `PT/EN highlight count mismatch (${exp.highlights.pt.length} vs ${exp.highlights.en.length})`,
+      });
+    }
+  });
+
   badges.forEach((badge, idx) => {
     checkAssetExists(rootDir, 'data/badges.yaml', `[${idx}].badgeImageUrl`, badge.badgeImageUrl, issues);
+  });
+
+  const projectIds = new Set(projects.map((p) => p.id));
+  publications.forEach((pub, idx) => {
+    checkAssetExists(rootDir, 'data/publications.yaml', `[${idx}].pdfUrl`, pub.pdfUrl, issues);
+    if (pub.projectId && !projectIds.has(pub.projectId)) {
+      issues.push({
+        file: 'data/publications.yaml',
+        path: `[${idx}].projectId`,
+        message: `Referenced projectId "${pub.projectId}" does not exist in data/projects.yaml`,
+      });
+    }
   });
 
   return {
@@ -296,6 +332,7 @@ export function validatePortfolioData(rootDir: string): {
       certifications,
       badges,
       achievements,
+      publications,
     },
   };
 }
@@ -320,6 +357,7 @@ if (isCliEntry) {
     `✅ All /data/*.yaml validated successfully (` +
       `profile: 1, education: ${data.education.length}, experience: ${data.experience.length}, ` +
       `projects: ${data.projects.length}, skills: ${data.skills.length}, ` +
-      `certifications: ${data.certifications.length}, badges: ${data.badges.length}, achievements: ${data.achievements.length}).`
+      `certifications: ${data.certifications.length}, badges: ${data.badges.length}, ` +
+      `achievements: ${data.achievements.length}, publications: ${data.publications.length}).`
   );
 }

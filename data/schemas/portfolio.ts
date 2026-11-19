@@ -91,11 +91,32 @@ export const ExperienceItemSchema = z.object({
   status: LocalizedStringSchema,
   focus: LocalizedStringSchema,
   description: LocalizedStringSchema,
+  highlights: LocalizedStringListSchema.optional(),
   stack: z.array(z.string().trim().min(1)).min(1),
   startDate: NullableIsoDateSchema,
   endDate: NullableIsoDateSchema,
   current: z.boolean(),
   showInCurriculumSummary: z.boolean().default(false),
+});
+
+export const PublicationItemSchema = z.object({
+  id: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9-]+)*$/, 'Expected kebab-case slug id'),
+  type: z.enum(['tdp', 'paper', 'technical-report']).default('tdp'),
+  typeLabel: LocalizedStringSchema,
+  title: LocalizedStringSchema,
+  authors: z.array(z.string().trim().min(1)).min(1),
+  authorRole: LocalizedStringSchema,
+  affiliation: z.string().trim().min(1),
+  venue: LocalizedStringSchema,
+  location: z.string().trim().min(1),
+  year: z.string().regex(/^\d{4}$/, 'Expected 4-digit year YYYY'),
+  publishedDate: NullableIsoDateSchema,
+  abstract: LocalizedStringSchema,
+  keywords: z.array(z.string().trim().min(1)).default([]),
+  pdfUrl: AssetPathSchema.nullable(),
+  externalUrl: OptionalUrlSchema,
+  projectId: z.string().trim().min(1).nullable().default(null),
+  order: z.number().int().nonnegative().default(0),
 });
 
 export const ProjectMetricSchema = z.object({
@@ -236,3 +257,4 @@ export type CertificationItem = z.infer<typeof CertificationItemSchema>;
 export type BadgeCategory = z.infer<typeof BadgeCategorySchema>;
 export type BadgeItem = z.infer<typeof BadgeItemSchema>;
 export type AchievementItem = z.infer<typeof AchievementItemSchema>;
+export type PublicationItem = z.infer<typeof PublicationItemSchema>;

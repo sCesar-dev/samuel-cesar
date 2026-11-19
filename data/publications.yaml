@@ -1,0 +1,113 @@
+# Artigos Técnicos, Científicos e Team Description Papers (TDPs) — SSOT
+# Para anexar um PDF e habilitá-lo no visualizador embutido do portfólio:
+# 1. Coloque o arquivo PDF em `public/docs/tdps/` (ex.: `public/docs/tdps/tdp-bahiart-cbr-2024.pdf`).
+# 2. Preencha `pdfUrl: /docs/tdps/tdp-bahiart-cbr-2024.pdf` no item correspondente.
+# 3. Opcionalmente, adicione `externalUrl` caso o artigo esteja publicado em anais/repositório externo.
+
+- id: tdp-bahiart-cbr-2024
+  type: tdp
+  typeLabel:
+    pt: Team Description Paper (TDP)
+    en: Team Description Paper (TDP)
+  title:
+    pt: "Equipe ACSO BahiaRT – BILL: Arquitetura de Software e Percepção (CBR 2024)" # TODO: substituir pelo título oficial do TDP se desejar
+    en: "ACSO BahiaRT Team – BILL: Software Architecture & Perception (CBR 2024)" # TODO: replace with exact official TDP title if desired
+  authors:
+    - Samuel Cesar
+    - Equipe ACSO BahiaRT
+  authorRole:
+    pt: Coautor
+    en: Co-author
+  affiliation: ACSO / BahiaRT (UNEB)
+  venue:
+    pt: Competição Brasileira de Robótica (CBR 2024)
+    en: Brazilian Robotics Competition (CBR 2024)
+  location: Goiânia, GO
+  year: "2024"
+  publishedDate: "2024"
+  abstract:
+    pt: "Artigo técnico-científico descrevendo a arquitetura de software, conteinerização em Docker, fluxos colaborativos em Git/GitLab e pipelines de visão computacional e percepção integrados ao ROS 2 para o robô de serviços BILL na CBR 2024."
+    en: "Technical and scientific paper detailing the software architecture, Docker containerization, Git/GitLab collaborative workflows, and ROS 2 computer vision and perception pipelines for the BILL service robot at CBR 2024."
+  keywords:
+    - ROS 2
+    - Service Robotics
+    - Computer Vision
+    - Docker
+    - BILL
+    - CBR 2024
+  pdfUrl: null # TODO: colocar PDF em public/docs/tdps/tdp-bahiart-cbr-2024.pdf e atualizar este caminho
+  externalUrl: null # TODO: adicionar URL dos anais/repositório caso publicado online
+  projectId: robocupbillrobot
+  order: 1
+
+- id: tdp-bahiart-robocup-2025
+  type: tdp
+  typeLabel:
+    pt: Team Description Paper (TDP)
+    en: Team Description Paper (TDP)
+  title:
+    pt: "Equipe ACSO BahiaRT – BILL: Percepção Autônoma para Robô de Serviços (RoboCup 2025)" # TODO: substituir pelo título oficial do TDP se desejar
+    en: "ACSO BahiaRT Team – BILL: Autonomous Perception for Service Robotics (RoboCup 2025)" # TODO: replace with exact official TDP title if desired
+  authors:
+    - Samuel Cesar
+    - Equipe ACSO BahiaRT
+  authorRole:
+    pt: Coautor
+    en: Co-author
+  affiliation: ACSO / BahiaRT (UNEB)
+  venue:
+    pt: RoboCup 2025 (Competição Internacional)
+    en: RoboCup 2025 (International Competition)
+  location: Salvador, BA
+  year: "2025"
+  publishedDate: "2025"
+  abstract:
+    pt: "Artigo técnico-científico apresentando os avanços em visão computacional com modelos pré-treinados e personalizados integrados ao ecossistema ROS 2 e padronização conteinerizada para tomada de decisão autônoma do robô BILL na RoboCup 2025 em Salvador."
+    en: "Technical and scientific paper presenting advances in computer vision with pre-trained and custom models integrated into the ROS 2 ecosystem and containerized standardization for autonomous decision-making on the BILL robot at RoboCup 2025 in Salvador."
+  keywords:
+    - RoboCup 2025
+    - ROS 2
+    - Computer Vision
+    - Autonomous Decision
+    - Docker
+    - BILL
+  pdfUrl: null # TODO: colocar PDF em public/docs/tdps/tdp-bahiart-robocup-2025.pdf e atualizar este caminho
+  externalUrl: null # TODO: adicionar URL dos anais/repositório caso publicado online
+  projectId: robocupbillrobot
+  order: 2
+
+- id: tdp-bahiart-cbr-2025
+  type: tdp
+  typeLabel:
+    pt: Team Description Paper (TDP)
+    en: Team Description Paper (TDP)
+  title:
+    pt: "Equipe ACSO BahiaRT – BILL: Visão Computacional & Tomada de Decisão (CBR 2025)" # TODO: substituir pelo título oficial do TDP se desejar
+    en: "ACSO BahiaRT Team – BILL: Computer Vision & Decision-Making (CBR 2025)" # TODO: replace with exact official TDP title if desired
+  authors:
+    - Samuel Cesar
+    - Equipe ACSO BahiaRT
+  authorRole:
+    pt: Coautor
+    en: Co-author
+  affiliation: ACSO / BahiaRT (UNEB)
+  venue:
+    pt: Competição Brasileira de Robótica (CBR 2025)
+    en: Brazilian Robotics Competition (CBR 2025)
+  location: Espírito Santo, ES
+  year: "2025"
+  publishedDate: "2025"
+  abstract:
+    pt: "Artigo técnico-científico documentando os pipelines de percepção, integração de modelos de visão computacional e fluxos de engenharia de software para robôs de serviço representando a Bahia na CBR 2025 no Espírito Santo."
+    en: "Technical and scientific paper documenting perception pipelines, computer vision model integration, and software engineering workflows for service robotics representing Bahia at CBR 2025 in Espírito Santo."
+  keywords:
+    - CBR 2025
+    - ROS 2
+    - Computer Vision
+    - GitLab CI
+    - Docker
+    - BILL
+  pdfUrl: null # TODO: colocar PDF em public/docs/tdps/tdp-bahiart-cbr-2025.pdf e atualizar este caminho
+  externalUrl: null # TODO: adicionar URL dos anais/repositório caso publicado online
+  projectId: robocupbillrobot
+  order: 3

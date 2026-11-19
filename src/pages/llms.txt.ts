@@ -5,7 +5,7 @@ export const prerender = true;
 
 export const GET: APIRoute = async () => {
   const graph = await loadPortfolioGraph();
-  const { profile, education, experience, projects, skills, certifications, badges, achievements } = graph;
+  const { profile, education, experience, projects, skills, certifications, badges, achievements, publications } = graph;
   const siteBase = profile.contacts.website.replace(/\/$/, '');
   const awards = achievements.filter((item) => item.kind === 'award');
 
@@ -38,14 +38,37 @@ export const GET: APIRoute = async () => {
     '',
     ...experience.map((exp) => {
       const period = [exp.startDate ?? 'N/A', exp.endDate ?? (exp.current ? 'Present' : 'N/A')].join(' – ');
+      const bullets = exp.highlights?.en.map((item) => `  - ${item}`) ?? [];
       return [
         `### ${exp.organization} — ${exp.role.en}`,
         `- **Focus**: ${exp.focus.en}`,
         `- **Status**: ${exp.status.en} (${period})`,
         `- **Stack**: ${exp.stack.join(', ')}`,
         `- **Summary**: ${exp.description.en}`,
+        ...(bullets.length > 0 ? [`- **Highlights**:`, ...bullets] : []),
       ].join('\n');
     }),
+    '',
+    '## Publications & Team Description Papers (TDPs)',
+    '',
+    ...(publications.length > 0
+      ? publications.map((pub) => {
+          const links = [
+            pub.pdfUrl ? `PDF: ${siteBase}${pub.pdfUrl}` : null,
+            pub.externalUrl ? `Link: ${pub.externalUrl}` : null,
+          ]
+            .filter(Boolean)
+            .join(' | ');
+          return [
+            `### ${pub.title.en}`,
+            `- **Type**: ${pub.typeLabel.en} (${pub.authorRole.en})`,
+            `- **Venue**: ${pub.venue.en} — ${pub.location} (${pub.year})`,
+            `- **Affiliation**: ${pub.affiliation}`,
+            `- **Abstract**: ${pub.abstract.en}`,
+            ...(links ? [`- **Access**: ${links}`] : []),
+          ].join('\n');
+        })
+      : ['- No publications listed yet.']),
     '',
     '## Projects',
     '',

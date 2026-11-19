@@ -29,19 +29,19 @@
   kind: award
   order: 2
   badge:
-    pt: Iniciação Científica
-    en: Scientific Research
+    pt: Iniciação Científica · P&D
+    en: Scientific Research · R&D
   winnerLabel: null
   title:
-    pt: ACSO & BahiaRT (UNEB)
-    en: ACSO & BahiaRT (UNEB)
+    pt: ACSO BahiaRT & ACSO Defense (UNEB)
+    en: ACSO BahiaRT & ACSO Defense (UNEB)
   description:
-    pt: "Pesquisa acadêmica e desenvolvimento de visão e manipulação para o Robô Bill na competição universitária RoboCup@Home."
-    en: "Academic research and vision/manipulation system integration for Bill Robot in the collegiate RoboCup@Home competition."
+    pt: "Pesquisa em robótica de serviço no projeto BILL (Abr 2024 – Nov 2025, ROS 2 e visão computacional) e em drones autônomos para reconhecimento marítimo no Projeto Xaréu em parceria com as Forças Armadas (Nov 2025 – Out 2026)."
+    en: "Research on service robotics in the BILL project (Apr 2024 – Nov 2025, ROS 2 & computer vision) and autonomous drones for maritime reconnaissance in the Xaréu Project in partnership with the Armed Forces (Nov 2025 – Oct 2026)."
   shortTitle: null
   shortDescription: null
   organization: UNEB
-  date: null # TODO: preencher ano/período ISO
+  date: "2026"
   tone: dominant
   featured: true
   showInCurriculum: false
@@ -50,23 +50,23 @@
   kind: award
   order: 3
   badge:
-    pt: Competição Nacional
-    en: National Competition
+    pt: Competições & TDPs
+    en: Competitions & TDPs
   winnerLabel: null
   title:
-    pt: CBR 2024 - Goiânia
-    en: CBR 2024 - Goiânia
+    pt: CBR 2024/2025 & RoboCup 2025
+    en: CBR 2024/2025 & RoboCup 2025
   description:
-    pt: "Atuação na Competição Brasileira de Robótica universitária com validação experimental de sistemas autônomos."
-    en: "Collegiate Brazilian Robotics Competition participation with experimental validation of autonomous systems."
+    pt: "Coautoria de Team Description Papers (TDPs) representando a Bahia na CBR 2024 (Goiânia), CBR 2025 (ES) e RoboCup 2025 (Salvador)."
+    en: "Co-authored Team Description Papers (TDPs) representing Bahia at CBR 2024 (Goiânia), CBR 2025 (ES), and RoboCup 2025 (Salvador)."
   shortTitle:
-    pt: "Competidor: CBR 2024 / 2025"
-    en: "Competitor: CBR 2024 / 2025"
+    pt: "Competições & TDPs: CBR 2024/25 · RoboCup 2025"
+    en: "Competitions & TDPs: CBR 2024/25 · RoboCup 2025"
   shortDescription:
-    pt: "Equipe BahiaRT / ACSO (RoboCup@Home)"
-    en: "BahiaRT / ACSO Team (RoboCup@Home)"
-  organization: CBR / RoboCup Brasil
-  date: "2024"
+    pt: "Equipe ACSO BahiaRT – BILL (Coautoria de TDPs)"
+    en: "ACSO BahiaRT – BILL Team (Co-authored TDPs)"
+  organization: CBR / RoboCup
+  date: "2025"
   tone: neutral
   featured: true
   showInCurriculum: true

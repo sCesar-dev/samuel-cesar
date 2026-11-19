@@ -8,6 +8,7 @@ import type {
   CertificationItem,
   BadgeItem,
   AchievementItem,
+  PublicationItem,
 } from '../../data/schemas/portfolio.ts';
 
 export interface PortfolioGraph {
@@ -19,6 +20,7 @@ export interface PortfolioGraph {
   certifications: CertificationItem[];
   badges: BadgeItem[];
   achievements: AchievementItem[];
+  publications: PublicationItem[];
 }
 
 export async function loadProfile(): Promise<ProfileData> {
@@ -65,6 +67,12 @@ export async function loadAchievements(): Promise<AchievementItem[]> {
     .sort((a, b) => a.order - b.order);
 }
 
+export async function loadPublications(): Promise<PublicationItem[]> {
+  return (await getCollection('publications'))
+    .map((e) => e.data)
+    .sort((a, b) => a.order - b.order);
+}
+
 export async function loadPortfolioGraph(): Promise<PortfolioGraph> {
   const [
     profile,
@@ -75,6 +83,7 @@ export async function loadPortfolioGraph(): Promise<PortfolioGraph> {
     certifications,
     badges,
     achievements,
+    publications,
   ] = await Promise.all([
     loadProfile(),
     loadEducation(),
@@ -84,6 +93,7 @@ export async function loadPortfolioGraph(): Promise<PortfolioGraph> {
     loadCertifications(),
     loadBadges(),
     loadAchievements(),
+    loadPublications(),
   ]);
 
   return {
@@ -95,5 +105,6 @@ export async function loadPortfolioGraph(): Promise<PortfolioGraph> {
     certifications,
     badges,
     achievements,
+    publications,
   };
 }

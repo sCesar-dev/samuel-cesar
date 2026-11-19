@@ -79,5 +79,6 @@ A arquitetura foi construída de forma distribuída e modular utilizando **ROS 2
 
 ## 🏆 Impacto e Competições
 
-* **CBR 2024 (Goiânia):** Validação dos subsistemas autônomos e navegação em arena competitiva.
-* **CBR 2025 & RoboCup 2025 (Salvador):** Liderança dos testes finais de integração de manipulação e percepção em nível global.
+* **CBR 2024 (Goiânia):** Validação dos subsistemas autônomos, fluxos colaborativos em Git/GitLab + Docker e coautoria de Team Description Paper (TDP).
+* **RoboCup 2025 (Salvador):** Participação internacional com pipelines de percepção e visão computacional em ROS 2 e coautoria de TDP.
+* **CBR 2025 (Espírito Santo):** Consolidação dos pipelines de visão com modelos pré-treinados e personalizados e coautoria de TDP representando a Bahia.

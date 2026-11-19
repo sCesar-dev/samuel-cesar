@@ -6,6 +6,7 @@ import {
   formatString,
   formatNumber,
   formatDate,
+  formatIsoDateUtc,
 } from '../src/i18n/translations.ts';
 
 // Helper to flatten nested object keys
@@ -122,6 +123,14 @@ test('formatNumber and formatDate format values according to Intl rules', () => 
 
   assert.ok(datePt.length > 0);
   assert.ok(dateEn.length > 0);
+});
+
+test('formatIsoDateUtc formats YYYY-MM without UTC timezone month shift', () => {
+  assert.strictEqual(formatIsoDateUtc('2024-04', 'en-US'), 'Apr 2024');
+  assert.strictEqual(formatIsoDateUtc('2025-11', 'en-US'), 'Nov 2025');
+  assert.strictEqual(formatIsoDateUtc('2026-10', 'en-US'), 'Oct 2026');
+  assert.strictEqual(formatIsoDateUtc('2024-04', 'pt-BR').toLowerCase(), 'abr 2024');
+  assert.strictEqual(formatIsoDateUtc('2026-10', 'pt-BR').toLowerCase(), 'out 2026');
 });
 
 test('UI dictionaries keep core action and fallback labels in both locales', () => {

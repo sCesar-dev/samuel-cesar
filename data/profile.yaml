@@ -16,8 +16,8 @@ main:
     en: Available for Internship
 
   headline:
-    pt: "Graduando em Sistemas de Informação (UNEB) e bolsista IC ACSO/DEFENSE. 1º lugar no Hackathon UFBA com Python e AWS."
-    en: "Information Systems undergraduate (UNEB) and ACSO/DEFENSE undergraduate research fellow. 1st Place at UFBA Hackathon with Python and AWS."
+    pt: "Graduando em Sistemas de Informação (UNEB) e pesquisador IC (ACSO BahiaRT & ACSO Defense). 1º lugar no Hackathon UFBA com Python e AWS."
+    en: "Information Systems undergraduate (UNEB) and scientific researcher (ACSO BahiaRT & ACSO Defense). 1st Place at UFBA Hackathon with Python and AWS."
 
   meta:
     title:
@@ -66,5 +66,5 @@ main:
         en: "Information Systems undergraduate at Bahia State University (UNEB), seeking an internship opportunity in Data Engineering, Data Science, or Computer Vision."
       - pt: "Construo pipelines de dados, modelos preditivos em Python (Scikit-Learn, Random Forest, Pandas), arquiteturas serverless na nuvem com AWS (Lambda, S3, SAM CLI) e estruturas de indexação de alto desempenho (B-Trees e Grafos)."
         en: "I engineer data pipelines, predictive models in Python (Scikit-Learn, Random Forest, Pandas), serverless cloud architectures with AWS (Lambda, S3, SAM CLI), and high-performance indexing data structures (B-Trees and Graphs)."
-      - pt: "Conquistei o 1º Lugar no Hackathon LIAO / UFBA 2026 desenvolvendo a inteligência de previsão e fidelidade do projeto BioPoints. Como bolsista de iniciação científica no ACSO (UNEB), atuei durante 2 anos com robótica para robôs de serviço com ROS 2, YOLOv8 e Python e atualmente integro o ACSO DEFENSE, atuando em soluções para busca e reconhecimento utilizando drones autônomos."
-        en: "Awarded 1st Place at the LIAO / UFBA 2026 Hackathon developing the predictive emission and loyalty engine for BioPoints. As an undergraduate scientific researcher at ACSO (UNEB), I worked for 2 years on service robotics with ROS 2, YOLOv8, and Python, and currently participate in ACSO DEFENSE, developing search and reconnaissance solutions with autonomous drones."
+      - pt: "Conquistei o 1º Lugar no Hackathon LIAO / UFBA 2026 desenvolvendo a inteligência de previsão e fidelidade do projeto BioPoints. Como pesquisador de iniciação científica no ACSO (UNEB), integrei a equipe BahiaRT – BILL (Abr 2024 – Nov 2025) com ROS 2, Docker, Git/GitLab e visão computacional para robôs de serviço (coautorando TDPs na CBR 2024/2025 e RoboCup 2025), além da equipe ACSO Defense – Projeto Xaréu (Nov 2025 – Out 2026) em parceria com as Forças Armadas, atuando com drones autônomos e visão computacional embarcada em ambiente marítimo."
+        en: "Awarded 1st Place at the LIAO / UFBA 2026 Hackathon developing the predictive emission and loyalty engine for BioPoints. As an undergraduate scientific researcher at ACSO (UNEB), I joined the BahiaRT – BILL team (Apr 2024 – Nov 2025) working with ROS 2, Docker, Git/GitLab, and computer vision for service robotics (co-authoring TDPs at CBR 2024/2025 and RoboCup 2025), as well as ACSO Defense – Xaréu Project (Nov 2025 – Oct 2026) in partnership with the Armed Forces, building embedded computer vision pipelines on autonomous drones for maritime reconnaissance."

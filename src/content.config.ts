@@ -10,6 +10,7 @@ import {
   CertificationItemSchema,
   BadgeItemSchema,
   AchievementItemSchema,
+  PublicationItemSchema,
 } from '../data/schemas/portfolio.ts';
 
 const profile = defineCollection({
@@ -57,6 +58,11 @@ const achievements = defineCollection({
   schema: AchievementItemSchema,
 });
 
+const publications = defineCollection({
+  loader: file('data/publications.yaml'),
+  schema: PublicationItemSchema,
+});
+
 export const collections = {
   profile,
   education,
@@ -67,4 +73,5 @@ export const collections = {
   certifications,
   badges,
   achievements,
+  publications,
 };

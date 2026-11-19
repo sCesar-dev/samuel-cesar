@@ -130,6 +130,25 @@ export interface TranslationSchema {
     competenciesTitle: string;
     awardsHeader: string;
     directDownload: string;
+    researchLogTitle: string;
+    presentLabel: string;
+    publicationsTitle: string;
+    publicationsSubtitle: string;
+    publicationsCount: string;
+    publicationSelectorAria: string;
+    publicationAuthorsLabel: string;
+    publicationAffiliationLabel: string;
+    publicationVenueLabel: string;
+    publicationScopeLabel: string;
+    publicationKeywordsLabel: string;
+    publicationOpenNewTab: string;
+    publicationDownloadPdf: string;
+    publicationExternalLink: string;
+    publicationRelatedProject: string;
+    publicationPdfAttached: string;
+    publicationPdfPending: string;
+    publicationPdfPendingNote: string;
+    publicationIframeTitle: string;
   };
   contact: {
     sectionTitle: string;
@@ -286,12 +305,31 @@ export const ptBR: TranslationSchema = {
   },
   curriculum: {
     sectionTitle: "Currículo & Resumo Técnico",
-    sectionSubtitle: "Resumo técnico e acadêmico com disponibilidade imediata para estágio.",
+    sectionSubtitle: "Resumo técnico, pesquisa acadêmica (ACSO/UNEB) e publicações científicas (TDPs) com disponibilidade para estágio.",
     downloadPdf: "Baixar Currículo (PDF)",
     educationTitle: "Formação & Pesquisa",
     competenciesTitle: "Competências & Reconhecimentos",
     awardsHeader: "Premiações & Reconhecimento",
     directDownload: "Download Direto (PDF A4)",
+    researchLogTitle: "Pesquisa Acadêmica & Iniciação Científica (ACSO / UNEB)",
+    presentLabel: "Atual",
+    publicationsTitle: "Artigos Técnicos & Científicos (TDPs)",
+    publicationsSubtitle: "Team Description Papers coautorados representando a Bahia em competições nacionais e internacionais de robótica.",
+    publicationsCount: "{count} artigo(s)",
+    publicationSelectorAria: "Selecionar artigo técnico (TDP) para visualização",
+    publicationAuthorsLabel: "Autoria",
+    publicationAffiliationLabel: "Afiliação",
+    publicationVenueLabel: "Evento & Local",
+    publicationScopeLabel: "Resumo Técnico",
+    publicationKeywordsLabel: "Palavras-chave",
+    publicationOpenNewTab: "Abrir PDF em nova aba",
+    publicationDownloadPdf: "Baixar PDF",
+    publicationExternalLink: "Acessar publicação",
+    publicationRelatedProject: "Ver estudo de caso do robô BILL",
+    publicationPdfAttached: "PDF disponível",
+    publicationPdfPending: "PDF pendente",
+    publicationPdfPendingNote: "O arquivo PDF completo deste TDP ainda será anexado ao repositório. Os metadados verificados, evento e resumo técnico estão disponíveis acima.",
+    publicationIframeTitle: "Visualizador de documento: {title}",
   },
   contact: {
     sectionTitle: "Vamos Conversar?",
@@ -448,12 +486,31 @@ export const enUS: TranslationSchema = {
   },
   curriculum: {
     sectionTitle: "Resume & Technical Summary",
-    sectionSubtitle: "Technical and academic profile with immediate availability for internship.",
+    sectionSubtitle: "Technical profile, academic research (ACSO/UNEB), and scientific papers (TDPs) with availability for internship.",
     downloadPdf: "Download Resume (PDF)",
     educationTitle: "Education & Research",
     competenciesTitle: "Competencies & Distinctions",
     awardsHeader: "Awards & Recognition",
     directDownload: "Direct Download (PDF A4)",
+    researchLogTitle: "Academic Research & Scientific Fellowships (ACSO / UNEB)",
+    presentLabel: "Present",
+    publicationsTitle: "Technical & Scientific Papers (TDPs)",
+    publicationsSubtitle: "Co-authored Team Description Papers representing Bahia at national and international robotics competitions.",
+    publicationsCount: "{count} paper(s)",
+    publicationSelectorAria: "Select technical paper (TDP) to inspect",
+    publicationAuthorsLabel: "Authors",
+    publicationAffiliationLabel: "Affiliation",
+    publicationVenueLabel: "Venue & Location",
+    publicationScopeLabel: "Technical Abstract",
+    publicationKeywordsLabel: "Keywords",
+    publicationOpenNewTab: "Open PDF in new tab",
+    publicationDownloadPdf: "Download PDF",
+    publicationExternalLink: "View publication",
+    publicationRelatedProject: "Inspect BILL robot case study",
+    publicationPdfAttached: "PDF available",
+    publicationPdfPending: "PDF pending",
+    publicationPdfPendingNote: "The full PDF file for this TDP is pending attachment to the repository. Verified metadata, venue, and technical abstract are listed above.",
+    publicationIframeTitle: "Document viewer: {title}",
   },
   contact: {
     sectionTitle: "Let's Connect",
@@ -510,6 +567,31 @@ export function formatNumber(value: number, locale: 'pt-BR' | 'en-US', options?:
   } catch {
     return String(value);
   }
+}
+
+/**
+ * Formats an ISO date string (YYYY, YYYY-MM, or YYYY-MM-DD) in UTC to avoid timezone month shifts.
+ */
+export function formatIsoDateUtc(isoDate: string, locale: 'pt-BR' | 'en-US'): string {
+  const ymMatch = isoDate.match(/^(\d{4})-(\d{2})(?:-(\d{2}))?$/);
+  if (ymMatch) {
+    const year = Number(ymMatch[1]);
+    const month = Number(ymMatch[2]) - 1;
+    const day = ymMatch[3] ? Number(ymMatch[3]) : 1;
+    const utcDate = new Date(Date.UTC(year, month, day));
+    const formatted = new Intl.DateTimeFormat(locale, {
+      month: 'short',
+      year: 'numeric',
+      timeZone: 'UTC',
+    }).format(utcDate);
+    // Normalize Portuguese "abr. de 2024" -> "Abr 2024" for crisp tabular headers
+    if (locale === 'pt-BR') {
+      const cleaned = formatted.replace('.', '').replace(/\s+de\s+/i, ' ');
+      return cleaned.charAt(0).toUpperCase() + cleaned.slice(1);
+    }
+    return formatted;
+  }
+  return isoDate;
 }
 
 /**
