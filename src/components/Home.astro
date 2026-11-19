@@ -1,12 +1,8 @@
 ---
 import HeroNetworking from './HeroNetworking';
-import { loadProfile, loadProjects, loadBadges } from '../lib/portfolioData';
+import { loadProfile } from '../lib/portfolioData';
 
-const [profile, projects, badges] = await Promise.all([
-  loadProfile(),
-  loadProjects(),
-  loadBadges(),
-]);
+const profile = await loadProfile();
 ---
 
 <HeroNetworking
@@ -19,6 +15,4 @@ const [profile, projects, badges] = await Promise.all([
   resumePath={profile.assets.resumePdf}
   resumeFilename={profile.assets.resumeFilename}
   qrCodePath={profile.assets.qrCode}
-  projects={projects}
-  badges={badges}
 />

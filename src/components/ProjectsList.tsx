@@ -86,7 +86,7 @@ export default function ProjectsList({ projects }: Props) {
   return (
     <div className="w-full">
       {/* Section Header + Coupled Instrument Filter Bar */}
-      <div className="flex flex-col xl:flex-row xl:items-end justify-between gap-6 mb-10 pb-6 border-b border-edge">
+      <div className="flex flex-col items-start gap-6 mb-10 pb-6 border-b border-edge">
         <div>
           <h2 className="text-3xl md:text-5xl font-extrabold text-ink font-display">
             {t.projects.sectionTitle}
