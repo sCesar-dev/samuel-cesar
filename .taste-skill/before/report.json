@@ -1,0 +1,2086 @@
+{
+ "url": "http://localhost:4321/samuel-cesar/",
+ "at": "2026-11-14T14:56:01.656Z",
+ "allow": [],
+ "viewports": [
+  {
+   "width": 1440,
+   "height": 900,
+   "load": "load",
+   "screens": 11,
+   "filled": [
+    0.25,
+    0.77,
+    0.77,
+    0.77,
+    0.59,
+    0.43,
+    0.51,
+    0.69,
+    0.37,
+    0.56,
+    0.5
+   ],
+   "motion": {
+    "elements": 17,
+    "css": 0,
+    "transitions": 9,
+    "scripted": 8,
+    "videos": 2,
+    "playingVideos": 2
+   },
+   "metrics": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "page": {
+     "height": 9702,
+     "screens": 10.8,
+     "words": 1358,
+     "img": 10,
+     "video": 2,
+     "canvas": 0,
+     "svg": 102,
+     "sections": 6,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 11,
+     "videoCount": 2,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "Project_Architeture_Design_Optmized.png",
+      "robocup-image.jpg",
+      "logo.png",
+      "linux_monitor_img1.png",
+      "veterinary_clinic_img2.png",
+      "profile.jpg",
+      "robocup-image.jpg",
+      "personal-image.jpg"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Samuel Cesar, Software Developer",
+     "words": 4,
+     "chars": 32,
+     "lines": 2,
+     "size": 60,
+     "vw": 4.2,
+     "font": "Cabinet Grotesk",
+     "weight": 800,
+     "tracking": -0.01,
+     "leading": 1.08,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "center",
+     "position": "center",
+     "widthRatio": 0.37,
+     "top": 199,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Samuel Cesar, Software Developer",
+     "words": 4,
+     "lines": 2,
+     "size": 60,
+     "font": "Cabinet Grotesk"
+    },
+    "headings": [
+     {
+      "text": "Samuel Cesar, Software Developer",
+      "words": 4,
+      "chars": 32,
+      "lines": 2,
+      "size": 60,
+      "vw": 4.2,
+      "font": "Cabinet Grotesk",
+      "weight": 800,
+      "tracking": -0.01,
+      "leading": 1.08,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.37,
+      "top": 199,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Featured Projects",
+      "words": 2,
+      "chars": 17,
+      "lines": 1,
+      "size": 48,
+      "vw": 3.3,
+      "font": "Cabinet Grotesk",
+      "weight": 800,
+      "tracking": -0.01,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.27,
+      "top": 710,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "About & Education",
+      "words": 3,
+      "chars": 17,
+      "lines": 1,
+      "size": 48,
+      "vw": 3.3,
+      "font": "Cabinet Grotesk",
+      "weight": 800,
+      "tracking": -0.01,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.4,
+      "top": 4936,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Certifications",
+      "words": 1,
+      "chars": 14,
+      "lines": 1,
+      "size": 48,
+      "vw": 3.3,
+      "font": "Cabinet Grotesk",
+      "weight": 800,
+      "tracking": -0.01,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.35,
+      "top": 7411,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Resume & Technical Summary",
+      "words": 4,
+      "chars": 26,
+      "lines": 1,
+      "size": 48,
+      "vw": 3.3,
+      "font": "Cabinet Grotesk",
+      "weight": 800,
+      "tracking": -0.01,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.44,
+      "top": 8010,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Let's Connect",
+      "words": 2,
+      "chars": 13,
+      "lines": 1,
+      "size": 48,
+      "vw": 3.3,
+      "font": "Cabinet Grotesk",
+      "weight": 800,
+      "tracking": -0.01,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.4,
+      "top": 8907,
+      "tag": "h2",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 6,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 1,
+     "medianWords": 2,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Satoshi",
+       "share": 0.68,
+       "mono": false
+      },
+      {
+       "family": "Fragment Mono",
+       "share": 0.22,
+       "mono": true
+      },
+      {
+       "family": "Cabinet Grotesk",
+       "share": 0.09,
+       "mono": false
+      }
+     ],
+     "familyCount": 3,
+     "sizes": [
+      12,
+      13,
+      14,
+      15,
+      16,
+      18,
+      20,
+      24,
+      48,
+      60
+     ],
+     "sizeCount": 10,
+     "notLoaded": [
+      "Satoshi"
+     ],
+     "body": {
+      "font": "Satoshi",
+      "size": 13,
+      "leading": 1.63,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 10.4
+     },
+     "measureChars": 65,
+     "max": {
+      "size": 60,
+      "vw": 4.2,
+      "font": "Cabinet Grotesk",
+      "text": "Samuel Cesar,"
+     },
+     "monoShare": 0.22,
+     "monoProseShare": 0.22,
+     "monoFamilies": [
+      "Fragment Mono"
+     ],
+     "monoSamples": [
+      ".dev",
+      "Available for Internship • Data Engineer",
+      "7",
+      "4",
+      "1",
+      "2"
+     ],
+     "microLabels": 18,
+     "microLabelShare": 0.041,
+     "microSamples": [
+      "FEATURED",
+      "Engineering Highlights",
+      "FEATURED",
+      "Engineering Highlights",
+      "Engineering Highlights",
+      "Engineering Highlights"
+     ],
+     "upperShare": 0.06,
+     "centerShare": 0.08,
+     "smallText": 59
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#f8fafc",
+     "bodyBgHsl": {
+      "h": 210,
+      "s": 0.4,
+      "l": 0.98
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#ffffff",
+       "top": 905,
+       "hsl": {
+        "h": 0,
+        "s": 0,
+        "l": 1
+       }
+      },
+      {
+       "color": "#09090b",
+       "top": 906,
+       "hsl": {
+        "h": 240,
+        "s": 0.1,
+        "l": 0.04
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#334155",
+       "share": 0.64
+      },
+      {
+       "color": "#475569",
+       "share": 0.13
+      },
+      {
+       "color": "#09090b",
+       "share": 0.11
+      },
+      {
+       "color": "#4338ca",
+       "share": 0.02
+      },
+      {
+       "color": "#ffffff",
+       "share": 0.02
+      }
+     ],
+     "button": {
+      "bg": "#ffffff",
+      "hsl": {
+       "h": 0,
+       "s": 0,
+       "l": 1
+      },
+      "fg": "#ffffff"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 16,
+     "inHero": 7,
+     "radius": 4,
+     "height": 36,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "LinkedIn ↗",
+      "Explore Projects",
+      "Resume (PDF)",
+      "All 7",
+      "Data Engineering 4"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 2,
+     "scrims": 5,
+     "gradientSamples": [
+      "div.ambient-lighting.fixed → radial-gradient(80% 50% at 50% -15%, rgba(2, 132, 199, 0.06), rgba(0, 0, 0, 0))",
+      "div.dot-texture-overlay.fixed → radial-gradient(rgb(15, 23, 42) 1px, rgba(0, 0, 0, 0) 1px)"
+     ],
+     "gradientText": 0,
+     "hairlines": 45,
+     "hairlineSamples": [
+      "header.fixed.top-0 1440px",
+      "div.flex.flex-col 1088px",
+      "div.media-header.relative 634px",
+      "div.mt-4.pt-3.5 397px",
+      "div.space-y-4.pt-3.5 397px"
+     ],
+     "outlinedBoxes": 16,
+     "dashed": 0,
+     "blurred": 15,
+     "roundedBoxes": 0,
+     "boxRadius": 0,
+     "squareMedia": 11,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 3,
+       "iconTopped": true,
+       "rounded": false,
+       "top": 5105
+      },
+      {
+       "count": 4,
+       "iconTopped": false,
+       "rounded": false,
+       "top": 8230
+      },
+      {
+       "count": 3,
+       "iconTopped": true,
+       "rounded": false,
+       "top": 9069
+      }
+     ]
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 8,
+     "fixed": true,
+     "height": 64,
+     "floatingPill": false,
+     "blur": true
+    },
+    "fontsLoaded": [
+     "cabinet grotesk",
+     "fragment mono"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "pageH": 9702,
+    "margins": {
+     "left": 176,
+     "right": 190
+    },
+    "sections": [
+     {
+      "sel": "section#projects.py-16.md:py-24",
+      "tag": "section",
+      "top": 614,
+      "height": 4226,
+      "words": 808,
+      "media": 7,
+      "middle": 0,
+      "heading": {
+       "text": "Featured Projects",
+       "size": 48,
+       "tag": "h2"
+      },
+      "left": 176,
+      "right": 177,
+      "textLeft": 176,
+      "textRight": 200,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#about.py-16.md:py-24",
+      "tag": "section",
+      "top": 4840,
+      "height": 2475,
+      "words": 349,
+      "media": 4,
+      "middle": 0,
+      "heading": {
+       "text": "About & Education",
+       "size": 48,
+       "tag": "h2"
+      },
+      "left": 176,
+      "right": 176,
+      "textLeft": 176,
+      "textRight": 176,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#certifications.py-16.md:py-24",
+      "tag": "section",
+      "top": 7315,
+      "height": 599,
+      "words": 28,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Certifications",
+       "size": 48,
+       "tag": "h2"
+      },
+      "left": 176,
+      "right": 499,
+      "textLeft": 176,
+      "textRight": 499,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#curriculum.py-16.md:py-24",
+      "tag": "section",
+      "top": 7914,
+      "height": 897,
+      "words": 168,
+      "media": 0,
+      "middle": 39,
+      "heading": {
+       "text": "Resume & Technical Summary",
+       "size": 48,
+       "tag": "h2"
+      },
+      "left": 176,
+      "right": 196,
+      "textLeft": 176,
+      "textRight": 196,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#contact.py-16.md:py-24",
+      "tag": "section",
+      "top": 8811,
+      "height": 741,
+      "words": 53,
+      "media": 1,
+      "middle": 146,
+      "heading": {
+       "text": "Let's Connect",
+       "size": 48,
+       "tag": "h2"
+      },
+      "left": 176,
+      "right": 243,
+      "textLeft": 176,
+      "textRight": 243,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Samuel Cesar, Software Developer",
+      "size": 60,
+      "top": 199,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 201,
+      "n": 11
+     },
+     {
+      "x": 176,
+      "n": 10
+     },
+     {
+      "x": 757,
+      "n": 4
+     },
+     {
+      "x": 839,
+      "n": 4
+     },
+     {
+      "x": 229,
+      "n": 3
+     },
+     {
+      "x": 692,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 33,
+    "bodySize": 13,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0.21,
+    "voidBox": {
+     "x": 1020,
+     "y": 120,
+     "w": 420,
+     "h": 660
+    }
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 768,
+   "height": 1024,
+   "load": "load",
+   "screens": 11,
+   "filled": [
+    0.4,
+    0.92,
+    0.92,
+    0.92,
+    0.8,
+    0.48,
+    0.55,
+    0.8,
+    0.56,
+    0.73,
+    0.54
+   ],
+   "motion": {
+    "elements": 17,
+    "css": 0,
+    "transitions": 9,
+    "scripted": 8,
+    "videos": 2,
+    "playingVideos": 2
+   },
+   "metrics": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "page": {
+     "height": 10965,
+     "screens": 10.7,
+     "words": 1358,
+     "img": 10,
+     "video": 2,
+     "canvas": 0,
+     "svg": 102,
+     "sections": 6,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 11,
+     "videoCount": 2,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "Project_Architeture_Design_Optmized.png",
+      "robocup-image.jpg",
+      "logo.png",
+      "linux_monitor_img1.png",
+      "veterinary_clinic_img2.png",
+      "profile.jpg",
+      "robocup-image.jpg",
+      "personal-image.jpg"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Samuel Cesar, Software Developer",
+     "words": 4,
+     "chars": 32,
+     "lines": 2,
+     "size": 48,
+     "vw": 6.3,
+     "font": "Cabinet Grotesk",
+     "weight": 800,
+     "tracking": -0.01,
+     "leading": 1.08,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "center",
+     "position": "center",
+     "widthRatio": 0.55,
+     "top": 199,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Samuel Cesar, Software Developer",
+     "words": 4,
+     "lines": 2,
+     "size": 48,
+     "font": "Cabinet Grotesk"
+    },
+    "headings": [
+     {
+      "text": "Samuel Cesar, Software Developer",
+      "words": 4,
+      "chars": 32,
+      "lines": 2,
+      "size": 48,
+      "vw": 6.3,
+      "font": "Cabinet Grotesk",
+      "weight": 800,
+      "tracking": -0.01,
+      "leading": 1.08,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.55,
+      "top": 199,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Featured Projects",
+      "words": 2,
+      "chars": 17,
+      "lines": 1,
+      "size": 48,
+      "vw": 6.3,
+      "font": "Cabinet Grotesk",
+      "weight": 800,
+      "tracking": -0.01,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 684,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "About & Education",
+      "words": 3,
+      "chars": 17,
+      "lines": 1,
+      "size": 48,
+      "vw": 6.3,
+      "font": "Cabinet Grotesk",
+      "weight": 800,
+      "tracking": -0.01,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.75,
+      "top": 5782,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Certifications",
+      "words": 1,
+      "chars": 14,
+      "lines": 1,
+      "size": 48,
+      "vw": 6.3,
+      "font": "Cabinet Grotesk",
+      "weight": 800,
+      "tracking": -0.01,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.65,
+      "top": 8294,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Resume & Technical Summary",
+      "words": 4,
+      "chars": 26,
+      "lines": 2,
+      "size": 48,
+      "vw": 6.3,
+      "font": "Cabinet Grotesk",
+      "weight": 800,
+      "tracking": -0.01,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.6,
+      "top": 8892,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Let's Connect",
+      "words": 2,
+      "chars": 13,
+      "lines": 1,
+      "size": 48,
+      "vw": 6.3,
+      "font": "Cabinet Grotesk",
+      "weight": 800,
+      "tracking": -0.01,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.75,
+      "top": 10150,
+      "tag": "h2",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 6,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 1,
+     "medianWords": 2,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Satoshi",
+       "share": 0.68,
+       "mono": false
+      },
+      {
+       "family": "Fragment Mono",
+       "share": 0.22,
+       "mono": true
+      },
+      {
+       "family": "Cabinet Grotesk",
+       "share": 0.09,
+       "mono": false
+      }
+     ],
+     "familyCount": 3,
+     "sizes": [
+      12,
+      13,
+      14,
+      15,
+      16,
+      18,
+      20,
+      24,
+      48
+     ],
+     "sizeCount": 9,
+     "notLoaded": [
+      "Satoshi"
+     ],
+     "body": {
+      "font": "Satoshi",
+      "size": 13,
+      "leading": 1.63,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 10.4
+     },
+     "measureChars": 50,
+     "max": {
+      "size": 48,
+      "vw": 6.3,
+      "font": "Cabinet Grotesk",
+      "text": "Samuel Cesar,"
+     },
+     "monoShare": 0.22,
+     "monoProseShare": 0.22,
+     "monoFamilies": [
+      "Fragment Mono"
+     ],
+     "monoSamples": [
+      ".dev",
+      "Available for Internship • Data Engineer",
+      "7",
+      "4",
+      "1",
+      "2"
+     ],
+     "microLabels": 18,
+     "microLabelShare": 0.041,
+     "microSamples": [
+      "FEATURED",
+      "Engineering Highlights",
+      "FEATURED",
+      "Engineering Highlights",
+      "Engineering Highlights",
+      "Engineering Highlights"
+     ],
+     "upperShare": 0.06,
+     "centerShare": 0.08,
+     "smallText": 59
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#f8fafc",
+     "bodyBgHsl": {
+      "h": 210,
+      "s": 0.4,
+      "l": 0.98
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#ffffff",
+       "top": 966,
+       "hsl": {
+        "h": 0,
+        "s": 0,
+        "l": 1
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#334155",
+       "share": 0.64
+      },
+      {
+       "color": "#475569",
+       "share": 0.13
+      },
+      {
+       "color": "#09090b",
+       "share": 0.11
+      },
+      {
+       "color": "#4338ca",
+       "share": 0.02
+      },
+      {
+       "color": "#ffffff",
+       "share": 0.02
+      }
+     ],
+     "button": {
+      "bg": "#ffffff",
+      "hsl": {
+       "h": 0,
+       "s": 0,
+       "l": 1
+      },
+      "fg": "#ffffff"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 16,
+     "inHero": 8,
+     "radius": 4,
+     "height": 36,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "LinkedIn ↗",
+      "Explore Projects",
+      "Resume (PDF)",
+      "All 7",
+      "Data Engineering 4"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 2,
+     "scrims": 5,
+     "gradientSamples": [
+      "div.ambient-lighting.fixed → radial-gradient(80% 50% at 50% -15%, rgba(2, 132, 199, 0.06), rgba(0, 0, 0, 0))",
+      "div.dot-texture-overlay.fixed → radial-gradient(rgb(15, 23, 42) 1px, rgba(0, 0, 0, 0) 1px)"
+     ],
+     "gradientText": 0,
+     "hairlines": 47,
+     "hairlineSamples": [
+      "header.fixed.top-0 768px",
+      "div.flex.flex-col 704px",
+      "div.media-header.relative 702px",
+      "div.mt-4.pt-3.5 654px",
+      "div.space-y-4.pt-3.5 654px"
+     ],
+     "outlinedBoxes": 17,
+     "dashed": 0,
+     "blurred": 15,
+     "roundedBoxes": 0,
+     "boxRadius": 0,
+     "squareMedia": 11,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 4,
+       "iconTopped": false,
+       "rounded": false,
+       "top": 9520
+      },
+      {
+       "count": 3,
+       "iconTopped": true,
+       "rounded": false,
+       "top": 10312
+      }
+     ]
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 8,
+     "fixed": true,
+     "height": 64,
+     "floatingPill": false,
+     "blur": true
+    },
+    "fontsLoaded": [
+     "cabinet grotesk",
+     "fragment mono"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "pageH": 10965,
+    "margins": {
+     "left": 32,
+     "right": 33
+    },
+    "sections": [
+     {
+      "sel": "section#projects.py-16.md:py-24",
+      "tag": "section",
+      "top": 588,
+      "height": 5097,
+      "words": 808,
+      "media": 7,
+      "middle": 0,
+      "heading": {
+       "text": "Featured Projects",
+       "size": 48,
+       "tag": "h2"
+      },
+      "left": 32,
+      "right": 33,
+      "textLeft": 32,
+      "textRight": 56,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#about.py-16.md:py-24",
+      "tag": "section",
+      "top": 5686,
+      "height": 2512,
+      "words": 349,
+      "media": 4,
+      "middle": 0,
+      "heading": {
+       "text": "About & Education",
+       "size": 48,
+       "tag": "h2"
+      },
+      "left": 32,
+      "right": 33,
+      "textLeft": 32,
+      "textRight": 37,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#certifications.py-16.md:py-24",
+      "tag": "section",
+      "top": 8198,
+      "height": 599,
+      "words": 28,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Certifications",
+       "size": 48,
+       "tag": "h2"
+      },
+      "left": 32,
+      "right": 163,
+      "textLeft": 32,
+      "textRight": 163,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#curriculum.py-16.md:py-24",
+      "tag": "section",
+      "top": 8796,
+      "height": 1258,
+      "words": 168,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Resume & Technical Summary",
+       "size": 48,
+       "tag": "h2"
+      },
+      "left": 32,
+      "right": 52,
+      "textLeft": 32,
+      "textRight": 52,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#contact.py-16.md:py-24",
+      "tag": "section",
+      "top": 10054,
+      "height": 761,
+      "words": 53,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Let's Connect",
+       "size": 48,
+       "tag": "h2"
+      },
+      "left": 32,
+      "right": 83,
+      "textLeft": 32,
+      "textRight": 83,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Samuel Cesar, Software Developer",
+      "size": 48,
+      "top": 199,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 57,
+      "n": 15
+     },
+     {
+      "x": 32,
+      "n": 10
+     },
+     {
+      "x": 85,
+      "n": 4
+     },
+     {
+      "x": 421,
+      "n": 4
+     }
+    ],
+    "leftBlocks": 33,
+    "bodySize": 13,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "load": "load",
+   "screens": 12,
+   "filled": [
+    0.47,
+    0.86,
+    0.92,
+    0.92,
+    0.86,
+    0.86,
+    0.92,
+    0.92,
+    0.72,
+    0.92,
+    0.44,
+    0.86
+   ],
+   "motion": {
+    "elements": 17,
+    "css": 0,
+    "transitions": 9,
+    "scripted": 8,
+    "videos": 2,
+    "playingVideos": 2
+   },
+   "metrics": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "page": {
+     "height": 14272,
+     "screens": 16.9,
+     "words": 1257,
+     "img": 10,
+     "video": 2,
+     "canvas": 0,
+     "svg": 102,
+     "sections": 6,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 11,
+     "videoCount": 2,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "Project_Architeture_Design_Optmized.png",
+      "robocup-image.jpg",
+      "logo.png",
+      "linux_monitor_img1.png",
+      "veterinary_clinic_img2.png",
+      "profile.jpg",
+      "robocup-image.jpg",
+      "personal-image.jpg"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Samuel Cesar, Software Developer",
+     "words": 4,
+     "chars": 32,
+     "lines": 2,
+     "size": 34,
+     "vw": 8.7,
+     "font": "Cabinet Grotesk",
+     "weight": 800,
+     "tracking": -0.01,
+     "leading": 1.08,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "center",
+     "position": "center",
+     "widthRatio": 0.77,
+     "top": 188,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Samuel Cesar, Software Developer",
+     "words": 4,
+     "lines": 2,
+     "size": 34,
+     "font": "Cabinet Grotesk"
+    },
+    "headings": [
+     {
+      "text": "Samuel Cesar, Software Developer",
+      "words": 4,
+      "chars": 32,
+      "lines": 2,
+      "size": 34,
+      "vw": 8.7,
+      "font": "Cabinet Grotesk",
+      "weight": 800,
+      "tracking": -0.01,
+      "leading": 1.08,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.77,
+      "top": 188,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Featured Projects",
+      "words": 2,
+      "chars": 17,
+      "lines": 1,
+      "size": 30,
+      "vw": 7.7,
+      "font": "Cabinet Grotesk",
+      "weight": 800,
+      "tracking": -0.01,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 651,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "BioPoints - Predictive CO₂ Intelligence & Sustainable Loyalty",
+      "words": 8,
+      "chars": 61,
+      "lines": 3,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Cabinet Grotesk",
+      "weight": 800,
+      "tracking": -0.01,
+      "leading": 1.38,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.81,
+      "top": 1320,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "RoboCup@Home - Autonomous Perception and Manipulation (Bill Robot)",
+      "words": 8,
+      "chars": 66,
+      "lines": 3,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Cabinet Grotesk",
+      "weight": 800,
+      "tracking": -0.01,
+      "leading": 1.38,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.81,
+      "top": 2382,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "About & Education",
+      "words": 3,
+      "chars": 17,
+      "lines": 1,
+      "size": 30,
+      "vw": 7.7,
+      "font": "Cabinet Grotesk",
+      "weight": 800,
+      "tracking": -0.01,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 7393,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Certifications",
+      "words": 1,
+      "chars": 14,
+      "lines": 1,
+      "size": 30,
+      "vw": 7.7,
+      "font": "Cabinet Grotesk",
+      "weight": 800,
+      "tracking": -0.01,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 11278,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Resume & Technical Summary",
+      "words": 4,
+      "chars": 26,
+      "lines": 2,
+      "size": 30,
+      "vw": 7.7,
+      "font": "Cabinet Grotesk",
+      "weight": 800,
+      "tracking": -0.01,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 11780,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Let's Connect",
+      "words": 2,
+      "chars": 13,
+      "lines": 1,
+      "size": 30,
+      "vw": 7.7,
+      "font": "Cabinet Grotesk",
+      "weight": 800,
+      "tracking": -0.01,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 13305,
+      "tag": "h2",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 8,
+     "maxLines": 3,
+     "over2Lines": 2,
+     "statements": 0,
+     "centered": 1,
+     "medianWords": 3,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Satoshi",
+       "share": 0.66,
+       "mono": false
+      },
+      {
+       "family": "Fragment Mono",
+       "share": 0.24,
+       "mono": true
+      },
+      {
+       "family": "Cabinet Grotesk",
+       "share": 0.1,
+       "mono": false
+      }
+     ],
+     "familyCount": 3,
+     "sizes": [
+      12,
+      13,
+      14,
+      15,
+      16,
+      18,
+      20,
+      24,
+      30,
+      34
+     ],
+     "sizeCount": 10,
+     "notLoaded": [
+      "Satoshi"
+     ],
+     "body": {
+      "font": "Satoshi",
+      "size": 13,
+      "leading": 1.63,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 10.4
+     },
+     "measureChars": 44,
+     "max": {
+      "size": 34,
+      "vw": 8.7,
+      "font": "Cabinet Grotesk",
+      "text": "Samuel Cesar,"
+     },
+     "monoShare": 0.24,
+     "monoProseShare": 0.24,
+     "monoFamilies": [
+      "Fragment Mono"
+     ],
+     "monoSamples": [
+      ".dev",
+      "Available for Internship • Data Engineer",
+      "7",
+      "4",
+      "1",
+      "2"
+     ],
+     "microLabels": 18,
+     "microLabelShare": 0.044,
+     "microSamples": [
+      "FEATURED",
+      "Engineering Highlights",
+      "FEATURED",
+      "Engineering Highlights",
+      "Engineering Highlights",
+      "Engineering Highlights"
+     ],
+     "upperShare": 0.06,
+     "centerShare": 0.09,
+     "smallText": 59
+    },
+    "eyebrows": [
+     {
+      "text": "SYS // 01",
+      "above": "BioPoints - Predictive CO₂ Intelligence ",
+      "upper": true,
+      "tracked": false,
+      "mono": true,
+      "pill": false,
+      "size": 12,
+      "top": 1296
+     },
+     {
+      "text": "SYS // 02",
+      "above": "RoboCup@Home - Autonomous Perception and",
+      "upper": true,
+      "tracked": false,
+      "mono": true,
+      "pill": false,
+      "size": 12,
+      "top": 2358
+     }
+    ],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#f8fafc",
+     "bodyBgHsl": {
+      "h": 210,
+      "s": 0.4,
+      "l": 0.98
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#ffffff",
+       "top": 1019,
+       "hsl": {
+        "h": 0,
+        "s": 0,
+        "l": 1
+       }
+      },
+      {
+       "color": "#09090b",
+       "top": 8078,
+       "hsl": {
+        "h": 240,
+        "s": 0.1,
+        "l": 0.04
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#334155",
+       "share": 0.61
+      },
+      {
+       "color": "#475569",
+       "share": 0.14
+      },
+      {
+       "color": "#09090b",
+       "share": 0.12
+      },
+      {
+       "color": "#0369a1",
+       "share": 0.04
+      },
+      {
+       "color": "#ffffff",
+       "share": 0.03
+      }
+     ],
+     "button": {
+      "bg": "#ffffff",
+      "hsl": {
+       "h": 0,
+       "s": 0,
+       "l": 1
+      },
+      "fg": "#ffffff"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 18,
+     "inHero": 4,
+     "radius": 4,
+     "height": 36,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Explore Projects",
+      "Resume (PDF)",
+      "All 7",
+      "Data Engineering 4"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 2,
+     "scrims": 5,
+     "gradientSamples": [
+      "div.ambient-lighting.fixed → radial-gradient(80% 50% at 50% -15%, rgba(2, 132, 199, 0.06), rgba(0, 0, 0, 0))",
+      "div.dot-texture-overlay.fixed → radial-gradient(rgb(15, 23, 42) 1px, rgba(0, 0, 0, 0) 1px)"
+     ],
+     "gradientText": 0,
+     "hairlines": 45,
+     "hairlineSamples": [
+      "header.fixed.top-0 390px",
+      "div.flex.flex-col 358px",
+      "div.media-header.relative 356px",
+      "div.mt-4.pt-3.5 316px",
+      "div.space-y-4.pt-3.5 316px"
+     ],
+     "outlinedBoxes": 17,
+     "dashed": 0,
+     "blurred": 15,
+     "roundedBoxes": 0,
+     "boxRadius": 0,
+     "squareMedia": 11,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 4,
+       "iconTopped": false,
+       "rounded": false,
+       "top": 12451
+      }
+     ]
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 1,
+     "fixed": true,
+     "height": 64,
+     "floatingPill": false,
+     "blur": true
+    },
+    "fontsLoaded": [
+     "cabinet grotesk",
+     "fragment mono"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "pageH": 14272,
+    "margins": {
+     "left": 16,
+     "right": 17
+    },
+    "sections": [
+     {
+      "sel": "section#projects.py-16.md:py-24",
+      "tag": "section",
+      "top": 587,
+      "height": 6742,
+      "words": 709,
+      "media": 7,
+      "middle": 0,
+      "heading": {
+       "text": "Featured Projects",
+       "size": 30,
+       "tag": "h2"
+      },
+      "left": 16,
+      "right": 17,
+      "textLeft": 16,
+      "textRight": 35,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#about.py-16.md:py-24",
+      "tag": "section",
+      "top": 7329,
+      "height": 3868,
+      "words": 349,
+      "media": 4,
+      "middle": 0,
+      "heading": {
+       "text": "About & Education",
+       "size": 30,
+       "tag": "h2"
+      },
+      "left": 16,
+      "right": 17,
+      "textLeft": 16,
+      "textRight": 20,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#certifications.py-16.md:py-24",
+      "tag": "section",
+      "top": 11214,
+      "height": 503,
+      "words": 28,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Certifications",
+       "size": 30,
+       "tag": "h2"
+      },
+      "left": 16,
+      "right": 47,
+      "textLeft": 16,
+      "textRight": 47,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#curriculum.py-16.md:py-24",
+      "tag": "section",
+      "top": 11716,
+      "height": 1525,
+      "words": 168,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Resume & Technical Summary",
+       "size": 30,
+       "tag": "h2"
+      },
+      "left": 16,
+      "right": 17,
+      "textLeft": 16,
+      "textRight": 17,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#contact.py-16.md:py-24",
+      "tag": "section",
+      "top": 13241,
+      "height": 860,
+      "words": 44,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Let's Connect",
+       "size": 30,
+       "tag": "h2"
+      },
+      "left": 16,
+      "right": 45,
+      "textLeft": 16,
+      "textRight": 45,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Samuel Cesar, Software Developer",
+      "size": 34,
+      "top": 188,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 37,
+      "n": 19
+     },
+     {
+      "x": 16,
+      "n": 10
+     },
+     {
+      "x": 69,
+      "n": 4
+     }
+    ],
+    "leftBlocks": 33,
+    "bodySize": 13,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  }
+ ],
+ "findings": [
+  {
+   "level": "FAIL",
+   "id": "mono",
+   "width": 1440,
+   "message": "Monospace type outside code: Fragment Mono — e.g. \".dev\", \"Available for Internship • Data Engineer\", \"7\", \"4\"",
+   "fix": "Set it in the text face. Monospace is for literal code inside <pre>/<code> only.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "micro-label",
+   "width": 1440,
+   "message": "18 tiny uppercase letter-spaced labels (e.g. \"FEATURED\", \"Engineering Highlights\", \"FEATURED\", \"Engineering Highlights\").",
+   "fix": "Use sentence-case text at a readable size, or delete the label.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "gradient",
+   "width": 1440,
+   "message": "2 gradient fill(s): div.ambient-lighting.fixed → radial-gradient(80% 50% at 50% -15%, rgba(2, 132, 199, 0.06), rgba(0, 0, 0, 0)) | div.dot-texture-overlay.fixed → radial-gradient(rgb(15, 23, 42) 1px, rgba(0, 0, 0, 0) 1px)",
+   "fix": "Use a flat colour or a real image. The only gradient allowed by default is a neutral scrim over a photo for legibility.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "hairline",
+   "width": 1440,
+   "message": "45 thin rule(s)/divider line(s): header.fixed.top-0 1440px | div.flex.flex-col 1088px | div.media-header.relative 634px | div.mt-4.pt-3.5 397px",
+   "fix": "Delete. Separate with space, a tone change, or scale. Lines are only for real tables and form fields.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "outlined-box",
+   "width": 1440,
+   "message": "16 boxes drawn with a 1px outline.",
+   "fix": "Define a surface by its fill (one tone step from the page) or leave the content unboxed.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "glass",
+   "width": 1440,
+   "message": "15 backdrop-blur surfaces.",
+   "fix": "One blurred sticky bar at most; glass cards are a tell.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "icon-cards",
+   "width": 1440,
+   "message": "2 row(s) of identical cards each topped with a small icon (3, 3 cards).",
+   "fix": "Replace with one composed section from the direction: a narrative split, a list set in large type, or real imagery per item.",
+   "alsoAt": [
+    768
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "palette-purple",
+   "width": 1440,
+   "message": "Indigo / violet (text #4338ca).",
+   "fix": "Use the accent from the drawn palette.",
+   "alsoAt": [
+    768
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "font-count",
+   "width": 1440,
+   "message": "3 typefaces in use (Satoshi, Fragment Mono, Cabinet Grotesk).",
+   "fix": "Two at most.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "font-fallback",
+   "width": 1440,
+   "message": "Typeface(s) declared but not loaded, so a fallback is rendering: Satoshi",
+   "fix": "Fix the font URL / family name, or the screenshots you are judging are not the design.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "size-count",
+   "width": 1440,
+   "message": "10 different font sizes (12, 13, 14, 15, 16, 18, 20, 24, 48, 60).",
+   "fix": "A page needs about five: display, heading, lead, body, small.",
+   "alsoAt": [
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "body-size",
+   "width": 1440,
+   "message": "Body text is 13px (the size most of the running text is set in).",
+   "fix": "Body copy 16–20px. Map small sizes from blueprints onto your body step.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "small-text",
+   "width": 1440,
+   "message": "59 text blocks under 13px.",
+   "fix": "Nothing meant to be read goes below 13px.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "focal-point",
+   "width": 1440,
+   "message": "The first screen has no dominant element: the largest type is 60px (4.2vw) and no single picture holds a third of the viewport.",
+   "fix": "Make one thing lead: the headline at display size, or one large picture. A grid of many small pictures is not one thing; in blind tests jurors marked a first screen without a headline down every time. On the strongest studied sites the largest type has a median of 8.4vw."
+  },
+  {
+   "level": "FAIL",
+   "id": "headline-lines",
+   "width": 390,
+   "message": "2 headline(s) wrap past two lines at 390px: \"BioPoints - Predictive CO₂ Intelligence & Sustai\" → 3 lines (8 words, 24px); \"RoboCup@Home - Autonomous Perception and Manipul\" → 3 lines (8 words, 24px)",
+   "fix": "Cut words first (a headline is a title, not a sentence). Then give it a wider measure. Lower the size only as a last resort and never below the scale you chose. A real statement paragraph belongs in a <p> or <blockquote> at 24px or less."
+  },
+  {
+   "level": "FAIL",
+   "id": "eyebrow",
+   "width": 390,
+   "message": "2 eyebrow/kicker label(s) above headings: \"SYS // 01\" above \"BioPoints - Predictive CO₂ Intelligence \"; \"SYS // 02\" above \"RoboCup@Home - Autonomous Perception and\"",
+   "fix": "Delete them. If the label carried real information, fold it into the headline or the supporting sentence."
+  }
+ ],
+ "images": [
+  {
+   "viewport": "desktop",
+   "width": 1440,
+   "fold": "/home/s-cesar/codes/samuel-cesar/.taste-skill/before/desktop-fold.jpg",
+   "pages": [
+    "/home/s-cesar/codes/samuel-cesar/.taste-skill/before/desktop-page-01.jpg",
+    "/home/s-cesar/codes/samuel-cesar/.taste-skill/before/desktop-page-02.jpg",
+    "/home/s-cesar/codes/samuel-cesar/.taste-skill/before/desktop-page-03.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "tablet",
+   "width": 768,
+   "fold": "/home/s-cesar/codes/samuel-cesar/.taste-skill/before/tablet-fold.jpg",
+   "pages": [
+    "/home/s-cesar/codes/samuel-cesar/.taste-skill/before/tablet-page-01.jpg",
+    "/home/s-cesar/codes/samuel-cesar/.taste-skill/before/tablet-page-02.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "mobile",
+   "width": 390,
+   "fold": "/home/s-cesar/codes/samuel-cesar/.taste-skill/before/mobile-fold.jpg",
+   "pages": [
+    "/home/s-cesar/codes/samuel-cesar/.taste-skill/before/mobile-page-01.jpg",
+    "/home/s-cesar/codes/samuel-cesar/.taste-skill/before/mobile-page-02.jpg"
+   ],
+   "film": []
+  }
+ ]
+}

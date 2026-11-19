@@ -1,50 +1,56 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, getEntry, render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import ImageCarousel from '../../components/ImageCarousel';
 import ProjectDetailHeader from '../../components/ProjectDetailHeader';
+import { loadProfile } from '../../lib/portfolioData';
 
 export async function getStaticPaths() {
   const projectEntries = await getCollection('projects');
-  return projectEntries.map(entry => ({
-    params: { slug: entry.slug }, props: { entry },
+  return projectEntries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { project: entry.data },
   }));
 }
 
-const { entry } = Astro.props;
-const { Content } = await entry.render();
+const { project } = Astro.props;
+const profile = await loadProfile();
+const bodyEntry = await getEntry('projectBodies', project.id);
+if (!bodyEntry) {
+  throw new Error(`Missing Markdown body entry for project "${project.id}" in src/content/projects/`);
+}
+const { Content } = await render(bodyEntry);
 const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
-<Layout title={`${entry.data.title} | Samuel Cesar`} description={entry.data.description}>
+<Layout title={`${project.title.pt} | ${profile.name}`} description={project.description.pt}>
   <div class="w-full max-w-4xl mx-auto px-4 md:px-8 pt-8 pb-16">
     
     <ProjectDetailHeader 
       client:load
-      slug={entry.slug}
-      initialTitle={entry.data.title}
-      initialDescription={entry.data.description}
-      techs={entry.data.techs}
-      github={entry.data.github}
-      live={entry.data.live}
+      title={project.title}
+      description={project.description}
+      techs={project.techs}
+      github={project.github}
+      live={project.live}
       baseUrl={baseUrl}
     />
 
-    {entry.data.images && entry.data.images.length > 0 && (
+    {project.images.length > 0 && (
       <section class="mb-14">
-        <ImageCarousel client:visible images={entry.data.images} altPrefix={entry.data.title} />
+        <ImageCarousel client:visible images={project.images} altPrefix={project.title.pt} />
       </section>
     )}
 
-    {entry.data.videos && entry.data.videos.length > 0 && (
+    {project.videos.length > 0 && (
       <section class="mb-14">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {entry.data.videos.map((vid, index) => {
+          {project.videos.map((vid, index) => {
             const videoUrl = vid.startsWith('http') ? vid : `${baseUrl}${vid.startsWith('/') ? '' : '/'}${vid}`;
-            const posterRaw = entry.data.images?.[0];
+            const posterRaw = project.images[0];
             const posterUrl = posterRaw ? (posterRaw.startsWith('http') ? posterRaw : `${baseUrl}${posterRaw.startsWith('/') ? '' : '/'}${posterRaw}`) : undefined;
             return (
-              <div class={`rounded-xl overflow-hidden border border-edge bg-surface ${index === 0 && (!entry.data.images || entry.data.images.length === 0) ? 'md:col-span-2' : ''}`}>
+              <div class={`overflow-hidden border border-edge bg-surface ${index === 0 && project.images.length === 0 ? 'md:col-span-2' : ''}`}>
                 <video src={videoUrl} poster={posterUrl} autoplay loop muted playsinline class="w-full h-auto object-cover hover:scale-[1.01] transition-transform duration-500"></video>
               </div>
             );

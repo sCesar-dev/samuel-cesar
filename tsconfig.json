@@ -6,7 +6,8 @@
   ],
   "exclude": [
     "dist",
-    "tests"
+    "tests",
+    "scripts"
   ],
   "compilerOptions": {
     "jsx": "react-jsx",

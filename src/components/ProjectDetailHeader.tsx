@@ -1,33 +1,27 @@
 import React from 'react';
 import { ArrowLeft, Github, SquareArrowOutUpRight } from 'lucide-react';
 import { useI18n } from '../i18n/useI18n';
+import { pickLocalized } from '../i18n/localize';
+import type { LocalizedString } from '../../data/schemas/portfolio';
 
 interface ProjectDetailHeaderProps {
-  slug: string;
-  initialTitle: string;
-  initialDescription: string;
+  title: LocalizedString;
+  description: LocalizedString;
   techs: string[];
-  github?: string;
-  live?: string;
+  github: string | null;
+  live: string | null;
   baseUrl: string;
 }
 
 export default function ProjectDetailHeader({
-  slug,
-  initialTitle,
-  initialDescription,
+  title,
+  description,
   techs,
   github,
   live,
   baseUrl,
 }: ProjectDetailHeaderProps) {
-  const { t } = useI18n();
-
-  const slugKey = slug.toLowerCase().replace(/[^a-z0-9]/g, '') as keyof typeof t.projectItems;
-  const localized = t.projectItems[slugKey];
-
-  const title = localized?.title || initialTitle;
-  const description = localized?.description || initialDescription;
+  const { t, locale } = useI18n();
 
   return (
     <>
@@ -41,15 +35,15 @@ export default function ProjectDetailHeader({
 
       <header className="mb-12 border-b border-edge pb-8 transition-colors">
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-ink mb-4 font-display">
-          {title}
+          {pickLocalized(title, locale)}
         </h1>
         <p className="text-base sm:text-lg text-ink-secondary mb-6 max-w-3xl leading-relaxed">
-          {description}
+          {pickLocalized(description, locale)}
         </p>
         
         <div className="flex flex-wrap gap-1.5 mb-6">
           {techs.map((tech) => (
-            <span key={tech} className="px-2.5 py-1 rounded text-[13px] font-mono bg-surface-alt text-ink-secondary border border-edge-subtle">
+            <span key={tech} className="px-2.5 py-1 text-[13px] font-mono bg-surface-alt text-ink-secondary border border-edge-subtle">
               {tech}
             </span>
           ))}

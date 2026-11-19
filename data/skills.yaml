@@ -1,0 +1,111 @@
+- id: data-engineering
+  order: 1
+  tone: dominant
+  showInAboutTable: true
+  showInCurriculumMatrix: true
+  title:
+    pt: Engenharia de Dados & Nuvem
+    en: Data Engineering & Cloud
+  shortTitle:
+    pt: Eng. de Dados & Backend
+    en: Data Eng. & Backend
+  summary:
+    pt: "Python, SQL/PostgreSQL, indexação B-Tree O(log n), grafos e arquitetura orientada a dados."
+    en: "Python, SQL/PostgreSQL, B-Tree O(log n) indexing, graphs, and data-driven architecture."
+  items:
+    - pt: Python
+      en: Python
+    - pt: "SQL & PostgreSQL"
+      en: "SQL & PostgreSQL"
+    - pt: "AWS (Lambda, S3, SAM)"
+      en: "AWS (Lambda, S3, SAM)"
+    - pt: "B-Trees & Índices"
+      en: "B-Trees & Indexing"
+    - pt: "Grafos & Dijkstra"
+      en: "Graphs & Dijkstra"
+    - pt: "Docker & Linux"
+      en: "Docker & Linux"
+
+- id: data-science
+  order: 2
+  tone: accent
+  showInAboutTable: true
+  showInCurriculumMatrix: true
+  title:
+    pt: Ciência de Dados & ML
+    en: Data Science & ML
+  shortTitle:
+    pt: Ciência de Dados & ML
+    en: Data Science & ML
+  summary:
+    pt: "Scikit-Learn, Random Forest, EDA, tratamento de features e modelagem preditiva aplicada."
+    en: "Scikit-Learn, Random Forest, exploratory data analysis (EDA), feature engineering, and applied predictive modeling."
+  items:
+    - pt: Scikit-Learn
+      en: Scikit-Learn
+    - pt: Random Forest
+      en: Random Forest
+    - pt: "Pandas & NumPy"
+      en: "Pandas & NumPy"
+    - pt: Feature Engineering
+      en: Feature Engineering
+    - pt: "Análise Exploratória (EDA)"
+      en: "Exploratory Analysis (EDA)"
+    - pt: Modelagem Preditiva
+      en: Predictive Modeling
+
+- id: computer-vision
+  order: 3
+  tone: dominant
+  showInAboutTable: true
+  showInCurriculumMatrix: true
+  title:
+    pt: Visão Computacional & Robótica
+    en: Computer Vision & Robotics
+  shortTitle:
+    pt: Visão Computacional & Robótica
+    en: Computer Vision & Robotics
+  summary:
+    pt: "YOLOv8, Amazon Rekognition, ROS 2, C++ moderno e fusão sensorial de dados 3D."
+    en: "YOLOv8, Amazon Rekognition, ROS 2, modern C++, and 3D sensory data fusion."
+  items:
+    - pt: YOLOv8
+      en: YOLOv8
+    - pt: Amazon Rekognition
+      en: Amazon Rekognition
+    - pt: "ROS 2 (RoboCup@Home)"
+      en: "ROS 2 (RoboCup@Home)"
+    - pt: C++ (Modern)
+      en: C++ (Modern)
+    - pt: MoveIt 2
+      en: MoveIt 2
+    - pt: OpenCV
+      en: OpenCV
+
+- id: cloud-devops
+  order: 4
+  tone: accent
+  showInAboutTable: false
+  showInCurriculumMatrix: true
+  title:
+    pt: Nuvem AWS & DevOps
+    en: AWS Cloud & DevOps
+  shortTitle:
+    pt: Nuvem AWS & DevOps
+    en: AWS Cloud & DevOps
+  summary:
+    pt: "Lambda serverless, S3, SAM CLI (IaC), CloudWatch, Docker e ambientes Linux."
+    en: "Serverless Lambda, S3, SAM CLI (IaC), CloudWatch, Docker, and Linux environments."
+  items:
+    - pt: AWS Lambda
+      en: AWS Lambda
+    - pt: Amazon S3
+      en: Amazon S3
+    - pt: AWS SAM CLI (IaC)
+      en: AWS SAM CLI (IaC)
+    - pt: CloudWatch
+      en: CloudWatch
+    - pt: Docker
+      en: Docker
+    - pt: Linux
+      en: Linux

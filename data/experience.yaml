@@ -1,0 +1,72 @@
+- id: acso-bahiart
+  role:
+    pt: Bolsista de Iniciação Científica
+    en: Undergraduate Scientific Researcher
+  organization: Equipe ACSO BahiaRT – BILL (UNEB)
+  type: research
+  status:
+    pt: Iniciação Científica · Robótica de Serviço
+    en: Scientific Research · Service Robotics
+  focus:
+    pt: "BILL - Projeto de Robô de Serviços & Visão Computacional"
+    en: "BILL - Service Robot & Computer Vision Project"
+  description:
+    pt: "Atuação na equipe de software para robôs de serviço (BILL), coordenando fluxos de versionamento Git/GitLab, conteinerização com Docker, pipelines de percepção com ROS 2 e coautoria de TDPs."
+    en: "Software development for service robotics (BILL), coordinating Git/GitLab workflows, Docker containerization, ROS 2 perception pipelines, and co-authoring Team Description Papers."
+  highlights:
+    pt:
+      - "Integrei a equipe de software para robôs de serviço, coordenando fluxos de versionamento em Git/GitLab e padronização de ambientes conteinerizados via Docker."
+      - "Desenvolvi pipelines de percepção e visão computacional tanto com modelos pré-treinados como com modelos personalizados, integrados ao ecossistema ROS 2 para suporte à tomada de decisão autônoma."
+      - "Coautorei artigos técnicos e científicos (Team Description Papers), representando a Bahia em competições nacionais (CBR 2024 em Goiânia e CBR 2025 no ES) e internacionais (RoboCup 2025 em Salvador)."
+    en:
+      - "Joined the service robotics software team, coordinating Git/GitLab version control workflows and standardizing containerized environments with Docker."
+      - "Developed perception and computer vision pipelines using both pre-trained and custom models, integrated into the ROS 2 ecosystem to support autonomous decision-making."
+      - "Co-authored technical and scientific papers (Team Description Papers), representing Bahia at national competitions (CBR 2024 in Goiânia and CBR 2025 in Espírito Santo) and international competitions (RoboCup 2025 in Salvador)."
+  stack:
+    - ROS 2
+    - Docker
+    - Git
+    - GitLab
+    - YOLOv8
+    - Python
+    - C++
+    - MoveIt 2
+    - OpenCV
+  startDate: "2024-04"
+  endDate: "2025-11"
+  current: false
+  showInCurriculumSummary: true
+
+- id: acso-defense
+  role:
+    pt: Bolsista de Iniciação Científica
+    en: Undergraduate Scientific Researcher
+  organization: Equipe ACSO Defense – Projeto Xaréu (UNEB)
+  type: research
+  status:
+    pt: Pesquisa & Desenvolvimento em Defesa
+    en: Defense R&D Fellowship
+  focus:
+    pt: "Drones Autônomos & Reconhecimento Marítimo"
+    en: "Autonomous Drones & Maritime Reconnaissance"
+  description:
+    pt: "Desenvolvimento em projeto de tecnologia em defesa em parceria com as Forças Armadas, atuando com ambientes simulados, testes físicos com UAVs e visão computacional embarcada em ambiente marítimo."
+    en: "Defense technology development in partnership with the Armed Forces, working with simulated environments, physical UAV flight tests, and embedded maritime computer vision pipelines."
+  highlights:
+    pt:
+      - "Integrei a equipe de desenvolvimento em projeto de tecnologia em defesa em parceria com as Forças Armadas, atuando no versionamento colaborativo e conteinerização, criação de ambientes simulados, desenvolvimento de software, assim como testes físicos com UAVs."
+      - "Arquitetei e implementei pipelines de visão computacional embarcada em drones autônomos voltados ao reconhecimento, detecção e rastreamento de objetos em ambiente marítimo, com criação de datasets especializados."
+    en:
+      - "Joined the development team on a defense technology project in partnership with the Armed Forces, contributing to collaborative version control and containerization, simulation environment creation, software development, and physical testing with UAVs."
+      - "Architected and implemented embedded computer vision pipelines on autonomous drones for object recognition, detection, and tracking in maritime environments, including the creation of specialized datasets."
+  stack:
+    - Python
+    - Computer Vision
+    - Autonomous Drones (UAVs)
+    - Docker
+    - Git
+    - Simulation
+  startDate: "2025-11"
+  endDate: "2026-10"
+  current: false
+  showInCurriculumSummary: true

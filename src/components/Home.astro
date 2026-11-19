@@ -1,5 +1,18 @@
 ---
 import HeroNetworking from './HeroNetworking';
+import { loadProfile } from '../lib/portfolioData';
+
+const profile = await loadProfile();
 ---
 
-<HeroNetworking client:load />
+<HeroNetworking
+  client:load
+  name={profile.name}
+  role={profile.role}
+  availabilityBadge={profile.availabilityBadge}
+  headline={profile.headline}
+  linkedInUrl={profile.contacts.linkedin}
+  resumePath={profile.assets.resumePdf}
+  resumeFilename={profile.assets.resumeFilename}
+  qrCodePath={profile.assets.qrCode}
+/>

@@ -1,9 +1,20 @@
 ---
 import ContactContent from './ContactContent';
+import { loadProfile } from '../lib/portfolioData';
 
 const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+const profile = await loadProfile();
 ---
 
 <section id="contact" class="py-16 md:py-24 w-full scroll-mt-20 scroll-reveal">
-    <ContactContent client:load baseUrl={baseUrl} />
+    <ContactContent
+      client:load
+      baseUrl={baseUrl}
+      ownerName={profile.name}
+      linkedInUrl={profile.contacts.linkedin}
+      githubUrl={profile.contacts.github}
+      githubHandle={profile.contacts.githubHandle}
+      email={profile.contacts.email}
+      qrCodePath={profile.assets.qrCode}
+    />
 </section>

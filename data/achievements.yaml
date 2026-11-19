@@ -1,0 +1,129 @@
+- id: hackathon-liao-ufba-2026
+  kind: award
+  order: 1
+  badge:
+    pt: "1º Lugar: Premiação Hackathon"
+    en: "1st Place: Hackathon Award"
+  winnerLabel:
+    pt: Vencedor
+    en: Winner
+  title:
+    pt: Hackathon LIAO / UFBA 2026
+    en: Hackathon LIAO / UFBA 2026
+  description:
+    pt: "Desenvolvimento da inteligência preditiva do BioPoints na trilha de Inteligência Artificial, Cidades Inteligentes & Mudanças Climáticas, utilizando Random Forest e simulação contrafactual."
+    en: "Development of the predictive machine learning engine for BioPoints in the AI, Smart Cities & Climate Change track, utilizing Random Forest and counterfactual simulation."
+  shortTitle:
+    pt: "1º Lugar: Hackathon UFBA 2026"
+    en: "1st Place: UFBA Hackathon 2026"
+  shortDescription:
+    pt: "BioPoints: Modelagem Preditiva de Fidelidade"
+    en: "BioPoints: Predictive Loyalty & Carbon Modeling"
+  organization: LIAO / UFBA
+  date: "2026"
+  tone: accent
+  featured: true
+  showInCurriculum: true
+
+- id: acso-bahiart-research
+  kind: award
+  order: 2
+  badge:
+    pt: Iniciação Científica · P&D
+    en: Scientific Research · R&D
+  winnerLabel: null
+  title:
+    pt: ACSO BahiaRT & ACSO Defense (UNEB)
+    en: ACSO BahiaRT & ACSO Defense (UNEB)
+  description:
+    pt: "Pesquisa em robótica de serviço no projeto BILL (Abr 2024 – Nov 2025, ROS 2 e visão computacional) e em drones autônomos para reconhecimento marítimo no Projeto Xaréu em parceria com as Forças Armadas (Nov 2025 – Out 2026)."
+    en: "Research on service robotics in the BILL project (Apr 2024 – Nov 2025, ROS 2 & computer vision) and autonomous drones for maritime reconnaissance in the Xaréu Project in partnership with the Armed Forces (Nov 2025 – Oct 2026)."
+  shortTitle: null
+  shortDescription: null
+  organization: UNEB
+  date: "2026"
+  tone: dominant
+  featured: true
+  showInCurriculum: false
+
+- id: cbr-2024-goiania
+  kind: award
+  order: 3
+  badge:
+    pt: Competições & TDPs
+    en: Competitions & TDPs
+  winnerLabel: null
+  title:
+    pt: CBR 2024/2025 & RoboCup 2025
+    en: CBR 2024/2025 & RoboCup 2025
+  description:
+    pt: "Coautoria de Team Description Papers (TDPs) representando a Bahia na CBR 2024 (Goiânia), CBR 2025 (ES) e RoboCup 2025 (Salvador)."
+    en: "Co-authored Team Description Papers (TDPs) representing Bahia at CBR 2024 (Goiânia), CBR 2025 (ES), and RoboCup 2025 (Salvador)."
+  shortTitle:
+    pt: "Competições & TDPs: CBR 2024/25 · RoboCup 2025"
+    en: "Competitions & TDPs: CBR 2024/25 · RoboCup 2025"
+  shortDescription:
+    pt: "Equipe ACSO BahiaRT – BILL (Coautoria de TDPs)"
+    en: "ACSO BahiaRT – BILL Team (Co-authored TDPs)"
+  organization: CBR / RoboCup
+  date: "2025"
+  tone: neutral
+  featured: true
+  showInCurriculum: true
+
+- id: gallery-robocup-2025-salvador
+  kind: gallery
+  order: 1
+  title:
+    pt: RoboCup 2025 - Salvador
+    en: RoboCup 2025 - Salvador
+  description:
+    pt: "Pesquisa e integração de visão computacional e controle para o Robô Bill no ACSO / BahiaRT (UNEB)."
+    en: "Computer vision and control integration research for Bill Robot at ACSO / BahiaRT (UNEB)."
+  alt:
+    pt: "RoboCup Salvador 2025, Brasil"
+    en: "RoboCup Salvador 2025, Brazil"
+  image: /images/robocup-image.jpg
+  width: 2560
+  height: 1415
+  aspectClass: aspect-[2560/1415]
+  orientation: landscape
+  date: "2025"
+
+- id: gallery-cbr-2024-goiania
+  kind: gallery
+  order: 2
+  title:
+    pt: CBR 2024 - Goiânia
+    en: CBR 2024 - Goiânia
+  description:
+    pt: "Validação experimental de sistemas autônomos na Competição Brasileira de Robótica."
+    en: "Experimental validation of autonomous service robotics systems at the Brazilian Robotics Competition."
+  alt:
+    pt: "CBR 2024 - Goiânia - Samuel Cesar"
+    en: "CBR 2024 - Goiânia - Samuel Cesar"
+  image: /images/personal-image.jpg
+  width: 1080
+  height: 720
+  aspectClass: aspect-[3/2]
+  orientation: landscape
+  date: "2024"
+
+- id: gallery-preparacao-competitiva
+  kind: gallery
+  order: 3
+  title:
+    pt: Preparação Competitiva
+    en: Competitive Preparation
+  description:
+    pt: "Calibração de sensores e testes de nós de controle no laboratório universitário."
+    en: "Sensor calibration and control node testing in the university laboratory."
+  alt:
+    pt: "CBR 2025 & RoboCup 25 - Samuel Cesar"
+    en: "CBR 2025 & RoboCup 25 - Samuel Cesar"
+  image: /images/robocup-image2.jpg
+  width: 960
+  height: 1280
+  aspectClass: aspect-[3/4]
+  orientation: portrait
+  date: "2025"

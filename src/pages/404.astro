@@ -1,10 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import NotFoundContent from '../components/NotFoundContent';
+import { loadProfile } from '../lib/portfolioData';
+import { ptBR } from '../i18n/translations';
 
 const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+const profile = await loadProfile();
 ---
 
-<Layout title="404 - Página Não Encontrada | Samuel Cesar" description="A página solicitada não foi encontrada.">
+<Layout title={`${ptBR.notFound.metaTitle} | ${profile.name}`} description={ptBR.notFound.metaDescription}>
   <NotFoundContent client:load baseUrl={baseUrl} />
 </Layout>
